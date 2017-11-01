@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7B5A8DA1-8C98-40FD-B243-DC7A17011D33}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>zoom_sdk_c_sharp_wrap</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>zoom_sdk_dotnet_wrap</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CSHARP_WRAP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <OutputFile>../bin/$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="auth_service_dotnet_wrap.h" />
+    <ClInclude Include="meeting_annotation_dotnet_wrap.h" />
+    <ClInclude Include="meeting_audio_dotnet_wrap.h" />
+    <ClInclude Include="meeting_breakout_rooms_dotnet_wrap.h" />
+    <ClInclude Include="meeting_chat_dotnet_wrap.h" />
+    <ClInclude Include="meeting_configuration_dotnet_wrap.h" />
+    <ClInclude Include="meeting_h323_helper_dotnet_wrap.h" />
+    <ClInclude Include="meeting_participants_ctrl_donet_wrap.h" />
+    <ClInclude Include="meeting_phone_helper_donet_wrap.h" />
+    <ClInclude Include="meeting_recording_dotnet_wrap.h" />
+    <ClInclude Include="meeting_remote_ctrl_dotnet_wrap.h" />
+    <ClInclude Include="meeting_service_dotnet_wrap.h" />
+    <ClInclude Include="meeting_sharing_dotnet_wrap.h" />
+    <ClInclude Include="meeting_ui_ctrl_dotnet_wrap.h" />
+    <ClInclude Include="meeting_video_dotnet_wrap.h" />
+    <ClInclude Include="meeting_waiting_room_dotnet_wrap.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="setting_service_dotnet_wrap.h" />
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="wrap\auth_service_wrap.h" />
+    <ClInclude Include="wrap\calender_service_wrap.h" />
+    <ClInclude Include="wrap\common_include.h" />
+    <ClInclude Include="wrap\embedded_browser_wrap.h" />
+    <ClInclude Include="wrap\macro_define.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_annotation_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_audio_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_breakout_rooms_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_chat_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_configuration_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_h323_helper_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_participants_ctrl_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_phone_helper_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_recording_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_remote_ctrl_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_sharing_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_ui_ctrl_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_video_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_waiting_room_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_wrap.h" />
+    <ClInclude Include="wrap\network_connection_handler_wrap.h" />
+    <ClInclude Include="wrap\premeeting_service_wrap.h" />
+    <ClInclude Include="wrap\sdk_loader.h" />
+    <ClInclude Include="wrap\sdk_wrap.h" />
+    <ClInclude Include="wrap\setting_service_wrap.h" />
+    <ClInclude Include="wrap\ui_hook_wrap.h" />
+    <ClInclude Include="zoom_sdk_dotnet_wrap.h" />
+    <ClInclude Include="zoom_sdk_dotnet_wrap_def.h" />
+    <ClInclude Include="zoom_sdk_dotnet_wrap_util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="auth_service_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_annotation_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_audio_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_breakout_rooms_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_chat_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_configuration_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_h323_helper_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_participants_ctrl_donet_wrap.cpp" />
+    <ClCompile Include="meeting_phone_helper_donet_wrap.cpp" />
+    <ClCompile Include="meeting_recording_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_remote_ctrl_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_service_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_sharing_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_ui_ctrl_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_video_dotnet_wrap.cpp" />
+    <ClCompile Include="meeting_waiting_room_dotnet_wrap.cpp" />
+    <ClCompile Include="setting_service_dotnet_wrap.cpp" />
+    <ClCompile Include="Stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\auth_service_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\calender_service_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\embedded_browser_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_annotation_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_audio_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_breakout_rooms_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_chat_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_configuration_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_h323_helper_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_participants_ctrl_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_phone_helper_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_recording_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_remote_ctrl_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_sharing_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_ui_ctrl_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_video_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_waiting_room_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\network_connection_handler_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\premeeting_service_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\sdk_loader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\sdk_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\setting_service_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\ui_hook_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zoom_sdk_dotnet_wrap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

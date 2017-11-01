@@ -1,0 +1,62 @@
+#include "meeting_sharing_wrap.h"
+#include "../meeting_service_wrap.h"
+BEGIN_ZOOM_SDK_NAMESPACE
+IMeetingShareController* InitIMeetingShareControllerFunc(IMeetingShareCtrlEvent* pEvent, IMeetingServiceWrap* pOwner)
+{
+	if (pOwner && pOwner->GetSDKObj())
+	{
+		ZOOM_SDK_NAMESPACE::IMeetingShareController* pObj = pOwner->GetSDKObj()->GetMeetingShareController();
+		if (pObj)
+		{
+			pObj->SetEvent(pEvent);
+		}
+		return pObj;
+	}
+
+	return NULL;
+}
+
+void UninitIMeetingShareControllerFunc(IMeetingShareController* obj)
+{
+	if (obj)
+	{
+		obj->SetEvent(NULL);
+	}
+}
+
+//virtual SDKError StartAppShare(HWND hwndSharedApp) = 0;
+IMPL_FUNC_1(IMeetingShareController, StartAppShare, SDKError, HWND, hwndSharedApp, SDKERR_UNINITIALIZE)
+//virtual SDKError StartMonitorShare(const wchar_t* monitorID) = 0;
+IMPL_FUNC_1(IMeetingShareController, StartMonitorShare, SDKError, const wchar_t*, monitorID, SDKERR_UNINITIALIZE)
+//virtual SDKError StartAirPlayShare() = 0;
+IMPL_FUNC_0(IMeetingShareController, StartAirPlayShare, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError StopShare() = 0;
+IMPL_FUNC_0(IMeetingShareController, StopShare, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWND hWnd) = 0;
+IMPL_FUNC_2(IMeetingShareController, BlockWindowFromScreenshare, SDKError, bool, bBlock, HWND, hWnd, SDKERR_UNINITIALIZE)
+//virtual SDKError LockShare() = 0;
+IMPL_FUNC_0(IMeetingShareController, LockShare, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError UnlockShare() = 0;
+IMPL_FUNC_0(IMeetingShareController, UnlockShare, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError SwitchToFitWindowModeWhenViewShare(SDKViewType type) = 0;
+IMPL_FUNC_1(IMeetingShareController, SwitchToFitWindowModeWhenViewShare, SDKError, SDKViewType, type, SDKERR_UNINITIALIZE)
+//virtual SDKError SwitchToOriginalSizeModeWhenViewShare(SDKViewType type) = 0;
+IMPL_FUNC_1(IMeetingShareController, SwitchToOriginalSizeModeWhenViewShare, SDKError, SDKViewType, type, SDKERR_UNINITIALIZE)
+//virtual SDKError PauseCurrentSharing() = 0;
+IMPL_FUNC_0(IMeetingShareController, PauseCurrentSharing, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError ResumeCurrentSharing() = 0;
+IMPL_FUNC_0(IMeetingShareController, ResumeCurrentSharing, SDKError, SDKERR_UNINITIALIZE)
+//virtual IList<unsigned int >* GetViewableShareSourceList() = 0;
+IMPL_FUNC_0(IMeetingShareController, GetViewableShareSourceList, IList<unsigned int >*, NULL)
+//virtual SDKError GetViewabltShareSourceByUserID(unsigned int userid, ViewableShareSource& shareSource) = 0;
+IMPL_FUNC_2(IMeetingShareController, GetViewabltShareSourceByUserID, SDKError, unsigned int, userid, ViewableShareSource&, shareSource, SDKERR_UNINITIALIZE)
+//virtual SDKError ViewShare(unsigned int userid, SDKViewType type) = 0;
+IMPL_FUNC_2(IMeetingShareController, ViewShare, SDKError, unsigned int, userid, SDKViewType, type, SDKERR_UNINITIALIZE)
+//virtual SDKError ShowShareOptionDialog() = 0;
+IMPL_FUNC_0(IMeetingShareController, ShowShareOptionDialog, SDKError, SDKERR_UNINITIALIZE)
+//virtual bool CanStartShare() = 0;
+IMPL_FUNC_0(IMeetingShareController, CanStartShare, bool, false)
+//virtual SDKError IsShareLocked(bool& bLocked) = 0;
+IMPL_FUNC_1(IMeetingShareController, IsShareLocked, SDKError, bool&, bLocked, SDKERR_UNINITIALIZE)
+
+END_ZOOM_SDK_NAMESPACE
