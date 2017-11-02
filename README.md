@@ -1,6 +1,8 @@
 # Zoom-Windows-Csharp-wrapper
 C# wrapper for Zoom Windows SDK
 
+Note: Zoom does not actively enhance the interfaces in the c# wrapper. This wrapper is provided as a reference and will not be actively supported by Zoom. We have published the source code for this wrapper and are relying on our developer community to enhance it as needed. Please make sure that you commit the code changes back to git.
+
 Please refer to https://developer.zoom.us/docs/windows/c-wrapper-introduction/
 
 1.the wrap Dll locate at zoom_sdk_csharp_wrap_github\bin\zoom_sdk_dotnet_wrap.dll, now we only support x86.
