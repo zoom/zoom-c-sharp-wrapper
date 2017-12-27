@@ -20,6 +20,7 @@ namespace zoom_sdk_demo
             {
                 ZOOM_SDK_DOTNET_WRAP.InitParam param = new ZOOM_SDK_DOTNET_WRAP.InitParam();
                 param.web_domain = "https://zoom.us";
+                param.config_opts.customized_language.language_name = "c:\\test";
                 ZOOM_SDK_DOTNET_WRAP.SDKError err = ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.Initialize(param);
                 if (ZOOM_SDK_DOTNET_WRAP.SDKError.SDKERR_SUCCESS == err)
                 {

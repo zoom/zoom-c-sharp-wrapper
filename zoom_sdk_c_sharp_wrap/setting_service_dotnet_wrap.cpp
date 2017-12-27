@@ -4,7 +4,7 @@
 #include "wrap/sdk_wrap.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
 
-	SDKError CSettingServiceDotNetWrap::ShowSettingDlg(ShowSettingDlgParam^ param)
+	SDKError CSettingServiceDotNetWrap::ShowSettingDlg(ShowSettingDlgParam^% param)
 	{
 		if (nullptr == param)
 			return SDKError::SDKERR_INVALID_PARAMETER;
@@ -14,6 +14,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		param_c.bShow = param->bShow;
 		param_c.left = param->left;
 		param_c.top = param->top;
+		param_c.eTabPageType = (ZOOM_SDK_NAMESPACE::SettingTabPage)param->eTabPageType;
 
 		SDKError err =  (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().ShowSettingDlg(param_c);
 		param->hSettingWnd.value = (UInt32)param_c.hSettingWnd;
@@ -248,6 +249,24 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
 			->IsFaceBeautyEffectEnabled();
+	}
+
+	SDKError CVideoSettingContextDotNetWrap::EnableHDVideo(bool bEnable)
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings())
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
+			->EnableHDVideo(bEnable);
+	}
+
+	bool CVideoSettingContextDotNetWrap::IsHDVideoEnabled()
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings())
+			return false;
+
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
+			->IsHDVideoEnabled();
 	}
 
 	//CAudioSettingContextDotNetWrap

@@ -23,7 +23,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	};
 
 	public delegate void onUserAudioStatusChange(array<IUserAudioStatusDotNetWrap^ >^ lstAudioStatusChange);
-	public delegate void onUserActiveAudioChange(unsigned int userId);
+	public delegate void onUserActiveAudioChange(array<unsigned int>^ lstActiveAudio);
 
 	public interface class IMeetingAudioControllerDotNetWrap
 	{
@@ -50,7 +50,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		void BindEvent();
 		void procUserAudioStatusChange(array<IUserAudioStatusDotNetWrap^ >^ lstAudioStatusChange);
-		void procUserActiveAudioChange(unsigned int userId);
+		void procUserActiveAudioChange(array<unsigned int>^ lstActiveAudio);
 
 		virtual SDKError JoinVoip();
 		virtual SDKError LeaveVoip();

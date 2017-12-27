@@ -365,14 +365,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().UnlockMeeting();
 	}
 
+	bool CMeetingServiceDotNetWrap::IsMeetingLocked()
+	{
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().IsMeetingLocked();
+	}
+
 	IMeetingInfo^ CMeetingServiceDotNetWrap::GetMeetingInfo()
 	{
 		return TranslateMeetingInfo(ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingInfo());
 	}
 
-	ConnectionQuality CMeetingServiceDotNetWrap::GetMeetingConnQuality()
+	ConnectionQuality CMeetingServiceDotNetWrap::GetSharingConnQuality()
 	{
-		return (ConnectionQuality)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConnQuality();
+		return (ConnectionQuality)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetSharingConnQuality();
 	}
 
 	ConnectionQuality CMeetingServiceDotNetWrap::GetVideoConnQuality()

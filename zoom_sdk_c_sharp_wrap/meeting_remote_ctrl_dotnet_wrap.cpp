@@ -66,9 +66,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingRemoteController().RevokeRemoteControl();
 	}
 
-	SDKError CMeetingRemoteControllerDotNetWrap::GetCurrentRemoteController(unsigned int& userId)
+	SDKError CMeetingRemoteControllerDotNetWrap::GetCurrentRemoteController(unsigned int^% userId)
 	{
-		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingRemoteController().GetCurrentRemoteController(userId);
+		unsigned int userid_c(0);
+		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingRemoteController().GetCurrentRemoteController(userid_c);
+
+		if (userId)
+			userId = userid_c;
+
+		return err;
 	}
 }

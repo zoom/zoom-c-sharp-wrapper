@@ -66,10 +66,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			}
 		}
 
-		virtual void onUserActiveAudioChange(unsigned int userId)
+		virtual void onUserActiveAudioChange(ZOOM_SDK_NAMESPACE::IList<unsigned int>* plstActiveAudio)
 		{
 			if (CMeetingAudioControllerDotNetWrap::Instance)
-				CMeetingAudioControllerDotNetWrap::Instance->procUserActiveAudioChange(userId);
+				CMeetingAudioControllerDotNetWrap::Instance->procUserActiveAudioChange(Convert(plstActiveAudio));
 		}
 
 	private:
@@ -92,9 +92,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		event_onUserAudioStatusChange(lstAudioStatusChange);
 	}
 
-	void CMeetingAudioControllerDotNetWrap::procUserActiveAudioChange(unsigned int userId)
+	void CMeetingAudioControllerDotNetWrap::procUserActiveAudioChange(array<unsigned int>^ lstActiveAudio)
 	{
-		event_onUserActiveAudioChange(userId);
+		event_onUserActiveAudioChange(lstActiveAudio);
 	}
 
 	SDKError CMeetingAudioControllerDotNetWrap::JoinVoip()

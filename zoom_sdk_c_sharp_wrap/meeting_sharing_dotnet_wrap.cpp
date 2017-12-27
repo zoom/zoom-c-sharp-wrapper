@@ -90,6 +90,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingShareController().StartAirPlayShare();
 	}
 
+	SDKError CMeetingShareControllerDotNetWrap::ShowSharingAppSelectWnd()
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingShareController().ShowSharingAppSelectWnd();
+	}
+
 	SDKError CMeetingShareControllerDotNetWrap::StopShare()
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
@@ -146,7 +152,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return Convert(plst);
 	}
 
-	SDKError CMeetingShareControllerDotNetWrap::GetViewabltShareSourceByUserID(unsigned int userid, ViewableShareSource^ shareSource)
+	SDKError CMeetingShareControllerDotNetWrap::GetViewabltShareSourceByUserID(unsigned int userid, ViewableShareSource^% shareSource)
 	{
 		if (nullptr == shareSource)
 			return SDKError::SDKERR_INVALID_PARAMETER;
@@ -180,7 +186,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingShareController().CanStartShare();
 	}
 
-	SDKError CMeetingShareControllerDotNetWrap::IsShareLocked(bool^ bLocked)
+	SDKError CMeetingShareControllerDotNetWrap::IsShareLocked(bool^% bLocked)
 	{
 		if (nullptr == bLocked)
 			return SDKError::SDKERR_INVALID_PARAMETER;
@@ -189,11 +195,45 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
 			GetMeetingShareController().IsShareLocked(bLocked_c);
 
-		bLocked = bLocked_c;
+		if (bLocked)
+			bLocked = bLocked_c;
 
 		return err;
 	}
 
+	bool	 CMeetingShareControllerDotNetWrap::IsSupportEnableShareComputerSound(bool^% bCurEnableOrNot)
+	{
+		bool bCurEnableOrNot_c(false);
+		bool bSupport = (bool)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingShareController().IsSupportEnableShareComputerSound(bCurEnableOrNot_c);
+		if (nullptr != bCurEnableOrNot)
+			bCurEnableOrNot = bCurEnableOrNot_c;
+
+		return bSupport;
+	}
+
+	bool	 CMeetingShareControllerDotNetWrap::IsSupportEnableOptimizeForFullScreenVideoClip(bool^% bCurEnableOrNot)
+	{
+		bool bCurEnableOrNot_c(false);
+		bool bSupport = (bool)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingShareController().IsSupportEnableOptimizeForFullScreenVideoClip(bCurEnableOrNot_c);
+		if (nullptr != bCurEnableOrNot)
+			bCurEnableOrNot = bCurEnableOrNot_c;
+
+		return bSupport;
+	}
+
+	SDKError CMeetingShareControllerDotNetWrap::EnableShareComputerSound(bool bEnable)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingShareController().EnableShareComputerSound(bEnable);
+	}
+
+	SDKError CMeetingShareControllerDotNetWrap::EnableOptimizeForFullScreenVideoClip(bool bEnable)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingShareController().EnableOptimizeForFullScreenVideoClip(bEnable);
+	}
 
 	void CMeetingShareControllerDotNetWrap::ProcSharingStatus(SharingStatus status, unsigned int userId)
 	{
@@ -209,5 +249,4 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 		event_onShareContentNotification(shareInfo);
 	}
-
 }

@@ -51,6 +51,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError StartAppShare(HWNDDotNet hwndSharedApp);
 		SDKError StartMonitorShare(String^ monitorID);
 		SDKError StartAirPlayShare();
+		SDKError ShowSharingAppSelectWnd();
 		SDKError StopShare();
 		SDKError BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd);
 		SDKError LockShare();
@@ -60,11 +61,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError PauseCurrentSharing();
 		SDKError ResumeCurrentSharing();
 		array <unsigned int >^ GetViewableShareSourceList();
-		SDKError GetViewabltShareSourceByUserID(unsigned int userid, ViewableShareSource^ shareSource);
+		SDKError GetViewabltShareSourceByUserID(unsigned int userid, ViewableShareSource^% shareSource);
 		SDKError ViewShare(unsigned int userid, SDKViewType type);
 		SDKError ShowShareOptionDialog();
 		bool CanStartShare();
-		SDKError IsShareLocked(bool^ bLocked);
+		SDKError IsShareLocked(bool^% bLocked);
+		bool	 IsSupportEnableShareComputerSound(bool^% bCurEnableOrNot);
+		bool	 IsSupportEnableOptimizeForFullScreenVideoClip(bool^% bCurEnableOrNot);
+		SDKError EnableShareComputerSound(bool bEnable);
+		SDKError EnableOptimizeForFullScreenVideoClip(bool bEnable);
+
 		void Add_CB_onSharingStatus(onSharingStatus^ cb);
 		void Add_CB_onLockShareStatus(onLockShareStatus^ cb);
 		void Add_CB_onShareContentNotification(onShareContentNotification^ cb);
@@ -83,6 +89,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError StartAppShare(HWNDDotNet hwndSharedApp);
 		virtual SDKError StartMonitorShare(String^ monitorID);
 		virtual SDKError StartAirPlayShare();
+		virtual SDKError ShowSharingAppSelectWnd();
 		virtual SDKError StopShare();
 		virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd);
 		virtual SDKError LockShare();
@@ -92,11 +99,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError PauseCurrentSharing();
 		virtual SDKError ResumeCurrentSharing();
 		virtual array <unsigned int >^ GetViewableShareSourceList();
-		virtual SDKError GetViewabltShareSourceByUserID(unsigned int userid, ViewableShareSource^ shareSource);
+		virtual SDKError GetViewabltShareSourceByUserID(unsigned int userid, ViewableShareSource^% shareSource);
 		virtual SDKError ViewShare(unsigned int userid, SDKViewType type);
 		virtual SDKError ShowShareOptionDialog();
 		virtual bool CanStartShare();
-		virtual SDKError IsShareLocked(bool^ bLocked);
+		virtual SDKError IsShareLocked(bool^% bLocked);
+		virtual bool	 IsSupportEnableShareComputerSound(bool^% bCurEnableOrNot);
+		virtual bool	 IsSupportEnableOptimizeForFullScreenVideoClip(bool^% bCurEnableOrNot);
+		virtual SDKError EnableShareComputerSound(bool bEnable);
+		virtual SDKError EnableOptimizeForFullScreenVideoClip(bool bEnable);
 
 		virtual void Add_CB_onSharingStatus(onSharingStatus^ cb)
 		{

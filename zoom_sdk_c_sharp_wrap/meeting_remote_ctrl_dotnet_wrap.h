@@ -28,7 +28,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError GiveRemoteControlTo(unsigned int userId);
 		SDKError DeclineRemoteControlRequest(unsigned int userId);
 		SDKError RevokeRemoteControl();
-		SDKError GetCurrentRemoteController(unsigned int& userId);
+		SDKError GetCurrentRemoteController(unsigned int^% userId);
 		void Add_CB_onRemoteControlStatus(onRemoteControlStatus^ cb);
 	};
 
@@ -47,7 +47,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError GiveRemoteControlTo(unsigned int userId);
 		virtual SDKError DeclineRemoteControlRequest(unsigned int userId);
 		virtual SDKError RevokeRemoteControl();
-		virtual SDKError GetCurrentRemoteController(unsigned int& userId);
+		virtual SDKError GetCurrentRemoteController(unsigned int^% userId);
 		virtual void Add_CB_onRemoteControlStatus(onRemoteControlStatus^ cb)
 		{
 			event_onRemoteControlStatus += cb;

@@ -17,8 +17,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	public interface class IMeetingRecordingControllerDotNetWrap
 	{
 	public:
-		SDKError StartRecording(DateTime^ startTimestamp, String^ recPath);
-		SDKError StopRecording(DateTime^ stopTimestamp);
+		SDKError StartRecording(DateTime^% startTimestamp, String^ recPath);
+		SDKError StopRecording(DateTime^% stopTimestamp);
 		void Add_CB_onRecording2MP4Done(onRecording2MP4Done^ cb);
 		void Add_CB_onRecording2MP4Processing(onRecording2MP4Processing^ cb);
 		void Add_CB_onRecordingStatus(onRecordingStatus^ cb);
@@ -33,8 +33,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			CMeetingRecordingControllerDotNetWrap^ get() { return m_Instance; }
 		}
 
-		virtual SDKError StartRecording(DateTime^ startTimestamp, String^ recPath);
-		virtual SDKError StopRecording(DateTime^ stopTimestamp);
+		virtual SDKError StartRecording(DateTime^% startTimestamp, String^ recPath);
+		virtual SDKError StopRecording(DateTime^% stopTimestamp);
 
 		virtual void Add_CB_onRecording2MP4Done(onRecording2MP4Done^ cb)
 		{

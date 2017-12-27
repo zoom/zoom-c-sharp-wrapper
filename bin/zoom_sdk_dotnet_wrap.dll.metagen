@@ -314,8 +314,8 @@ Class ZOOM_SDK_DOTNET_WRAP.onUserActiveAudioChange: AutoLayout, AnsiClass, Class
   :System.MulticastDelegate
     Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
   Methods:
-    Invoke(UInt32): PrivateScope, Public, Final, Virtual, VtableLayoutMask
-    BeginInvoke(UInt32, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    Invoke(UInt32[]): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(UInt32[], AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
     EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
 Interface ZOOM_SDK_DOTNET_WRAP.IMeetingAudioControllerDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
@@ -338,7 +338,7 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingAudioControllerDotNetWrap: AutoLayout, AnsiCl
     get_Instance(): PrivateScope, Public, Static, HideBySig, SpecialName
     BindEvent(): PrivateScope, Public, HideBySig
     procUserAudioStatusChange(IUserAudioStatusDotNetWrap[]): PrivateScope, Public, HideBySig
-    procUserActiveAudioChange(UInt32): PrivateScope, Public, HideBySig
+    procUserActiveAudioChange(UInt32[]): PrivateScope, Public, HideBySig
     JoinVoip(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     LeaveVoip(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     MuteAudio(UInt32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
@@ -499,8 +499,10 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingConfigurationDotNetWrap: AutoLayout, Ansi
     SetFloatVideoWndVisibility(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     PrePopulateWebinarRegistrationInfo(String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     RedirectClickShareBTNEvent(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    RedirectClickEndMeetingBTNEvent(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableToolTipsShow(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableAirplayInstructionWindow(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    EnableClaimHostFeature(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Class ZOOM_SDK_DOTNET_WRAP.CMeetingConfigurationDotNetWrap: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
@@ -534,8 +536,10 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingConfigurationDotNetWrap: AutoLayout, AnsiClas
     SetFloatVideoWndVisibility(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     PrePopulateWebinarRegistrationInfo(String, String): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     RedirectClickShareBTNEvent(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    RedirectClickEndMeetingBTNEvent(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     EnableToolTipsShow(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     EnableAirplayInstructionWindow(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    EnableClaimHostFeature(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     BindEvent(): PrivateScope, Public, HideBySig
@@ -851,8 +855,8 @@ Class ZOOM_SDK_DOTNET_WRAP.onRecordPriviligeChanged: AutoLayout, AnsiClass, Clas
     EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
 Interface ZOOM_SDK_DOTNET_WRAP.IMeetingRecordingControllerDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
-    StartRecording(ValueType DateTime IsBoxed, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    StopRecording(ValueType DateTime IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    StartRecording(ValueType&, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    StopRecording(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onRecording2MP4Done(onRecording2MP4Done): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onRecording2MP4Processing(onRecording2MP4Processing): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onRecordingStatus(onRecordingStatus): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -865,8 +869,8 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingRecordingControllerDotNetWrap: AutoLayout, An
     ZOOM_SDK_DOTNET_WRAP.CMeetingRecordingControllerDotNetWrap Instance 'get ' : 
   Methods:
     get_Instance(): PrivateScope, Public, Static, HideBySig, SpecialName
-    StartRecording(ValueType DateTime IsBoxed, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    StopRecording(ValueType DateTime IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    StartRecording(ValueType&, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    StopRecording(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onRecording2MP4Done(onRecording2MP4Done): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onRecording2MP4Processing(onRecording2MP4Processing): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onRecordingStatus(onRecordingStatus): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
@@ -897,7 +901,7 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingRemoteControllerDotNetWrap: AutoLayout, A
     GiveRemoteControlTo(UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     DeclineRemoteControlRequest(UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     RevokeRemoteControl(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    GetCurrentRemoteController(UInt32* IsImplicitlyDereferenced): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetCurrentRemoteController(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onRemoteControlStatus(onRemoteControlStatus): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Class ZOOM_SDK_DOTNET_WRAP.CMeetingRemoteControllerDotNetWrap: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -914,7 +918,7 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingRemoteControllerDotNetWrap: AutoLayout, AnsiC
     GiveRemoteControlTo(UInt32): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     DeclineRemoteControlRequest(UInt32): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     RevokeRemoteControl(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    GetCurrentRemoteController(UInt32* IsImplicitlyDereferenced): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    GetCurrentRemoteController(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onRemoteControlStatus(onRemoteControlStatus): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
 Struct ZOOM_SDK_DOTNET_WRAP.RemoteControlStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum
@@ -959,9 +963,16 @@ Class ZOOM_SDK_DOTNET_WRAP.onStartShareBtnClicked: AutoLayout, AnsiClass, Class,
     Invoke(): PrivateScope, Public, Final, Virtual, VtableLayoutMask
     BeginInvoke(AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
     EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class ZOOM_SDK_DOTNET_WRAP.onEndMeetingBtnClicked: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
 Interface ZOOM_SDK_DOTNET_WRAP.IMeetingUIControllerDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
-    ShowChatDlg(ValueType ShowChatDlgParam IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ShowChatDlg(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     HideChatDlg(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnterFullScreen(Boolean(HasFieldMarshal), Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ExitFullScreen(Boolean(HasFieldMarshal), Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -972,20 +983,21 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingUIControllerDotNetWrap: AutoLayout, AnsiC
     SwitchFloatVideoToActiveSpkMod(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ChangeFloatoActiveSpkVideoSize(SDKFloatVideoType): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     SwitchFloatVideoToGalleryMod(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    ShowParticipantsListWnd(Boolean(HasFieldMarshal), ValueType HWNDDotNet IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ShowParticipantsListWnd(Boolean(HasFieldMarshal), ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ShowBottomFloatToolbarWnd(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    GetMeetingUIWnd(ValueType HWNDDotNet IsBoxed, ValueType HWNDDotNet IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetMeetingUIWnd(ValueType&, ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ShowJoinAudioDlg(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     HideJoinAudioDlg(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    GetWallViewPageInfo(ValueType VideoWallPageInfoParam IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetWallViewPageInfo(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ShowPreOrNextPageVideo(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ShowSharingFrameWindows(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    IsMinimizeModeOfFristScreenMeetingUIWnd(Enum SDKMinimizeUIMode IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    IsMinimizeModeOfFristScreenMeetingUIWnd(Enum&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     SwitchMinimizeUIMode4FristScreenMeetingUIWnd(SDKMinimizeUIMode): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    GetCurrentSplitScreenModeInfo(ValueType SplitScreenInfo IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetCurrentSplitScreenModeInfo(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     SwitchSplitScreenMode(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onInviteBtnClicked(onInviteBtnClicked): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onStartShareBtnClicked(onStartShareBtnClicked): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Add_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Class ZOOM_SDK_DOTNET_WRAP.CMeetingUIControllerDotNetWrap: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   Interfaces:
     ZOOM_SDK_DOTNET_WRAP.IMeetingUIControllerDotNetWrap
@@ -994,7 +1006,7 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingUIControllerDotNetWrap: AutoLayout, AnsiClass
     ZOOM_SDK_DOTNET_WRAP.CMeetingUIControllerDotNetWrap Instance 'get ' : 
   Methods:
     get_Instance(): PrivateScope, Public, Static, HideBySig, SpecialName
-    ShowChatDlg(ValueType ShowChatDlgParam IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    ShowChatDlg(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     HideChatDlg(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     EnterFullScreen(Boolean(HasFieldMarshal), Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ExitFullScreen(Boolean(HasFieldMarshal), Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
@@ -1005,23 +1017,25 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingUIControllerDotNetWrap: AutoLayout, AnsiClass
     SwitchFloatVideoToActiveSpkMod(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ChangeFloatoActiveSpkVideoSize(SDKFloatVideoType): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     SwitchFloatVideoToGalleryMod(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    ShowParticipantsListWnd(Boolean(HasFieldMarshal), ValueType HWNDDotNet IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    ShowParticipantsListWnd(Boolean(HasFieldMarshal), ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ShowBottomFloatToolbarWnd(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    GetMeetingUIWnd(ValueType HWNDDotNet IsBoxed, ValueType HWNDDotNet IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    GetMeetingUIWnd(ValueType&, ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ShowJoinAudioDlg(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     HideJoinAudioDlg(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    GetWallViewPageInfo(ValueType VideoWallPageInfoParam IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    GetWallViewPageInfo(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ShowPreOrNextPageVideo(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ShowSharingFrameWindows(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    IsMinimizeModeOfFristScreenMeetingUIWnd(Enum SDKMinimizeUIMode IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    IsMinimizeModeOfFristScreenMeetingUIWnd(Enum&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     SwitchMinimizeUIMode4FristScreenMeetingUIWnd(SDKMinimizeUIMode): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    GetCurrentSplitScreenModeInfo(ValueType SplitScreenInfo IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    GetCurrentSplitScreenModeInfo(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     SwitchSplitScreenMode(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onInviteBtnClicked(onInviteBtnClicked): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onStartShareBtnClicked(onStartShareBtnClicked): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Add_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     BindEvent(): PrivateScope, Public, HideBySig
     ProcInviteBtnClicked(): PrivateScope, Public, HideBySig
     ProcStartShareBtnClicked(): PrivateScope, Public, HideBySig
+    ProcEndMeetingBtnClicked(): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class ZOOM_SDK_DOTNET_WRAP.onUserVideoStatusChange: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.MulticastDelegate
@@ -1103,6 +1117,7 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingShareControllerDotNetWrap: AutoLayout, An
     StartAppShare(HWNDDotNet): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     StartMonitorShare(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     StartAirPlayShare(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ShowSharingAppSelectWnd(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     StopShare(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     BlockWindowFromScreenshare(Boolean(HasFieldMarshal), HWNDDotNet): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     LockShare(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1112,11 +1127,15 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingShareControllerDotNetWrap: AutoLayout, An
     PauseCurrentSharing(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ResumeCurrentSharing(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetViewableShareSourceList(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    GetViewabltShareSourceByUserID(UInt32, ValueType ViewableShareSource IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetViewabltShareSourceByUserID(UInt32, ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ViewShare(UInt32, SDKViewType): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ShowShareOptionDialog(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     CanStartShare(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    IsShareLocked(ValueType Boolean IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    IsShareLocked(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    IsSupportEnableShareComputerSound(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    IsSupportEnableOptimizeForFullScreenVideoClip(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    EnableShareComputerSound(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    EnableOptimizeForFullScreenVideoClip(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onSharingStatus(onSharingStatus): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onLockShareStatus(onLockShareStatus): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onShareContentNotification(onShareContentNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1132,6 +1151,7 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingShareControllerDotNetWrap: AutoLayout, AnsiCl
     StartAppShare(HWNDDotNet): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     StartMonitorShare(String): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     StartAirPlayShare(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    ShowSharingAppSelectWnd(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     StopShare(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     BlockWindowFromScreenshare(Boolean(HasFieldMarshal), HWNDDotNet): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     LockShare(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
@@ -1141,11 +1161,15 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingShareControllerDotNetWrap: AutoLayout, AnsiCl
     PauseCurrentSharing(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ResumeCurrentSharing(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetViewableShareSourceList(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    GetViewabltShareSourceByUserID(UInt32, ValueType ViewableShareSource IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    GetViewabltShareSourceByUserID(UInt32, ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ViewShare(UInt32, SDKViewType): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     ShowShareOptionDialog(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     CanStartShare(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    IsShareLocked(ValueType Boolean IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    IsShareLocked(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    IsSupportEnableShareComputerSound(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    IsSupportEnableOptimizeForFullScreenVideoClip(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    EnableShareComputerSound(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    EnableOptimizeForFullScreenVideoClip(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onSharingStatus(onSharingStatus): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onLockShareStatus(onLockShareStatus): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Add_CB_onShareContentNotification(onShareContentNotification): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
@@ -1302,8 +1326,9 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingServiceDotNetWrap: AutoLayout, AnsiClass,
     GetMeetingStatus(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     LockMeeting(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     UnlockMeeting(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    IsMeetingLocked(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetMeetingInfo(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    GetMeetingConnQuality(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetSharingConnQuality(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetVideoConnQuality(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetAudioConnQuality(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetMeetingConfiguration(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1341,8 +1366,9 @@ Class ZOOM_SDK_DOTNET_WRAP.CMeetingServiceDotNetWrap: AutoLayout, AnsiClass, Cla
     GetMeetingStatus(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     LockMeeting(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     UnlockMeeting(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    IsMeetingLocked(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetMeetingInfo(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    GetMeetingConnQuality(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    GetSharingConnQuality(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetVideoConnQuality(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetAudioConnQuality(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetMeetingConfiguration(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
@@ -1542,6 +1568,7 @@ Struct ZOOM_SDK_DOTNET_WRAP.ShowSettingDlgParam: AutoLayout, AnsiClass, Class, P
     Int32 left : Public
     ZOOM_SDK_DOTNET_WRAP.HWNDDotNet hSettingWnd : Public
     Boolean bShow : Public
+    ZOOM_SDK_DOTNET_WRAP.SettingTabPage eTabPageType : Public
 Interface ZOOM_SDK_DOTNET_WRAP.IGeneralSettingContextDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
     EnableDualScreenMode(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1586,6 +1613,8 @@ Interface ZOOM_SDK_DOTNET_WRAP.IVideoSettingContextDotNetWrap: AutoLayout, AnsiC
     IsVideoMirrorEffectEnabled(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableFaceBeautyEffect(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     IsFaceBeautyEffectEnabled(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    EnableHDVideo(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    IsHDVideoEnabled(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Class ZOOM_SDK_DOTNET_WRAP.CVideoSettingContextDotNetWrap: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   Interfaces:
     ZOOM_SDK_DOTNET_WRAP.IVideoSettingContextDotNetWrap
@@ -1600,6 +1629,8 @@ Class ZOOM_SDK_DOTNET_WRAP.CVideoSettingContextDotNetWrap: AutoLayout, AnsiClass
     IsVideoMirrorEffectEnabled(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     EnableFaceBeautyEffect(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     IsFaceBeautyEffectEnabled(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    EnableHDVideo(Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    IsHDVideoEnabled(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Interface ZOOM_SDK_DOTNET_WRAP.IMicInfoDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
@@ -1655,7 +1686,7 @@ Class ZOOM_SDK_DOTNET_WRAP.CRecordingSettingContextDotNetWrap: AutoLayout, AnsiC
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Interface ZOOM_SDK_DOTNET_WRAP.ISettingServiceDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
-    ShowSettingDlg(ValueType ShowSettingDlgParam IsBoxed): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ShowSettingDlg(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     HideSettingDlg(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetGeneralSettings(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     GetAudioSettings(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1670,7 +1701,7 @@ Class ZOOM_SDK_DOTNET_WRAP.CSettingServiceDotNetWrap: AutoLayout, AnsiClass, Cla
   Methods:
     get_Instance(): PrivateScope, Public, Static, HideBySig, SpecialName
     BindEvent(): PrivateScope, Public, HideBySig
-    ShowSettingDlg(ValueType ShowSettingDlgParam IsBoxed): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    ShowSettingDlg(ValueType&): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     HideSettingDlg(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetGeneralSettings(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetAudioSettings(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
@@ -1701,6 +1732,13 @@ Class ZOOM_SDK_DOTNET_WRAP.CSpeakerInfoDotNetWrap: AutoLayout, AnsiClass, Class,
     GetDeviceId(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     GetDeviceName(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     IsSelectedDevice(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Struct ZOOM_SDK_DOTNET_WRAP.SettingTabPage: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    ZOOM_SDK_DOTNET_WRAP.SettingTabPage SettingTabPage_General = 0 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SettingTabPage SettingTabPage_Audio = 1 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SettingTabPage SettingTabPage_Video = 2 : Public, Static, Literal, HasDefault
 Class ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:

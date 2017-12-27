@@ -202,9 +202,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().PrePopulateWebinarRegistrationInfo(PlatformString2WChar(email), PlatformString2WChar(username));
 	}
+
 	void CMeetingConfigurationDotNetWrap::RedirectClickShareBTNEvent(bool bRedirect)
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().RedirectClickShareBTNEvent(bRedirect);
+	}
+
+	void CMeetingConfigurationDotNetWrap::RedirectClickEndMeetingBTNEvent(bool bRedirect)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().RedirectClickEndMeetingBTNEvent(bRedirect);
 	}
 
 	void CMeetingConfigurationDotNetWrap::EnableToolTipsShow(bool bEnable)
@@ -215,6 +221,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	void CMeetingConfigurationDotNetWrap::EnableAirplayInstructionWindow(bool bEnable)
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().EnableAirplayInstructionWindow(bEnable);
+	}
+
+	void CMeetingConfigurationDotNetWrap::EnableClaimHostFeature(bool bEnable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().EnableClaimHostFeature(bEnable);
 	}
 
 	void CMeetingConfigurationDotNetWrap::BindEvent()

@@ -2,6 +2,13 @@
 using namespace System;
 #include "zoom_sdk_dotnet_wrap_def.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
+	public enum class SettingTabPage : int
+	{
+		SettingTabPage_General,
+		SettingTabPage_Audio,
+		SettingTabPage_Video,
+	};
+
 	public value class ShowSettingDlgParam
 	{
 	public:
@@ -10,6 +17,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		int left;///< setting dialog left position
 		HWNDDotNet hSettingWnd;///< return setting dialog handle
 		bool bShow;///< show or not
+		SettingTabPage eTabPageType;
 	};
 
 	public interface class IGeneralSettingContextDotNetWrap
@@ -68,6 +76,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsVideoMirrorEffectEnabled();
 		SDKError EnableFaceBeautyEffect(bool bEnable);
 		bool IsFaceBeautyEffectEnabled();
+		SDKError EnableHDVideo(bool bEnable);
+		bool IsHDVideoEnabled();
 	};
 
 	public ref class CVideoSettingContextDotNetWrap sealed : public IVideoSettingContextDotNetWrap
@@ -84,6 +94,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsVideoMirrorEffectEnabled();
 		virtual SDKError EnableFaceBeautyEffect(bool bEnable);
 		virtual bool IsFaceBeautyEffectEnabled();
+		virtual SDKError EnableHDVideo(bool bEnable);
+		virtual bool IsHDVideoEnabled();
 	private:
 		CVideoSettingContextDotNetWrap() {}
 		virtual ~CVideoSettingContextDotNetWrap() {}
@@ -169,7 +181,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	public interface class ISettingServiceDotNetWrap
 	{
 	public:
-		SDKError ShowSettingDlg(ShowSettingDlgParam^ param);
+		SDKError ShowSettingDlg(ShowSettingDlgParam^% param);
 		SDKError HideSettingDlg();
 		IGeneralSettingContextDotNetWrap^ GetGeneralSettings();
 		IAudioSettingContextDotNetWrap^ GetAudioSettings();
@@ -187,7 +199,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		void BindEvent() {}
 
-		virtual SDKError ShowSettingDlg(ShowSettingDlgParam^ param);
+		virtual SDKError ShowSettingDlg(ShowSettingDlgParam^% param);
 		virtual SDKError HideSettingDlg();
 		virtual IGeneralSettingContextDotNetWrap^ GetGeneralSettings();
 		virtual IAudioSettingContextDotNetWrap^ GetAudioSettings();

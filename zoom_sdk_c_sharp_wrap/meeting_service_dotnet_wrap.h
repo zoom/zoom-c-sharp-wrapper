@@ -214,8 +214,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		MeetingStatus GetMeetingStatus();
 		SDKError LockMeeting();
 		SDKError UnlockMeeting();
+		bool IsMeetingLocked();
 		IMeetingInfo^ GetMeetingInfo();
-		ConnectionQuality GetMeetingConnQuality();
+		ConnectionQuality GetSharingConnQuality();
 		ConnectionQuality GetVideoConnQuality();
 		ConnectionQuality GetAudioConnQuality();
 		IMeetingConfigurationDotNetWrap^ GetMeetingConfiguration();
@@ -259,8 +260,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual MeetingStatus GetMeetingStatus();
 		virtual SDKError LockMeeting();
 		virtual SDKError UnlockMeeting();
+		virtual bool IsMeetingLocked();
 		virtual IMeetingInfo^ GetMeetingInfo();
-		virtual ConnectionQuality GetMeetingConnQuality();
+		virtual ConnectionQuality GetSharingConnQuality();
 		virtual ConnectionQuality GetVideoConnQuality();
 		virtual ConnectionQuality GetAudioConnQuality();
 		virtual IMeetingConfigurationDotNetWrap^ GetMeetingConfiguration();

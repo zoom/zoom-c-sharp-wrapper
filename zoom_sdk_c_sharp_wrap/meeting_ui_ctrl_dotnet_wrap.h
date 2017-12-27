@@ -52,11 +52,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 	public delegate void onInviteBtnClicked();
 	public delegate void onStartShareBtnClicked();
+	public delegate void onEndMeetingBtnClicked();
 
 	public interface class IMeetingUIControllerDotNetWrap
 	{
 	public:
-		SDKError ShowChatDlg(ShowChatDlgParam^ param);
+		SDKError ShowChatDlg(ShowChatDlgParam^% param);
 		SDKError HideChatDlg();
 		SDKError EnterFullScreen(bool firstView, bool secondView);
 		SDKError ExitFullScreen(bool firstView, bool secondView);
@@ -67,21 +68,22 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError SwitchFloatVideoToActiveSpkMod();
 		SDKError ChangeFloatoActiveSpkVideoSize(SDKFloatVideoType type);
 		SDKError SwitchFloatVideoToGalleryMod();
-		SDKError ShowParticipantsListWnd(bool bShow, HWNDDotNet^ hParticipantsListWnd);
+		SDKError ShowParticipantsListWnd(bool bShow, HWNDDotNet^% hParticipantsListWnd);
 		SDKError ShowBottomFloatToolbarWnd(bool bShow);
-		SDKError GetMeetingUIWnd(HWNDDotNet^ hFirstView, HWNDDotNet^ hSecondView);
+		SDKError GetMeetingUIWnd(HWNDDotNet^% hFirstView, HWNDDotNet^% hSecondView);
 		SDKError ShowJoinAudioDlg();
 		SDKError HideJoinAudioDlg();
-		SDKError GetWallViewPageInfo(VideoWallPageInfoParam^ videoWallPageInfoParam);
+		SDKError GetWallViewPageInfo(VideoWallPageInfoParam^% videoWallPageInfoParam);
 		SDKError ShowPreOrNextPageVideo(bool bPageUp);
 		SDKError ShowSharingFrameWindows(bool bShow);
-		bool	 IsMinimizeModeOfFristScreenMeetingUIWnd(SDKMinimizeUIMode^ mode);
+		bool	 IsMinimizeModeOfFristScreenMeetingUIWnd(SDKMinimizeUIMode^% mode);
 		SDKError SwitchMinimizeUIMode4FristScreenMeetingUIWnd(SDKMinimizeUIMode mode);
-		SDKError GetCurrentSplitScreenModeInfo(SplitScreenInfo^ info);
+		SDKError GetCurrentSplitScreenModeInfo(SplitScreenInfo^% info);
 		SDKError SwitchSplitScreenMode(bool bSplit);
 
 		void Add_CB_onInviteBtnClicked(onInviteBtnClicked^ cb);
 		void Add_CB_onStartShareBtnClicked(onStartShareBtnClicked^ cb);
+		void Add_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked^ cb);
 	};
 
 	public ref class CMeetingUIControllerDotNetWrap sealed : public IMeetingUIControllerDotNetWrap
@@ -93,7 +95,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			CMeetingUIControllerDotNetWrap^ get() { return m_Instance; }
 		}
 
-		virtual SDKError ShowChatDlg(ShowChatDlgParam^ param);
+		virtual SDKError ShowChatDlg(ShowChatDlgParam^% param);
 		virtual SDKError HideChatDlg();
 		virtual SDKError EnterFullScreen(bool firstView, bool secondView);
 		virtual SDKError ExitFullScreen(bool firstView, bool secondView);
@@ -104,17 +106,17 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError SwitchFloatVideoToActiveSpkMod();
 		virtual SDKError ChangeFloatoActiveSpkVideoSize(SDKFloatVideoType type);
 		virtual SDKError SwitchFloatVideoToGalleryMod();
-		virtual SDKError ShowParticipantsListWnd(bool bShow, HWNDDotNet^ hParticipantsListWnd);
+		virtual SDKError ShowParticipantsListWnd(bool bShow, HWNDDotNet^% hParticipantsListWnd);
 		virtual SDKError ShowBottomFloatToolbarWnd(bool bShow);
-		virtual SDKError GetMeetingUIWnd(HWNDDotNet^ hFirstView, HWNDDotNet^ hSecondView);
+		virtual SDKError GetMeetingUIWnd(HWNDDotNet^% hFirstView, HWNDDotNet^% hSecondView);
 		virtual SDKError ShowJoinAudioDlg();
 		virtual SDKError HideJoinAudioDlg();
-		virtual SDKError GetWallViewPageInfo(VideoWallPageInfoParam^ videoWallPageInfoParam);
+		virtual SDKError GetWallViewPageInfo(VideoWallPageInfoParam^% videoWallPageInfoParam);
 		virtual SDKError ShowPreOrNextPageVideo(bool bPageUp);
 		virtual SDKError ShowSharingFrameWindows(bool bShow);
-		virtual bool	 IsMinimizeModeOfFristScreenMeetingUIWnd(SDKMinimizeUIMode^ mode);
+		virtual bool	 IsMinimizeModeOfFristScreenMeetingUIWnd(SDKMinimizeUIMode^% mode);
 		virtual SDKError SwitchMinimizeUIMode4FristScreenMeetingUIWnd(SDKMinimizeUIMode mode);
-		virtual SDKError GetCurrentSplitScreenModeInfo(SplitScreenInfo^ info);
+		virtual SDKError GetCurrentSplitScreenModeInfo(SplitScreenInfo^% info);
 		virtual SDKError SwitchSplitScreenMode(bool bSplit);
 
 		virtual void Add_CB_onInviteBtnClicked(onInviteBtnClicked^ cb)
@@ -127,15 +129,22 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onStartShareBtnClicked += cb;
 		}
 
+		virtual void Add_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked^ cb)
+		{
+			event_onEndMeetingBtnClicked += cb;
+		}
+
 		void BindEvent();
 		void ProcInviteBtnClicked();
 		void ProcStartShareBtnClicked();
+		void ProcEndMeetingBtnClicked();
 
 	private:
 		CMeetingUIControllerDotNetWrap() {};
 		virtual ~CMeetingUIControllerDotNetWrap() {};
 		event onInviteBtnClicked^ event_onInviteBtnClicked;
 		event onStartShareBtnClicked^ event_onStartShareBtnClicked;
+		event onEndMeetingBtnClicked^ event_onEndMeetingBtnClicked;
 		static CMeetingUIControllerDotNetWrap^ m_Instance = gcnew CMeetingUIControllerDotNetWrap;
 	};
 }

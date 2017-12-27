@@ -57,8 +57,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void SetFloatVideoWndVisibility(bool bShow);
 		void PrePopulateWebinarRegistrationInfo(String^ email, String^ username);
 		void RedirectClickShareBTNEvent(bool bRedirect);
+		void RedirectClickEndMeetingBTNEvent(bool bRedirect);
 		void EnableToolTipsShow(bool bEnable);
 		void EnableAirplayInstructionWindow(bool bEnable);
+		void EnableClaimHostFeature(bool bEnable);
 
 		void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb);
 		void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
@@ -95,8 +97,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual void SetFloatVideoWndVisibility(bool bShow);
 		virtual void PrePopulateWebinarRegistrationInfo(String^ email, String^ username);
 		virtual void RedirectClickShareBTNEvent(bool bRedirect);
+		virtual void RedirectClickEndMeetingBTNEvent(bool bRedirect);
 		virtual void EnableToolTipsShow(bool bEnable);
 		virtual void EnableAirplayInstructionWindow(bool bEnable);
+		virtual void EnableClaimHostFeature(bool bEnable);
 
 		virtual void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb)
 		{

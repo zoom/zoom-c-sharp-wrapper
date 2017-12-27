@@ -22,7 +22,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void onStartShareBtnClicked()
 		{
 			if (CMeetingUIControllerDotNetWrap::Instance)
-				CMeetingUIControllerDotNetWrap::Instance->ProcStartShareBtnClicked();
+				CMeetingUIControllerDotNetWrap::Instance->ProcEndMeetingBtnClicked();
+		}
+
+		void onEndMeetingBtnClicked()
+		{
+			if (CMeetingUIControllerDotNetWrap::Instance)
+				CMeetingUIControllerDotNetWrap::Instance->ProcEndMeetingBtnClicked();
 		}
 	private:
 		MeetingUIControllerEventHanlder() {}
@@ -38,6 +44,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetUIController().m_cbonStartShareBtnClicked =
 			std::bind(&MeetingUIControllerEventHanlder::onStartShareBtnClicked,
 				&MeetingUIControllerEventHanlder::GetInst());
+
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetUIController().m_cbonEndMeetingBtnClicked =
+			std::bind(&MeetingUIControllerEventHanlder::onEndMeetingBtnClicked,
+				&MeetingUIControllerEventHanlder::GetInst());
 	}
 
 	void CMeetingUIControllerDotNetWrap::ProcInviteBtnClicked()
@@ -50,7 +60,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		event_onStartShareBtnClicked();
 	}
 
-	SDKError CMeetingUIControllerDotNetWrap::ShowChatDlg(ShowChatDlgParam^ param)
+	void CMeetingUIControllerDotNetWrap::ProcEndMeetingBtnClicked()
+	{
+		event_onEndMeetingBtnClicked();
+	}
+
+	SDKError CMeetingUIControllerDotNetWrap::ShowChatDlg(ShowChatDlgParam^% param)
 	{
 		if (nullptr == param)
 			return SDKError::SDKERR_INVALID_PARAMETER;
@@ -128,7 +143,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetUIController().SwitchFloatVideoToGalleryMod();
 	}
 
-	SDKError CMeetingUIControllerDotNetWrap::ShowParticipantsListWnd(bool bShow, HWNDDotNet^ hParticipantsListWnd)
+	SDKError CMeetingUIControllerDotNetWrap::ShowParticipantsListWnd(bool bShow, HWNDDotNet^% hParticipantsListWnd)
 	{
 		HWND hParticipantsListWnd_c(NULL);
 		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
@@ -145,7 +160,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetUIController().ShowBottomFloatToolbarWnd(bShow);
 	}
 
-	SDKError CMeetingUIControllerDotNetWrap::GetMeetingUIWnd(HWNDDotNet^ hFirstView, HWNDDotNet^ hSecondView)
+	SDKError CMeetingUIControllerDotNetWrap::GetMeetingUIWnd(HWNDDotNet^% hFirstView, HWNDDotNet^% hSecondView)
 	{
 		HWND hFirstView_c(NULL), hSecondView_c(NULL);
 		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
@@ -168,7 +183,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetUIController().HideJoinAudioDlg();
 	}
 
-	SDKError CMeetingUIControllerDotNetWrap::GetWallViewPageInfo(VideoWallPageInfoParam^ videoWallPageInfoParam)
+	SDKError CMeetingUIControllerDotNetWrap::GetWallViewPageInfo(VideoWallPageInfoParam^% videoWallPageInfoParam)
 	{
 		if (nullptr == videoWallPageInfoParam)
 			return SDKError::SDKERR_INVALID_PARAMETER;
@@ -194,14 +209,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetUIController().ShowPreOrNextPageVideo(bShow);
 	}
 
-	bool	 CMeetingUIControllerDotNetWrap::IsMinimizeModeOfFristScreenMeetingUIWnd(SDKMinimizeUIMode^ mode)
+	bool	 CMeetingUIControllerDotNetWrap::IsMinimizeModeOfFristScreenMeetingUIWnd(SDKMinimizeUIMode^% mode)
 	{
 		ZOOM_SDK_NAMESPACE::SDKMinimizeUIMode mode_c;
 		bool ret = ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
 			GetUIController().IsMinimizeModeOfFristScreenMeetingUIWnd(mode_c);
 
 		if (mode)
-			mode = SDKMinimizeUIMode(mode);
+			mode = (SDKMinimizeUIMode)mode;
 		return ret;
 	}
 
@@ -211,7 +226,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetUIController().SwitchMinimizeUIMode4FristScreenMeetingUIWnd((ZOOM_SDK_NAMESPACE::SDKMinimizeUIMode)mode);
 	}
 
-	SDKError CMeetingUIControllerDotNetWrap::GetCurrentSplitScreenModeInfo(SplitScreenInfo^ info)
+	SDKError CMeetingUIControllerDotNetWrap::GetCurrentSplitScreenModeInfo(SplitScreenInfo^% info)
 	{
 		if (nullptr == info)
 			return SDKError::SDKERR_INVALID_PARAMETER;

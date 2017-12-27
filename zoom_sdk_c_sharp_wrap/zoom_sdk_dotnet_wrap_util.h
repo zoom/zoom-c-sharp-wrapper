@@ -136,7 +136,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		char* m_pBuf;
 	};
 
-	static void Convert_HWND(HWND hwnd, HWNDDotNet^ DotNetWnd)
+	static void Convert_HWND(HWND hwnd, HWNDDotNet^% DotNetWnd)
 	{
 		if (nullptr == DotNetWnd)
 			return;

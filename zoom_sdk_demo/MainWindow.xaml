@@ -10,8 +10,8 @@
     <Grid>
         <Label x:Name="App_Key" Content="App Key" HorizontalAlignment="Left" Margin="79,81,0,0" VerticalAlignment="Top" Width="78"/>
         <Label x:Name="App_Secret" Content="App Secret" HorizontalAlignment="Left" Margin="79,129,0,0" VerticalAlignment="Top" Width="78"/>
-        <TextBox x:Name="textBox_appkey" Height="23" Margin="181,81,84,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_appsecret" Height="23" Margin="181,129,84,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_appkey" Height="23" Margin="181,81,84,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_appsecret" Height="23" Margin="181,129,84,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
         <Button x:Name="button_auth" Content="Auth" HorizontalAlignment="Left" Height="36" Margin="218,220,0,0" VerticalAlignment="Top" Width="148" Click="button_auth_Click"/>
 
     </Grid>
