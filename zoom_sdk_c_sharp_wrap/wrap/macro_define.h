@@ -175,5 +175,7 @@ m_obj->funcname(P1, P2, P3, P4);\
 #define IMPL_FUNC_AND_MEMBER(Classname,funcname,R)\
 R##& Classname##Wrap::funcname()\
 {\
+if (m_obj)\
+m_ob##R.Init(this);\
 return m_ob##R;\
 }

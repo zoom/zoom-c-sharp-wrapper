@@ -59,6 +59,8 @@ DEFINE_FUNC_1(SwitchSplitScreenMode, SDKError, bool, bSplit)
 CallBack_FUNC_0(onInviteBtnClicked)
 //virtual void onStartShareBtnClicked() = 0;
 CallBack_FUNC_0(onStartShareBtnClicked)
+//virtual void onEndMeetingBtnClicked() = 0;
+CallBack_FUNC_0(onEndMeetingBtnClicked)
 
 END_CLASS_DEFINE(IMeetingUIController)
 END_ZOOM_SDK_NAMESPACE

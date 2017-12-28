@@ -28,7 +28,7 @@
 #include "../h/network_connection_handler_interface.h"
 #include "../h/embedded_browser_interface.h"
 #include "../h/ui_hook_interface.h"
-#elif (defined CSHARP_WRAP)
+#elif (defined CSHARP_WRAP) || (defined INTEL_UNITE)
 #include "../h/zoom_sdk.h"
 #include "../h/meeting_service_interface.h"
 #include "../h/auth_service_interface.h"

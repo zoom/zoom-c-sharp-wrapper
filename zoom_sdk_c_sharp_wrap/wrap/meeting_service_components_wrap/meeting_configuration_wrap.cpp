@@ -46,7 +46,9 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableLButtonDBClick4SwitchFullScreenMod
 IMPL_FUNC_NORET_1(IMeetingConfiguration,SetFloatVideoWndVisibility, void, bool, bShow)
 IMPL_FUNC_NORET_2(IMeetingConfiguration,PrePopulateWebinarRegistrationInfo, void, const wchar_t*, email, const wchar_t*, username)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,RedirectClickShareBTNEvent, void, bool, bRedirect)
+IMPL_FUNC_NORET_1(IMeetingConfiguration,RedirectClickEndMeetingBTNEvent, void, bool, bRedirect)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableToolTipsShow, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableAirplayInstructionWindow, void, bool, bEnable)
+IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableClaimHostFeature, void, bool, bEnable)
 
 END_ZOOM_SDK_NAMESPACE

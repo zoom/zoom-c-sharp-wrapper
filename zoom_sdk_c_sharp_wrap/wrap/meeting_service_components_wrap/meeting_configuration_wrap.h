@@ -54,10 +54,14 @@ DEFINE_FUNC_1(SetFloatVideoWndVisibility, void, bool, bShow)
 DEFINE_FUNC_2(PrePopulateWebinarRegistrationInfo, void, const wchar_t*, email, const wchar_t*, username)
 //virtual void RedirectClickShareBTNEvent(bool bRedirect) = 0;
 DEFINE_FUNC_1(RedirectClickShareBTNEvent, void, bool, bRedirect)
+//virtual void RedirectClickEndMeetingBTNEvent(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectClickEndMeetingBTNEvent, void, bool, bRedirect)
 //virtual void EnableToolTipsShow(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableToolTipsShow, void, bool, bEnable)
 //virtual void EnableAirplayInstructionWindow(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableAirplayInstructionWindow, void, bool, bEnable)
+//virtual void EnableClaimHostFeature(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableClaimHostFeature, void, bool, bEnable)
 
 //virtual void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler* pHandler) = 0;
 CallBack_FUNC_1(onInputMeetingPasswordAndScreenNameNotification, IMeetingPasswordAndScreenNameHandler*, pHandler)

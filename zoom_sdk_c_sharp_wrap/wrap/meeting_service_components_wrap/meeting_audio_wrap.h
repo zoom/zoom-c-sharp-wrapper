@@ -26,7 +26,7 @@ DEFINE_FUNC_1(EnablePlayChimeWhenEnterOrExit, SDKError, bool, bEnable)
 //virtual void onUserAudioStatusChange(IList<IUserAudioStatus* >* lstAudioStatusChange, const wchar_t* strAudioStatusList = NULL) = 0;
 CallBack_FUNC_2(onUserAudioStatusChange, IList<IUserAudioStatus* >*, lstAudioStatusChange, const wchar_t*, strAudioStatusList)
 //virtual void onUserActiveAudioChange(unsigned int userId) = 0;
-CallBack_FUNC_1(onUserActiveAudioChange, unsigned int, userId)
+CallBack_FUNC_1(onUserActiveAudioChange, IList<unsigned int>*, plstActiveAudio)
 
 END_CLASS_DEFINE(IMeetingAudioController)
 END_ZOOM_SDK_NAMESPACE

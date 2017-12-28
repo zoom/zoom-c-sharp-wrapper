@@ -34,10 +34,12 @@ DEFINE_FUNC_0(GetMeetingStatus, MeetingStatus)
 DEFINE_FUNC_0(LockMeeting, SDKError)
 //virtual SDKError UnlockMeeting() = 0;
 DEFINE_FUNC_0(UnlockMeeting, SDKError)
+//virtual bool IsMeetingLocked() = 0;
+DEFINE_FUNC_0(IsMeetingLocked, bool)
 //virtual IMeetingInfo* GetMeetingInfo() = 0;
 DEFINE_FUNC_0(GetMeetingInfo, IMeetingInfo*)
 //virtual ConnectionQuality GetMeetingConnQuality() = 0;
-DEFINE_FUNC_0(GetMeetingConnQuality, ConnectionQuality)
+DEFINE_FUNC_0(GetSharingConnQuality, ConnectionQuality)
 //virtual ConnectionQuality GetVideoConnQuality() = 0;
 DEFINE_FUNC_0(GetVideoConnQuality, ConnectionQuality)
 //virtual ConnectionQuality GetAudioConnQuality() = 0;

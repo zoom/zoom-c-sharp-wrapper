@@ -14,6 +14,9 @@ DEFINE_FUNC_1(StartAppShare, SDKError, HWND, hwndSharedApp)
 DEFINE_FUNC_1(StartMonitorShare, SDKError, const wchar_t*, monitorID)
 //virtual SDKError StartAirPlayShare() = 0;
 DEFINE_FUNC_0(StartAirPlayShare, SDKError)
+//virtual SDKError ShowSharingAppSelectWnd() = 0;
+DEFINE_FUNC_0(ShowSharingAppSelectWnd, SDKError)
+
 //virtual SDKError StopShare() = 0;
 DEFINE_FUNC_0(StopShare, SDKError)
 //virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWND hWnd) = 0;
@@ -42,6 +45,15 @@ DEFINE_FUNC_0(ShowShareOptionDialog, SDKError)
 DEFINE_FUNC_0(CanStartShare, bool)
 //virtual SDKError IsShareLocked(bool& bLocked) = 0;
 DEFINE_FUNC_1(IsShareLocked, SDKError, bool&, bLocked)
+
+//virtual bool	 IsSupportEnableShareComputerSound(bool& bCurEnableOrNot) = 0;
+DEFINE_FUNC_1(IsSupportEnableShareComputerSound, bool, bool&, bCurEnableOrNot)
+//virtual bool	 IsSupportEnableOptimizeForFullScreenVideoClip(bool& bCurEnableOrNot) = 0;
+DEFINE_FUNC_1(IsSupportEnableOptimizeForFullScreenVideoClip, bool, bool&, bCurEnableOrNot)
+//virtual SDKError EnableShareComputerSound(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableShareComputerSound, SDKError, bool, bEnable)
+//virtual SDKError EnableOptimizeForFullScreenVideoClip(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableOptimizeForFullScreenVideoClip, SDKError, bool, bEnable)
 
 //virtual void onSharingStatus(SharingStatus status, unsigned int userId) = 0;
 CallBack_FUNC_2(onSharingStatus, SharingStatus, status, unsigned int, userId)

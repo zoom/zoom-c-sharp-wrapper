@@ -21,8 +21,9 @@ void UninitIMeetingServiceFunc(ZOOM_SDK_NAMESPACE::IMeetingService* obj)
 	IMPL_FUNC_0(IMeetingService, GetMeetingStatus, MeetingStatus, MEETING_STATUS_IDLE);
 	IMPL_FUNC_0(IMeetingService, LockMeeting, SDKError, SDKERR_UNINITIALIZE);
 	IMPL_FUNC_0(IMeetingService, UnlockMeeting, SDKError, SDKERR_UNINITIALIZE);
+	IMPL_FUNC_0(IMeetingService, IsMeetingLocked, bool, false);
 	IMPL_FUNC_0(IMeetingService, GetMeetingInfo, IMeetingInfo*, NULL);
-	IMPL_FUNC_0(IMeetingService, GetMeetingConnQuality, ConnectionQuality,Conn_Quality_Unknow);
+	IMPL_FUNC_0(IMeetingService, GetSharingConnQuality, ConnectionQuality,Conn_Quality_Unknow);
 	IMPL_FUNC_0(IMeetingService, GetVideoConnQuality, ConnectionQuality,Conn_Quality_Unknow);
 	IMPL_FUNC_0(IMeetingService, GetAudioConnQuality, ConnectionQuality,Conn_Quality_Unknow);
 	IMPL_FUNC_AND_MEMBER(IMeetingService, GetMeetingConfiguration, IMeetingConfigurationWrap);

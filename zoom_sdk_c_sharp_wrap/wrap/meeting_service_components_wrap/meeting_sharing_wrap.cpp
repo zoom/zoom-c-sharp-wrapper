@@ -30,6 +30,8 @@ IMPL_FUNC_1(IMeetingShareController, StartAppShare, SDKError, HWND, hwndSharedAp
 IMPL_FUNC_1(IMeetingShareController, StartMonitorShare, SDKError, const wchar_t*, monitorID, SDKERR_UNINITIALIZE)
 //virtual SDKError StartAirPlayShare() = 0;
 IMPL_FUNC_0(IMeetingShareController, StartAirPlayShare, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError ShowSharingAppSelectWnd() = 0;
+IMPL_FUNC_0(IMeetingShareController, ShowSharingAppSelectWnd, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError StopShare() = 0;
 IMPL_FUNC_0(IMeetingShareController, StopShare, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWND hWnd) = 0;
@@ -58,5 +60,14 @@ IMPL_FUNC_0(IMeetingShareController, ShowShareOptionDialog, SDKError, SDKERR_UNI
 IMPL_FUNC_0(IMeetingShareController, CanStartShare, bool, false)
 //virtual SDKError IsShareLocked(bool& bLocked) = 0;
 IMPL_FUNC_1(IMeetingShareController, IsShareLocked, SDKError, bool&, bLocked, SDKERR_UNINITIALIZE)
+//virtual bool	 IsSupportEnableShareComputerSound(bool& bCurEnableOrNot) = 0;
+IMPL_FUNC_1(IMeetingShareController, IsSupportEnableShareComputerSound, bool, bool&, bCurEnableOrNot, false)
+//virtual bool	 IsSupportEnableOptimizeForFullScreenVideoClip(bool& bCurEnableOrNot) = 0;
+IMPL_FUNC_1(IMeetingShareController, IsSupportEnableOptimizeForFullScreenVideoClip, bool, bool&, bCurEnableOrNot, false)
+//virtual SDKError EnableShareComputerSound(bool bEnable) = 0;
+IMPL_FUNC_1(IMeetingShareController, EnableShareComputerSound, SDKError, bool, bEnable, SDKERR_UNINITIALIZE)
+//virtual SDKError EnableOptimizeForFullScreenVideoClip(bool bEnable) = 0;
+IMPL_FUNC_1(IMeetingShareController, EnableOptimizeForFullScreenVideoClip, SDKError, bool, bEnable, SDKERR_UNINITIALIZE)
+
 
 END_ZOOM_SDK_NAMESPACE
