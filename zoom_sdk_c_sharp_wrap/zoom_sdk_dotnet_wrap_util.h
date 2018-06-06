@@ -6,6 +6,7 @@ using namespace System::Runtime::InteropServices;
 #include <vcclr.h>  
 #include "zoom_sdk_dotnet_wrap_def.h"
 #include "wrap/sdk_wrap.h"
+#include "meeting_h323_helper_dotnet_wrap.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
 	static const wchar_t* PlatformString2WChar(String^ str)
 	{
@@ -180,6 +181,29 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return array_;
 	}
 
+	static array<H323Device^ >^ Convert(ZOOM_SDK_NAMESPACE::IList<ZOOM_SDK_NAMESPACE::IH323Device* >* plst)
+	{
+		if (NULL == plst || plst->GetCount() <= 0)
+			return nullptr;
+
+		int count = plst->GetCount();
+		array<H323Device^ >^ array_ = gcnew array<H323Device^ >(count);
+		if (nullptr == array_)
+			return nullptr;
+
+		for (int i = 0; i < count; i++)
+		{
+			ZOOM_SDK_NAMESPACE::IH323Device* device_ = plst->GetItem(i);
+			array_[i]->name = WChar2PlatformString(device_->GetName());
+			array_[i]->e164num = WChar2PlatformString(device_->GetE164Num());
+			array_[i]->ip = WChar2PlatformString(device_->GetIP());
+			array_[i]->type = (H323DeviceType)device_->GetDeviceType();
+		}
+
+		return array_;
+	}
+
+
 	static DateTime time_t2DateTime(time_t date) 
 	{
 		double msec = static_cast<double>(date);
@@ -192,7 +216,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 	}
 
-	public ref class IUserInfoDotNetWrapImpl sealed : public IUserInfoDotNetWrap
+	private ref class IUserInfoDotNetWrapImpl sealed : public IUserInfoDotNetWrap
 	{
 	public:
 		IUserInfoDotNetWrapImpl(ZOOM_SDK_NAMESPACE::IUserInfo* pInfo)
@@ -224,21 +248,21 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual unsigned int GetUserID()
 		{
 			if (m_pInfo)
-				return m_pInfo->GetUserID();
-			return 0;
+				return m_pInfo->IsHost();
+			return false;
 		}
 
 		virtual bool IsVideoOn()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsVideoOn();
+				return m_pInfo->IsHost();
 			return false;
 		}
 
 		virtual bool IsAudioMuted()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsAudioMuted();
+				return m_pInfo->IsHost();
 			return false;
 		}
 

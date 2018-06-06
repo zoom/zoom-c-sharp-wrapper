@@ -5,7 +5,7 @@
 namespace ZOOM_SDK_DOTNET_WRAP {
 
 	//translate IMeetingExternalSecureKeyHandler
-	public ref class IMeetingExternalSecureKeyHandlerImpl sealed: public IMeetingExternalSecureKeyHandler
+	private ref class IMeetingExternalSecureKeyHandlerImpl sealed: public IMeetingExternalSecureKeyHandler
 	{
 	public:
 		IMeetingExternalSecureKeyHandlerImpl(ZOOM_SDK_NAMESPACE::IMeetingExternalSecureKeyHandler* pHandler)
@@ -106,7 +106,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	//
 
 	//translate meeting info
-	public ref class IMeetingInfoImpl sealed :public IMeetingInfo
+	private ref class IMeetingInfoImpl sealed :public IMeetingInfo
 	{
 	public:
 		IMeetingInfoImpl(ZOOM_SDK_NAMESPACE::IMeetingInfo* pInfo)
@@ -179,6 +179,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				return m_pInfo->IsInternalMeeting();
 
 			return false;
+		}
+
+		virtual MeetingConnType GetMeetingConnType()
+		{
+			if (m_pInfo)
+				return (MeetingConnType)m_pInfo->GetMeetingConnType();
+
+			return MeetingConnType::Meeting_Conn_None;
 		}
 
 	private:

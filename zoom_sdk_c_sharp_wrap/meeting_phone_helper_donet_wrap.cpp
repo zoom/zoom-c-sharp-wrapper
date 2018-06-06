@@ -32,7 +32,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	//
 
 	//
-	public ref class IMeetingPhoneSupportCountryInfoDotNetWrapImpl sealed : public IMeetingPhoneSupportCountryInfoDotNetWrap
+	private ref class IMeetingPhoneSupportCountryInfoDotNetWrapImpl sealed : public IMeetingPhoneSupportCountryInfoDotNetWrap
 	{
 	public:
 		IMeetingPhoneSupportCountryInfoDotNetWrapImpl(ZOOM_SDK_NAMESPACE::IMeetingPhoneSupportCountryInfo* pInfo)
@@ -68,7 +68,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	};
 
 
-	public ref class IMeetingCallInPhoneNumberInfoDotNetWrapImpl sealed : public IMeetingCallInPhoneNumberInfoDotNetWrap
+	private ref class IMeetingCallInPhoneNumberInfoDotNetWrapImpl sealed : public IMeetingCallInPhoneNumberInfoDotNetWrap
 	{
 	public:
 		IMeetingCallInPhoneNumberInfoDotNetWrapImpl(ZOOM_SDK_NAMESPACE::IMeetingCallInPhoneNumberInfo* pInfo)

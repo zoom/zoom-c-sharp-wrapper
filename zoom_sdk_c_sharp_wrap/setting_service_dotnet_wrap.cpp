@@ -46,6 +46,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return CRecordingSettingContextDotNetWrap::Instance;
 	}
 
+	IStatisticSettingContextDotNetWrap^ CSettingServiceDotNetWrap::GetStatisticSettings()
+	{
+		return CStatisticSettingContextDotNetWrap::Instance;
+	}
+
 	//CGeneralSettingContextDotNetWrap
 	SDKError CGeneralSettingContextDotNetWrap::EnableDualScreenMode(bool bEnable)
 	{
@@ -147,8 +152,28 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetGeneralSettings()->IsSplitScreenModeEnabled();
 	}
 
+	SDKError CGeneralSettingContextDotNetWrap::EnableAutoFullScreenVideoWhenViewShare(bool bEnable)
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings())
+			return SDKError::SDKERR_UNINITIALIZE;
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings()->EnableAutoFullScreenVideoWhenViewShare(bEnable);
+	}
+
+	bool CGeneralSettingContextDotNetWrap::IsAutoFullScreenVideoWhenViewShareEnabled()
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings())
+			return false;
+
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings()->IsAutoFullScreenVideoWhenViewShareEnabled();
+	}
+
 	//CVideoSettingContextDotNetWrap
-	public ref class CCameraInfoDotNetWrap sealed : public ICameraInfoDotNetWrap
+	private ref class CCameraInfoDotNetWrap sealed : public ICameraInfoDotNetWrap
 	{
 	public:
 		CCameraInfoDotNetWrap(ZOOM_SDK_NAMESPACE::ICameraInfo* pInfo)
@@ -269,8 +294,44 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			->IsHDVideoEnabled();
 	}
 
+	SDKError CVideoSettingContextDotNetWrap::EnableAlwaysShowNameOnVideo(bool bEnable)
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings())
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
+			->EnableAlwaysShowNameOnVideo(bEnable);
+	}
+
+	bool CVideoSettingContextDotNetWrap::IsAlwaysShowNameOnVideoEnabled()
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings())
+			return false;
+
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
+			->IsAlwaysShowNameOnVideoEnabled();
+	}
+
+	SDKError CVideoSettingContextDotNetWrap::EnableAutoTurnOffVideoWhenJoinMeeting(bool bEnable)
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings())
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
+			->EnableAutoTurnOffVideoWhenJoinMeeting(bEnable);
+	}
+
+	bool CVideoSettingContextDotNetWrap::IsAutoTurnOffVideoWhenJoinMeetingEnabled()
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings())
+			return false;
+
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
+			->IsAutoTurnOffVideoWhenJoinMeetingEnabled();
+	}
+
 	//CAudioSettingContextDotNetWrap
-	public ref class CMicInfoDotNetWrap sealed : public IMicInfoDotNetWrap
+	private ref class CMicInfoDotNetWrap sealed : public IMicInfoDotNetWrap
 	{
 	public:
 		CMicInfoDotNetWrap(ZOOM_SDK_NAMESPACE::IMicInfo* pInfo)
@@ -303,7 +364,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::IMicInfo* m_pInfo;
 	};
 
-	public ref class CSpeakerInfoDotNetWrap sealed : public ISpeakerInfoDotNetWrap
+	private ref class CSpeakerInfoDotNetWrap sealed : public ISpeakerInfoDotNetWrap
 	{
 	public:
 		CSpeakerInfoDotNetWrap(ZOOM_SDK_NAMESPACE::ISpeakerInfo* pInfo)
@@ -440,6 +501,42 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetAudioSettings()->IsAutoAdjustMicEnabled();
 	}
 
+	SDKError CAudioSettingContextDotNetWrap::EnableStereoAudio(bool bEnable)
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetAudioSettings())
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetAudioSettings()->EnableStereoAudio(bEnable);
+	}
+
+	bool CAudioSettingContextDotNetWrap::IsStereoAudioEnable()
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetAudioSettings())
+			return false;
+
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetAudioSettings()->IsStereoAudioEnable();
+	}
+
+	SDKError CAudioSettingContextDotNetWrap::EnableMicOriginalInput(bool bEnable)
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetAudioSettings())
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetAudioSettings()->EnableMicOriginalInput(bEnable);
+	}
+
+	bool CAudioSettingContextDotNetWrap::IsMicOriginalInputEnable()
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetAudioSettings())
+			return false;
+
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetAudioSettings()->IsMicOriginalInputEnable();
+	}
+
 	//CRecordingSettingContextDotNetWrap
 	SDKError CRecordingSettingContextDotNetWrap::SetRecordingPath(String^ szPath)
 	{
@@ -457,5 +554,110 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		return WChar2PlatformString(ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
 			GetRecordingSettings()->GetRecordingPath());
+	}
+
+	//CStatisticSettingContextDotNetWrap
+	static void Convert(OverallStatisticInfo^% info_, ZOOM_SDK_NAMESPACE::OverallStatisticInfo& info_c_)
+	{
+		if (nullptr == info_)
+			return;
+
+		info_->connection_type_ = (SettingConnectionType)info_c_.connection_type_;
+		info_->net_work_type_ = (SettingsNetWorkType)info_c_.net_work_type_;
+		info_->proxy_addr_ = WChar2PlatformString(info_c_.proxy_addr_);
+	}
+	SDKError CStatisticSettingContextDotNetWrap::QueryOverallStatisticInfo(OverallStatisticInfo^% info_)
+	{
+		if (nullptr == info_)
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetStatisticSettings())
+			return SDKError::SDKERR_UNINITIALIZE;
+
+		ZOOM_SDK_NAMESPACE::OverallStatisticInfo info_c_;
+		SDKError err_ = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetStatisticSettings()->QueryOverallStatisticInfo(info_c_);
+		Convert(info_, info_c_);
+
+		return err_;
+	}
+
+	static void Convert(AudioSessionStatisticInfo^% info_, ZOOM_SDK_NAMESPACE::AudioSessionStatisticInfo& info_c_)
+	{
+		if (nullptr == info_)
+			return;
+		info_->frequency_send_ = info_c_.frequency_send_;
+		info_->frequency_recv_ = info_c_.frequency_recv_;
+		info_->latency_send_ = info_c_.latency_send_;
+		info_->latency_recv_ = info_c_.latency_recv_;
+		info_->jitter_send_ = info_c_.jitter_send_;
+		info_->jitter_recv_ = info_c_.jitter_recv_;
+		info_->packetloss_send_ = info_c_.packetloss_send_;
+		info_->packetloss_recv_ = info_c_.packetloss_recv_;
+	}
+	SDKError CStatisticSettingContextDotNetWrap::QueryAudioStatisticInfo(AudioSessionStatisticInfo^% info_)
+	{
+		if (nullptr == info_)
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetStatisticSettings())
+			return SDKError::SDKERR_UNINITIALIZE;
+
+		ZOOM_SDK_NAMESPACE::AudioSessionStatisticInfo info_c_;
+		SDKError err_ = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetStatisticSettings()->QueryAudioStatisticInfo(info_c_);
+		Convert(info_, info_c_);
+
+		return err_;
+	}
+
+	static void Convert(ASVSessionStatisticInfo^% info_, ZOOM_SDK_NAMESPACE::ASVSessionStatisticInfo& info_c_)
+	{
+		if (nullptr == info_)
+			return;
+
+		info_->latency_send_ = info_c_.latency_send_;
+		info_->latency_recv_ = info_c_.latency_recv_;
+		info_->jitter_send_ = info_c_.jitter_send_;
+		info_->jitter_recv_ = info_c_.jitter_recv_;
+		info_->packetloss_send_max_ = info_c_.packetloss_send_max_;
+		info_->packetloss_recv_max_ = info_c_.packetloss_recv_max_;
+		info_->packetloss_send_avg_ = info_c_.packetloss_send_avg_;
+		info_->packetloss_recv_avg_ = info_c_.packetloss_recv_avg_;
+		info_->resolution_send_ = info_c_.resolution_send_;
+		info_->resolution_recv_ = info_c_.resolution_recv_;
+		info_->fps_send_ = info_c_.fps_send_;
+		info_->fps_recv_ = info_c_.fps_recv_;
+	}
+	SDKError CStatisticSettingContextDotNetWrap::QueryVideoStatisticInfo(ASVSessionStatisticInfo^% info_)
+	{
+		if (nullptr == info_)
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetStatisticSettings())
+			return SDKError::SDKERR_UNINITIALIZE;
+
+		ZOOM_SDK_NAMESPACE::ASVSessionStatisticInfo info_c_;
+		SDKError err_ = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetStatisticSettings()->QueryVideoStatisticInfo(info_c_);
+		Convert(info_, info_c_);
+
+		return err_;
+	}
+
+	SDKError CStatisticSettingContextDotNetWrap::QueryShareStatisticInfo(ASVSessionStatisticInfo^% info_)
+	{
+		if (nullptr == info_)
+			return SDKError::SDKERR_INVALID_PARAMETER;
+
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetStatisticSettings())
+			return SDKError::SDKERR_UNINITIALIZE;
+
+		ZOOM_SDK_NAMESPACE::ASVSessionStatisticInfo info_c_;
+		SDKError err_ = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetStatisticSettings()->QueryShareStatisticInfo(info_c_);
+		Convert(info_, info_c_);
+
+		return err_;
 	}
 }

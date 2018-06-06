@@ -169,6 +169,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		Conn_Quality_Excellent,
 	};
 
+	
+	public enum class MeetingConnType : int
+	{
+		Meeting_Conn_None,
+		Meeting_Conn_Normal,
+		Meeting_Conn_FailOver,
+	};
+
 	public interface class IMeetingInfo
 	{
 	public:
@@ -181,6 +189,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		String^ GetJoinMeetingUrl();
 		String^ GetMeetingHostTag();
 		bool IsInternalMeeting();
+		MeetingConnType GetMeetingConnType();
 	};
 
 	public interface class IMeetingExternalSecureKeyHandler
@@ -238,7 +247,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onMeetingStatisticsWarningNotification(onMeetingStatisticsWarningNotification^ cb);
 		void Add_CB_onMeetingSecureKeyNotification(onMeetingSecureKeyNotification^ cb);
 	};
-	public ref class CMeetingServiceDotNetWrap sealed : public IMeetingServiceDotNetWrap
+	private ref class CMeetingServiceDotNetWrap sealed : public IMeetingServiceDotNetWrap
 	{
 		// TODO: Add your methods for this class here.
 	public:

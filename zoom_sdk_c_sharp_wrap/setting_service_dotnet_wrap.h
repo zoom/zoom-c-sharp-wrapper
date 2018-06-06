@@ -33,9 +33,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsAutoFullScreenVideoWhenJoinMeetingEnabled();
 		SDKError EnableSplitScreenMode(bool bEnable);
 		bool IsSplitScreenModeEnabled();
+		SDKError EnableAutoFullScreenVideoWhenViewShare(bool bEnable);
+		bool IsAutoFullScreenVideoWhenViewShareEnabled();
 	};
 
-	public ref class CGeneralSettingContextDotNetWrap sealed : public IGeneralSettingContextDotNetWrap
+	private ref class CGeneralSettingContextDotNetWrap sealed : public IGeneralSettingContextDotNetWrap
 	{
 	public:
 		static property CGeneralSettingContextDotNetWrap^ Instance
@@ -53,6 +55,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsAutoFullScreenVideoWhenJoinMeetingEnabled();
 		virtual SDKError EnableSplitScreenMode(bool bEnable);
 		virtual bool IsSplitScreenModeEnabled();
+		virtual SDKError EnableAutoFullScreenVideoWhenViewShare(bool bEnable);
+		virtual bool IsAutoFullScreenVideoWhenViewShareEnabled();
 	private:
 		CGeneralSettingContextDotNetWrap() {}
 		virtual ~CGeneralSettingContextDotNetWrap() {}
@@ -78,9 +82,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsFaceBeautyEffectEnabled();
 		SDKError EnableHDVideo(bool bEnable);
 		bool IsHDVideoEnabled();
+		SDKError EnableAlwaysShowNameOnVideo(bool bEnable);
+		bool IsAlwaysShowNameOnVideoEnabled();
+		SDKError EnableAutoTurnOffVideoWhenJoinMeeting(bool bEnable);
+		bool IsAutoTurnOffVideoWhenJoinMeetingEnabled();
 	};
 
-	public ref class CVideoSettingContextDotNetWrap sealed : public IVideoSettingContextDotNetWrap
+	private ref class CVideoSettingContextDotNetWrap sealed : public IVideoSettingContextDotNetWrap
 	{
 	public:
 		static property CVideoSettingContextDotNetWrap^ Instance
@@ -96,6 +104,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsFaceBeautyEffectEnabled();
 		virtual SDKError EnableHDVideo(bool bEnable);
 		virtual bool IsHDVideoEnabled();
+		virtual SDKError EnableAlwaysShowNameOnVideo(bool bEnable);
+		virtual bool IsAlwaysShowNameOnVideoEnabled();
+		virtual SDKError EnableAutoTurnOffVideoWhenJoinMeeting(bool bEnable);
+		virtual bool IsAutoTurnOffVideoWhenJoinMeetingEnabled();
 	private:
 		CVideoSettingContextDotNetWrap() {}
 		virtual ~CVideoSettingContextDotNetWrap() {}
@@ -130,9 +142,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsAutoJoinAudioEnabled();
 		SDKError EnableAutoAdjustMic(bool bEnable);
 		bool IsAutoAdjustMicEnabled();
+		SDKError EnableStereoAudio(bool bEnable);
+		bool IsStereoAudioEnable();
+		SDKError EnableMicOriginalInput(bool bEnable);
+		bool IsMicOriginalInputEnable();
 	};
 
-	public ref class CAudioSettingContextDotNetWrap sealed : public IAudioSettingContextDotNetWrap
+	private ref class CAudioSettingContextDotNetWrap sealed : public IAudioSettingContextDotNetWrap
 	{
 	public:
 		static property CAudioSettingContextDotNetWrap^ Instance
@@ -148,6 +164,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsAutoJoinAudioEnabled();
 		virtual SDKError EnableAutoAdjustMic(bool bEnable);
 		virtual bool IsAutoAdjustMicEnabled();
+		virtual SDKError EnableStereoAudio(bool bEnable);
+		virtual bool IsStereoAudioEnable();
+		virtual SDKError EnableMicOriginalInput(bool bEnable);
+		virtual bool IsMicOriginalInputEnable();
 
 	private:
 		CAudioSettingContextDotNetWrap() {}
@@ -162,7 +182,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		String^  GetRecordingPath();
 	};
 
-	public ref class CRecordingSettingContextDotNetWrap sealed : public IRecordingSettingContextDotNetWrap
+	private ref class CRecordingSettingContextDotNetWrap sealed : public IRecordingSettingContextDotNetWrap
 	{
 	public:
 		static property CRecordingSettingContextDotNetWrap^ Instance
@@ -178,6 +198,90 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		static CRecordingSettingContextDotNetWrap^ m_Instance = gcnew CRecordingSettingContextDotNetWrap;
 	};
 
+	public enum class SettingsNetWorkType : int
+	{
+		SETTINGS_NETWORK_WIRED = 0,
+		SETTINGS_NETWORK_WIFI = 1,
+		SETTINGS_NETWORK_PPP = 2,
+		SETTINGS_NETWORK_3G = 3,
+		SETTINGS_NETWORK_OTHERS = 4,
+
+		SETTINGS_NETWORK_UNKNOWN = -1,
+	};
+
+	public enum class SettingConnectionType : int
+	{
+		SETTINGS_CONNECTION_TYPE_CLOUD = 0,
+		SETTINGS_CONNECTION_TYPE_DIRECT,
+		SETTINGS_CONNECTION_TYPE_UNKNOWN = -1,
+	};
+
+	public value class OverallStatisticInfo
+	{
+	public:
+		SettingsNetWorkType net_work_type_;
+		SettingConnectionType connection_type_;
+		String^ proxy_addr_;
+	};
+
+	public value class AudioSessionStatisticInfo
+	{
+	public:
+		int frequency_send_; //KHz
+		int frequency_recv_; //KHz
+		int latency_send_;//ms
+		int latency_recv_;//ms
+		int jitter_send_;//ms
+		int jitter_recv_;//ms
+		float packetloss_send_;//%
+		float packetloss_recv_;//%
+	};
+
+	public value class ASVSessionStatisticInfo
+	{
+	public:
+		int latency_send_;//ms
+		int latency_recv_;//ms
+		int jitter_send_;//ms
+		int jitter_recv_;//ms
+		float packetloss_send_max_;//%
+		float packetloss_recv_max_;//%
+		float packetloss_send_avg_;//%
+		float packetloss_recv_avg_;//%
+		int resolution_send_; //HIWORD->height,LOWORD->width
+		int resolution_recv_; //HIWORD->height,LOWORD->width 
+		int fps_send_;//fps
+		int fps_recv_;//fps
+	};
+
+	public interface class IStatisticSettingContextDotNetWrap
+	{
+	public:
+		SDKError QueryOverallStatisticInfo(OverallStatisticInfo^% info_);
+		SDKError QueryAudioStatisticInfo(AudioSessionStatisticInfo^% info_);
+		SDKError QueryVideoStatisticInfo(ASVSessionStatisticInfo^% info_);
+		SDKError QueryShareStatisticInfo(ASVSessionStatisticInfo^% info_);
+	};
+
+	private ref class CStatisticSettingContextDotNetWrap sealed : public IStatisticSettingContextDotNetWrap
+	{
+	public:
+		static property CStatisticSettingContextDotNetWrap^ Instance
+		{
+			CStatisticSettingContextDotNetWrap^ get() { return m_Instance; }
+		}
+
+		virtual SDKError QueryOverallStatisticInfo(OverallStatisticInfo^% info_);
+		virtual SDKError QueryAudioStatisticInfo(AudioSessionStatisticInfo^% info_);
+		virtual SDKError QueryVideoStatisticInfo(ASVSessionStatisticInfo^% info_);
+		virtual SDKError QueryShareStatisticInfo(ASVSessionStatisticInfo^% info_);
+
+	private:
+		CStatisticSettingContextDotNetWrap() {}
+		virtual ~CStatisticSettingContextDotNetWrap() {}
+		static CStatisticSettingContextDotNetWrap^ m_Instance = gcnew CStatisticSettingContextDotNetWrap;
+	};
+
 	public interface class ISettingServiceDotNetWrap
 	{
 	public:
@@ -187,9 +291,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		IAudioSettingContextDotNetWrap^ GetAudioSettings();
 		IVideoSettingContextDotNetWrap^ GetVideoSettings();
 		IRecordingSettingContextDotNetWrap^ GetRecordingSettings();
+		IStatisticSettingContextDotNetWrap^ GetStatisticSettings();
 	};
 
-	public ref class CSettingServiceDotNetWrap sealed : public ISettingServiceDotNetWrap
+	private ref class CSettingServiceDotNetWrap sealed : public ISettingServiceDotNetWrap
 	{
 	public:
 		static property CSettingServiceDotNetWrap^ Instance
@@ -205,6 +310,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual IAudioSettingContextDotNetWrap^ GetAudioSettings();
 		virtual IVideoSettingContextDotNetWrap^ GetVideoSettings();
 		virtual IRecordingSettingContextDotNetWrap^ GetRecordingSettings();
+		virtual IStatisticSettingContextDotNetWrap^ GetStatisticSettings();
 	private:
 		CSettingServiceDotNetWrap() {}
 		virtual ~CSettingServiceDotNetWrap() {}

@@ -46,6 +46,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		array<String^ >^ GetH323Address();
 		String^ GetH323Password();
 		SDKError SendMeetingParingCode(unsigned __int64 meetingNum, String^ paringCode);
+		array<H323Device^ >^ GetCalloutH323DviceList();
 		SDKError CallOutH323(H323Device deviceInfo);
 		SDKError CancelCallOutH323();
 
@@ -53,7 +54,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onParingH323Result(onParingH323Result^ cb);
 	};
 
-	public ref class CMeetingH323HelperDotNetWrap sealed : public IMeetingH323HelperDotNetWrap
+	private ref class CMeetingH323HelperDotNetWrap sealed : public IMeetingH323HelperDotNetWrap
 	{
 	public:
 		static property CMeetingH323HelperDotNetWrap^ Instance
@@ -68,6 +69,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual array<String^ >^ GetH323Address();
 		virtual String^ GetH323Password();
 		virtual SDKError SendMeetingParingCode(unsigned __int64 meetingNum, String^ paringCode);
+		virtual array<H323Device^ >^ GetCalloutH323DviceList();
 		virtual SDKError CallOutH323(H323Device deviceInfo);
 		virtual SDKError CancelCallOutH323();
 		virtual void Add_CB_onCalloutStatusNotify(onCalloutStatusNotify^ cb)

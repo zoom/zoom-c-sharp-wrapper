@@ -4,7 +4,7 @@
 #include "wrap/sdk_wrap.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
 	//translate account info
-	public ref class IAccountInfoImpl sealed : public IAccountInfo
+	private ref class IAccountInfoImpl sealed : public IAccountInfo
 	{
 	public:
 		IAccountInfoImpl()

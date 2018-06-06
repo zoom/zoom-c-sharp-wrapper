@@ -21,7 +21,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onChatMsgNotifcation(onChatMsgNotifcation^ cb);
 	};
 
-	public ref class CMeetingChatControllerDotNetWrap sealed : public IMeetingChatControllerDotNetWrap
+	private ref class CMeetingChatControllerDotNetWrap sealed : public IMeetingChatControllerDotNetWrap
 	{
 	public:
 		static property CMeetingChatControllerDotNetWrap^ Instance

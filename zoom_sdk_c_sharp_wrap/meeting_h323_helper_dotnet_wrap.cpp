@@ -74,19 +74,28 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 	SDKError CMeetingH323HelperDotNetWrap::CallOutH323(H323Device deviceInfo)
 	{
-		ZOOM_SDK_NAMESPACE::H323Device deviceInfo_c;
-		deviceInfo_c.e164num = const_cast<wchar_t*>(PlatformString2WChar(deviceInfo.e164num));
-		deviceInfo_c.ip = const_cast<wchar_t*>(PlatformString2WChar(deviceInfo.ip));
-		deviceInfo_c.name = const_cast<wchar_t*>(PlatformString2WChar(deviceInfo.name));
-		deviceInfo_c.type = (ZOOM_SDK_NAMESPACE::H323DeviceType)deviceInfo.type;
+		ZOOM_SDK_NAMESPACE::CustomizedH323Device deviceInfo_c;
+		deviceInfo_c.SetE164Num(const_cast<wchar_t*>(PlatformString2WChar(deviceInfo.e164num)));
+		deviceInfo_c.SetIP(const_cast<wchar_t*>(PlatformString2WChar(deviceInfo.ip)));
+		deviceInfo_c.SetName(const_cast<wchar_t*>(PlatformString2WChar(deviceInfo.name)));
+		deviceInfo_c.SetDeviceType((ZOOM_SDK_NAMESPACE::H323DeviceType)deviceInfo.type);
 
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().
-			GetMeetingServiceWrap().GetH323Helper().CallOutH323(deviceInfo_c);
+			GetMeetingServiceWrap().GetH323Helper().CallOutH323(&deviceInfo_c);
 	}
 
 	SDKError CMeetingH323HelperDotNetWrap::CancelCallOutH323()
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().
 			GetMeetingServiceWrap().GetH323Helper().CancelCallOutH323();
+	}
+
+	array<H323Device^ >^ CMeetingH323HelperDotNetWrap::GetCalloutH323DviceList()
+	{
+		ZOOM_SDK_NAMESPACE::IList<ZOOM_SDK_NAMESPACE::IH323Device* >* lstDevice = 
+			ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().
+			GetMeetingServiceWrap().GetH323Helper().GetCalloutH323DviceList();
+
+		return Convert(lstDevice);
 	}
 }

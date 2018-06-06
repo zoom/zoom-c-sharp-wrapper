@@ -4,7 +4,7 @@
 #include "wrap/sdk_wrap.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
 	//translate event
-	public ref class IChatMsgInfoDotNetWrapImpl sealed : public IChatMsgInfoDotNetWrap
+	private ref class IChatMsgInfoDotNetWrapImpl sealed : public IChatMsgInfoDotNetWrap
 	{
 	public:
 		IChatMsgInfoDotNetWrapImpl(ZOOM_SDK_NAMESPACE::IChatMsgInfo* pChat)

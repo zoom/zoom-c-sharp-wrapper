@@ -53,6 +53,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	public delegate void onInviteBtnClicked();
 	public delegate void onStartShareBtnClicked();
 	public delegate void onEndMeetingBtnClicked();
+	public delegate void onParticipantListBtnClicked();
 
 	public interface class IMeetingUIControllerDotNetWrap
 	{
@@ -84,9 +85,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onInviteBtnClicked(onInviteBtnClicked^ cb);
 		void Add_CB_onStartShareBtnClicked(onStartShareBtnClicked^ cb);
 		void Add_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked^ cb);
+		void Add_CB_onParticipantListBtnClicked(onParticipantListBtnClicked^ cb);
 	};
 
-	public ref class CMeetingUIControllerDotNetWrap sealed : public IMeetingUIControllerDotNetWrap
+	private ref class CMeetingUIControllerDotNetWrap sealed : public IMeetingUIControllerDotNetWrap
 	{
 		// TODO: Add your methods for this class here.
 	public:
@@ -134,10 +136,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onEndMeetingBtnClicked += cb;
 		}
 
+		virtual void Add_CB_onParticipantListBtnClicked(onParticipantListBtnClicked^ cb)
+		{
+			event_onParticipantListBtnClicked += cb;
+		}
+
 		void BindEvent();
 		void ProcInviteBtnClicked();
 		void ProcStartShareBtnClicked();
 		void ProcEndMeetingBtnClicked();
+		void ProcParticipantListBtnClicked();
 
 	private:
 		CMeetingUIControllerDotNetWrap() {};
@@ -145,6 +153,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		event onInviteBtnClicked^ event_onInviteBtnClicked;
 		event onStartShareBtnClicked^ event_onStartShareBtnClicked;
 		event onEndMeetingBtnClicked^ event_onEndMeetingBtnClicked;
+		event onParticipantListBtnClicked^ event_onParticipantListBtnClicked;
 		static CMeetingUIControllerDotNetWrap^ m_Instance = gcnew CMeetingUIControllerDotNetWrap;
 	};
 }

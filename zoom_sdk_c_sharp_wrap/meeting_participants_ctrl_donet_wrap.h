@@ -24,7 +24,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onUserNameChanged(onUserNameChanged^ cb);
 	};
 
-	public ref class CMeetingParticipantsControllerDotNetWrap sealed : public IMeetingParticipantsControllerDotNetWrap
+	private ref class CMeetingParticipantsControllerDotNetWrap sealed : public IMeetingParticipantsControllerDotNetWrap
 	{
 	public:
 		static property CMeetingParticipantsControllerDotNetWrap^ Instance

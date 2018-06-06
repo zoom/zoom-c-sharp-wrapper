@@ -35,7 +35,7 @@ IMPL_FUNC_0(IMeetingShareController, ShowSharingAppSelectWnd, SDKError, SDKERR_U
 //virtual SDKError StopShare() = 0;
 IMPL_FUNC_0(IMeetingShareController, StopShare, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWND hWnd) = 0;
-IMPL_FUNC_2(IMeetingShareController, BlockWindowFromScreenshare, SDKError, bool, bBlock, HWND, hWnd, SDKERR_UNINITIALIZE)
+IMPL_FUNC_3(IMeetingShareController, BlockWindowFromScreenshare, SDKError, bool, bBlock, HWND, hWnd, bool, bChangeWindowStyle, SDKERR_UNINITIALIZE)
 //virtual SDKError LockShare() = 0;
 IMPL_FUNC_0(IMeetingShareController, LockShare, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError UnlockShare() = 0;

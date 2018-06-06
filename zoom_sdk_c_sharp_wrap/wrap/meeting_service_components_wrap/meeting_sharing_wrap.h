@@ -20,7 +20,7 @@ DEFINE_FUNC_0(ShowSharingAppSelectWnd, SDKError)
 //virtual SDKError StopShare() = 0;
 DEFINE_FUNC_0(StopShare, SDKError)
 //virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWND hWnd) = 0;
-DEFINE_FUNC_2(BlockWindowFromScreenshare, SDKError, bool, bBlock, HWND, hWnd)
+DEFINE_FUNC_3(BlockWindowFromScreenshare, SDKError, bool, bBlock, HWND, hWnd, bool, bChangeWindowStyle)
 //virtual SDKError LockShare() = 0;
 DEFINE_FUNC_0(LockShare, SDKError)
 //virtual SDKError UnlockShare() = 0;

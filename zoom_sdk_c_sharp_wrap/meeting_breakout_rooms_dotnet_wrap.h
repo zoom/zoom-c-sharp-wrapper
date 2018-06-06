@@ -20,7 +20,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_OnBreakoutRoomsStartedNotification(OnBreakoutRoomsStartedNotification^ cb);
 	};
 
-	public ref class CMeetingBreakoutRoomsControllerDotNetWrap sealed : public IMeetingBreakoutRoomsControllerDotNetWrap
+	private ref class CMeetingBreakoutRoomsControllerDotNetWrap sealed : public IMeetingBreakoutRoomsControllerDotNetWrap
 	{
 		// TODO: Add your methods for this class here.
 	public:

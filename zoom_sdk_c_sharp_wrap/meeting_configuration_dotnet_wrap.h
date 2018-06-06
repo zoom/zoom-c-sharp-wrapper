@@ -61,11 +61,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void EnableToolTipsShow(bool bEnable);
 		void EnableAirplayInstructionWindow(bool bEnable);
 		void EnableClaimHostFeature(bool bEnable);
+		void ConfigDSCP(int dscpAudio, int dscpVideo, bool bReset);
+		void RedirectClickParticipantListBTNEvent(bool bRedirect);
+		void DisableRemoteCtrlCopyPasteFeature(bool bDisable);
+		void DisableSplitScreenModeUIElements(bool bDisable);
+		void EnableAutoHideJoinAudioDialog(bool bEnable);
+		void EnableHideFullPhoneNumber4PureCallinUser(bool bHide);
+		void EnableLengthLimitationOfMeetingNumber(bool bEnable);
 
 		void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb);
 		void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
 	};
-	public ref class CMeetingConfigurationDotNetWrap sealed : public IMeetingConfigurationDotNetWrap
+
+	private ref class CMeetingConfigurationDotNetWrap sealed : public IMeetingConfigurationDotNetWrap
 	{
 		// TODO: Add your methods for this class here.
 	public:
@@ -101,6 +109,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual void EnableToolTipsShow(bool bEnable);
 		virtual void EnableAirplayInstructionWindow(bool bEnable);
 		virtual void EnableClaimHostFeature(bool bEnable);
+		virtual void ConfigDSCP(int dscpAudio, int dscpVideo, bool bReset);
+		virtual void RedirectClickParticipantListBTNEvent(bool bRedirect);
+		virtual void DisableRemoteCtrlCopyPasteFeature(bool bDisable);
+		virtual void DisableSplitScreenModeUIElements(bool bDisable);
+		virtual void EnableAutoHideJoinAudioDialog(bool bEnable);
+		virtual void EnableHideFullPhoneNumber4PureCallinUser(bool bHide);
+		virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable);
 
 		virtual void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb)
 		{

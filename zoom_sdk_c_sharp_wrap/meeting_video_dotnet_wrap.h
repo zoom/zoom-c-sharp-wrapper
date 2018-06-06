@@ -23,7 +23,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onSpotlightVideoChangeNotification(onSpotlightVideoChangeNotification^ cb);
 	};
 
-	public ref class CMeetingVideoControllerDotNetWrap sealed : public IMeetingVideoControllerDotNetWrap
+	private ref class CMeetingVideoControllerDotNetWrap sealed : public IMeetingVideoControllerDotNetWrap
 	{
 	public:
 		static property CMeetingVideoControllerDotNetWrap^ Instance

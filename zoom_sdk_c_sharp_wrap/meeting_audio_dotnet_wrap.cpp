@@ -5,7 +5,7 @@
 namespace ZOOM_SDK_DOTNET_WRAP {
 
 	//translate event
-	public ref class IUserAudioStatusDotNetWrapImpl sealed : public IUserAudioStatusDotNetWrap
+	private ref class IUserAudioStatusDotNetWrapImpl sealed : public IUserAudioStatusDotNetWrap
 	{
 	public:
 		IUserAudioStatusDotNetWrapImpl(ZOOM_SDK_NAMESPACE::IUserAudioStatus* pStatus)

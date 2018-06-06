@@ -20,7 +20,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onWatingRoomUserLeft(onWatingRoomUserLeft^ cb);
 	};
 
-	public ref class CMeetingWaitingRoomControllerDotNetWrap sealed : public IMeetingWaitingRoomControllerDotNetWrap
+	private ref class CMeetingWaitingRoomControllerDotNetWrap sealed : public IMeetingWaitingRoomControllerDotNetWrap
 	{
 	public:
 		static property CMeetingWaitingRoomControllerDotNetWrap^ Instance

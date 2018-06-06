@@ -40,7 +40,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onUserActiveAudioChange(onUserActiveAudioChange^ cb);
 	};
 
-	public ref class CMeetingAudioControllerDotNetWrap sealed : public IMeetingAudioControllerDotNetWrap
+	private ref class CMeetingAudioControllerDotNetWrap sealed : public IMeetingAudioControllerDotNetWrap
 	{
 	public:
 		static property CMeetingAudioControllerDotNetWrap^ Instance

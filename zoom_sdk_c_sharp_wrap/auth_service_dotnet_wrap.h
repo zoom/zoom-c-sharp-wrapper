@@ -10,6 +10,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		AUTHRET_ACCOUNTNOTSUPPORT,///< Client Account does not support
 		AUTHRET_ACCOUNTNOTENABLESDK,///< Client account does not enable SDK
 		AUTHRET_UNKNOWN,///< Auth Unknown error
+		AUTHRET_SERVICE_BUSY,///< service busy
 		AUTHRET_NONE,///< Initial status
 	};
 
@@ -82,7 +83,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onLoginRet(onLoginRet^ cb);
 		void Add_CB_onLogout(onLogout^ cb);
 	};
-	public ref class CAuthServiceDotNetWrap sealed: public IAuthServiceDotNetWrap
+	private ref class CAuthServiceDotNetWrap sealed: public IAuthServiceDotNetWrap
 	{
 		// TODO: Add your methods for this class here.
 	public:

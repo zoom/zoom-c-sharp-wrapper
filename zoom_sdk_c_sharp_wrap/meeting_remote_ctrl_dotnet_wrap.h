@@ -32,7 +32,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onRemoteControlStatus(onRemoteControlStatus^ cb);
 	};
 
-	public ref class CMeetingRemoteControllerDotNetWrap sealed : public IMeetingRemoteControllerDotNetWrap
+	private ref class CMeetingRemoteControllerDotNetWrap sealed : public IMeetingRemoteControllerDotNetWrap
 	{
 	public:
 		static property CMeetingRemoteControllerDotNetWrap^ Instance

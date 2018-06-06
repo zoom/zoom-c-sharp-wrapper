@@ -77,7 +77,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onCallMeStatus(onCallMeStatus^ cb);
 	};
 
-	public ref class CMeetingPhoneHelperDotNetWrap sealed : public IMeetingPhoneHelperDotNetWrap
+	private ref class CMeetingPhoneHelperDotNetWrap sealed : public IMeetingPhoneHelperDotNetWrap
 	{
 	public:
 		static property CMeetingPhoneHelperDotNetWrap^ Instance

@@ -5,7 +5,7 @@
 namespace ZOOM_SDK_DOTNET_WRAP {
 	//translate event
 
-	public ref class CMeetingPasswordAndScreenNameHandler sealed : public IMeetingPasswordAndScreenNameHandler
+	private ref class CMeetingPasswordAndScreenNameHandler sealed : public IMeetingPasswordAndScreenNameHandler
 	{
 	public:
 		CMeetingPasswordAndScreenNameHandler()
@@ -226,6 +226,47 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	void CMeetingConfigurationDotNetWrap::EnableClaimHostFeature(bool bEnable)
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().EnableClaimHostFeature(bEnable);
+	}
+
+	void CMeetingConfigurationDotNetWrap::ConfigDSCP(int dscpAudio, int dscpVideo, bool bReset)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().ConfigDSCP(dscpAudio, dscpVideo, bReset);
+	}
+
+	void CMeetingConfigurationDotNetWrap::RedirectClickParticipantListBTNEvent(bool bRedirect)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().RedirectClickParticipantListBTNEvent(bRedirect);
+	}
+	void CMeetingConfigurationDotNetWrap::DisableRemoteCtrlCopyPasteFeature(bool bDisable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().DisableRemoteCtrlCopyPasteFeature(bDisable);
+	}
+
+	void CMeetingConfigurationDotNetWrap::DisableSplitScreenModeUIElements(bool bDisable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().DisableSplitScreenModeUIElements(bDisable);
+	}
+
+	void CMeetingConfigurationDotNetWrap::EnableAutoHideJoinAudioDialog(bool bEnable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().EnableAutoHideJoinAudioDialog(bEnable);
+	}
+
+	void CMeetingConfigurationDotNetWrap::EnableHideFullPhoneNumber4PureCallinUser(bool bHide)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().EnableHideFullPhoneNumber4PureCallinUser(bHide);
+	}
+
+	void CMeetingConfigurationDotNetWrap::EnableLengthLimitationOfMeetingNumber(bool bEnable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().EnableLengthLimitationOfMeetingNumber(bEnable);
 	}
 
 	void CMeetingConfigurationDotNetWrap::BindEvent()

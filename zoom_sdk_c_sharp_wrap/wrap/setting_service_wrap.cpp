@@ -25,4 +25,6 @@ IMPL_FUNC_0(ISettingService, GetAudioSettings, IAudioSettingContext*, NULL)
 IMPL_FUNC_0(ISettingService, GetVideoSettings, IVideoSettingContext*, NULL)
 //virtual IRecordingSettingContext* GetRecordingSettings() = 0;
 IMPL_FUNC_0(ISettingService, GetRecordingSettings, IRecordingSettingContext*, NULL)
+//virtual IStatisticSettingContext* GetStatisticSettings() = 0;
+IMPL_FUNC_0(ISettingService, GetStatisticSettings, IStatisticSettingContext*, NULL)
 END_ZOOM_SDK_NAMESPACE

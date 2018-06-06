@@ -30,6 +30,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			if (CMeetingUIControllerDotNetWrap::Instance)
 				CMeetingUIControllerDotNetWrap::Instance->ProcEndMeetingBtnClicked();
 		}
+
+		void onParticipantListBtnClicked()
+		{
+			if (CMeetingUIControllerDotNetWrap::Instance)
+				CMeetingUIControllerDotNetWrap::Instance->ProcParticipantListBtnClicked();
+		}
 	private:
 		MeetingUIControllerEventHanlder() {}
 	};
@@ -48,6 +54,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetUIController().m_cbonEndMeetingBtnClicked =
 			std::bind(&MeetingUIControllerEventHanlder::onEndMeetingBtnClicked,
 				&MeetingUIControllerEventHanlder::GetInst());
+
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetUIController().m_cbonParticipantListBtnClicked =
+			std::bind(&MeetingUIControllerEventHanlder::onParticipantListBtnClicked,
+				&MeetingUIControllerEventHanlder::GetInst());
 	}
 
 	void CMeetingUIControllerDotNetWrap::ProcInviteBtnClicked()
@@ -63,6 +73,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	void CMeetingUIControllerDotNetWrap::ProcEndMeetingBtnClicked()
 	{
 		event_onEndMeetingBtnClicked();
+	}
+
+	void CMeetingUIControllerDotNetWrap::ProcParticipantListBtnClicked()
+	{
+		event_onParticipantListBtnClicked();
 	}
 
 	SDKError CMeetingUIControllerDotNetWrap::ShowChatDlg(ShowChatDlgParam^% param)

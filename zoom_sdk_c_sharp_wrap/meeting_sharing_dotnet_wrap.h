@@ -53,7 +53,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError StartAirPlayShare();
 		SDKError ShowSharingAppSelectWnd();
 		SDKError StopShare();
-		SDKError BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd);
+		SDKError BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd, bool bChangeWindowStyle);
 		SDKError LockShare();
 		SDKError UnlockShare();
 		SDKError SwitchToFitWindowModeWhenViewShare(SDKViewType type);
@@ -76,7 +76,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onShareContentNotification(onShareContentNotification^ cb);
 	};
 
-	public ref class CMeetingShareControllerDotNetWrap sealed : public IMeetingShareControllerDotNetWrap
+	private ref class CMeetingShareControllerDotNetWrap sealed : public IMeetingShareControllerDotNetWrap
 	{
 	public:
 		static property CMeetingShareControllerDotNetWrap^ Instance
@@ -91,7 +91,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError StartAirPlayShare();
 		virtual SDKError ShowSharingAppSelectWnd();
 		virtual SDKError StopShare();
-		virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd);
+		virtual SDKError BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd, bool bChangeWindowStyle);
 		virtual SDKError LockShare();
 		virtual SDKError UnlockShare();
 		virtual SDKError SwitchToFitWindowModeWhenViewShare(SDKViewType type);

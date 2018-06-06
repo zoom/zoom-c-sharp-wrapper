@@ -45,7 +45,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError Redo(SDKViewType viewtype);
 	};
 
-	public ref class CAnnotationControllerDotNetWrap sealed : public IAnnotationControllerDotNetWrap
+	private ref class CAnnotationControllerDotNetWrap sealed : public IAnnotationControllerDotNetWrap
 	{
 		// TODO: Add your methods for this class here.
 	public:

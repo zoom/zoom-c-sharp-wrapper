@@ -20,6 +20,7 @@ DEFINE_FUNC_0(GetAudioSettings, IAudioSettingContext*)
 DEFINE_FUNC_0(GetVideoSettings, IVideoSettingContext*)
 //virtual IRecordingSettingContext* GetRecordingSettings() = 0;
 DEFINE_FUNC_0(GetRecordingSettings, IRecordingSettingContext*)
-
+//virtual IStatisticSettingContext* GetStatisticSettings() = 0;
+DEFINE_FUNC_0(GetStatisticSettings, IStatisticSettingContext*)
 END_CLASS_DEFINE(ISettingService)
 END_ZOOM_SDK_NAMESPACE

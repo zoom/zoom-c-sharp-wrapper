@@ -14,8 +14,10 @@ DEFINE_FUNC_0(GetH323Address, IList<const wchar_t* >*)
 DEFINE_FUNC_0(GetH323Password, const wchar_t*)
 //virtual SDKError SendMeetingParingCode(UINT64 meetingNum, wchar_t* paringCode) = 0;
 DEFINE_FUNC_2(SendMeetingParingCode, SDKError, UINT64, meetingNum, wchar_t*, paringCode)
+//virtual IList<IH323Device* >* GetCalloutH323DviceList() = 0;
+DEFINE_FUNC_0(GetCalloutH323DviceList, IList<IH323Device* >*)
 //virtual SDKError CallOutH323(H323Device& deviceInfo) = 0;
-DEFINE_FUNC_1(CallOutH323, SDKError, H323Device&, deviceInfo)
+DEFINE_FUNC_1(CallOutH323, SDKError, IH323Device*, deviceInfo)
 //virtual SDKError CancelCallOutH323() = 0;
 DEFINE_FUNC_0(CancelCallOutH323, SDKError)
 

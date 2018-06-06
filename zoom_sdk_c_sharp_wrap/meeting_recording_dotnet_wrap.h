@@ -25,7 +25,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onRecordPriviligeChanged(onRecordPriviligeChanged^ cb);
 	};
 
-	public ref class CMeetingRecordingControllerDotNetWrap : public IMeetingRecordingControllerDotNetWrap
+	private ref class CMeetingRecordingControllerDotNetWrap : public IMeetingRecordingControllerDotNetWrap
 	{
 	public:
 		static property CMeetingRecordingControllerDotNetWrap^ Instance

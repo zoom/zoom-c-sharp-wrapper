@@ -51,4 +51,19 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableToolTipsShow, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableAirplayInstructionWindow, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableClaimHostFeature, void, bool, bEnable)
 
+//virtual void ConfigDSCP(int dscpAudio, int dscpVideo, bool bReset) = 0;
+IMPL_FUNC_NORET_3(IMeetingConfiguration,ConfigDSCP, void, int, dscpAudio, int, dscpVideo, bool, bReset)
+//virtual void RedirectClickParticipantListBTNEvent(bool bRedirect) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration,RedirectClickParticipantListBTNEvent, void, bool, bRedirect)
+//virtual void DisableRemoteCtrlCopyPasteFeature(bool bDisable) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration,DisableRemoteCtrlCopyPasteFeature, void, bool, bDisable)
+//virtual void DisableSplitScreenModeUIElements(bool bDisable) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration,DisableSplitScreenModeUIElements, void, bool, bDisable)
+//virtual void EnableAutoHideJoinAudioDialog(bool bEnable) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableAutoHideJoinAudioDialog, void, bool, bEnable)
+//virtual void EnableHideFullPhoneNumber4PureCallinUser(bool bHide) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableHideFullPhoneNumber4PureCallinUser, void, bool, bEnable)
+//virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableLengthLimitationOfMeetingNumber, void, bool, bEnable)
+
 END_ZOOM_SDK_NAMESPACE

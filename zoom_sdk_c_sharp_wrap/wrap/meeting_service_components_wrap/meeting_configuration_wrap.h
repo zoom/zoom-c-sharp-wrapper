@@ -62,6 +62,20 @@ DEFINE_FUNC_1(EnableToolTipsShow, void, bool, bEnable)
 DEFINE_FUNC_1(EnableAirplayInstructionWindow, void, bool, bEnable)
 //virtual void EnableClaimHostFeature(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableClaimHostFeature, void, bool, bEnable)
+//virtual void ConfigDSCP(int dscpAudio, int dscpVideo, bool bReset) = 0;
+DEFINE_FUNC_3(ConfigDSCP, void, int, dscpAudio, int, dscpVideo, bool, bReset)
+//virtual void RedirectClickParticipantListBTNEvent(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectClickParticipantListBTNEvent, void, bool, bRedirect)
+//virtual void DisableRemoteCtrlCopyPasteFeature(bool bDisable) = 0;
+DEFINE_FUNC_1(DisableRemoteCtrlCopyPasteFeature, void, bool, bDisable)
+//virtual void DisableSplitScreenModeUIElements(bool bDisable) = 0;
+DEFINE_FUNC_1(DisableSplitScreenModeUIElements, void, bool, bDisable)
+//virtual void EnableAutoHideJoinAudioDialog(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableAutoHideJoinAudioDialog, void, bool, bEnable)
+//virtual void EnableHideFullPhoneNumber4PureCallinUser(bool bHide) = 0;
+DEFINE_FUNC_1(EnableHideFullPhoneNumber4PureCallinUser, void, bool, bEnable)
+//virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableLengthLimitationOfMeetingNumber, void, bool, bEnable)
 
 //virtual void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler* pHandler) = 0;
 CallBack_FUNC_1(onInputMeetingPasswordAndScreenNameNotification, IMeetingPasswordAndScreenNameHandler*, pHandler)

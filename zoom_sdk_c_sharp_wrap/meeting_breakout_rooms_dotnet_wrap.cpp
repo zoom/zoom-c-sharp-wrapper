@@ -5,7 +5,7 @@
 namespace ZOOM_SDK_DOTNET_WRAP {
 
 	//translate bo info
-	public ref class IBreakoutRoomsInfoDotNetImpl sealed : public IBreakoutRoomsInfoDotNet
+	private ref class IBreakoutRoomsInfoDotNetImpl sealed : public IBreakoutRoomsInfoDotNet
 	{
 	public:
 		IBreakoutRoomsInfoDotNetImpl(ZOOM_SDK_NAMESPACE::IBreakoutRoomsInfo* pInfo)

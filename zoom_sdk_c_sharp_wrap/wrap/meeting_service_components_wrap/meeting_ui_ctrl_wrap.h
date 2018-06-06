@@ -61,6 +61,8 @@ CallBack_FUNC_0(onInviteBtnClicked)
 CallBack_FUNC_0(onStartShareBtnClicked)
 //virtual void onEndMeetingBtnClicked() = 0;
 CallBack_FUNC_0(onEndMeetingBtnClicked)
+//virtual void onParticipantListBtnClicked() = 0;
+CallBack_FUNC_0(onParticipantListBtnClicked)
 
 END_CLASS_DEFINE(IMeetingUIController)
 END_ZOOM_SDK_NAMESPACE

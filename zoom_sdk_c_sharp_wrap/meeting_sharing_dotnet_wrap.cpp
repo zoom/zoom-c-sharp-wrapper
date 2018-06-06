@@ -102,10 +102,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingShareController().StopShare();
 	}
 
-	SDKError CMeetingShareControllerDotNetWrap::BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd)
+	SDKError CMeetingShareControllerDotNetWrap::BlockWindowFromScreenshare(bool bBlock, HWNDDotNet hWnd, bool bChangeWindowStyle)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingShareController().BlockWindowFromScreenshare(bBlock, (HWND)hWnd.value);
+			GetMeetingShareController().BlockWindowFromScreenshare(bBlock, (HWND)hWnd.value, bChangeWindowStyle);
 	}
 
 	SDKError CMeetingShareControllerDotNetWrap::LockShare()
