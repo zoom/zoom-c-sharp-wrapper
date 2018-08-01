@@ -11,12 +11,14 @@
         <Label x:Name="label_UserName" Content="UserName" HorizontalAlignment="Left" Margin="32,21,-132,0" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="label_UserName_Copy" Content="UserID(start meeting)" HorizontalAlignment="Left" Margin="32,52,-170,0" VerticalAlignment="Top" Width="138"/>
         <Label x:Name="label_UserName_Copy1" Content="UserToken(start meeting)" HorizontalAlignment="Left" Margin="32,89,-191,0" VerticalAlignment="Top" Width="159"/>
-        <Label x:Name="label_UserName_Copy2" Content="MeetingNumber" HorizontalAlignment="Left" Margin="32,125,-145,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="label_UserName_Copy2" Content="MeetingNumber" HorizontalAlignment="Left" Margin="32,159,-145,0" VerticalAlignment="Top" Width="113"/>
         <TextBox x:Name="textBox_username_api" HorizontalAlignment="Left" Height="26" Margin="191,21,-364,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173"/>
         <TextBox x:Name="textBox_userid_api" HorizontalAlignment="Left" Height="26" Margin="191,54,-507,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"/>
         <TextBox x:Name="textBox_usertoken_api" HorizontalAlignment="Left" Height="26" Margin="191,89,-507,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"/>
-        <TextBox x:Name="textBox_meetingnumber_api" HorizontalAlignment="Left" Height="26" Margin="191,125,-364,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173"/>
+        <TextBox x:Name="textBox_meetingnumber_api" HorizontalAlignment="Left" Height="26" Margin="191,159,-364,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173"/>
         <Button x:Name="button_start_api" Content="Start" HorizontalAlignment="Left" Height="44" Margin="57,203,-199,0" VerticalAlignment="Top" Width="142" Click="button_start_api_Click"/>
         <Button x:Name="button_join_api" Content="Join" HorizontalAlignment="Left" Height="44" Margin="317,203,-459,0" VerticalAlignment="Top" Width="142" Click="button_join_api_Click"/>
+        <Label x:Name="label_AccessToken" Content="AccessToken" HorizontalAlignment="Left" Margin="32,126,-145,0" VerticalAlignment="Top" Width="113"/>
+        <TextBox x:Name="textBox_AccessToken" HorizontalAlignment="Left" Height="26" Margin="191,126,-507,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"/>
     </Grid>
 </Window>

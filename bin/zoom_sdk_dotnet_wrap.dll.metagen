@@ -97,6 +97,13 @@ Class ZOOM_SDK_DOTNET_WRAP.onLogout: AutoLayout, AnsiClass, Class, Public, Seale
     Invoke(): PrivateScope, Public, Final, Virtual, VtableLayoutMask
     BeginInvoke(AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
     EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class ZOOM_SDK_DOTNET_WRAP.onZoomIdentityExpired: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
 Interface ZOOM_SDK_DOTNET_WRAP.IAuthServiceDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
     SDKAuth(AuthParam): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -431,6 +438,7 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingConfigurationDotNetWrap: AutoLayout, Ansi
     EnableAutoHideJoinAudioDialog(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableHideFullPhoneNumber4PureCallinUser(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableLengthLimitationOfMeetingNumber(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    EnableShareIOSDevice(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Struct ZOOM_SDK_DOTNET_WRAP.RequiredInfoType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
@@ -482,6 +490,13 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingParticipantsControllerDotNetWrap: AutoLay
     GetUserByUserID(UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     LowerAllHands(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     ChangeUserName(UInt32 IsConst, String, Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    LowerHand(UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    RaiseHand(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    MakeHost(UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ExpelUser(UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ReclaimHost(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    CanReclaimHost(ValueType&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ReclaimHostByHostKey(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onUserJoin(onUserJoin): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onUserLeft(onUserLeft): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onHostChangeNotification(onHostChangeNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -820,6 +835,21 @@ Struct ZOOM_SDK_DOTNET_WRAP.JoinParam4APIUser: AutoLayout, AnsiClass, Class, Pub
   :System.ValueType
   Fields:
     UInt64 meetingNumber : Public
+    System.String vanityID : Public
+    System.String userName : Public
+    System.String psw : Public
+    ZOOM_SDK_DOTNET_WRAP.HWNDDotNet hDirectShareAppWnd : Public
+    System.String toke4enfrocelogin : Public
+    System.String participantId : Public
+    System.String webinarToken : Public
+    Boolean isDirectShareDesktop : Public
+    Boolean isVideoOff : Public
+    Boolean isAudioOff : Public
+Struct ZOOM_SDK_DOTNET_WRAP.JoinParam4WithoutLogin: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    UInt64 meetingNumber : Public
+    System.String vanityID : Public
     System.String userName : Public
     System.String psw : Public
     ZOOM_SDK_DOTNET_WRAP.HWNDDotNet hDirectShareAppWnd : Public
@@ -833,6 +863,7 @@ Struct ZOOM_SDK_DOTNET_WRAP.JoinParam4NormalUser: AutoLayout, AnsiClass, Class, 
   :System.ValueType
   Fields:
     UInt64 meetingNumber : Public
+    System.String vanityID : Public
     System.String userName : Public
     System.String psw : Public
     ZOOM_SDK_DOTNET_WRAP.HWNDDotNet hDirectShareAppWnd : Public
@@ -847,6 +878,7 @@ Struct ZOOM_SDK_DOTNET_WRAP.JoinParam: AutoLayout, AnsiClass, Class, Public, Seq
     ZOOM_SDK_DOTNET_WRAP.SDKUserType userType : Public
     System.ValueType apiuserJoin JoinParam4APIUser IsBoxed : Public
     System.ValueType normaluserJoin JoinParam4NormalUser IsBoxed : Public
+    System.ValueType withoutloginJoin JoinParam4WithoutLogin IsBoxed : Public
 Struct ZOOM_SDK_DOTNET_WRAP.StartParam4APIUser: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
   Fields:
@@ -854,6 +886,7 @@ Struct ZOOM_SDK_DOTNET_WRAP.StartParam4APIUser: AutoLayout, AnsiClass, Class, Pu
     System.String userToken : Public
     System.String userName : Public
     UInt64 meetingNumber : Public
+    System.String vanityID : Public
     ZOOM_SDK_DOTNET_WRAP.HWNDDotNet hDirectShareAppWnd : Public
     System.String participantId : Public
     Boolean isDirectShareDesktop : Public
@@ -861,10 +894,24 @@ Struct ZOOM_SDK_DOTNET_WRAP.StartParam4NormalUser: AutoLayout, AnsiClass, Class,
   :System.ValueType
   Fields:
     UInt64 meetingNumber : Public
+    System.String vanityID : Public
     ZOOM_SDK_DOTNET_WRAP.HWNDDotNet hDirectShareAppWnd : Public
     System.String participantId : Public
     Boolean isVideoOff : Public
     Boolean isAudioOff : Public
+    Boolean isDirectShareDesktop : Public
+Struct ZOOM_SDK_DOTNET_WRAP.StartParam4WithoutLogin: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    System.String userID : Public
+    System.String userToken : Public
+    System.String userZAK : Public
+    System.String userName : Public
+    ZOOM_SDK_DOTNET_WRAP.ZoomUserType zoomuserType : Public
+    UInt64 meetingNumber : Public
+    System.String vanityID : Public
+    ZOOM_SDK_DOTNET_WRAP.HWNDDotNet hDirectShareAppWnd : Public
+    System.String participantId : Public
     Boolean isDirectShareDesktop : Public
 Struct ZOOM_SDK_DOTNET_WRAP.StartParam: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
@@ -872,6 +919,7 @@ Struct ZOOM_SDK_DOTNET_WRAP.StartParam: AutoLayout, AnsiClass, Class, Public, Se
     ZOOM_SDK_DOTNET_WRAP.SDKUserType userType : Public
     System.ValueType apiuserStart StartParam4APIUser IsBoxed : Public
     System.ValueType normaluserStart StartParam4NormalUser IsBoxed : Public
+    System.ValueType withoutloginStart StartParam4WithoutLogin IsBoxed : Public
 Interface ZOOM_SDK_DOTNET_WRAP.IMeetingInfo: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
     GetMeetingNumber(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1066,6 +1114,17 @@ Struct ZOOM_SDK_DOTNET_WRAP.SDKUserType: AutoLayout, AnsiClass, Class, Public, S
     Int32 value__ : Public, SpecialName, RTSpecialName
     ZOOM_SDK_DOTNET_WRAP.SDKUserType SDK_UT_APIUSER = 99 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.SDKUserType SDK_UT_NORMALUSER = 100 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKUserType SDK_UT_WITHOUT_LOGIN = 101 : Public, Static, Literal, HasDefault
+Struct ZOOM_SDK_DOTNET_WRAP.ZoomUserType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    ZOOM_SDK_DOTNET_WRAP.ZoomUserType ZoomUserType_APIUSER = 0 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.ZoomUserType ZoomUserType_EMAIL_LOGIN = 1 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.ZoomUserType ZoomUserType_FACEBOOK = 2 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.ZoomUserType ZoomUserType_GoogleOAuth = 3 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.ZoomUserType ZoomUserType_SSO = 4 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.ZoomUserType ZoomUserType_Unknown = 5 : Public, Static, Literal, HasDefault
 Struct ZOOM_SDK_DOTNET_WRAP.ConnectionQuality: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum
   Fields:

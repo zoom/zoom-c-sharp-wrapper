@@ -17,6 +17,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		IUserInfoDotNetWrap^ GetUserByUserID(unsigned int userid);
 		SDKError LowerAllHands();
 		SDKError ChangeUserName(const unsigned int userid, String^ userName, bool bSaveUserName);
+		SDKError LowerHand(unsigned int userid);
+		SDKError RaiseHand();
+		SDKError MakeHost(unsigned int userid);
+		SDKError ExpelUser(unsigned int userid);
+		SDKError ReclaimHost();
+		SDKError CanReclaimHost(bool^% bCanReclaimHost);
+		SDKError ReclaimHostByHostKey(String^ host_key);
+
 		void Add_CB_onUserJoin(onUserJoin^ cb);
 		void Add_CB_onUserLeft(onUserLeft^ cb);
 		void Add_CB_onHostChangeNotification(onHostChangeNotification^ cb);
@@ -42,6 +50,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual IUserInfoDotNetWrap^ GetUserByUserID(unsigned int userid);
 		virtual SDKError LowerAllHands();
 		virtual SDKError ChangeUserName(const unsigned int userid, String^ userName, bool bSaveUserName);
+		virtual SDKError LowerHand(unsigned int userid);
+		virtual SDKError RaiseHand();
+		virtual SDKError MakeHost(unsigned int userid);
+		virtual SDKError ExpelUser(unsigned int userid);
+		virtual SDKError ReclaimHost();
+		virtual SDKError CanReclaimHost(bool^% bCanReclaimHost);
+		virtual SDKError ReclaimHostByHostKey(String^ host_key);
 
 		virtual void Add_CB_onUserJoin(onUserJoin^ cb) 
 		{

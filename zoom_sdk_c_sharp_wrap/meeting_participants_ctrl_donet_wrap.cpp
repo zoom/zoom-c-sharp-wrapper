@@ -130,4 +130,50 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
 			GetMeetingParticipantsController().ChangeUserName(userid, PlatformString2WChar(userName), bSaveUserName);
 	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::LowerHand(unsigned int userid)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().LowerHand(userid);
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::RaiseHand()
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().RaiseHand();
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::MakeHost(unsigned int userid)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().MakeHost(userid);
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::ExpelUser(unsigned int userid)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().ExpelUser(userid);
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::ReclaimHost()
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().ReclaimHost();
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::CanReclaimHost(bool^% bCanReclaimHost)
+	{
+		bool c_bCanReclaimHost = false;
+		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().CanReclaimHost(c_bCanReclaimHost);
+		if (bCanReclaimHost)
+			*bCanReclaimHost = c_bCanReclaimHost;
+		return err;
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::ReclaimHostByHostKey(String^ host_key)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().ReclaimHostByHostKey(PlatformString2WChar(host_key));
+	}
 }

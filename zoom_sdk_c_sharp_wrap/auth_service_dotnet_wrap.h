@@ -68,6 +68,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	public delegate void onAuthenticationReturn(AuthResult ret);
 	public delegate void onLoginRet(LOGINSTATUS ret, IAccountInfo^ pAccountInfo);
 	public delegate void onLogout();
+	public delegate void onZoomIdentityExpired();
 
 	public interface class IAuthServiceDotNetWrap
 	{
@@ -112,10 +113,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		{
 			event_onLogout += cb;
 		}
+
+		virtual void Add_CB_onZoomIdentityExpired(onZoomIdentityExpired^ cb)
+		{
+			event_onZoomIdentityExpired += cb;
+		}
 		//
 		void ProcAuthenticationReturn(AuthResult ret);
 		void ProcLoginRet(LOGINSTATUS ret, IAccountInfo^ pAccountInfo);
 		void ProcLogout();
+		void ProcZoomIdentityExpired();
 
 		void BindEvent();
 	private:
@@ -124,6 +131,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		event onAuthenticationReturn^ event_onAuthenticationReturn;
 		event onLoginRet^ event_onLoginRet;
 		event onLogout^ event_onLogout;
+		event onZoomIdentityExpired^ event_onZoomIdentityExpired;
 		static CAuthServiceDotNetWrap^ m_Instance = gcnew CAuthServiceDotNetWrap;
 	};
 }

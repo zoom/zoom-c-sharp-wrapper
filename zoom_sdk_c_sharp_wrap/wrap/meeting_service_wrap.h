@@ -70,6 +70,8 @@ CallBack_FUNC_3(onMeetingSecureKeyNotification, const char*, key, int, len, IMee
 /// \param type The type of meeting statistics warning.
 //virtual void onMeetingStatisticsWarningNotification(StatisticsWarningType type) = 0;
 CallBack_FUNC_1(onMeetingStatisticsWarningNotification, StatisticsWarningType, type)
+//virtual void onMeetingParameterNotification(const MeetingParameter* meeting_param) = 0;
+CallBack_FUNC_1(onMeetingParameterNotification, const MeetingParameter*, meeting_param)
 
 END_CLASS_DEFINE(IMeetingService)
 END_ZOOM_SDK_NAMESPACE

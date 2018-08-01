@@ -18,10 +18,20 @@ DEFINE_FUNC_3(PinVideo, SDKError, bool, bPin, bool, bFirstView, unsigned int, us
 DEFINE_FUNC_2(SpotlightVideo, SDKError, bool, bSpotlight, unsigned int, userid)
 //virtual SDKError HideOrShowNoVideoUserOnVideoWall(bool bHide) = 0;
 DEFINE_FUNC_1(HideOrShowNoVideoUserOnVideoWall, SDKError, bool, bHide)
+//virtual SDKError CanAskAttendeeToStartVideo(unsigned int userid) = 0;
+DEFINE_FUNC_1(CanAskAttendeeToStartVideo, SDKError, unsigned int, userid)
+//virtual SDKError AskAttendeeToStartVideo(unsigned int userid) = 0;
+DEFINE_FUNC_1(AskAttendeeToStartVideo, SDKError, unsigned int, userid)
+//virtual SDKError CanStopAttendeeVideo(unsigned int userid) = 0;
+DEFINE_FUNC_1(CanStopAttendeeVideo, SDKError, unsigned int, userid)
+//virtual SDKError StopAttendeeVideo(unsigned int userid) = 0;
+DEFINE_FUNC_1(StopAttendeeVideo, SDKError, unsigned int, userid)
 
 //virtual void onUserVideoStatusChange(unsigned int userId, VideoStatus status) = 0;
 CallBack_FUNC_2(onUserVideoStatusChange, unsigned int, userId, VideoStatus, status)
 //virtual void onSpotlightVideoChangeNotification(bool bSpotlight, unsigned int userid) = 0;
 CallBack_FUNC_2(onSpotlightVideoChangeNotification, bool, bSpotlight, unsigned int, userid)
+//	virtual void onHostRequestStartVideo(IRequestStartVideoHandler* handler_) = 0;
+CallBack_FUNC_1(onHostRequestStartVideo, IRequestStartVideoHandler*, handler_)
 END_CLASS_DEFINE(IMeetingVideoController)
 END_ZOOM_SDK_NAMESPACE

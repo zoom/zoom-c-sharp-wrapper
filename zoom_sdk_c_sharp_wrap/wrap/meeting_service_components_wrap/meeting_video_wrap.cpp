@@ -34,4 +34,12 @@ IMPL_FUNC_3(IMeetingVideoController, PinVideo, SDKError, bool, bPin, bool, bFirs
 IMPL_FUNC_2(IMeetingVideoController, SpotlightVideo, SDKError, bool, bSpotlight, unsigned int, userid, SDKERR_UNINITIALIZE)
 //virtual SDKError HideOrShowNoVideoUserOnVideoWall(bool bHide) = 0;
 IMPL_FUNC_1(IMeetingVideoController, HideOrShowNoVideoUserOnVideoWall, SDKError, bool, bHide, SDKERR_UNINITIALIZE)
+//virtual SDKError CanAskAttendeeToStartVideo(unsigned int userid) = 0;
+IMPL_FUNC_1(IMeetingVideoController, CanAskAttendeeToStartVideo, SDKError, unsigned int, userid, SDKERR_UNINITIALIZE)
+//virtual SDKError AskAttendeeToStartVideo(unsigned int userid) = 0;
+IMPL_FUNC_1(IMeetingVideoController, AskAttendeeToStartVideo, SDKError, unsigned int, userid, SDKERR_UNINITIALIZE)
+//virtual SDKError CanStopAttendeeVideo(unsigned int userid) = 0;
+IMPL_FUNC_1(IMeetingVideoController, CanStopAttendeeVideo, SDKError, unsigned int, userid, SDKERR_UNINITIALIZE)
+//virtual SDKError StopAttendeeVideo(unsigned int userid) = 0;
+IMPL_FUNC_1(IMeetingVideoController, StopAttendeeVideo, SDKError, unsigned int, userid, SDKERR_UNINITIALIZE)
 END_ZOOM_SDK_NAMESPACE

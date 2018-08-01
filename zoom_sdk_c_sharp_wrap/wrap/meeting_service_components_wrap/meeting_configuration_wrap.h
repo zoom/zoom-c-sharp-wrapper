@@ -76,11 +76,38 @@ DEFINE_FUNC_1(EnableAutoHideJoinAudioDialog, void, bool, bEnable)
 DEFINE_FUNC_1(EnableHideFullPhoneNumber4PureCallinUser, void, bool, bEnable)
 //virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableLengthLimitationOfMeetingNumber, void, bool, bEnable)
+//virtual void EnableShareIOSDevice(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableShareIOSDevice, void, bool, bEnable)
+
+//virtual void EnableShareWhiteBoard(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableShareWhiteBoard, void, bool, bEnable)
+//virtual void AlwaysShowIconOnTaskBar(bool bAlwaysShow) = 0;
+DEFINE_FUNC_1(AlwaysShowIconOnTaskBar, void, bool, bAlwaysShow)
+//virtual void RedirectFreeMeetingEndingReminderDlg(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectFreeMeetingEndingReminderDlg, void, bool, bRedirect)
+//virtual void SetShowAudioUseComputerSoundChkbox(bool bShow) = 0;
+DEFINE_FUNC_1(SetShowAudioUseComputerSoundChkbox, void, bool, bShow)
+//virtual void SetShowVideoOptimizeChkbox(bool bShow) = 0;
+DEFINE_FUNC_1(SetShowVideoOptimizeChkbox, void, bool, bShow)
+//virtual void SetShowCallInTab(bool bShow) = 0;
+DEFINE_FUNC_1(SetShowCallInTab, void, bool, bShow)
+//virtual void SetShowCallMeTab(bool bShow) = 0;
+DEFINE_FUNC_1(SetShowCallMeTab, void, bool, bShow)
+//virtual void ForceDisableMultiShare(bool bDisable) = 0;
+DEFINE_FUNC_1(ForceDisableMultiShare, void, bool, bDisable)
+//virtual void SetAlwaysShowMeetingIDOnTitle(bool bAlwaysShow) = 0;
+DEFINE_FUNC_1(SetAlwaysShowMeetingIDOnTitle, void, bool, bAlwaysShow)
 
 //virtual void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler* pHandler) = 0;
 CallBack_FUNC_1(onInputMeetingPasswordAndScreenNameNotification, IMeetingPasswordAndScreenNameHandler*, pHandler)
 //virtual void onAirPlayInstructionWndNotification(bool bShow, const wchar_t* airhostName) = 0;
 CallBack_FUNC_2(onAirPlayInstructionWndNotification, bool, bShow, const wchar_t*, airhostName)
+//virtual void onWebinarNeedRegisterNotification(IWebinarNeedRegisterHandler* handler_) = 0;
+CallBack_FUNC_1(onWebinarNeedRegisterNotification, IWebinarNeedRegisterHandler*, handler_)
+//virtual void onEndOtherMeetingToJoinMeetingNotification(IEndOtherMeetingToJoinMeetingHandler* handler_) = 0;
+CallBack_FUNC_1(onEndOtherMeetingToJoinMeetingNotification, IEndOtherMeetingToJoinMeetingHandler*, handler_)
+//virtual void onFreeMeetingEndingReminderNotification(IFreeMeetingEndingReminderHandler* handler_) = 0;
+CallBack_FUNC_1(onFreeMeetingEndingReminderNotification, IFreeMeetingEndingReminderHandler*, handler_)
 END_CLASS_DEFINE(IMeetingConfiguration)
 
 END_ZOOM_SDK_NAMESPACE

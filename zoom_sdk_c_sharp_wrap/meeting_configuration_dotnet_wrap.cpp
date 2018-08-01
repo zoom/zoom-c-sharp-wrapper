@@ -269,6 +269,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingConfiguration().EnableLengthLimitationOfMeetingNumber(bEnable);
 	}
 
+	void CMeetingConfigurationDotNetWrap::EnableShareIOSDevice(bool bEnable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().EnableShareIOSDevice(bEnable);
+	}
+
 	void CMeetingConfigurationDotNetWrap::BindEvent()
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().m_cbonInputMeetingPasswordAndScreenNameNotification =

@@ -37,6 +37,8 @@ CallBack_FUNC_1(onAuthenticationReturn, AuthResult,ret)
 CallBack_FUNC_2(onLoginRet, LOGINSTATUS, ret, IAccountInfo*,pAccountInfo)
 //virtual void onLogout() = 0;
 CallBack_FUNC_0(onLogout)
+//virtual void onZoomIdentityExpired() = 0;
+CallBack_FUNC_0(onZoomIdentityExpired)
 
 END_CLASS_DEFINE(IAuthService)
 END_ZOOM_SDK_NAMESPACE

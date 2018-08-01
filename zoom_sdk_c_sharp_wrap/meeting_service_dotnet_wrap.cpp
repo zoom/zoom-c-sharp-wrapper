@@ -279,6 +279,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				return SDKError::SDKERR_INVALID_PARAMETER;
 
 			joinParam_c.param.apiuserJoin.meetingNumber = joinParam.apiuserJoin->meetingNumber;
+			joinParam_c.param.apiuserJoin.vanityID = PlatformString2WChar(joinParam.apiuserJoin->vanityID);
 			joinParam_c.param.apiuserJoin.userName = PlatformString2WChar(joinParam.apiuserJoin->userName);
 			joinParam_c.param.apiuserJoin.psw = PlatformString2WChar(joinParam.apiuserJoin->psw);
 			joinParam_c.param.apiuserJoin.hDirectShareAppWnd = (HWND)joinParam.apiuserJoin->hDirectShareAppWnd.value;
@@ -296,6 +297,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				return SDKError::SDKERR_INVALID_PARAMETER;
 
 			joinParam_c.param.normaluserJoin.meetingNumber = joinParam.normaluserJoin->meetingNumber;
+			joinParam_c.param.normaluserJoin.vanityID = PlatformString2WChar(joinParam.normaluserJoin->vanityID);
 			joinParam_c.param.normaluserJoin.userName = PlatformString2WChar(joinParam.normaluserJoin->userName);
 			joinParam_c.param.normaluserJoin.psw = PlatformString2WChar(joinParam.normaluserJoin->psw);
 			joinParam_c.param.normaluserJoin.hDirectShareAppWnd = (HWND)joinParam.normaluserJoin->hDirectShareAppWnd.value;
@@ -304,6 +306,23 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			joinParam_c.param.normaluserJoin.isVideoOff = joinParam.normaluserJoin->isVideoOff;
 			joinParam_c.param.normaluserJoin.isAudioOff = joinParam.normaluserJoin->isAudioOff;
 			joinParam_c.param.normaluserJoin.isDirectShareDesktop = joinParam.normaluserJoin->isDirectShareDesktop;
+		}
+		break;
+		case SDKUserType::SDK_UT_WITHOUT_LOGIN:
+		{
+			if (nullptr == joinParam.withoutloginJoin)
+				return SDKError::SDKERR_INVALID_PARAMETER;
+			joinParam_c.param.withoutloginuserJoin.meetingNumber = joinParam.withoutloginJoin->meetingNumber;
+			joinParam_c.param.withoutloginuserJoin.vanityID = PlatformString2WChar(joinParam.withoutloginJoin->vanityID);
+			joinParam_c.param.withoutloginuserJoin.userName = PlatformString2WChar(joinParam.withoutloginJoin->userName);
+			joinParam_c.param.withoutloginuserJoin.psw = PlatformString2WChar(joinParam.withoutloginJoin->psw);
+			joinParam_c.param.withoutloginuserJoin.hDirectShareAppWnd = (HWND)joinParam.withoutloginJoin->hDirectShareAppWnd.value;
+			joinParam_c.param.withoutloginuserJoin.toke4enfrocelogin = PlatformString2WChar(joinParam.withoutloginJoin->toke4enfrocelogin);
+			joinParam_c.param.withoutloginuserJoin.participantId = PlatformString2WChar(joinParam.withoutloginJoin->participantId);
+			joinParam_c.param.withoutloginuserJoin.webinarToken = PlatformString2WChar(joinParam.withoutloginJoin->webinarToken);
+			joinParam_c.param.withoutloginuserJoin.isDirectShareDesktop = joinParam.withoutloginJoin->isDirectShareDesktop;
+			joinParam_c.param.withoutloginuserJoin.isVideoOff = joinParam.withoutloginJoin->isVideoOff;
+			joinParam_c.param.withoutloginuserJoin.isAudioOff = joinParam.withoutloginJoin->isAudioOff;
 		}
 		break;
 		default:
@@ -328,6 +347,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			startParam_c.param.apiuserStart.userToken = PlatformString2WChar(startParam.apiuserStart->userToken);
 			startParam_c.param.apiuserStart.userName = PlatformString2WChar(startParam.apiuserStart->userName);
 			startParam_c.param.apiuserStart.meetingNumber = startParam.apiuserStart->meetingNumber;
+			startParam_c.param.apiuserStart.vanityID = PlatformString2WChar(startParam.apiuserStart->vanityID);
 			startParam_c.param.apiuserStart.hDirectShareAppWnd = (HWND)startParam.apiuserStart->hDirectShareAppWnd.value;
 			startParam_c.param.apiuserStart.participantId = PlatformString2WChar(startParam.apiuserStart->participantId);
 			startParam_c.param.apiuserStart.isDirectShareDesktop = startParam.apiuserStart->isDirectShareDesktop;
@@ -339,11 +359,29 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				return SDKError::SDKERR_INVALID_PARAMETER;
 
 			startParam_c.param.normaluserStart.meetingNumber = startParam.normaluserStart->meetingNumber;
+			startParam_c.param.normaluserStart.vanityID = PlatformString2WChar(startParam.normaluserStart->vanityID);
 			startParam_c.param.normaluserStart.hDirectShareAppWnd = (HWND)startParam.normaluserStart->hDirectShareAppWnd.value;
 			startParam_c.param.normaluserStart.participantId = PlatformString2WChar(startParam.normaluserStart->participantId);
 			startParam_c.param.normaluserStart.isVideoOff = startParam.normaluserStart->isVideoOff;
 			startParam_c.param.normaluserStart.isAudioOff = startParam.normaluserStart->isAudioOff;
 			startParam_c.param.normaluserStart.isDirectShareDesktop = startParam.normaluserStart->isDirectShareDesktop;
+		}
+		break;
+		case SDKUserType::SDK_UT_WITHOUT_LOGIN:
+		{
+			if (nullptr == startParam.withoutloginStart)
+				return SDKError::SDKERR_INVALID_PARAMETER;
+
+			startParam_c.param.withoutloginStart.userID = PlatformString2WChar(startParam.withoutloginStart->userID);
+			startParam_c.param.withoutloginStart.userToken = PlatformString2WChar(startParam.withoutloginStart->userToken);
+			startParam_c.param.withoutloginStart.userZAK = PlatformString2WChar(startParam.withoutloginStart->userZAK);
+			startParam_c.param.withoutloginStart.zoomuserType = (ZOOM_SDK_NAMESPACE::ZoomUserType)startParam.withoutloginStart->zoomuserType;
+			startParam_c.param.withoutloginStart.userName = PlatformString2WChar(startParam.withoutloginStart->userName);
+			startParam_c.param.withoutloginStart.meetingNumber = startParam.withoutloginStart->meetingNumber;
+			startParam_c.param.withoutloginStart.vanityID = PlatformString2WChar(startParam.withoutloginStart->vanityID);
+			startParam_c.param.withoutloginStart.hDirectShareAppWnd = (HWND)startParam.withoutloginStart->hDirectShareAppWnd.value;
+			startParam_c.param.withoutloginStart.participantId = PlatformString2WChar(startParam.withoutloginStart->participantId);
+			startParam_c.param.withoutloginStart.isDirectShareDesktop = startParam.withoutloginStart->isDirectShareDesktop;
 		}
 		break;
 		default:

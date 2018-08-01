@@ -63,7 +63,28 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration,DisableSplitScreenModeUIElements, void, 
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableAutoHideJoinAudioDialog, void, bool, bEnable)
 //virtual void EnableHideFullPhoneNumber4PureCallinUser(bool bHide) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableHideFullPhoneNumber4PureCallinUser, void, bool, bEnable)
+
 //virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableLengthLimitationOfMeetingNumber, void, bool, bEnable)
+//virtual void EnableShareIOSDevice(bool bEnable) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableShareIOSDevice, void, bool, bEnable)
 
+//virtual void EnableShareWhiteBoard(bool bEnable) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableShareWhiteBoard, void, bool, bEnable)
+//virtual void AlwaysShowIconOnTaskBar(bool bAlwaysShow) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, AlwaysShowIconOnTaskBar, void, bool, bAlwaysShow)
+//virtual void RedirectFreeMeetingEndingReminderDlg(bool bRedirect) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, RedirectFreeMeetingEndingReminderDlg, void, bool, bRedirect)
+//virtual void SetShowAudioUseComputerSoundChkbox(bool bShow) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, SetShowAudioUseComputerSoundChkbox, void, bool, bShow)
+//virtual void SetShowVideoOptimizeChkbox(bool bShow) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, SetShowVideoOptimizeChkbox, void, bool, bShow)
+//virtual void SetShowCallInTab(bool bShow) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, SetShowCallInTab, void, bool, bShow)
+//virtual void SetShowCallMeTab(bool bShow) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, SetShowCallMeTab, void, bool, bShow)
+//virtual void ForceDisableMultiShare(bool bDisable) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, ForceDisableMultiShare, void, bool, bDisable)
+//virtual void SetAlwaysShowMeetingIDOnTitle(bool bAlwaysShow) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, SetAlwaysShowMeetingIDOnTitle, void, bool, bAlwaysShow)
 END_ZOOM_SDK_NAMESPACE

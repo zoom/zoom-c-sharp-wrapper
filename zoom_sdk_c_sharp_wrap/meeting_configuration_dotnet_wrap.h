@@ -68,6 +68,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void EnableAutoHideJoinAudioDialog(bool bEnable);
 		void EnableHideFullPhoneNumber4PureCallinUser(bool bHide);
 		void EnableLengthLimitationOfMeetingNumber(bool bEnable);
+		void EnableShareIOSDevice(bool bEnable);
 
 		void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb);
 		void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
@@ -116,6 +117,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual void EnableAutoHideJoinAudioDialog(bool bEnable);
 		virtual void EnableHideFullPhoneNumber4PureCallinUser(bool bHide);
 		virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable);
+		virtual void EnableShareIOSDevice(bool bEnable);
 
 		virtual void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb)
 		{

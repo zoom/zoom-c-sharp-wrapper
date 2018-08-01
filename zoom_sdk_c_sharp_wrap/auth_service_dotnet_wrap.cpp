@@ -110,6 +110,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			//post msg
 			CAuthServiceDotNetWrap::Instance->ProcLogout();
 		}
+
+		void onZoomIdentityExpired()
+		{
+			CAuthServiceDotNetWrap::Instance->ProcZoomIdentityExpired();
+		}
 	private:
 		AuthEventHanlder() {}
 	};
@@ -202,6 +207,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		event_onLogout();
 	}
 
+	void CAuthServiceDotNetWrap::ProcZoomIdentityExpired()
+	{
+		event_onZoomIdentityExpired();
+	}
+
 	void CAuthServiceDotNetWrap::BindEvent()
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().m_cbonAuthenticationReturn =
@@ -210,5 +220,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			std::bind(&AuthEventHanlder::onLoginRet, &AuthEventHanlder::GetInst(), std::placeholders::_1, std::placeholders::_2);
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().m_cbonLogout =
 			std::bind(&AuthEventHanlder::onLogout, &AuthEventHanlder::GetInst());
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().m_cbonZoomIdentityExpired =
+			std::bind(&AuthEventHanlder::onZoomIdentityExpired, &AuthEventHanlder::GetInst());
 	}
 }
