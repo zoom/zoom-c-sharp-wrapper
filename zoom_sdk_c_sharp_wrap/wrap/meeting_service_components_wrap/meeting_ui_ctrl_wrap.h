@@ -63,6 +63,7 @@ CallBack_FUNC_0(onStartShareBtnClicked)
 CallBack_FUNC_0(onEndMeetingBtnClicked)
 //virtual void onParticipantListBtnClicked() = 0;
 CallBack_FUNC_0(onParticipantListBtnClicked)
-
+//virtual void onCustomLiveStreamMenuClicked() = 0;
+CallBack_FUNC_0(onCustomLiveStreamMenuClicked)
 END_CLASS_DEFINE(IMeetingUIController)
 END_ZOOM_SDK_NAMESPACE

@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## 2017-07-26
+## 2018-08-20
+
+No interface changes
+
+## 2018-07-26
 
 The start meeting logic for API users has changed. Please read below before upgrading to this version.
 

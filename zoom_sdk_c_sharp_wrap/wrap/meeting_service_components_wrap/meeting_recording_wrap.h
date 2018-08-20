@@ -38,5 +38,7 @@ CallBack_FUNC_1(onRecordingStatus, RecordingStatus, status)
 CallBack_FUNC_1(onCloudRecordingStatus, RecordingStatus, status)
 //virtual void onRecordPriviligeChanged(bool bCanRec) = 0;
 CallBack_FUNC_1(onRecordPriviligeChanged, bool, bCanRec)
+//virtual void onCustomizedLocalRecordingSourceNotification(ICustomizedLocalRecordingLayoutHelper* layout_helper) = 0;
+CallBack_FUNC_1(onCustomizedLocalRecordingSourceNotification, ICustomizedLocalRecordingLayoutHelper*, layout_helper)
 END_CLASS_DEFINE(IMeetingRecordingController)
 END_ZOOM_SDK_NAMESPACE
