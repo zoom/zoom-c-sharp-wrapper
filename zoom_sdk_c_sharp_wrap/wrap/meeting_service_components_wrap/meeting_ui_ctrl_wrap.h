@@ -56,7 +56,7 @@ DEFINE_FUNC_1(GetCurrentSplitScreenModeInfo, SDKError, SplitScreenInfo&, info)
 DEFINE_FUNC_1(SwitchSplitScreenMode, SDKError, bool, bSplit)
 
 //virtual void onInviteBtnClicked() = 0;
-CallBack_FUNC_0(onInviteBtnClicked)
+CallBack_FUNC_1(onInviteBtnClicked, bool&, bHandled)
 //virtual void onStartShareBtnClicked() = 0;
 CallBack_FUNC_0(onStartShareBtnClicked)
 //virtual void onEndMeetingBtnClicked() = 0;
@@ -65,5 +65,7 @@ CallBack_FUNC_0(onEndMeetingBtnClicked)
 CallBack_FUNC_0(onParticipantListBtnClicked)
 //virtual void onCustomLiveStreamMenuClicked() = 0;
 CallBack_FUNC_0(onCustomLiveStreamMenuClicked)
+//virtual void onZoomInviteDialogFailed() = 0;
+CallBack_FUNC_0(onZoomInviteDialogFailed)
 END_CLASS_DEFINE(IMeetingUIController)
 END_ZOOM_SDK_NAMESPACE

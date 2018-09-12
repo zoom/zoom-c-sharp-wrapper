@@ -13,7 +13,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			static MeetingUIControllerEventHanlder inst;
 			return inst;
 		}
-		void onInviteBtnClicked()
+		void onInviteBtnClicked(bool& handled)
 		{
 			if (CMeetingUIControllerDotNetWrap::Instance)
 				CMeetingUIControllerDotNetWrap::Instance->ProcInviteBtnClicked();
@@ -45,7 +45,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		//todo
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetUIController().m_cbonInviteBtnClicked =
 			std::bind(&MeetingUIControllerEventHanlder::onInviteBtnClicked,
-				&MeetingUIControllerEventHanlder::GetInst());
+				&MeetingUIControllerEventHanlder::GetInst(), std::placeholders::_1);
 
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetUIController().m_cbonStartShareBtnClicked =
 			std::bind(&MeetingUIControllerEventHanlder::onStartShareBtnClicked,
