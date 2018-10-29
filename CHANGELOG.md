@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2018-10-29
+
+No interface changes
+
 ## 2018-09-11
 
 No interface changes

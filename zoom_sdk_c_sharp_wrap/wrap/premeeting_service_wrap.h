@@ -11,19 +11,24 @@ INIT_UNINIT_WITHEVENT(IPreMeetingService)
 DEFINE_FUNC_0(CreateScheduleMeetingItem, IScheduleMeetingItem*)
 //virtual void DestoryScheduleMeetingItem(IScheduleMeetingItem* pMeeting) = 0;
 DEFINE_FUNC_1(DestoryScheduleMeetingItem, void, IScheduleMeetingItem*, pMeeting)
+
+//virtual IScheduleMeetingItem* CreateEditMeetingItem(UINT64 meetingUniqueID) = 0;
+DEFINE_FUNC_1(CreateEditMeetingItem, IScheduleMeetingItem*, UINT64, meetingUniqueID)
+//virtual void DestoryEditMeetingItem(IScheduleMeetingItem* pMeeting) = 0;
+DEFINE_FUNC_1(DestoryEditMeetingItem, void, IScheduleMeetingItem*, pMeeting)
 //virtual SDKError ScheduleMeeting(IScheduleMeetingItem* pItem) = 0;
 DEFINE_FUNC_1(ScheduleMeeting, SDKError, IScheduleMeetingItem*, pItem)
 //virtual SDKError ScheduleMeeting(WndPosition& wndParam) = 0;
 DEFINE_FUNC_1(ScheduleMeeting, SDKError, WndPosition&, wndParam)
-//virtual SDKError EditMeeting(UINT64 meetingUniqueID, IScheduleMeetingItem* pItem) = 0;
-DEFINE_FUNC_2(EditMeeting, SDKError, UINT64, meetingUniqueID, IScheduleMeetingItem*, pItem)
+//virtual SDKError EditMeeting(IScheduleMeetingItem* pItem) = 0;
+DEFINE_FUNC_1(EditMeeting, SDKError, IScheduleMeetingItem*, pItem)
 //virtual SDKError EditMeeting(WndPosition& wndParam, UINT64 meetingUniqueID) = 0;
 DEFINE_FUNC_2(EditMeeting, SDKError, WndPosition&, wndParam, UINT64, meetingUniqueID)
 //virtual SDKError DeleteMeeting(UINT64 meetingUniqueID) = 0;
 DEFINE_FUNC_1(DeleteMeeting, SDKError, UINT64, meetingUniqueID)
 //virtual SDKError ListMeeting() = 0;
 //virtual IMyMeetingItem* GetMeeingItem(UINT64 meetingUniqueID) = 0;
-DEFINE_FUNC_1(GetMeeingItem, IMyMeetingItem*, UINT64, meetingUniqueID)
+DEFINE_FUNC_1(GetMeeingItem, IMeetingItemInfo*, UINT64, meetingUniqueID)
 
 //virtual void onListMeeting(PremeetingAPIResult result, IList<UINT64 >* lstMeetingList) = 0;
 CallBack_FUNC_2(onListMeeting, PremeetingAPIResult, result, IList<UINT64 >*, lstMeetingList)

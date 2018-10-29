@@ -34,6 +34,8 @@ IMPL_FUNC_2(IMeetingH323Helper, SendMeetingParingCode, SDKError, UINT64, meeting
 IMPL_FUNC_0(IMeetingH323Helper, GetCalloutH323DviceList, IList<IH323Device* >*, NULL)
 //virtual SDKError CallOutH323(H323Device& deviceInfo) = 0;
 IMPL_FUNC_1(IMeetingH323Helper, CallOutH323, SDKError, IH323Device*, deviceInfo, SDKERR_UNINITIALIZE)
+//virtual SDKError CanPairingMeeting(UINT64 meetingNum) = 0;
+IMPL_FUNC_1(IMeetingH323Helper, CanPairingMeeting, SDKError, UINT64, meetingNum, SDKERR_UNINITIALIZE)
 //virtual SDKError CancelCallOutH323() = 0;
 IMPL_FUNC_0(IMeetingH323Helper, CancelCallOutH323, SDKError, SDKERR_UNINITIALIZE)
 
