@@ -24,3 +24,7 @@ b>change vs project's solution configuration to "release"
 c>change vs project's solution platform to "x86"
 
 d.build and run.
+
+## Support
+
+For any issues regarding our SDK, please visit our new Community Support Forum at https://devforum.zoom.us/.
