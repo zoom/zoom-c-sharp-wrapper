@@ -1,6 +1,7 @@
 #pragma once
 using namespace System;
 #include "zoom_sdk_dotnet_wrap_def.h"
+#include "video_setting_context_dotnet_wrap.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
 	public enum class SettingTabPage : int
 	{
@@ -63,58 +64,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		static CGeneralSettingContextDotNetWrap^ m_Instance = gcnew CGeneralSettingContextDotNetWrap;
 	};
 
-	public interface class ICameraInfoDotNetWrap
-	{
-	public:
-		String^ GetDeviceId();
-		String^ GetDeviceName();
-		bool IsSelectedDevice();
-	};
-
-	public interface class IVideoSettingContextDotNetWrap
-	{
-	public:
-		array<ICameraInfoDotNetWrap^ >^ GetCameraList();
-		SDKError SelectCamera(String^ deviceId);
-		SDKError EnableVideoMirrorEffect(bool bEnable);
-		bool IsVideoMirrorEffectEnabled();
-		SDKError EnableFaceBeautyEffect(bool bEnable);
-		bool IsFaceBeautyEffectEnabled();
-		SDKError EnableHDVideo(bool bEnable);
-		bool IsHDVideoEnabled();
-		SDKError EnableAlwaysShowNameOnVideo(bool bEnable);
-		bool IsAlwaysShowNameOnVideoEnabled();
-		SDKError EnableAutoTurnOffVideoWhenJoinMeeting(bool bEnable);
-		bool IsAutoTurnOffVideoWhenJoinMeetingEnabled();
-	};
-
-	private ref class CVideoSettingContextDotNetWrap sealed : public IVideoSettingContextDotNetWrap
-	{
-	public:
-		static property CVideoSettingContextDotNetWrap^ Instance
-		{
-			CVideoSettingContextDotNetWrap^ get() { return m_Instance; }
-		}
-
-		virtual array<ICameraInfoDotNetWrap^ >^ GetCameraList();
-		virtual SDKError SelectCamera(String^ deviceId);
-		virtual SDKError EnableVideoMirrorEffect(bool bEnable);
-		virtual bool IsVideoMirrorEffectEnabled();
-		virtual SDKError EnableFaceBeautyEffect(bool bEnable);
-		virtual bool IsFaceBeautyEffectEnabled();
-		virtual SDKError EnableHDVideo(bool bEnable);
-		virtual bool IsHDVideoEnabled();
-		virtual SDKError EnableAlwaysShowNameOnVideo(bool bEnable);
-		virtual bool IsAlwaysShowNameOnVideoEnabled();
-		virtual SDKError EnableAutoTurnOffVideoWhenJoinMeeting(bool bEnable);
-		virtual bool IsAutoTurnOffVideoWhenJoinMeetingEnabled();
-	private:
-		CVideoSettingContextDotNetWrap() {}
-		virtual ~CVideoSettingContextDotNetWrap() {}
-		static CVideoSettingContextDotNetWrap^ m_Instance = gcnew CVideoSettingContextDotNetWrap;
-	};
-
-
 	public interface class IMicInfoDotNetWrap
 	{
 	public:
@@ -146,6 +95,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsStereoAudioEnable();
 		SDKError EnableMicOriginalInput(bool bEnable);
 		bool IsMicOriginalInputEnable();
+		SDKError EnableHoldSpaceKeyToSpeak(bool bEnable);
+		bool IsHoldSpaceKeyToSpeakEnabled();
+		SDKError EnableAlwaysMuteMicWhenJoinVoip(bool bEnable);
+		bool IsAlwaysMuteMicWhenJoinVoipEnabled();
+//		ITestAudioDeviceHelper* GetTestAudioDeviceHelper();
+		SDKError SetMicVol(float& value);
+		SDKError GetMicVol(float& value);
+		SDKError SetSpeakerVol(float& value);
+		SDKError GetSpeakerVol(float& value);
 	};
 
 	private ref class CAudioSettingContextDotNetWrap sealed : public IAudioSettingContextDotNetWrap
@@ -168,6 +126,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsStereoAudioEnable();
 		virtual SDKError EnableMicOriginalInput(bool bEnable);
 		virtual bool IsMicOriginalInputEnable();
+		virtual SDKError EnableHoldSpaceKeyToSpeak(bool bEnable);
+		virtual bool IsHoldSpaceKeyToSpeakEnabled();
+		virtual SDKError EnableAlwaysMuteMicWhenJoinVoip(bool bEnable);
+		virtual bool IsAlwaysMuteMicWhenJoinVoipEnabled();
+//		virtual ITestAudioDeviceHelper* GetTestAudioDeviceHelper();
+		virtual SDKError SetMicVol(float& value);
+		virtual SDKError GetMicVol(float& value);
+		virtual SDKError SetSpeakerVol(float& value);
+		virtual SDKError GetSpeakerVol(float& value);
 
 	private:
 		CAudioSettingContextDotNetWrap() {}
@@ -289,9 +256,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError HideSettingDlg();
 		IGeneralSettingContextDotNetWrap^ GetGeneralSettings();
 		IAudioSettingContextDotNetWrap^ GetAudioSettings();
-		IVideoSettingContextDotNetWrap^ GetVideoSettings();
 		IRecordingSettingContextDotNetWrap^ GetRecordingSettings();
 		IStatisticSettingContextDotNetWrap^ GetStatisticSettings();
+		IVideoSettingContextDotNetWrap^ GetVideoSettings();
 	};
 
 	private ref class CSettingServiceDotNetWrap sealed : public ISettingServiceDotNetWrap
@@ -308,9 +275,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError HideSettingDlg();
 		virtual IGeneralSettingContextDotNetWrap^ GetGeneralSettings();
 		virtual IAudioSettingContextDotNetWrap^ GetAudioSettings();
-		virtual IVideoSettingContextDotNetWrap^ GetVideoSettings();
 		virtual IRecordingSettingContextDotNetWrap^ GetRecordingSettings();
 		virtual IStatisticSettingContextDotNetWrap^ GetStatisticSettings();
+		virtual IVideoSettingContextDotNetWrap^ GetVideoSettings();
+
 	private:
 		CSettingServiceDotNetWrap() {}
 		virtual ~CSettingServiceDotNetWrap() {}

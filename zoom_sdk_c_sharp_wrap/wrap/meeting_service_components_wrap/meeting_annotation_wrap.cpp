@@ -36,5 +36,6 @@ IMPL_FUNC_1(IAnnotationController, Undo, SDKError, SDKViewType, viewtype, SDKERR
 //virtual SDKError Redo(SDKViewType viewtype) = 0;
 IMPL_FUNC_1(IAnnotationController, Redo, SDKError, SDKViewType, viewtype, SDKERR_UNINITIALIZE)
 
+IMPL_FUNC_AND_MEMBER(IAnnotationController, GetCustomizedAnnotationController, ICustomizedAnnotationControllerWrap)
 
 END_ZOOM_SDK_NAMESPACE

@@ -1,5 +1,6 @@
 #pragma once
 #include "common_include.h"
+#include "video_setting_context_wrap.h"
 BEGIN_ZOOM_SDK_NAMESPACE
 ZOOM_SDK_NAMESPACE::ISettingService* InitISettingServiceFunc();
 void UninitISettingServiceFunc(ZOOM_SDK_NAMESPACE::ISettingService* obj);
@@ -16,11 +17,12 @@ DEFINE_FUNC_0(HideSettingDlg, SDKError)
 DEFINE_FUNC_0(GetGeneralSettings, IGeneralSettingContext*)
 //virtual IAudioSettingContext* GetAudioSettings() = 0;
 DEFINE_FUNC_0(GetAudioSettings, IAudioSettingContext*)
-//virtual IVideoSettingContext* GetVideoSettings() = 0;
-DEFINE_FUNC_0(GetVideoSettings, IVideoSettingContext*)
 //virtual IRecordingSettingContext* GetRecordingSettings() = 0;
 DEFINE_FUNC_0(GetRecordingSettings, IRecordingSettingContext*)
 //virtual IStatisticSettingContext* GetStatisticSettings() = 0;
 DEFINE_FUNC_0(GetStatisticSettings, IStatisticSettingContext*)
+
+DEFINE_FUNC_AND_MEMBER(GetVideoSettings, IVideoSettingContextWrap)
+
 END_CLASS_DEFINE(ISettingService)
 END_ZOOM_SDK_NAMESPACE

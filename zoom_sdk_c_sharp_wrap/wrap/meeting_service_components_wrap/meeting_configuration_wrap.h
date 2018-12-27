@@ -97,6 +97,8 @@ DEFINE_FUNC_1(SetShowCallMeTab, void, bool, bShow)
 DEFINE_FUNC_1(ForceDisableMultiShare, void, bool, bDisable)
 //virtual void SetAlwaysShowMeetingIDOnTitle(bool bAlwaysShow) = 0;
 DEFINE_FUNC_1(SetAlwaysShowMeetingIDOnTitle, void, bool, bAlwaysShow)
+//virtual void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectClickCustomLiveStreamMenuEvent, void, bool, bRedirect)
 
 //virtual void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler* pHandler) = 0;
 CallBack_FUNC_1(onInputMeetingPasswordAndScreenNameNotification, IMeetingPasswordAndScreenNameHandler*, pHandler)

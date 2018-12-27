@@ -7,6 +7,7 @@
 #include "network_connection_handler_wrap.h"
 #include "ui_hook_wrap.h"
 #include "embedded_browser_wrap.h"
+#include "customized_ui_components_wrap/customized_ui_mgr_wrap.h"
 
 BEGIN_ZOOM_SDK_NAMESPACE
 class CSDKWrap
@@ -35,5 +36,14 @@ public:
 	void DestroyEmbeddedBrowserWrap(IEmbeddedBrowserWrap* pObj);
 private:
 	CSDKExtWrap();
+};
+
+class CSDKCustomizedUIWrap
+{
+public:
+	static CSDKCustomizedUIWrap& GetInst();
+	ICustomizedUIMgrWrap& GetCustomizedUIMgrWrap();
+private:
+	CSDKCustomizedUIWrap();
 };
 END_ZOOM_SDK_NAMESPACE

@@ -275,6 +275,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingConfiguration().EnableShareIOSDevice(bEnable);
 	}
 
+	void CMeetingConfigurationDotNetWrap::RedirectClickCustomLiveStreamMenuEvent(bool bRedirect)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().RedirectClickCustomLiveStreamMenuEvent(bRedirect);
+	}
+
 	void CMeetingConfigurationDotNetWrap::BindEvent()
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().m_cbonInputMeetingPasswordAndScreenNameNotification =

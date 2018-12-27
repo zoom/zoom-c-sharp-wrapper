@@ -36,10 +36,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				CMeetingParticipantsControllerDotNetWrap::Instance->procHostChangeNotification(userId);
 		}
 
-		void onLowOrRaiseHandStatusChanged(bool bLow, unsigned int userid)
+		void onLowOrRaiseHandStatusChanged(bool bLow, unsigned int userId)
 		{
 			if (CMeetingParticipantsControllerDotNetWrap::Instance)
-				CMeetingParticipantsControllerDotNetWrap::Instance->procLowOrRaiseHandStatusChanged(bLow, userid);
+				CMeetingParticipantsControllerDotNetWrap::Instance->procLowOrRaiseHandStatusChanged(bLow, userId);
 		}
 
 		void onUserNameChanged(unsigned int userId, const wchar_t* userName)
@@ -91,9 +91,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		event_onHostChangeNotification(userId);
 	}
 
-	void CMeetingParticipantsControllerDotNetWrap::procLowOrRaiseHandStatusChanged(bool bLow, unsigned int userid)
+	void CMeetingParticipantsControllerDotNetWrap::procLowOrRaiseHandStatusChanged(bool lower, unsigned int userId)
 	{
-		event_onLowOrRaiseHandStatusChanged(bLow, userid);
+		event_onLowOrRaiseHandStatusChanged(lower, userId);
 	}
 
 	void CMeetingParticipantsControllerDotNetWrap::procUserNameChanged(unsigned int userId, String^ userName)
@@ -113,10 +113,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return nullptr;
 	}
 
-	IUserInfoDotNetWrap^ CMeetingParticipantsControllerDotNetWrap::GetUserByUserID(unsigned int userid)
+	IUserInfoDotNetWrap^ CMeetingParticipantsControllerDotNetWrap::GetUserByUserID(unsigned int userId)
 	{
 		return gcnew IUserInfoDotNetWrapImpl(ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingParticipantsController().GetUserByUserID(userid));
+			GetMeetingParticipantsController().GetUserByUserID(userId));
 	}
 
 	SDKError CMeetingParticipantsControllerDotNetWrap::LowerAllHands()
@@ -125,16 +125,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingParticipantsController().LowerAllHands();
 	}
 
-	SDKError CMeetingParticipantsControllerDotNetWrap::ChangeUserName(const unsigned int userid, String^ userName, bool bSaveUserName)
+	SDKError CMeetingParticipantsControllerDotNetWrap::ChangeUserName(const unsigned int userId, String^ userName, bool saveUserName)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingParticipantsController().ChangeUserName(userid, PlatformString2WChar(userName), bSaveUserName);
+			GetMeetingParticipantsController().ChangeUserName(userId, PlatformString2WChar(userName), saveUserName);
 	}
 
-	SDKError CMeetingParticipantsControllerDotNetWrap::LowerHand(unsigned int userid)
+	SDKError CMeetingParticipantsControllerDotNetWrap::LowerHand(unsigned int userId)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingParticipantsController().LowerHand(userid);
+			GetMeetingParticipantsController().LowerHand(userId);
 	}
 
 	SDKError CMeetingParticipantsControllerDotNetWrap::RaiseHand()
@@ -143,16 +143,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingParticipantsController().RaiseHand();
 	}
 
-	SDKError CMeetingParticipantsControllerDotNetWrap::MakeHost(unsigned int userid)
+	SDKError CMeetingParticipantsControllerDotNetWrap::MakeHost(unsigned int userId)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingParticipantsController().MakeHost(userid);
+			GetMeetingParticipantsController().MakeHost(userId);
 	}
 
-	SDKError CMeetingParticipantsControllerDotNetWrap::ExpelUser(unsigned int userid)
+	SDKError CMeetingParticipantsControllerDotNetWrap::ExpelUser(unsigned int userId)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingParticipantsController().ExpelUser(userid);
+			GetMeetingParticipantsController().ExpelUser(userId);
 	}
 
 	SDKError CMeetingParticipantsControllerDotNetWrap::ReclaimHost()
@@ -161,19 +161,37 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingParticipantsController().ReclaimHost();
 	}
 
-	SDKError CMeetingParticipantsControllerDotNetWrap::CanReclaimHost(bool^% bCanReclaimHost)
+	SDKError CMeetingParticipantsControllerDotNetWrap::CanReclaimHost(bool^% canReclaimHost)
 	{
 		bool c_bCanReclaimHost = false;
 		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
 			GetMeetingParticipantsController().CanReclaimHost(c_bCanReclaimHost);
-		if (bCanReclaimHost)
-			*bCanReclaimHost = c_bCanReclaimHost;
+		if (canReclaimHost)
+			*canReclaimHost = c_bCanReclaimHost;
 		return err;
 	}
 
-	SDKError CMeetingParticipantsControllerDotNetWrap::ReclaimHostByHostKey(String^ host_key)
+	SDKError CMeetingParticipantsControllerDotNetWrap::ReclaimHostByHostKey(String^ hostKey)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetMeetingParticipantsController().ReclaimHostByHostKey(PlatformString2WChar(host_key));
+			GetMeetingParticipantsController().ReclaimHostByHostKey(PlatformString2WChar(hostKey));
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::CanBeCoHost(unsigned int userId)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().CanbeCohost(userId);
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::AssignCoHost(unsigned int userId)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().AssignCoHost(userId);
+	}
+
+	SDKError CMeetingParticipantsControllerDotNetWrap::RevokeCoHost(unsigned int userId)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingParticipantsController().RevokeCoHost(userId);
 	}
 }

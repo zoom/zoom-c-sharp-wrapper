@@ -18,6 +18,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError LeaveBreakoutRoom();
 		array<IBreakoutRoomsInfoDotNet^ >^ GetBreakoutRoomsInfoList();
 		void Add_CB_OnBreakoutRoomsStartedNotification(OnBreakoutRoomsStartedNotification^ cb);
+		void Remove_CB_OnBreakoutRoomsStartedNotification(OnBreakoutRoomsStartedNotification^ cb);
 	};
 
 	private ref class CMeetingBreakoutRoomsControllerDotNetWrap sealed : public IMeetingBreakoutRoomsControllerDotNetWrap
@@ -34,9 +35,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError JoinBreakoutRoom(String^ stBID);
 		virtual SDKError LeaveBreakoutRoom();
 		virtual array<IBreakoutRoomsInfoDotNet^ >^ GetBreakoutRoomsInfoList();
+
 		virtual void Add_CB_OnBreakoutRoomsStartedNotification(OnBreakoutRoomsStartedNotification^ cb)
 		{
 			event_OnBreakoutRoomsStartedNotification += cb;
+		}
+
+		virtual void Remove_CB_OnBreakoutRoomsStartedNotification(OnBreakoutRoomsStartedNotification^ cb)
+		{
+			event_OnBreakoutRoomsStartedNotification -= cb;
 		}
 
 		void ProcBreakoutRoomsStartedNotification(String^ stBID);

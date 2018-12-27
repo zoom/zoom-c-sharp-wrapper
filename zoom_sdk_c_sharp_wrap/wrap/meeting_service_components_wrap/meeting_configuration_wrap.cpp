@@ -87,4 +87,6 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration, SetShowCallMeTab, void, bool, bShow)
 IMPL_FUNC_NORET_1(IMeetingConfiguration, ForceDisableMultiShare, void, bool, bDisable)
 //virtual void SetAlwaysShowMeetingIDOnTitle(bool bAlwaysShow) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, SetAlwaysShowMeetingIDOnTitle, void, bool, bAlwaysShow)
+//virtual void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, RedirectClickCustomLiveStreamMenuEvent, void, bool, bRedirect)
 END_ZOOM_SDK_NAMESPACE

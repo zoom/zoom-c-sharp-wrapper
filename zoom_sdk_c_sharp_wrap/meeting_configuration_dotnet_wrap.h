@@ -20,17 +20,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Cancel();
 	};
 
-	public value class WndPosition sealed
-	{
-	public:
-		int left;
-		int top;
-		HWNDDotNet hSelfWnd;
-		HWNDDotNet hParent;
-	};
-
 	public delegate void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler^ pHandler);
 	public delegate void onAirPlayInstructionWndNotification(bool bShow, String^ airhostName);
+
 	public interface class IMeetingConfigurationDotNetWrap
 	{
 	public:
@@ -69,9 +61,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void EnableHideFullPhoneNumber4PureCallinUser(bool bHide);
 		void EnableLengthLimitationOfMeetingNumber(bool bEnable);
 		void EnableShareIOSDevice(bool bEnable);
+		void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect);
 
 		void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb);
 		void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
+		void Remove_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb);
+		void Remove_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
 	};
 
 	private ref class CMeetingConfigurationDotNetWrap sealed : public IMeetingConfigurationDotNetWrap
@@ -118,20 +113,32 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual void EnableHideFullPhoneNumber4PureCallinUser(bool bHide);
 		virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable);
 		virtual void EnableShareIOSDevice(bool bEnable);
+		virtual void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect);
 
 		virtual void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb)
 		{
 			event_onInputMeetingPasswordAndScreenNameNotification += cb;
 		}
 
+		virtual void Remove_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb)
+		{
+			event_onInputMeetingPasswordAndScreenNameNotification -= cb;
+		}
+
 		virtual void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb)
 		{
 			event_onAirPlayInstructionWndNotification += cb;
 		}
-		
+
+		virtual void Remove_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb)
+		{
+			event_onAirPlayInstructionWndNotification -= cb;
+		}
+
 		void BindEvent();
 		void ProcInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler^ pHandler);
 		void ProcAirPlayInstructionWndNotification(bool bShow, String^ airhostName);
+
 	private:
 		CMeetingConfigurationDotNetWrap() {};
 		virtual ~CMeetingConfigurationDotNetWrap() {};

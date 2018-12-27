@@ -117,4 +117,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		UserRole GetUserRole();
 		bool IsPurePhoneUser();
 	};
+
+	public value class WndPosition sealed
+	{
+	public:
+		int left;
+		int top;
+		HWNDDotNet hSelfWnd;
+		HWNDDotNet hParent;
+	}; 
 }

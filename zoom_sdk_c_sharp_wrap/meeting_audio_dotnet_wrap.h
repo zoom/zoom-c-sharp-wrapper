@@ -38,6 +38,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		void Add_CB_onUserAudioStatusChange(onUserAudioStatusChange^ cb);
 		void Add_CB_onUserActiveAudioChange(onUserActiveAudioChange^ cb);
+		void Remove_CB_onUserAudioStatusChange(onUserAudioStatusChange^ cb);
+		void Remove_CB_onUserActiveAudioChange(onUserActiveAudioChange^ cb);
 	};
 
 	private ref class CMeetingAudioControllerDotNetWrap sealed : public IMeetingAudioControllerDotNetWrap
@@ -59,17 +61,28 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool CanUnMuteBySelf();
 		virtual SDKError EnableMuteOnEntry(bool bEnable);
 		virtual SDKError EnablePlayChimeWhenEnterOrExit(bool bEnable);
+		
 		virtual void Add_CB_onUserAudioStatusChange(onUserAudioStatusChange^ cb)
 		{
 			event_onUserAudioStatusChange += cb;
+		}
+
+		virtual void Remove_CB_onUserAudioStatusChange(onUserAudioStatusChange^ cb)
+		{
+			event_onUserAudioStatusChange -= cb;
 		}
 
 		virtual void Add_CB_onUserActiveAudioChange(onUserActiveAudioChange^ cb)
 		{
 			event_onUserActiveAudioChange += cb;
 		}
-	private:
 
+		virtual void Remove_CB_onUserActiveAudioChange(onUserActiveAudioChange^ cb)
+		{
+			event_onUserActiveAudioChange -= cb;
+		}
+
+	private:
 		event onUserAudioStatusChange^ event_onUserAudioStatusChange;
 		event onUserActiveAudioChange^ event_onUserActiveAudioChange;
 		static CMeetingAudioControllerDotNetWrap^ m_Instance = gcnew CMeetingAudioControllerDotNetWrap;

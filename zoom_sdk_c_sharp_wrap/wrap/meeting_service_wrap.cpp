@@ -40,4 +40,5 @@ void UninitIMeetingServiceFunc(ZOOM_SDK_NAMESPACE::IMeetingService* obj)
 	IMPL_FUNC_AND_MEMBER(IMeetingService, GetMeetingPhoneHelper, IMeetingPhoneHelperWrap);
 	IMPL_FUNC_AND_MEMBER(IMeetingService, GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsControllerWrap);
 	IMPL_FUNC_AND_MEMBER(IMeetingService, GetMeetingParticipantsController, IMeetingParticipantsControllerWrap);
+	IMPL_FUNC_AND_MEMBER(IMeetingService, GetMeetingLiveStreamController, IMeetingLiveStreamControllerWrap);
 END_ZOOM_SDK_NAMESPACE

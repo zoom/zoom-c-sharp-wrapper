@@ -75,6 +75,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		void Add_CB_onInviteCallOutUserStatus(onInviteCallOutUserStatus^ cb);
 		void Add_CB_onCallMeStatus(onCallMeStatus^ cb);
+		void Remove_CB_onInviteCallOutUserStatus(onInviteCallOutUserStatus^ cb);
+		void Remove_CB_onCallMeStatus(onCallMeStatus^ cb);
 	};
 
 	private ref class CMeetingPhoneHelperDotNetWrap sealed : public IMeetingPhoneHelperDotNetWrap
@@ -101,9 +103,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onInviteCallOutUserStatus += cb;
 		}
 
+		virtual void Remove_CB_onInviteCallOutUserStatus(onInviteCallOutUserStatus^ cb)
+		{
+			event_onInviteCallOutUserStatus -= cb;
+		}
+
 		virtual void Add_CB_onCallMeStatus(onCallMeStatus^ cb)
 		{
 			event_onCallMeStatus += cb;
+		}
+
+		virtual void Remove_CB_onCallMeStatus(onCallMeStatus^ cb)
+		{
+			event_onCallMeStatus -= cb;
 		}
 
 		void BindEvent();

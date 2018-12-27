@@ -155,6 +155,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="setting_service_dotnet_wrap.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="video_setting_context_dotnet_wrap.h" />
     <ClInclude Include="wrap\auth_service_wrap.h" />
     <ClInclude Include="wrap\calender_service_wrap.h" />
     <ClInclude Include="wrap\common_include.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="wrap\sdk_wrap.h" />
     <ClInclude Include="wrap\setting_service_wrap.h" />
     <ClInclude Include="wrap\ui_hook_wrap.h" />
+    <ClInclude Include="wrap\video_setting_context_wrap.h" />
     <ClInclude Include="zoom_sdk_dotnet_wrap.h" />
     <ClInclude Include="zoom_sdk_dotnet_wrap_def.h" />
     <ClInclude Include="zoom_sdk_dotnet_wrap_util.h" />
@@ -210,6 +212,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="video_setting_context_dotnet_wrap.cpp" />
     <ClCompile Include="wrap\auth_service_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -281,6 +284,10 @@
     </ClCompile>
     <ClCompile Include="wrap\ui_hook_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\video_setting_context_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="zoom_sdk_dotnet_wrap.cpp" />
   </ItemGroup>

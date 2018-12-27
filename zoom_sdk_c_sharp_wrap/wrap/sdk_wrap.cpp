@@ -107,4 +107,20 @@ void CSDKExtWrap::DestroyEmbeddedBrowserWrap(IEmbeddedBrowserWrap* pObj)
 		delete pObj;
 	}
 }
+/////////////////////////////////////////////////////////////////////
+CSDKCustomizedUIWrap::CSDKCustomizedUIWrap()
+{
+
+}
+
+CSDKCustomizedUIWrap& CSDKCustomizedUIWrap::GetInst()
+{
+	static CSDKCustomizedUIWrap inst;
+	return inst;
+}
+
+ICustomizedUIMgrWrap& CSDKCustomizedUIWrap::GetCustomizedUIMgrWrap()
+{
+	return ICustomizedUIMgrWrap::GetInst();
+}
 END_ZOOM_SDK_NAMESPACE

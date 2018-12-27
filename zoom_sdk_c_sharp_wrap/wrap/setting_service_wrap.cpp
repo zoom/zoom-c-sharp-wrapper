@@ -21,10 +21,11 @@ IMPL_FUNC_0(ISettingService, HideSettingDlg, SDKError, SDKERR_UNINITIALIZE)
 IMPL_FUNC_0(ISettingService, GetGeneralSettings, IGeneralSettingContext*, NULL)
 //virtual IAudioSettingContext* GetAudioSettings() = 0;
 IMPL_FUNC_0(ISettingService, GetAudioSettings, IAudioSettingContext*, NULL)
-//virtual IVideoSettingContext* GetVideoSettings() = 0;
-IMPL_FUNC_0(ISettingService, GetVideoSettings, IVideoSettingContext*, NULL)
 //virtual IRecordingSettingContext* GetRecordingSettings() = 0;
 IMPL_FUNC_0(ISettingService, GetRecordingSettings, IRecordingSettingContext*, NULL)
 //virtual IStatisticSettingContext* GetStatisticSettings() = 0;
 IMPL_FUNC_0(ISettingService, GetStatisticSettings, IStatisticSettingContext*, NULL)
+
+IMPL_FUNC_AND_MEMBER(ISettingService, GetVideoSettings, IVideoSettingContextWrap)
+
 END_ZOOM_SDK_NAMESPACE

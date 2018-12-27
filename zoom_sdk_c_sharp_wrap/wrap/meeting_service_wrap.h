@@ -14,6 +14,7 @@
 #include "meeting_service_components_wrap/meeting_phone_helper_wrap.h"
 #include "meeting_service_components_wrap/meeting_breakout_rooms_wrap.h"
 #include "meeting_service_components_wrap/meeting_participants_ctrl_wrap.h"
+#include "meeting_service_components_wrap/meeting_live_stream_wrap.h"
 
 BEGIN_ZOOM_SDK_NAMESPACE
 ZOOM_SDK_NAMESPACE::IMeetingService* InitIMeetingServiceFunc(ZOOM_SDK_NAMESPACE::IMeetingServiceEvent* pEvent);
@@ -59,6 +60,7 @@ DEFINE_FUNC_AND_MEMBER(GetH323Helper, IMeetingH323HelperWrap)
 DEFINE_FUNC_AND_MEMBER(GetMeetingPhoneHelper, IMeetingPhoneHelperWrap)
 DEFINE_FUNC_AND_MEMBER(GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsControllerWrap)
 DEFINE_FUNC_AND_MEMBER(GetMeetingParticipantsController, IMeetingParticipantsControllerWrap)
+DEFINE_FUNC_AND_MEMBER(GetMeetingLiveStreamController, IMeetingLiveStreamControllerWrap)
 
 //virtual void onMeetingStatusChanged(MeetingStatus status, int iResult = 0) = 0;
 CallBack_FUNC_2(onMeetingStatusChanged, MeetingStatus, status, int, iResult)

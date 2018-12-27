@@ -2,6 +2,32 @@
 using namespace System;
 #include "zoom_sdk_dotnet_wrap_def.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
+
+	public enum class RecordingLayoutMode : int
+	{
+		RecordingLayoutMode_None = 0,
+		RecordingLayoutMode_ActiveVideoOnly = 1,
+		RecordingLayoutMode_VideoWall = (1 << 1),
+		RecordingLayoutMode_ShareAndVideo = (1 << 2),
+		RecordingLayoutMode_OnlyAudio = (1 << 3),
+		RecordingLayoutMode_OnlyShare = (1 << 4),
+	};
+
+	public interface class ICustomizedLocalRecordingLayoutHelperDotNetWrap
+	{
+	public:
+		int GetSupportLayout();
+		array<unsigned int>^ GetValidVideoSourceList();
+		array<unsigned int>^ GetValidRecvSharingSourceList();
+		bool IsSendSharingSourceAvailable();
+		bool HasActiveVideoSource();
+		SDKError SelectRecordingLayoutMode(RecordingLayoutMode mode);
+		SDKError AddVideoSourceToRecList(unsigned int userId);
+		SDKError SelectActiveVideoSource();
+		SDKError SelectRecvSharingSource(unsigned int userId);
+		SDKError SelectSendSharingSource();
+	};
+
 	public enum class RecordingStatus : int
 	{
 		Recording_Start,

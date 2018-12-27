@@ -27,6 +27,8 @@ DEFINE_FUNC_1(IsSupportLocalRecording, SDKError, unsigned int, userid)
 DEFINE_FUNC_1(AllowLocalRecording, SDKError, unsigned int, userid)
 //virtual SDKError DisAllowLocalRecording(unsigned int userid) = 0;
 DEFINE_FUNC_1(DisAllowLocalRecording, SDKError, unsigned int, userid)
+//virtual SDKError RequestCustomizedLocalRecordingSource() = 0;
+DEFINE_FUNC_0(RequestCustomizedLocalRecordingSource, SDKError)
 
 //virtual void onRecording2MP4Done(bool bsuccess, int iResult, const wchar_t* szPath) = 0;
 CallBack_FUNC_3(onRecording2MP4Done, bool, bsuccess, int, iResult, const wchar_t*, szPath)

@@ -47,15 +47,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			return nullptr;
 		}
 
-		virtual DateTime^ GetTimeStamp()
+		virtual Nullable<DateTime> GetTimeStamp()
 		{
 			if (m_pChat)
 			{
-				DateTime^ time = gcnew DateTime;
-				time = time_t2DateTime(m_pChat->GetTimeStamp());
+				Nullable<DateTime> time = time_t2DateTime(m_pChat->GetTimeStamp());
 				return time;
 			}
-			return nullptr;
+			return Nullable<DateTime>();
 		}
 
 	private:
@@ -79,6 +78,48 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				CMeetingChatControllerDotNetWrap::Instance->procChatMsgNotifcation(gcnew IChatMsgInfoDotNetWrapImpl(chatMsg));
 			}
 		}
+
+		void onChatStatusChangedNotifcation(ZOOM_SDK_NAMESPACE::ChatStatus* status)
+		{
+			if (CMeetingChatControllerDotNetWrap::Instance)
+			{
+				ChatStatus^ chatstatus_dotnet = gcnew ChatStatus;
+				if (chatstatus_dotnet)
+				{
+					chatstatus_dotnet->isChatOff = status->is_chat_off;
+					chatstatus_dotnet->isWebinarAttendee = status->is_webinar_attendee;
+					chatstatus_dotnet->isWebinarMeeting = status->is_webinar_meeting;
+
+					if (chatstatus_dotnet->isWebinarMeeting)
+					{
+						if (chatstatus_dotnet->isWebinarAttendee)
+						{
+							chatstatus_dotnet->webinarAttendeeStatus = gcnew WebinarAttendeeChatStatus;
+							chatstatus_dotnet->webinarAttendeeStatus->canChat = status->ut.webinar_attendee_status.can_chat;
+							chatstatus_dotnet->webinarAttendeeStatus->canChatToAllPanelListAndAttendee = status->ut.webinar_attendee_status.can_chat_to_all_panellist_and_attendee;
+							chatstatus_dotnet->webinarAttendeeStatus->canChatToAllPanelList = status->ut.webinar_attendee_status.can_chat_to_all_panellist;
+						}
+						else
+						{
+							chatstatus_dotnet->webinarOtherStatus = gcnew WebinarOtherUserRoleChatStatus;
+							chatstatus_dotnet->webinarOtherStatus->canChatToAllPanelList = status->ut.webinar_other_status.can_chat_to_all_panellist;
+							chatstatus_dotnet->webinarOtherStatus->canChatToAllPanelListAndAttendee = status->ut.webinar_other_status.can_chat_to_all_panellist_and_attendee;
+							chatstatus_dotnet->webinarOtherStatus->canChatToIndividual = status->ut.webinar_other_status.can_chat_to_individual;
+						}
+					}
+					else
+					{
+						chatstatus_dotnet->normalMeetingStatus = gcnew NormalMeetingChatStatus;
+						chatstatus_dotnet->normalMeetingStatus->canChatToAll = status->ut.normal_meeting_status.can_chat_to_all;
+						chatstatus_dotnet->normalMeetingStatus->canChatToIndividual = status->ut.normal_meeting_status.can_chat_to_individual;
+						chatstatus_dotnet->normalMeetingStatus->isOnlyCanChatToHost = status->ut.normal_meeting_status.is_only_can_chat_to_host;
+					}
+				}
+
+				CMeetingChatControllerDotNetWrap::Instance->procChatStatusChangedNotification(chatstatus_dotnet);
+			}
+		}
+
 	private:
 		MeetingChatControllerEventHanlder() {};
 	};
@@ -90,6 +131,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		meetingChat.m_cbonChatMsgNotifcation =
 			std::bind(&MeetingChatControllerEventHanlder::onChatMsgNotifcation, 
 				&MeetingChatControllerEventHanlder::GetInst(), std::placeholders::_1, std::placeholders::_2);
+
+		meetingChat.m_cbonChatStautsChangedNotification =
+			std::bind(&MeetingChatControllerEventHanlder::onChatStatusChangedNotifcation,
+				&MeetingChatControllerEventHanlder::GetInst(), std::placeholders::_1);
 	}
 
 	SDKError CMeetingChatControllerDotNetWrap::SendChatTo(unsigned int receiver, String^ content)
@@ -101,5 +146,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	void CMeetingChatControllerDotNetWrap::procChatMsgNotifcation(IChatMsgInfoDotNetWrap^ chatMsg)
 	{
 		event_onChatMsgNotifcation(chatMsg);
+	}
+
+	void CMeetingChatControllerDotNetWrap::procChatStatusChangedNotification(ChatStatus^ status)
+	{
+		event_onChatStatusChangedNotification(status);
 	}
 }

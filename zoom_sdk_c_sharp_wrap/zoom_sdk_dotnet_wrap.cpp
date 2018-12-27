@@ -10,17 +10,17 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().Init();
-		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Init();
+//		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetCalenderServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Init();
-		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Init();
+//		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Init();
 	}
 
 	void UninitAllService()
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().Uninit();
-		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Uninit();
+//		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetCalenderServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Uninit();

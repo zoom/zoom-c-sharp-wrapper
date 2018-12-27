@@ -41,6 +41,8 @@ void CSDKImpl::Reset()
 	m_fnCreateEmbeddedBrowser = NULL;
 	m_fnDestroyEmbeddedBrowser = NULL;
 	m_fnRetrieveUIHooker = NULL;
+	m_fnCreateCustomizedUIMgr = NULL;
+	m_fnDestroyCustomizedUIMgr = NULL;
 	m_hSdk = NULL;
 }
 
@@ -90,14 +92,14 @@ bool CSDKImpl::ConfigSDKModule(std::wstring& path)
 		wchar_t dir[_MAX_DIR];
 		wchar_t fname[_MAX_FNAME];
 		wchar_t ext[_MAX_EXT];
-		_wsplitpath(strTmp.c_str(), drive, dir, fname, ext);
+		_wsplitpath_s(strTmp.c_str(), drive, _MAX_DRIVE, dir, _MAX_DIR, fname, _MAX_FNAME, ext, _MAX_EXT);
 
 		wchar_t szPath[MAX_PATH] = { 0 };
-		_wmakepath(szPath, drive, dir, NULL, NULL);
+		_wmakepath_s(szPath, _MAX_PATH, drive, dir, NULL, NULL);
 		if (pfnSetDllDirectory)
 			pfnSetDllDirectory(szPath);
 		
-		wcscat(szPath, L"sdk.dll");
+		wcscat_s(szPath, MAX_PATH, L"sdk.dll");
 		m_hSdk = LoadLibraryW(szPath);
 		if (NULL == m_hSdk)
 		{
@@ -126,6 +128,9 @@ bool CSDKImpl::ConfigSDKModule(std::wstring& path)
 		m_fnDestroyEmbeddedBrowser = (fnDestroyEmbeddedBrowser)GetProcAddress(m_hSdk, "DestroyEmbeddedBrowser");
 		m_fnRetrieveUIHooker = (fnRetrieveUIHooker)GetProcAddress(m_hSdk, "RetrieveUIHooker");
 
+		m_fnCreateCustomizedUIMgr = (fnCreateCustomizedUIMgr)GetProcAddress(m_hSdk, "CreateCustomizedUIMgr");
+		m_fnDestroyCustomizedUIMgr = (fnDestroyCustomizedUIMgr)GetProcAddress(m_hSdk, "DestroyCustomizedUIMgr");
+
 		if (NULL == m_fnInitSDK
 			|| NULL == m_fnCleanUPSDK
 			|| NULL == m_fnCreateAuthService
@@ -143,7 +148,9 @@ bool CSDKImpl::ConfigSDKModule(std::wstring& path)
 			|| NULL == m_fnGetVersion
 			|| NULL == m_fnCreateEmbeddedBrowser
 			|| NULL == m_fnDestroyEmbeddedBrowser
-			|| NULL == m_fnRetrieveUIHooker)
+			|| NULL == m_fnRetrieveUIHooker
+			|| NULL == m_fnCreateCustomizedUIMgr
+			|| NULL == m_fnDestroyCustomizedUIMgr)
 		{
 			break;
 		}
@@ -365,6 +372,28 @@ ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::RetrieveUIHooker)(ZOOM_SDK_NAMESPACE::IUI
 	}
 	return ret;
 }
+
+ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::CreateCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr** ppCustomizedUIMgr)
+{
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS);
+	if (m_fnCreateCustomizedUIMgr)
+	{
+		ret = m_fnCreateCustomizedUIMgr(ppCustomizedUIMgr);
+	}
+	return ret;
+}
+
+ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::DestroyCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr* pCustomizedUIMgr)
+{
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS);
+	if (m_fnDestroyCustomizedUIMgr)
+	{
+		ret = m_fnDestroyCustomizedUIMgr(pCustomizedUIMgr);
+	}
+	return ret;
+}
+
+
 
 #ifndef CSHARP_WRAP
 BOOL APIENTRY DllMain(HMODULE hModule,

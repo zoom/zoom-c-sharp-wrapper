@@ -1,5 +1,7 @@
 #pragma once
 #include "../common_include.h"
+#include "../customized_ui_components_wrap/customized_annotation_wrap.h"
+
 BEGIN_ZOOM_SDK_NAMESPACE
 class IMeetingServiceWrap;
 IAnnotationController* InitIAnnotationControllerFunc(void* nouse, IMeetingServiceWrap* pOwner);
@@ -27,6 +29,8 @@ DEFINE_FUNC_2(SetLineWidth, SDKError, SDKViewType, viewtype, long, lineWidth)
 DEFINE_FUNC_1(Undo, SDKError, SDKViewType, viewtype)
 //virtual SDKError Redo(SDKViewType viewtype) = 0;
 DEFINE_FUNC_1(Redo, SDKError, SDKViewType, viewtype)
+
+DEFINE_FUNC_AND_MEMBER(GetCustomizedAnnotationController, ICustomizedAnnotationControllerWrap)
 
 END_CLASS_DEFINE(IAnnotationController)
 END_ZOOM_SDK_NAMESPACE
