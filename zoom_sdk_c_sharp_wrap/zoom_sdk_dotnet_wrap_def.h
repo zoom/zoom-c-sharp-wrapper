@@ -2,6 +2,9 @@
 using namespace System;
 //ref zoom_sdk_def.h
 namespace ZOOM_SDK_DOTNET_WRAP {
+
+	public delegate void onWindowMsgNotification(unsigned int uMsg, UIntPtr wParam, IntPtr lParam);
+
 	public enum class SDKError : int
 	{
 		SDKERR_SUCCESS = 0,///< Success Result
@@ -51,10 +54,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		CustomizedLanguageType langType;
 	};
 
+	public enum class OptionalFeatureFlag : int
+	{
+		OptionalFeature_EnableCustomizedUI = (1 << 5)
+	};
+
 	public value class ConfigurableOptions sealed
 	{
 	public:
 		CustomizedLanguageInfo customized_language;
+		int optionalFeatures;
 	};
 
 	public value class InitParam sealed
@@ -75,6 +84,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 	public:
 		UInt32 value;
+	};
+
+	public value class RECT sealed
+	{
+	public:
+		int Left;
+		int Top;
+		int Right;
+		int Bottom;
 	};
 
 	public enum class SDKViewType : int
@@ -125,5 +143,5 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		int top;
 		HWNDDotNet hSelfWnd;
 		HWNDDotNet hParent;
-	}; 
+	};
 }

@@ -203,17 +203,33 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return array_;
 	}
 
+	static array<unsigned __int64 >^ Convert(ZOOM_SDK_NAMESPACE::IList<UINT64 >* plst)
+	{
+		if (NULL == plst || plst->GetCount() <= 0)
+			return nullptr;
 
-	static DateTime time_t2DateTime(time_t date) 
+		int count = plst->GetCount();
+		array< unsigned __int64 >^ array_ = gcnew array< unsigned _int64 >(count);
+		if (nullptr == array_)
+			return nullptr;
+
+		for (int i = 0; i < count; i++)
+		{
+			unsigned __int64 item = plst->GetItem(i);
+			array_[i] = (unsigned __int64)item;
+		}
+		return array_;
+	}
+
+	static DateTime time_t2DateTime(time_t date)
 	{
 		double msec = static_cast<double>(date);
-		return DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind::Utc).AddMilliseconds(msec);
-
+		return DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind::Utc).AddSeconds(msec);
 	}
+
 	static time_t DateTime2time_t(DateTime date) {
 		TimeSpan diff = date.ToUniversalTime() - DateTime(1970, 1, 1);
-		return static_cast<time_t>(diff.TotalMilliseconds);
-
+		return static_cast<time_t>(diff.TotalSeconds);
 	}
 
 	private ref class IUserInfoDotNetWrapImpl sealed : public IUserInfoDotNetWrap
@@ -248,21 +264,21 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual unsigned int GetUserID()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsHost();
+				return m_pInfo->GetUserID();
 			return false;
 		}
 
 		virtual bool IsVideoOn()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsHost();
+				return m_pInfo->IsVideoOn();
 			return false;
 		}
 
 		virtual bool IsAudioMuted()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsHost();
+				return m_pInfo->IsAudioMuted();
 			return false;
 		}
 

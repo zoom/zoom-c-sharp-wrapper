@@ -18,6 +18,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		void Add_CB_onWatingRoomUserJoin(onWatingRoomUserJoin^ cb);
 		void Add_CB_onWatingRoomUserLeft(onWatingRoomUserLeft^ cb);
+		void Remove_CB_onWatingRoomUserJoin(onWatingRoomUserJoin^ cb);
+		void Remove_CB_onWatingRoomUserLeft(onWatingRoomUserLeft^ cb);
 	};
 
 	private ref class CMeetingWaitingRoomControllerDotNetWrap sealed : public IMeetingWaitingRoomControllerDotNetWrap
@@ -39,14 +41,25 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual IUserInfoDotNetWrap^ GetWaitingRoomUserInfoByID(unsigned int userid);
 		virtual SDKError AdmitToMeeting(unsigned int userid);
 		virtual SDKError PutInWaitingRoom(unsigned int userid);
+
 		virtual void Add_CB_onWatingRoomUserJoin(onWatingRoomUserJoin^ cb)
 		{
 			event_onWatingRoomUserJoin += cb;
 		}
 
+		virtual void Remove_CB_onWatingRoomUserJoin(onWatingRoomUserJoin^ cb)
+		{
+			event_onWatingRoomUserJoin -= cb;
+		}
+
 		virtual void Add_CB_onWatingRoomUserLeft(onWatingRoomUserLeft^ cb)
 		{
 			event_onWatingRoomUserLeft += cb;
+		}
+
+		virtual void Remove_CB_onWatingRoomUserLeft(onWatingRoomUserLeft^ cb)
+		{
+			event_onWatingRoomUserLeft -= cb;
 		}
 
 	private:

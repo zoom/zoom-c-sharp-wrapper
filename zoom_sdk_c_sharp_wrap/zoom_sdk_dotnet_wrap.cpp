@@ -10,20 +10,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().Init();
-//		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetCalenderServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Init();
-//		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Init();
+		ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().Init();
 	}
 
 	void UninitAllService()
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().Uninit();
-//		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetCalenderServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Uninit();
+		ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().Uninit();
 	}
 
 	SDKError CZoomSDKeDotNetWrap::Initialize(InitParam initInfo)
@@ -43,6 +42,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		PlatformString2CharHelper langname = PlatformString2CharHelper(initInfo.config_opts.customized_language.language_name);
 		param_.obConfigOpts.customizedLang.langName = langname.c_str();
 		param_.obConfigOpts.customizedLang.langType = (ZOOM_SDK_NAMESPACE::CustomizedLanguageType)initInfo.config_opts.customized_language.langType;
+		param_.obConfigOpts.optionalFeatures = initInfo.config_opts.optionalFeatures;
 
 		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().InitSDK(dll_path, param_);
 
@@ -65,6 +65,26 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return CAuthServiceDotNetWrap::Instance;
  	}
 
+	IPreMeetingServiceDotNetWrap^ CZoomSDKeDotNetWrap::GetPreMeetingServiceWrap([Runtime::InteropServices::OutAttribute]SDKError% result)
+	{
+		result = SDKError::SDKERR_SUCCESS;
+
+		if (!ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().GetSDKObj())
+		{
+			result = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Init();
+		}
+
+		if (result != SDKError::SDKERR_SUCCESS)
+		{
+			return nullptr;
+		}
+
+		if (CPreMeetingServiceDotNetWrap::Instance)
+			CPreMeetingServiceDotNetWrap::Instance->BindEvent();
+
+		return CPreMeetingServiceDotNetWrap::Instance;
+	}
+
 	IMeetingServiceDotNetWrap^ CZoomSDKeDotNetWrap::GetMeetingServiceWrap()
 	{
 		if (CMeetingServiceDotNetWrap::Instance)
@@ -79,5 +99,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			CSettingServiceDotNetWrap::Instance->BindEvent();
 
 		return CSettingServiceDotNetWrap::Instance;
+	}
+
+	ICustomizedUIMgrDotNetWrap^ CZoomSDKeDotNetWrap::GetCustomizedUIMgrWrap()
+	{
+		if (CCustomizedUIMgrDotNetWrap::Instance)
+		{
+			CCustomizedUIMgrDotNetWrap::Instance->BindEvent();
+		}
+
+		return CCustomizedUIMgrDotNetWrap::Instance;
 	}
 }
