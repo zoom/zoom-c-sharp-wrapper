@@ -42,4 +42,6 @@ IMPL_FUNC_1(IMeetingVideoController, AskAttendeeToStartVideo, SDKError, unsigned
 IMPL_FUNC_1(IMeetingVideoController, CanStopAttendeeVideo, SDKError, unsigned int, userid, SDKERR_UNINITIALIZE)
 //virtual SDKError StopAttendeeVideo(unsigned int userid) = 0;
 IMPL_FUNC_1(IMeetingVideoController, StopAttendeeVideo, SDKError, unsigned int, userid, SDKERR_UNINITIALIZE)
+//virtual ICameraController* GetMyCameraController() = 0;
+IMPL_FUNC_0(IMeetingVideoController, GetMyCameraController, ICameraController*, NULL)
 END_ZOOM_SDK_NAMESPACE

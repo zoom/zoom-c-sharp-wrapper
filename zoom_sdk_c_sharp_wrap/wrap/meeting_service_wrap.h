@@ -22,6 +22,11 @@ void UninitIMeetingServiceFunc(ZOOM_SDK_NAMESPACE::IMeetingService* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingService, IMeetingServiceEvent)
 STAITC_CLASS(IMeetingService)
 INIT_UNINIT_WITHEVENT(IMeetingService)
+virtual SDKError SetEvent(IMeetingServiceEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError Join(JoinParam& joinParam) = 0;
 DEFINE_FUNC_1(Join, SDKError, JoinParam&, joinParam)
 //virtual SDKError Start(StartParam& startParam) = 0;
@@ -44,21 +49,98 @@ DEFINE_FUNC_0(GetSharingConnQuality, ConnectionQuality)
 DEFINE_FUNC_0(GetVideoConnQuality, ConnectionQuality)
 //virtual ConnectionQuality GetAudioConnQuality() = 0;
 DEFINE_FUNC_0(GetAudioConnQuality, ConnectionQuality)
+//virtual SDKError HandleZoomWebUriProtocolAction(const wchar_t* protocol_action) = 0;
+DEFINE_FUNC_1(HandleZoomWebUriProtocolAction, SDKError, const wchar_t*, protocol_action)
+//virtual ConnectionQuality GetSharingConnQuality(bool bSending = true) = 0;
+DEFINE_FUNC_1(GetSharingConnQuality, ConnectionQuality, bool, bSending)
+//virtual ConnectionQuality GetVideoConnQuality(bool bSending = true) = 0;
+DEFINE_FUNC_1(GetVideoConnQuality, ConnectionQuality, bool, bSending)
+//virtual ConnectionQuality GetAudioConnQuality(bool bSending = true) = 0;
+DEFINE_FUNC_1(GetAudioConnQuality, ConnectionQuality, bool, bSending)
 
-DEFINE_FUNC_AND_MEMBER(GetMeetingConfiguration, IMeetingConfigurationWrap)
-DEFINE_FUNC_AND_MEMBER(GetUIController, IMeetingUIControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetAnnotationController, IAnnotationControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingVideoController, IMeetingVideoControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingRemoteController, IMeetingRemoteControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingShareController, IMeetingShareControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingAudioController, IMeetingAudioControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingRecordingController, IMeetingRecordingControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingChatController, IMeetingChatControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingWaitingRoomController, IMeetingWaitingRoomControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetH323Helper, IMeetingH323HelperWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingPhoneHelper, IMeetingPhoneHelperWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsControllerWrap)
-DEFINE_FUNC_AND_MEMBER(GetMeetingParticipantsController, IMeetingParticipantsControllerWrap)
+#if (defined UserInterfaceClass)
+private:
+DEFINE_FUNC_0(GetMeetingConfiguration, IMeetingConfiguration*)
+DEFINE_FUNC_0(GetUIController, IMeetingUIController*)
+DEFINE_FUNC_0(GetAnnotationController, IAnnotationController*)
+DEFINE_FUNC_0(GetMeetingVideoController, IMeetingVideoController*)
+DEFINE_FUNC_0(GetMeetingRemoteController, IMeetingRemoteController*)
+DEFINE_FUNC_0(GetMeetingShareController, IMeetingShareController*)
+DEFINE_FUNC_0(GetMeetingAudioController, IMeetingAudioController*)
+DEFINE_FUNC_0(GetMeetingRecordingController, IMeetingRecordingController*)
+DEFINE_FUNC_0(GetMeetingChatController, IMeetingChatController*)
+DEFINE_FUNC_0(GetMeetingWaitingRoomController, IMeetingWaitingRoomController*)
+DEFINE_FUNC_0(GetH323Helper, IMeetingH323Helper*)
+DEFINE_FUNC_0(GetMeetingPhoneHelper, IMeetingPhoneHelper*)
+DEFINE_FUNC_0(GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsController*)
+DEFINE_FUNC_0(GetMeetingParticipantsController, IMeetingParticipantsController*)
+
+public:
+#define T_GetMeetingConfiguration _GetMeetingConfiguration
+#define T_GetUIController _GetUIController
+#define T_GetAnnotationController _GetAnnotationController
+#define T_GetMeetingVideoController _GetMeetingVideoController
+#define T_GetMeetingRemoteController _GetMeetingRemoteController
+#define T_GetMeetingShareController _GetMeetingShareController
+#define T_GetMeetingAudioController _GetMeetingAudioController
+#define T_GetMeetingRecordingController _GetMeetingRecordingController
+#define T_GetMeetingChatController _GetMeetingChatController
+#define T_GetMeetingWaitingRoomController _GetMeetingWaitingRoomController
+#define T_GetH323Helper _GetH323Helper
+#define T_GetMeetingPhoneHelper _GetMeetingPhoneHelper
+#define T_GetMeetingBreakoutRoomsController _GetMeetingBreakoutRoomsController
+#define T_GetMeetingParticipantsController _GetMeetingParticipantsController
+#else
+#define T_GetMeetingConfiguration GetMeetingConfiguration
+#define T_GetUIController GetUIController
+#define T_GetAnnotationController GetAnnotationController
+#define T_GetMeetingVideoController GetMeetingVideoController
+#define T_GetMeetingRemoteController GetMeetingRemoteController
+#define T_GetMeetingShareController GetMeetingShareController
+#define T_GetMeetingAudioController GetMeetingAudioController
+#define T_GetMeetingRecordingController GetMeetingRecordingController
+#define T_GetMeetingChatController GetMeetingChatController
+#define T_GetMeetingWaitingRoomController GetMeetingWaitingRoomController
+#define T_GetH323Helper GetH323Helper
+#define T_GetMeetingPhoneHelper GetMeetingPhoneHelper
+#define T_GetMeetingBreakoutRoomsController GetMeetingBreakoutRoomsController
+#define T_GetMeetingParticipantsController GetMeetingParticipantsController
+#endif
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingConfiguration, IMeetingConfigurationWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetUIController, IMeetingUIControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetAnnotationController, IAnnotationControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingVideoController, IMeetingVideoControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingRemoteController, IMeetingRemoteControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingShareController, IMeetingShareControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingAudioController, IMeetingAudioControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingRecordingController, IMeetingRecordingControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingChatController, IMeetingChatControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingWaitingRoomController, IMeetingWaitingRoomControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetH323Helper, IMeetingH323HelperWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingPhoneHelper, IMeetingPhoneHelperWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingParticipantsController, IMeetingParticipantsControllerWrap)
+
+//need wrap it in next release.todo
+virtual IMeetingLiveStreamController* GetMeetingLiveStreamController()
+{
+	if (m_obj)
+		return m_obj->GetMeetingLiveStreamController();
+	return NULL;
+}
+virtual IMeetingWebinarController* GetMeetingWebinarController()
+{
+	if (m_obj)
+		return m_obj->GetMeetingWebinarController();
+	return NULL;
+}
+virtual IClosedCaptionController* GetMeetingClosedCaptionController()
+{
+	if (m_obj)
+		return m_obj->GetMeetingClosedCaptionController();
+	return NULL;
+}
+//need wrap it in next release.todo
 
 //virtual void onMeetingStatusChanged(MeetingStatus status, int iResult = 0) = 0;
 CallBack_FUNC_2(onMeetingStatusChanged, MeetingStatus, status, int, iResult)

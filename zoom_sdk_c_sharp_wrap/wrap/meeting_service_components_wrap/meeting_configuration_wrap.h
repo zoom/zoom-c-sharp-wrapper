@@ -7,7 +7,10 @@ void UninitIMeetingConfigurationFunc(IMeetingConfiguration* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingConfiguration, IMeetingConfigurationEvent)
 NORMAL_CLASS(IMeetingConfiguration)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingConfiguration, IMeetingServiceWrap)
-
+virtual void SetEvent(IMeetingConfigurationEvent* pEvent)
+{
+	external_cb = pEvent;
+}
 //virtual void Reset() = 0;
 DEFINE_FUNC_0(Reset, void)
 //virtual void SetFloatVideoPos(WndPosition pos) = 0;
@@ -97,6 +100,33 @@ DEFINE_FUNC_1(SetShowCallMeTab, void, bool, bShow)
 DEFINE_FUNC_1(ForceDisableMultiShare, void, bool, bDisable)
 //virtual void SetAlwaysShowMeetingIDOnTitle(bool bAlwaysShow) = 0;
 DEFINE_FUNC_1(SetAlwaysShowMeetingIDOnTitle, void, bool, bAlwaysShow)
+//virtual void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectClickCustomLiveStreamMenuEvent, void, bool, bRedirect)
+//virtual void RedirectClickCCBTNEvent(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectClickCCBTNEvent, void, bool, bRedirect)
+//virtual void EnableShowShareSwitchMultiToSingleConfirmDlg(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableShowShareSwitchMultiToSingleConfirmDlg, void, bool, bEnable)
+//virtual void DisableFreeMeetingRemainTimeNotify(bool bDisable) = 0;
+DEFINE_FUNC_1(DisableFreeMeetingRemainTimeNotify, void, bool, bDisable)
+
+//virtual void EnableInputMeetingScreenNameDlg(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableInputMeetingScreenNameDlg, void, bool, bEnable)
+//virtual void RedirectWebinarNeedRegister(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectWebinarNeedRegister, void, bool, bRedirect)
+//virtual void RedirectEndOtherMeeting(bool bRedirect) = 0;
+DEFINE_FUNC_1(RedirectEndOtherMeeting, void, bool, bRedirect)
+//virtual void EnableForceAutoStartMyVideoWhenJoinMeeting(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableForceAutoStartMyVideoWhenJoinMeeting, void, bool, bEnable)
+//virtual void EnableForceAutoStopMyVideoWhenJoinMeeting(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableForceAutoStopMyVideoWhenJoinMeeting, void, bool, bEnable)
+//virtual void DisableAutoShowSelectJoinAudioDlgWhenJoinMeeting(bool bDisable) = 0;
+DEFINE_FUNC_1(DisableAutoShowSelectJoinAudioDlgWhenJoinMeeting, void, bool, bDisable)
+//virtual SDKError SetUICustomizedString(SDKCustomizedStringType customizedType, const wchar_t* customizedString) = 0;
+DEFINE_FUNC_2(SetUICustomizedString, SDKError, SDKCustomizedStringType, customizedType, const wchar_t*, customizedString)
+//virtual SDKError DisableTopMostAttr4SettingDialog(bool bDisable) = 0;
+DEFINE_FUNC_1(DisableTopMostAttr4SettingDialog, SDKError, bool, bDisable)
+//virtual SDKError EnableGrabShareWithoutReminder(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableGrabShareWithoutReminder, SDKError, bool, bEnable)
 
 //virtual void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler* pHandler) = 0;
 CallBack_FUNC_1(onInputMeetingPasswordAndScreenNameNotification, IMeetingPasswordAndScreenNameHandler*, pHandler)
@@ -108,6 +138,9 @@ CallBack_FUNC_1(onWebinarNeedRegisterNotification, IWebinarNeedRegisterHandler*,
 CallBack_FUNC_1(onEndOtherMeetingToJoinMeetingNotification, IEndOtherMeetingToJoinMeetingHandler*, handler_)
 //virtual void onFreeMeetingEndingReminderNotification(IFreeMeetingEndingReminderHandler* handler_) = 0;
 CallBack_FUNC_1(onFreeMeetingEndingReminderNotification, IFreeMeetingEndingReminderHandler*, handler_)
+//virtual void onFreeMeetingRemainTime(unsigned int leftTime) = 0;
+CallBack_FUNC_1(onFreeMeetingRemainTime, unsigned int, leftTime)
+
 END_CLASS_DEFINE(IMeetingConfiguration)
 
 END_ZOOM_SDK_NAMESPACE

@@ -3,38 +3,36 @@
 #define BEGIN_CLASS_DEFINE(Classname) \
 class CSDKWrap;\
 class CSDKExtWrap;\
-class Classname##Wrap \
-{
+class Classname##Wrap : public Classname \
+{\
+void* external_cb;
 
-#define BEGIN_CLASS_DEFINE_WITHCALLBACK(Classname, CallBackClass)\
-class CSDKWrap;\
-class CSDKExtWrap;\
-class Classname##Wrap : public CallBackClass \
-{
-
-#define STAITC_CLASS(Classname) \
-friend CSDKWrap;\
-friend CSDKExtWrap;\
-private:\
-	Classname##Wrap(){m_obj = NULL;};\
-	static Classname##Wrap& GetInst(){static Classname##Wrap inst; return inst;};\
-public:
+#if (defined UserInterfaceClass)
+#include "macro_define_class_userinterface.h"
+#else
+#include "macro_define_class.h"
+#endif 
 
 #define NORMAL_CLASS(Classname) \
 public:\
-	Classname##Wrap(){m_obj = NULL;};
+	Classname##Wrap(){m_obj = NULL;external_cb=NULL;};
+
+#if (!defined UserInterfaceClass)
+#define Init_Wrap Init
+#define Uninit_Wrap Uninit
+#endif
 
 #define INIT_UNINIT(Classname)\
-	void Init(){m_obj = Init##Classname##Func();};\
-	void Uninit(){Uninit##Classname##Func(m_obj);m_obj=NULL;};
+	void Init_Wrap(){m_obj = Init##Classname##Func();};\
+	void Uninit_Wrap(){Uninit##Classname##Func(m_obj);m_obj=NULL;};
 
 #define INIT_UNINIT_WITHEVENT(Classname)\
-	void Init(){m_obj = Init##Classname##Func(this);};\
-	void Uninit(){Uninit##Classname##Func(m_obj);m_obj=NULL;};
+	void Init_Wrap(){m_obj = Init##Classname##Func(this);};\
+	void Uninit_Wrap(){Uninit##Classname##Func(m_obj);m_obj=NULL;};
 
 #define INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(Classname, OwnerClass)\
-	void Init(OwnerClass* pOwner){m_obj = Init##Classname##Func(this, pOwner);};\
-	void Uninit(){Uninit##Classname##Func(m_obj);m_obj=NULL;};
+	void Init_Wrap(OwnerClass* pOwner){m_obj = Init##Classname##Func(this, pOwner);};\
+	void Uninit_Wrap(){Uninit##Classname##Func(m_obj);m_obj=NULL;};
 
 #define DEFINE_FUNC_0(funcname,R)\
 	R funcname();
@@ -62,6 +60,8 @@ virtual void funcname()\
 {\
 	if (NULL != m_cb##funcname)\
 		m_cb##funcname();\
+	if (NULL != external_cb)\
+		external_cb->funcname();\
 }\
 std::function<void()> m_cb##funcname;
 
@@ -70,6 +70,8 @@ virtual void funcname(T1 P1)\
 {\
 	if (NULL != m_cb##funcname)\
 		m_cb##funcname(P1);\
+	if (NULL != external_cb)\
+		external_cb->funcname(P1);\
 }\
 std::function<void(T1)> m_cb##funcname;
 
@@ -78,6 +80,8 @@ virtual void funcname(T1 P1, T2 P2)\
 {\
 	if (NULL != m_cb##funcname)\
 		m_cb##funcname(P1, P2);\
+	if (NULL != external_cb)\
+		external_cb->funcname(P1, P2);\
 }\
 std::function<void(T1, T2)> m_cb##funcname;
 
@@ -86,6 +90,8 @@ virtual void funcname(T1 P1, T2 P2, T3 P3)\
 {\
 	if (NULL != m_cb##funcname)\
 		m_cb##funcname(P1, P2, P3);\
+	if (NULL != external_cb)\
+		external_cb->funcname(P1, P2, P3);\
 }\
 std::function<void(T1, T2, T3)> m_cb##funcname;
 
@@ -176,6 +182,6 @@ m_obj->funcname(P1, P2, P3, P4);\
 R##& Classname##Wrap::funcname()\
 {\
 if (m_obj)\
-m_ob##R.Init(this);\
+m_ob##R.Init_Wrap(this);\
 return m_ob##R;\
 }

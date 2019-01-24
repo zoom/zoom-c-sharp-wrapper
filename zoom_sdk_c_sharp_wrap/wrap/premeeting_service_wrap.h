@@ -7,8 +7,15 @@ void UninitIPreMeetingServiceFunc(ZOOM_SDK_NAMESPACE::IPreMeetingService* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IPreMeetingService, IPreMeetingServiceEvent)
 STAITC_CLASS(IPreMeetingService)
 INIT_UNINIT_WITHEVENT(IPreMeetingService)
+virtual SDKError SetEvent(IPreMeetingServiceEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual IScheduleMeetingItem* CreateScheduleMeetingItem() = 0;
 DEFINE_FUNC_0(CreateScheduleMeetingItem, IScheduleMeetingItem*)
+//virtual SDKError ListMeeting() = 0;
+DEFINE_FUNC_0(ListMeeting, SDKError)
 //virtual void DestoryScheduleMeetingItem(IScheduleMeetingItem* pMeeting) = 0;
 DEFINE_FUNC_1(DestoryScheduleMeetingItem, void, IScheduleMeetingItem*, pMeeting)
 

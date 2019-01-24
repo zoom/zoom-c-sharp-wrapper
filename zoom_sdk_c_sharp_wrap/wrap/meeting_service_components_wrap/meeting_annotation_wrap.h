@@ -27,6 +27,9 @@ DEFINE_FUNC_2(SetLineWidth, SDKError, SDKViewType, viewtype, long, lineWidth)
 DEFINE_FUNC_1(Undo, SDKError, SDKViewType, viewtype)
 //virtual SDKError Redo(SDKViewType viewtype) = 0;
 DEFINE_FUNC_1(Redo, SDKError, SDKViewType, viewtype)
+//virtual ICustomizedAnnotationController* GetCustomizedAnnotationController() = 0;
+DEFINE_FUNC_0(GetCustomizedAnnotationController, ICustomizedAnnotationController*)
+
 
 END_CLASS_DEFINE(IAnnotationController)
 END_ZOOM_SDK_NAMESPACE

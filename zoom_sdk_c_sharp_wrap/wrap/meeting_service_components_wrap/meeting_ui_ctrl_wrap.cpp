@@ -56,6 +56,7 @@ IMPL_FUNC_2(IMeetingUIController, GetMeetingUIWnd, SDKError, HWND&, hFirstView, 
 IMPL_FUNC_0(IMeetingUIController, ShowJoinAudioDlg, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError HideJoinAudioDlg() = 0;
 IMPL_FUNC_0(IMeetingUIController, HideJoinAudioDlg, SDKError, SDKERR_UNINITIALIZE)
+IMPL_FUNC_0(IMeetingUIController, BackToMeeting, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError GetWallViewPageInfo(VideoWallPageInfoParam& videoWallPageInfoParam) = 0;
 IMPL_FUNC_1(IMeetingUIController, GetWallViewPageInfo, SDKError, VideoWallPageInfoParam&, videoWallPageInfoParam, SDKERR_UNINITIALIZE)
 //virtual SDKError ShowPreOrNextPageVideo(bool bPageUp) = 0;

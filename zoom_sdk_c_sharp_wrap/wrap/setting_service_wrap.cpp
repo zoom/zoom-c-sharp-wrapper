@@ -27,4 +27,5 @@ IMPL_FUNC_0(ISettingService, GetVideoSettings, IVideoSettingContext*, NULL)
 IMPL_FUNC_0(ISettingService, GetRecordingSettings, IRecordingSettingContext*, NULL)
 //virtual IStatisticSettingContext* GetStatisticSettings() = 0;
 IMPL_FUNC_0(ISettingService, GetStatisticSettings, IStatisticSettingContext*, NULL)
+IMPL_FUNC_0(ISettingService, GetSettingUIStrategy, ISettingUIStrategy*, NULL)
 END_ZOOM_SDK_NAMESPACE

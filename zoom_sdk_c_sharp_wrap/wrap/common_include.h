@@ -91,6 +91,7 @@ inline void myOutputDebugString(const char* format, ...)
 	vsnprintf(szData, 2048, format, args);
 
 	OutputDebugStringA(szData);
+	OutputDebugStringA("\n");
 	va_end(args);
 }
 inline void myOutputDebugStringW(const wchar_t* format, ...)
@@ -102,6 +103,7 @@ inline void myOutputDebugStringW(const wchar_t* format, ...)
 	_vsnwprintf(szData, 2048, format, args);
 
 	OutputDebugStringW(szData);
+	OutputDebugStringA("\n");
 	va_end(args);
 }
 

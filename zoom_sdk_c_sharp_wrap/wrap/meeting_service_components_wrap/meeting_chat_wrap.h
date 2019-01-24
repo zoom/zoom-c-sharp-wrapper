@@ -7,7 +7,11 @@ void UninitIMeetingChatControllerFunc(IMeetingChatController* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingChatController, IMeetingChatCtrlEvent)
 NORMAL_CLASS(IMeetingChatController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingChatController, IMeetingServiceWrap)
-
+virtual SDKError SetEvent(IMeetingChatCtrlEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError SendChatTo(unsigned int receiver, wchar_t* content) = 0;
 DEFINE_FUNC_2(SendChatTo, SDKError, unsigned int, receiver, wchar_t*, content)
 //virtual SDKError SendChat4WebinarMeeting(SendChatItem4Webinar& chatIteam) = 0;

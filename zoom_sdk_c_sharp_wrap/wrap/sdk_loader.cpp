@@ -366,7 +366,7 @@ ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::RetrieveUIHooker)(ZOOM_SDK_NAMESPACE::IUI
 	return ret;
 }
 
-#ifndef CSHARP_WRAP
+#if !defined(CSHARP_WRAP) && !defined(JS_WRAP)
 BOOL APIENTRY DllMain(HMODULE hModule,
 	DWORD  ul_reason_for_call,
 	LPVOID lpReserved

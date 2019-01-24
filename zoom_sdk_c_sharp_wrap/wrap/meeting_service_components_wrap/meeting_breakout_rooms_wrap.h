@@ -7,7 +7,11 @@ void UninitIMeetingBreakoutRoomsControllerFunc(IMeetingBreakoutRoomsController* 
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingBreakoutRoomsController, IMeetingBreakoutRoomsEvent)
 NORMAL_CLASS(IMeetingBreakoutRoomsController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingBreakoutRoomsController, IMeetingServiceWrap)
-
+virtual SDKError SetEvent(IMeetingBreakoutRoomsEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError JoinBreakoutRoom(const wchar_t* stBID) = 0;
 DEFINE_FUNC_1(JoinBreakoutRoom, SDKError, const wchar_t*, stBID)
 //virtual SDKError LeaveBreakoutRoom() = 0;

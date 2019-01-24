@@ -7,13 +7,27 @@ void UninitIMeetingShareControllerFunc(IMeetingShareController* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingShareController, IMeetingShareCtrlEvent)
 NORMAL_CLASS(IMeetingShareController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingShareController, IMeetingServiceWrap)
-
+virtual SDKError SetEvent(IMeetingShareCtrlEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError StartAppShare(HWND hwndSharedApp) = 0;
 DEFINE_FUNC_1(StartAppShare, SDKError, HWND, hwndSharedApp)
 //virtual SDKError StartMonitorShare(const wchar_t* monitorID) = 0;
 DEFINE_FUNC_1(StartMonitorShare, SDKError, const wchar_t*, monitorID)
 //virtual SDKError StartAirPlayShare() = 0;
 DEFINE_FUNC_0(StartAirPlayShare, SDKError)
+//virtual SDKError StartWhiteBoardShare() = 0;
+DEFINE_FUNC_0(StartWhiteBoardShare, SDKError)
+//virtual SDKError IsSupportAdvanceShareOption(AdvanceShareOption option_) = 0;
+DEFINE_FUNC_1(IsSupportAdvanceShareOption, SDKError, AdvanceShareOption, option_)
+//virtual SDKError StartShareFrame() = 0;
+DEFINE_FUNC_0(StartShareFrame, SDKError)
+//virtual SDKError StartSharePureComputerAudio() = 0;
+DEFINE_FUNC_0(StartSharePureComputerAudio, SDKError)
+//virtual SDKError StartShareCamera() = 0;
+DEFINE_FUNC_0(StartShareCamera, SDKError)
 //virtual SDKError ShowSharingAppSelectWnd() = 0;
 DEFINE_FUNC_0(ShowSharingAppSelectWnd, SDKError)
 
@@ -54,6 +68,8 @@ DEFINE_FUNC_1(IsSupportEnableOptimizeForFullScreenVideoClip, bool, bool&, bCurEn
 DEFINE_FUNC_1(EnableShareComputerSound, SDKError, bool, bEnable)
 //virtual SDKError EnableOptimizeForFullScreenVideoClip(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableOptimizeForFullScreenVideoClip, SDKError, bool, bEnable)
+//virtual SDKError SetMultiShareSettingOptions(MultiShareOption shareOption) = 0;
+DEFINE_FUNC_1(SetMultiShareSettingOptions, SDKError, MultiShareOption, shareOption)
 
 //virtual void onSharingStatus(SharingStatus status, unsigned int userId) = 0;
 CallBack_FUNC_2(onSharingStatus, SharingStatus, status, unsigned int, userId)
@@ -61,6 +77,7 @@ CallBack_FUNC_2(onSharingStatus, SharingStatus, status, unsigned int, userId)
 CallBack_FUNC_1(onLockShareStatus, bool, bLocked)
 //virtual void onShareContentNotification(ShareInfo& shareInfo) = 0;
 CallBack_FUNC_1(onShareContentNotification, ShareInfo&, shareInfo)
-
+//virtual void onMultiShareSwitchToSingleShareNeedConfirm(IShareSwitchMultiToSingleConfirmHandler* handler_) = 0;	
+CallBack_FUNC_1(onMultiShareSwitchToSingleShareNeedConfirm, IShareSwitchMultiToSingleConfirmHandler*, handler_)
 END_CLASS_DEFINE(IMeetingShareController)
 END_ZOOM_SDK_NAMESPACE

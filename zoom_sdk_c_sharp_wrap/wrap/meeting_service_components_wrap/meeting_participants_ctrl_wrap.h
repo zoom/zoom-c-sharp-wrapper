@@ -7,7 +7,11 @@ void UninitIMeetingParticipantsControllerFunc(IMeetingParticipantsController* ob
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingParticipantsController, IMeetingParticipantsCtrlEvent)
 NORMAL_CLASS(IMeetingParticipantsController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingParticipantsController, IMeetingServiceWrap)
-
+virtual SDKError SetEvent(IMeetingParticipantsCtrlEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual IList<unsigned int >* GetParticipantsList() = 0;
 DEFINE_FUNC_0(GetParticipantsList, IList<unsigned int >*)
 //virtual IUserInfo* GetUserByUserID(unsigned int userid) = 0;

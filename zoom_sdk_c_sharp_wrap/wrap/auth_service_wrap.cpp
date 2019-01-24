@@ -24,4 +24,6 @@ void UninitIAuthServiceFunc(ZOOM_SDK_NAMESPACE::IAuthService* obj)
 	IMPL_FUNC_0(IAuthService, LogOut, SDKError, SDKERR_UNINITIALIZE)
 	IMPL_FUNC_0(IAuthService, GetAccountInfo, IAccountInfo*, NULL)
 	IMPL_FUNC_0(IAuthService, GetLoginStatus, LOGINSTATUS, LOGIN_IDLE)
+	IMPL_FUNC_0(IAuthService, GetOutlookPluginHeler, IOutlookPluginIntegrationHelper*, NULL)
+	IMPL_FUNC_0(IAuthService, GetDirectShareServiceHeler, IDirectShareServiceHelper*, NULL)
 END_ZOOM_SDK_NAMESPACE

@@ -7,6 +7,11 @@ void UninitIUIHookerFunc(ZOOM_SDK_NAMESPACE::IUIHooker* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IUIHooker, IUIHookerEvent)
 STAITC_CLASS(IUIHooker)
 INIT_UNINIT_WITHEVENT(IUIHooker)
+virtual SDKError SetEvent(IUIHookerEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError MonitorWndMessage(unsigned int wndmsgid, bool bAdd = true) = 0;
 DEFINE_FUNC_2(MonitorWndMessage, SDKError, unsigned int, wndmsgid, bool, bAdd)
 //virtual SDKError MonitorWnd(const wchar_t* classname, bool bAdd = true) = 0;

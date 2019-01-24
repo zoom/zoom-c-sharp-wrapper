@@ -9,7 +9,11 @@ STAITC_CLASS(IAuthService)
 INIT_UNINIT_WITHEVENT(IAuthService)
 //virtual SDKError SetEvent(IAuthServiceEvent* pEvent) = 0;
 //DEFINE_FUNC_1(SetEvent, SDKError, IAuthServiceEvent*, pEvent)
-
+virtual SDKError SetEvent(IAuthServiceEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError SDKAuth(AuthParam& authParam) = 0;
 DEFINE_FUNC_1(SDKAuth, SDKError, AuthParam&, authParam)
 
@@ -30,6 +34,10 @@ DEFINE_FUNC_0(GetAccountInfo, IAccountInfo*)
 
 //virtual LOGINSTATUS GetLoginStatus() = 0;
 DEFINE_FUNC_0(GetLoginStatus, LOGINSTATUS)
+//virtual IOutlookPluginIntegrationHelper* GetOutlookPluginHeler() = 0;
+DEFINE_FUNC_0(GetOutlookPluginHeler, IOutlookPluginIntegrationHelper*)
+//virtual IDirectShareServiceHelper* GetDirectShareServiceHeler() = 0;
+DEFINE_FUNC_0(GetDirectShareServiceHeler, IDirectShareServiceHelper*)
 
 //virtual void onAuthenticationReturn(AuthResult ret)
 CallBack_FUNC_1(onAuthenticationReturn, AuthResult,ret)

@@ -23,7 +23,17 @@ void UninitIMeetingShareControllerFunc(IMeetingShareController* obj)
 		obj->SetEvent(NULL);
 	}
 }
-
+//virtual SDKError StartWhiteBoardShare() = 0;
+IMPL_FUNC_0(IMeetingShareController, StartWhiteBoardShare, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError IsSupportAdvanceShareOption(AdvanceShareOption option_) = 0;
+IMPL_FUNC_1(IMeetingShareController, IsSupportAdvanceShareOption, SDKError, AdvanceShareOption, option_, SDKERR_UNINITIALIZE)
+//virtual SDKError StartShareFrame() = 0;
+IMPL_FUNC_0(IMeetingShareController, StartShareFrame, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError StartSharePureComputerAudio() = 0;
+IMPL_FUNC_0(IMeetingShareController, StartSharePureComputerAudio, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError StartShareCamera() = 0;
+IMPL_FUNC_0(IMeetingShareController, StartShareCamera, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError ShowSharingAppSelectWnd() = 0;
 //virtual SDKError StartAppShare(HWND hwndSharedApp) = 0;
 IMPL_FUNC_1(IMeetingShareController, StartAppShare, SDKError, HWND, hwndSharedApp, SDKERR_UNINITIALIZE)
 //virtual SDKError StartMonitorShare(const wchar_t* monitorID) = 0;
@@ -69,5 +79,5 @@ IMPL_FUNC_1(IMeetingShareController, EnableShareComputerSound, SDKError, bool, b
 //virtual SDKError EnableOptimizeForFullScreenVideoClip(bool bEnable) = 0;
 IMPL_FUNC_1(IMeetingShareController, EnableOptimizeForFullScreenVideoClip, SDKError, bool, bEnable, SDKERR_UNINITIALIZE)
 
-
+IMPL_FUNC_1(IMeetingShareController, SetMultiShareSettingOptions, SDKError, MultiShareOption, shareOption, SDKERR_UNINITIALIZE)
 END_ZOOM_SDK_NAMESPACE

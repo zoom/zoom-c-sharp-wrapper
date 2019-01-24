@@ -7,7 +7,11 @@ void UninitIMeetingWaitingRoomControllerFunc(IMeetingWaitingRoomController* obj)
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingWaitingRoomController, IMeetingWaitingRoomEvent)
 NORMAL_CLASS(IMeetingWaitingRoomController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingWaitingRoomController, IMeetingServiceWrap)
-
+virtual SDKError SetEvent(IMeetingWaitingRoomEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual bool IsSupportWaitingRoom() = 0;
 DEFINE_FUNC_0(IsSupportWaitingRoom, bool)
 //virtual bool IsWaitingRoomOnEntryFlagOn() = 0;

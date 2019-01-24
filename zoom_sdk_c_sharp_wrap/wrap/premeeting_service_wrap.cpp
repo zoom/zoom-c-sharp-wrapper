@@ -16,7 +16,8 @@ void UninitIPreMeetingServiceFunc(ZOOM_SDK_NAMESPACE::IPreMeetingService* obj)
 {
 	CSDKImpl::GetInst().DestroyPreMeetingService(obj);
 }
-
+//virtual SDKError ListMeeting() = 0;
+IMPL_FUNC_0(IPreMeetingService, ListMeeting, SDKError, SDKERR_UNINITIALIZE)
 //virtual IScheduleMeetingItem* CreateScheduleMeetingItem() = 0;
 IMPL_FUNC_0(IPreMeetingService, CreateScheduleMeetingItem, IScheduleMeetingItem*, NULL)
 //virtual void DestoryScheduleMeetingItem(IScheduleMeetingItem* pMeeting) = 0;

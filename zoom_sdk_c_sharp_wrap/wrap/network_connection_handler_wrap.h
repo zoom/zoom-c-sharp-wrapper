@@ -7,7 +7,17 @@ void UninitINetworkConnectionHelperFunc(INetworkConnectionHelper* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(INetworkConnectionHelper, INetworkConnectionHandler)
 STAITC_CLASS(INetworkConnectionHelper)
 INIT_UNINIT_WITHEVENT(INetworkConnectionHelper)
+virtual SDKError RegisterNetworkConnectionHandler(INetworkConnectionHandler* pNetworkHandler)
+{
+	external_cb = pNetworkHandler;
+	return SDKERR_SUCCESS;
+}
 
+virtual SDKError UnRegisterNetworkConnectionHandler()
+{
+	external_cb = NULL;
+	return SDKERR_SUCCESS;
+}
 //virtual void onProxyDetectComplete() = 0;
 CallBack_FUNC_0(onProxyDetectComplete)
 //virtual void onProxySettingNotification(IProxySettingHandler* handler) = 0;

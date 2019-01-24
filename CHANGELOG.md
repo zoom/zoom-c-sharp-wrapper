@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2019-01-23
+
+* No interface changes for C# wrapper, please refer to [https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md](https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md) for changes in Windows SDK.
+
 ## 2018-10-29
 
 No interface changes
@@ -19,5 +23,3 @@ The start meeting logic for API users has changed. Please read below before upgr
 ### Added
 
 1. Add new start meeting methods for API user
-
-

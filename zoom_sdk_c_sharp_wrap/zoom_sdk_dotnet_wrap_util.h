@@ -248,21 +248,21 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual unsigned int GetUserID()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsHost();
-			return false;
+				return m_pInfo->GetUserID();
+			return 0;
 		}
 
 		virtual bool IsVideoOn()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsHost();
+				return m_pInfo->IsVideoOn();
 			return false;
 		}
 
 		virtual bool IsAudioMuted()
 		{
 			if (m_pInfo)
-				return m_pInfo->IsHost();
+				return m_pInfo->IsAudioMuted();
 			return false;
 		}
 

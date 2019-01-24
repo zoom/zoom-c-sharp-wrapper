@@ -23,7 +23,16 @@ void UninitIMeetingRemoteControllerFunc(IMeetingRemoteController* obj)
 		obj->SetEvent(NULL);
 	}
 }
-
+//virtual SDKError CanRequestControl(unsigned int userId) = 0;
+IMPL_FUNC_1(IMeetingRemoteController, CanRequestControl, SDKError, unsigned int, userId, SDKERR_UNINITIALIZE)
+//virtual SDKError IsHaveRemoteControlRight(unsigned int userId) = 0;
+IMPL_FUNC_1(IMeetingRemoteController, IsHaveRemoteControlRight, SDKError, unsigned int, userId, SDKERR_UNINITIALIZE)
+//virtual SDKError IsInRemoteControllingStatus(unsigned int userId) = 0;
+IMPL_FUNC_1(IMeetingRemoteController, IsInRemoteControllingStatus, SDKError, unsigned int, userId, SDKERR_UNINITIALIZE)
+//virtual SDKError EnterRemoteControllingStatus(unsigned int userId) = 0;
+IMPL_FUNC_1(IMeetingRemoteController, EnterRemoteControllingStatus, SDKError, unsigned int, userId, SDKERR_UNINITIALIZE)
+//virtual SDKError LeaveRemoteControllingStatus(unsigned int userId) = 0;
+IMPL_FUNC_1(IMeetingRemoteController, LeaveRemoteControllingStatus, SDKError, unsigned int, userId, SDKERR_UNINITIALIZE)
 //virtual SDKError RequestRemoteControl(unsigned int userId) = 0;
 IMPL_FUNC_1(IMeetingRemoteController, RequestRemoteControl, SDKError, unsigned int, userId, SDKERR_UNINITIALIZE)
 //virtual SDKError GiveupRemoteControl(unsigned int userId) = 0;

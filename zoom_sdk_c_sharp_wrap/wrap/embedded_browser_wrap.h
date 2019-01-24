@@ -6,6 +6,11 @@ BEGIN_CLASS_DEFINE_WITHCALLBACK(IEmbeddedBrowser, IEmbeddedBrowserEvent)
 NORMAL_CLASS(IEmbeddedBrowser)
 void Init(HWND hwnd);
 void Uninit();
+virtual SDKError SetEvent(IEmbeddedBrowserEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError Navigate(const char* url) = 0;
 DEFINE_FUNC_1(Navigate, SDKError, const char*, url)
 //virtual SDKError Resize() = 0;

@@ -7,7 +7,11 @@ void UninitIMeetingAudioControllerFunc(IMeetingAudioController* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingAudioController, IMeetingAudioCtrlEvent)
 NORMAL_CLASS(IMeetingAudioController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingAudioController, IMeetingServiceWrap)
-
+virtual SDKError SetEvent(IMeetingAudioCtrlEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError JoinVoip() = 0;
 DEFINE_FUNC_0(JoinVoip, SDKError)
 //virtual SDKError LeaveVoip() = 0;

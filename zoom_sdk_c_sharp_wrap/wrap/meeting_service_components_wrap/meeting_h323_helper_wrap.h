@@ -7,7 +7,10 @@ void UninitIMeetingH323HelperFunc(IMeetingH323Helper* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingH323Helper, IMeetingH323HelperEvent)
 NORMAL_CLASS(IMeetingH323Helper)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingH323Helper, IMeetingServiceWrap)
-
+virtual void SetEvent(IMeetingH323HelperEvent* pEvent)
+{
+	 external_cb = pEvent;
+}
 //virtual IList<const wchar_t* >* GetH323Address() = 0;
 DEFINE_FUNC_0(GetH323Address, IList<const wchar_t* >*)
 //virtual const wchar_t* GetH323Password() = 0;

@@ -7,7 +7,11 @@ void UninitIMeetingUIControllerFunc(IMeetingUIController* obj);
 BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingUIController, IMeetingUIControllerEvent)
 NORMAL_CLASS(IMeetingUIController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingUIController, IMeetingServiceWrap)
-
+virtual SDKError SetEvent(IMeetingUIControllerEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError ShowChatDlg(ShowChatDlgParam& param) = 0;
 DEFINE_FUNC_1(ShowChatDlg, SDKError, ShowChatDlgParam&, param)
 //virtual SDKError HideChatDlg() = 0;
@@ -40,6 +44,8 @@ DEFINE_FUNC_2(GetMeetingUIWnd, SDKError, HWND&, hFirstView, HWND&, hSecondView)
 DEFINE_FUNC_0(ShowJoinAudioDlg, SDKError)
 //virtual SDKError HideJoinAudioDlg() = 0;
 DEFINE_FUNC_0(HideJoinAudioDlg, SDKError)
+//virtual SDKError BackToMeeting() = 0;
+DEFINE_FUNC_0(BackToMeeting, SDKError)
 //virtual SDKError GetWallViewPageInfo(VideoWallPageInfoParam& videoWallPageInfoParam) = 0;
 DEFINE_FUNC_1(GetWallViewPageInfo, SDKError, VideoWallPageInfoParam&, videoWallPageInfoParam)
 //virtual SDKError ShowPreOrNextPageVideo(bool bPageUp) = 0;
@@ -67,5 +73,7 @@ CallBack_FUNC_0(onParticipantListBtnClicked)
 CallBack_FUNC_0(onCustomLiveStreamMenuClicked)
 //virtual void onZoomInviteDialogFailed() = 0;
 CallBack_FUNC_0(onZoomInviteDialogFailed)
+//virtual void onCCBTNClicked() = 0;
+CallBack_FUNC_0(onCCBTNClicked)
 END_CLASS_DEFINE(IMeetingUIController)
 END_ZOOM_SDK_NAMESPACE

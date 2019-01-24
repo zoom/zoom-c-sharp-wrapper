@@ -8,6 +8,19 @@ BEGIN_CLASS_DEFINE_WITHCALLBACK(ICalenderService, ICalenderServiceEvent)
 STAITC_CLASS(ICalenderService)
 INIT_UNINIT_WITHEVENT(ICalenderService)
 
+#if (defined UserInterfaceClass)
+virtual SDKError Init(ICalenderServiceEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
+virtual SDKError Uninit()
+{
+	external_cb = NULL;
+	return SDKERR_SUCCESS;
+}
+#endif 
+
 //virtual SDKError StartOutlookExchangeCalender(OutlookExchageAuth& param) = 0;
 DEFINE_FUNC_1(StartOutlookExchangeCalender, SDKError, OutlookExchageAuth&, param)
 //virtual SDKError StopOutlookExchangeCalender() = 0;

@@ -8,6 +8,11 @@ BEGIN_CLASS_DEFINE_WITHCALLBACK(IMeetingRecordingController, IMeetingRecordingCt
 NORMAL_CLASS(IMeetingRecordingController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IMeetingRecordingController, IMeetingServiceWrap)
 
+virtual SDKError SetEvent(IMeetingRecordingCtrlEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual SDKError StartRecording(time_t& startTimestamp, wchar_t* recPath) = 0;
 DEFINE_FUNC_2(StartRecording, SDKError, time_t&, startTimestamp, wchar_t*, recPath)
 //virtual SDKError StopRecording(time_t& stopTimestamp) = 0;
@@ -27,6 +32,8 @@ DEFINE_FUNC_1(IsSupportLocalRecording, SDKError, unsigned int, userid)
 DEFINE_FUNC_1(AllowLocalRecording, SDKError, unsigned int, userid)
 //virtual SDKError DisAllowLocalRecording(unsigned int userid) = 0;
 DEFINE_FUNC_1(DisAllowLocalRecording, SDKError, unsigned int, userid)
+//virtual SDKError RequestCustomizedLocalRecordingSource() = 0;
+DEFINE_FUNC_0(RequestCustomizedLocalRecordingSource, SDKError)
 
 //virtual void onRecording2MP4Done(bool bsuccess, int iResult, const wchar_t* szPath) = 0;
 CallBack_FUNC_3(onRecording2MP4Done, bool, bsuccess, int, iResult, const wchar_t*, szPath)

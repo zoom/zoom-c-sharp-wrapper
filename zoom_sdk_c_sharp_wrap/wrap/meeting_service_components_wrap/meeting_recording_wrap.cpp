@@ -44,4 +44,5 @@ IMPL_FUNC_1(IMeetingRecordingController, AllowLocalRecording, SDKError, unsigned
 //virtual SDKError DisAllowLocalRecording(unsigned int userid) = 0;
 IMPL_FUNC_1(IMeetingRecordingController, DisAllowLocalRecording, SDKError, unsigned int, userid, SDKERR_UNINITIALIZE)
 
+IMPL_FUNC_0(IMeetingRecordingController, RequestCustomizedLocalRecordingSource, SDKError, SDKERR_UNINITIALIZE)
 END_ZOOM_SDK_NAMESPACE
