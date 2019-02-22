@@ -11,7 +11,7 @@
 ## Getting Started
 
 The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-* For detailed instructions, please refer to our documentation website: [https://marketplace.zoom.us/docs/sdk/windows/c-wrapper](https://marketplace.zoom.us/docs/sdk/windows/c-wrapper);
+* For detailed instructions, please refer to our documentation website: [https://marketplace.zoom.us/docs/sdk/native-sdks/windows/c-wrapper](https://marketplace.zoom.us/docs/sdk/native-sdks/windows/c-wrapper);
 * If you need support or assistance, please visit our [Zoom Developer Community Forum](https://devforum.zoom.us/);
 
 ### Prerequisites
@@ -60,7 +60,7 @@ d>build and run.
 
 ## Documentation
 
-Please visit [[https://marketplace.zoom.us/docs/sdk/windows/c-wrapper](https://marketplace.zoom.us/docs/sdk/windows/c-wrapper)] for details of each features and functions.
+Please visit [[https://marketplace.zoom.us/docs/sdk/native-sdks/windows/c-wrapper](https://marketplace.zoom.us/docs/sdk/native-sdks/windows/c-wrapper)] for details of each features and functions.
 
 ## Versioning
 
