@@ -77,6 +77,7 @@
   <ItemGroup>
     <ClCompile Include="auth_service_wrap.cpp" />
     <ClCompile Include="calender_service_wrap.cpp" />
+    <ClCompile Include="customized_resource_helper_wrap.cpp" />
     <ClCompile Include="embedded_browser_wrap.cpp" />
     <ClCompile Include="meeting_service_components_wrap\meeting_annotation_wrap.cpp" />
     <ClCompile Include="meeting_service_components_wrap\meeting_audio_wrap.cpp" />
@@ -103,6 +104,7 @@
   <ItemGroup>
     <ClInclude Include="auth_service_wrap.h" />
     <ClInclude Include="calender_service_wrap.h" />
+    <ClInclude Include="customized_resource_helper_wrap.h" />
     <ClInclude Include="embedded_browser_wrap.h" />
     <ClInclude Include="meeting_service_components_wrap\meeting_annotation_wrap.h" />
     <ClInclude Include="meeting_service_components_wrap\meeting_audio_wrap.h" />

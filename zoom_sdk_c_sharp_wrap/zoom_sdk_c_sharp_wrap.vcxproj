@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="auth_service_dotnet_wrap.h" />
+    <ClInclude Include="customized_resource_helper_dotnet_wrap.h" />
     <ClInclude Include="meeting_annotation_dotnet_wrap.h" />
     <ClInclude Include="meeting_audio_dotnet_wrap.h" />
     <ClInclude Include="meeting_breakout_rooms_dotnet_wrap.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="wrap\auth_service_wrap.h" />
     <ClInclude Include="wrap\calender_service_wrap.h" />
     <ClInclude Include="wrap\common_include.h" />
+    <ClInclude Include="wrap\customized_resource_helper_wrap.h" />
     <ClInclude Include="wrap\embedded_browser_wrap.h" />
     <ClInclude Include="wrap\macro_define.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_annotation_wrap.h" />
@@ -188,6 +190,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="auth_service_dotnet_wrap.cpp" />
+    <ClCompile Include="customized_resource_helper_dotnet_wrap.cpp" />
     <ClCompile Include="meeting_annotation_dotnet_wrap.cpp" />
     <ClCompile Include="meeting_audio_dotnet_wrap.cpp" />
     <ClCompile Include="meeting_breakout_rooms_dotnet_wrap.cpp" />
@@ -214,6 +217,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="wrap\calender_service_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\customized_resource_helper_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="wrap\embedded_browser_wrap.cpp">

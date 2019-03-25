@@ -10,6 +10,7 @@
 #include "../h/setting_service_interface.h"
 #include "../h/premeeting_service_interface.h"
 #include "../h/calender_service_interface.h"
+#include "../h/customized_resource_helper_interface.h"
 #include "../h/meeting_service_components/meeting_annotation_interface.h"
 #include "../h/meeting_service_components/meeting_audio_interface.h"
 #include "../h/meeting_service_components/meeting_breakout_rooms_interface.h"
@@ -35,6 +36,7 @@
 #include "../h/setting_service_interface.h"
 #include "../h/premeeting_service_interface.h"
 #include "../h/calender_service_interface.h"
+#include "../h/customized_resource_helper_interface.h"
 #include "../h/meeting_service_components/meeting_annotation_interface.h"
 #include "../h/meeting_service_components/meeting_audio_interface.h"
 #include "../h/meeting_service_components/meeting_breakout_rooms_interface.h"
@@ -60,6 +62,7 @@
 #include "../../zoom_sdk/include/setting_service_interface.h"
 #include "../../zoom_sdk/include/premeeting_service_interface.h"
 #include "../../zoom_sdk/include/calender_service_interface.h"
+#include "../../zoom_sdk/include/customized_resource_helper_interface.h"
 #include "../../zoom_sdk/include/meeting_service_components/meeting_annotation_interface.h"
 #include "../../zoom_sdk/include/meeting_service_components/meeting_audio_interface.h"
 #include "../../zoom_sdk/include/meeting_service_components/meeting_breakout_rooms_interface.h"
@@ -91,7 +94,6 @@ inline void myOutputDebugString(const char* format, ...)
 	vsnprintf(szData, 2048, format, args);
 
 	OutputDebugStringA(szData);
-	OutputDebugStringA("\n");
 	va_end(args);
 }
 inline void myOutputDebugStringW(const wchar_t* format, ...)
@@ -103,7 +105,6 @@ inline void myOutputDebugStringW(const wchar_t* format, ...)
 	_vsnwprintf(szData, 2048, format, args);
 
 	OutputDebugStringW(szData);
-	OutputDebugStringA("\n");
 	va_end(args);
 }
 

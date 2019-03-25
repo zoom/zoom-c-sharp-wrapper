@@ -80,4 +80,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		return CSettingServiceDotNetWrap::Instance;
 	}
+	
+	ICustomizedResourceHelperDotNetWrap^ CZoomSDKeDotNetWrap::RetrieveCustomizedResourceHelperWrap()
+	{
+		return CCustomizedResourceHelperDotNetWrap::Instance;
+	}
+	
 }

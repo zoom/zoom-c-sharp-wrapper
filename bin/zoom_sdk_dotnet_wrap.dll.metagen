@@ -265,6 +265,31 @@ Struct ZOOM_SDK_DOTNET_WRAP.H323DeviceType: AutoLayout, AnsiClass, Class, Public
     ZOOM_SDK_DOTNET_WRAP.H323DeviceType H323DeviceType_Unknown = 0 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.H323DeviceType H323DeviceType_H323 = 1 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.H323DeviceType H323DeviceType_SIP = 2 : Public, Static, Literal, HasDefault
+Interface ZOOM_SDK_DOTNET_WRAP.ICustomizedResourceHelperDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
+  Methods:
+    AddCustomizedPictureResource(String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    AddCustomizedStringResource(SDKCustomizedStringType, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    AddCustomizedURLResource(SDKCustomizedURLType, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Struct ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_LiveStream_MenuString_LiveOn_String = 0 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_LiveStream_MenuString_LiveView_String = 1 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_LiveStream_MenuString_LiveStop_String = 2 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_LiveStream_MenuString_CopyURL_String = 3 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_Title_App = 4 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_Title_ZoomVideo = 5 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_Title_FreeZoomVideo = 6 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_Title_ViewOnly_ZoomVideo = 7 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedStringType SDK_Customized_Title_ViewOnly_FreeZoomVideo = 8 : Public, Static, Literal, HasDefault
+Struct ZOOM_SDK_DOTNET_WRAP.SDKCustomizedURLType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedURLType SDKCustomizedURL_VITRULBG_HELP = 0 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedURLType SDKCustomizedURL_VITRULBG_LEARN_MORE = 1 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKCustomizedURLType SDKCustomizedURL_SUPPORTURL = 2 : Public, Static, Literal, HasDefault
 Interface ZOOM_SDK_DOTNET_WRAP.IAnnotationControllerDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
     IsAnnoataionDisable(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1301,3 +1326,4 @@ Class ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap: AutoLayout, AnsiClass, Class, Pu
     GetAuthServiceWrap(): PrivateScope, Public, HideBySig
     GetMeetingServiceWrap(): PrivateScope, Public, HideBySig
     GetSettingServiceWrap(): PrivateScope, Public, HideBySig
+    RetrieveCustomizedResourceHelperWrap(): PrivateScope, Public, HideBySig

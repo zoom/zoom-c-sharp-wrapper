@@ -108,6 +108,16 @@ DEFINE_FUNC_1(RedirectClickCCBTNEvent, void, bool, bRedirect)
 DEFINE_FUNC_1(EnableShowShareSwitchMultiToSingleConfirmDlg, void, bool, bEnable)
 //virtual void DisableFreeMeetingRemainTimeNotify(bool bDisable) = 0;
 DEFINE_FUNC_1(DisableFreeMeetingRemainTimeNotify, void, bool, bDisable)
+//virtual void HideChatItemOnMeetingUI(bool bHide) = 0;
+DEFINE_FUNC_1(HideChatItemOnMeetingUI, void, bool, bHide)
+//virtual void HideRecordItemOnMeetingUI(bool bHide) = 0;
+DEFINE_FUNC_1(HideRecordItemOnMeetingUI, void, bool, bHide)
+//virtual void HideUpgradeFreeMeetingButton(bool bHide) = 0;
+DEFINE_FUNC_1(HideUpgradeFreeMeetingButton, void, bool, bHide)
+//virtual void SetShowInviteDlgTabPage(SDKInviteDlgTabPage tabPage, bool bShow) = 0;
+DEFINE_FUNC_2(SetShowInviteDlgTabPage, void, SDKInviteDlgTabPage, tabPage, bool, bShow)
+//virtual void SetShowH323SubTabPage(SDKH323TabPage tabPage, bool bShow) = 0;
+DEFINE_FUNC_2(SetShowH323SubTabPage, void, SDKH323TabPage, tabPage, bool, bShow)
 
 //virtual void EnableInputMeetingScreenNameDlg(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableInputMeetingScreenNameDlg, void, bool, bEnable)
@@ -140,6 +150,16 @@ CallBack_FUNC_1(onEndOtherMeetingToJoinMeetingNotification, IEndOtherMeetingToJo
 CallBack_FUNC_1(onFreeMeetingEndingReminderNotification, IFreeMeetingEndingReminderHandler*, handler_)
 //virtual void onFreeMeetingRemainTime(unsigned int leftTime) = 0;
 CallBack_FUNC_1(onFreeMeetingRemainTime, unsigned int, leftTime)
+//virtual void onFreeMeetingRemainTimeStopCountDown() = 0;
+CallBack_FUNC_0(onFreeMeetingRemainTimeStopCountDown)
+//virtual void onFreeMeetingNeedToUpgrade(FreeMeetingNeedUpgradeType type_, const wchar_t* gift_url) = 0;
+CallBack_FUNC_2(onFreeMeetingNeedToUpgrade, FreeMeetingNeedUpgradeType, type_, const wchar_t*, gift_url)
+//virtual void onFreeMeetingUpgradeToGiftFreeTrialStart() = 0;
+CallBack_FUNC_0(onFreeMeetingUpgradeToGiftFreeTrialStart)
+//virtual void onFreeMeetingUpgradeToGiftFreeTrialStop() = 0;
+CallBack_FUNC_0(onFreeMeetingUpgradeToGiftFreeTrialStop)
+//virtual void onFreeMeetingUpgradeToProMeeting() = 0;
+CallBack_FUNC_0(onFreeMeetingUpgradeToProMeeting)
 
 END_CLASS_DEFINE(IMeetingConfiguration)
 

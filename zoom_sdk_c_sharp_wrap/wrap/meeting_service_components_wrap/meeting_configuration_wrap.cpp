@@ -95,6 +95,16 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration, RedirectClickCCBTNEvent, void, bool, bR
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableShowShareSwitchMultiToSingleConfirmDlg, void, bool, bEnable)
 //virtual void DisableFreeMeetingRemainTimeNotify(bool bDisable) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, DisableFreeMeetingRemainTimeNotify, void, bool, bDisable)
+//virtual void HideChatItemOnMeetingUI(bool bHide) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, HideChatItemOnMeetingUI, void, bool, bHide)
+//virtual void HideRecordItemOnMeetingUI(bool bHide) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, HideRecordItemOnMeetingUI, void, bool, bHide)
+//virtual void HideUpgradeFreeMeetingButton(bool bHide) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, HideUpgradeFreeMeetingButton, void, bool, bHide)
+//virtual void SetShowInviteDlgTabPage(SDKInviteDlgTabPage tabPage, bool bShow) = 0;
+IMPL_FUNC_NORET_2(IMeetingConfiguration, SetShowInviteDlgTabPage, void, SDKInviteDlgTabPage, tabPage, bool, bShow)
+//virtual void SetShowH323SubTabPage(SDKH323TabPage tabPage, bool bShow) = 0;
+IMPL_FUNC_NORET_2(IMeetingConfiguration, SetShowH323SubTabPage, void, SDKH323TabPage, tabPage, bool, bShow)
 //virtual void EnableInputMeetingScreenNameDlg(bool bEnable) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableInputMeetingScreenNameDlg, void, bool, bEnable)
 //virtual void RedirectWebinarNeedRegister(bool bRedirect) = 0;

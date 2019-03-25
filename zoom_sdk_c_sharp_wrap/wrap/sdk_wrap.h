@@ -7,6 +7,7 @@
 #include "network_connection_handler_wrap.h"
 #include "ui_hook_wrap.h"
 #include "embedded_browser_wrap.h"
+#include "customized_resource_helper_wrap.h"
 
 BEGIN_ZOOM_SDK_NAMESPACE
 class CSDKWrap
@@ -33,6 +34,8 @@ public:
 	IUIHookerWrap& GetUIHookerWrap();
 	IEmbeddedBrowserWrap* CreateEmbeddedBrowserWrap(HWND hwnd);
 	void DestroyEmbeddedBrowserWrap(IEmbeddedBrowserWrap* pObj);
+	ICustomizedResourceHelperWrap& GetCustomizedResourceHelperWrap();
+
 private:
 	CSDKExtWrap();
 };

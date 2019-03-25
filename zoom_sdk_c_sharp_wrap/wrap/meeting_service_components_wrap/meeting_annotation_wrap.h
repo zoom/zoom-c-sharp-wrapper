@@ -2,13 +2,18 @@
 #include "../common_include.h"
 BEGIN_ZOOM_SDK_NAMESPACE
 class IMeetingServiceWrap;
-IAnnotationController* InitIAnnotationControllerFunc(void* nouse, IMeetingServiceWrap* pOwner);
+IAnnotationController* InitIAnnotationControllerFunc(IMeetingAnnotationSupportEvent* pEvent, IMeetingServiceWrap* pOwner);
 void UninitIAnnotationControllerFunc(IAnnotationController* obj);
 
-BEGIN_CLASS_DEFINE(IAnnotationController)
+BEGIN_CLASS_DEFINE_WITHCALLBACK(IAnnotationController, IMeetingAnnotationSupportEvent)
 NORMAL_CLASS(IAnnotationController)
 INIT_UNINIT_WITHEVENT_AND_OWNSERVICE(IAnnotationController, IMeetingServiceWrap)
 
+virtual SDKError SetEvent(IMeetingAnnotationSupportEvent* pEvent)
+{
+	external_cb = pEvent;
+	return SDKERR_SUCCESS;
+}
 //virtual bool IsAnnoataionDisable() = 0;
 DEFINE_FUNC_0(IsAnnoataionDisable, bool)
 //virtual SDKError StartAnnotation(SDKViewType viewtype, int left, int top) = 0;
@@ -29,7 +34,17 @@ DEFINE_FUNC_1(Undo, SDKError, SDKViewType, viewtype)
 DEFINE_FUNC_1(Redo, SDKError, SDKViewType, viewtype)
 //virtual ICustomizedAnnotationController* GetCustomizedAnnotationController() = 0;
 DEFINE_FUNC_0(GetCustomizedAnnotationController, ICustomizedAnnotationController*)
+//virtual SDKError DisableViewerAnnotation(SDKViewType viewtype, bool bDisable) = 0;
+DEFINE_FUNC_2(DisableViewerAnnotation, SDKError, SDKViewType, viewtype, bool, bDisable)
+//virtual SDKError IsViewerAnnotationDisabled(SDKViewType viewtype, bool& bDisabled) = 0;
+DEFINE_FUNC_2(IsViewerAnnotationDisabled, SDKError, SDKViewType, viewtype, bool&, bDisable)
+//virtual SDKError CanDisableViewerAnnotation(SDKViewType viewtype, bool& bCan) = 0;
+DEFINE_FUNC_2(CanDisableViewerAnnotation, SDKError, SDKViewType, viewtype, bool&, bCan)
+//virtual SDKError CanDoAnnotation(SDKViewType viewtype, bool& bCan) = 0;
+DEFINE_FUNC_2(CanDoAnnotation, SDKError, SDKViewType, viewtype, bool&, bCan)
 
+//virtual void onSupportAnnotationStatus(unsigned int userid, bool bSupportAnnotation) = 0;
+CallBack_FUNC_2(onSupportAnnotationStatus, unsigned int, userid, bool, bSupportAnnotation)
 
 END_CLASS_DEFINE(IAnnotationController)
 END_ZOOM_SDK_NAMESPACE

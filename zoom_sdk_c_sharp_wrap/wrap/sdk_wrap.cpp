@@ -18,6 +18,7 @@ SDKError CSDKWrap::InitSDK(const wchar_t* sdkpath, InitParam& initParam)
 			break;
 		}
 
+		ICustomizedResourceHelperWrap::GetInst().ApplyAll();
 		sdkerr = CSDKImpl::GetInst().InitSDK(initParam);
 	} while (false);
 
@@ -107,4 +108,10 @@ void CSDKExtWrap::DestroyEmbeddedBrowserWrap(IEmbeddedBrowserWrap* pObj)
 		delete pObj;
 	}
 }
+
+ICustomizedResourceHelperWrap& CSDKExtWrap::GetCustomizedResourceHelperWrap()
+{
+	return ICustomizedResourceHelperWrap::GetInst();
+}
+
 END_ZOOM_SDK_NAMESPACE

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2019-03-25
+
+* No interface changes for C# wrapper, please refer to [https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md](https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md) for changes in Windows SDK.
+
 ## 2019-01-23
 
 * No interface changes for C# wrapper, please refer to [https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md](https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md) for changes in Windows SDK.
