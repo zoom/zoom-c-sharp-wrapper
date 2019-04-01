@@ -2,7 +2,23 @@
 
 **Note: Zoom does not actively enhance the interfaces in the C# wrapper. This wrapper is provided as a reference and will not be actively supported by Zoom.**
 
-> Our brand new [Zoom Developer Community Forum](https://devforum.zoom.us/) is now online!!! Check it out! We are here to help! :D
+<div align="center">
+<img src="https://s3.amazonaws.com/user-content.stoplight.io/8987/1541013063688" width="400px" max-height="400px" style="margin:auto;"/>
+</div>
+
+## Latest SDK Notifications
+1. Our brand new [Zoom Developer Community Forum](https://devforum.zoom.us/) is now online!!! Check it out! We are here to help! :D
+
+## Full Documentation && Community Support
+You can find the full Zoom Windows SDK C# wrapper documentation and the community support forum here:
+<div align="center">
+   <a target="_blank" href="https://marketplace.zoom.us/docs/sdk/native-sdks/windows/c-wrapper" style="text-decoration:none">
+   <img src="https://s3-us-west-1.amazonaws.com/sdk.zoom.us/Doc-button.png" width="350px" max-height="350px" style="margin:1vh 1vw;"/>
+   </a>
+   <a target="_blank" href="https://devforum.zoom.us/c/desktop-sdk" style="text-decoration:none">
+   <img src="https://s3-us-west-1.amazonaws.com/sdk.zoom.us/Forum-button.png" width="350px" max-height="350px" style="margin:1vh 1vw;"/>
+   </a>
+</div>
 
 ## Disclaimer
 
