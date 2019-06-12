@@ -1,4 +1,4 @@
-# Zoom Windows SDK C# Wrapper
+# Zoom Windows SDK C# Wrapper <span align="center"><img src="https://s3-us-west-1.amazonaws.com/sdk.zoom.us/Community-Project.png" width="200px" max-height="100px" style="margin:auto;"/></span>
 
 **Note: Zoom does not actively enhance the interfaces in the C# wrapper. This wrapper is provided as a reference and will not be actively supported by Zoom.**
 
@@ -98,7 +98,13 @@ For any issues regarding our SDK, please visit our new Community Support Forum a
 
 Use of this software is subject to important terms and conditions as set forth in the License file
 
-Please refer to [LICENSE.md](LICENSE.md) file for details
+Please refer to [LICENSE.md](https://github.com/zoom/zoom-c-sharp-wrapper/blob/master/LICENSE) file for details
+
+## Contributiors
+
+This project is a Zoom Community Project that is initialized by Zoom and welcoming the community developers to contribute.
+
+Please see [CONTRIBUTORS](https://github.com/zoom/zoom-c-sharp-wrapper/blob/master/CONTRIBUTORS.md) for the project contributors.
 
 ## Acknowledgments
 
