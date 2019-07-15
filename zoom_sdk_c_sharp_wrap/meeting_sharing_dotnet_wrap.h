@@ -74,6 +74,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onSharingStatus(onSharingStatus^ cb);
 		void Add_CB_onLockShareStatus(onLockShareStatus^ cb);
 		void Add_CB_onShareContentNotification(onShareContentNotification^ cb);
+		void Remove_CB_onSharingStatus(onSharingStatus^ cb);
+		void Remove_CB_onLockShareStatus(onLockShareStatus^ cb);
+		void Remove_CB_onShareContentNotification(onShareContentNotification^ cb);
 	};
 
 	private ref class CMeetingShareControllerDotNetWrap sealed : public IMeetingShareControllerDotNetWrap
@@ -114,14 +117,29 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onSharingStatus += cb;
 		}
 
+		virtual void Remove_CB_onSharingStatus(onSharingStatus^ cb)
+		{
+			event_onSharingStatus -= cb;
+		}
+
 		virtual void Add_CB_onLockShareStatus(onLockShareStatus^ cb)
 		{
 			event_onLockShareStatus += cb;
 		}
 
+		virtual void Remove_CB_onLockShareStatus(onLockShareStatus^ cb)
+		{
+			event_onLockShareStatus -= cb;
+		}
+
 		virtual void Add_CB_onShareContentNotification(onShareContentNotification^ cb)
 		{
 			event_onShareContentNotification += cb;
+		}
+
+		virtual void Remove_CB_onShareContentNotification(onShareContentNotification^ cb)
+		{
+			event_onShareContentNotification -= cb;
 		}
 
 		void ProcSharingStatus(SharingStatus status, unsigned int userId);

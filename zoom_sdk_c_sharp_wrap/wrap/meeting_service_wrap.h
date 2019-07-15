@@ -14,6 +14,9 @@
 #include "meeting_service_components_wrap/meeting_phone_helper_wrap.h"
 #include "meeting_service_components_wrap/meeting_breakout_rooms_wrap.h"
 #include "meeting_service_components_wrap/meeting_participants_ctrl_wrap.h"
+#include "meeting_service_components_wrap/meeting_live_stream_wrap.h"
+#include "meeting_service_components_wrap/meeting_webinar_ctrl_wrap.h"
+#include "meeting_service_components_wrap/meeting_closedcaption_ctrl_wrap.h"
 
 BEGIN_ZOOM_SDK_NAMESPACE
 ZOOM_SDK_NAMESPACE::IMeetingService* InitIMeetingServiceFunc(ZOOM_SDK_NAMESPACE::IMeetingServiceEvent* pEvent);
@@ -74,7 +77,9 @@ DEFINE_FUNC_0(GetH323Helper, IMeetingH323Helper*)
 DEFINE_FUNC_0(GetMeetingPhoneHelper, IMeetingPhoneHelper*)
 DEFINE_FUNC_0(GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsController*)
 DEFINE_FUNC_0(GetMeetingParticipantsController, IMeetingParticipantsController*)
-
+DEFINE_FUNC_0(GetMeetingLiveStreamController, IMeetingLiveStreamController*)
+DEFINE_FUNC_0(GetMeetingWebinarController, IMeetingWebinarController*)
+DEFINE_FUNC_0(GetMeetingClosedCaptionController, IClosedCaptionController*)
 public:
 #define T_GetMeetingConfiguration _GetMeetingConfiguration
 #define T_GetUIController _GetUIController
@@ -90,6 +95,10 @@ public:
 #define T_GetMeetingPhoneHelper _GetMeetingPhoneHelper
 #define T_GetMeetingBreakoutRoomsController _GetMeetingBreakoutRoomsController
 #define T_GetMeetingParticipantsController _GetMeetingParticipantsController
+#define T_GetMeetingLiveStreamController _GetMeetingLiveStreamController
+#define T_GetMeetingWebinarController _GetMeetingWebinarController
+#define T_GetMeetingClosedCaptionController _GetMeetingClosedCaptionController
+
 #else
 #define T_GetMeetingConfiguration GetMeetingConfiguration
 #define T_GetUIController GetUIController
@@ -105,6 +114,9 @@ public:
 #define T_GetMeetingPhoneHelper GetMeetingPhoneHelper
 #define T_GetMeetingBreakoutRoomsController GetMeetingBreakoutRoomsController
 #define T_GetMeetingParticipantsController GetMeetingParticipantsController
+#define T_GetMeetingLiveStreamController GetMeetingLiveStreamController
+#define T_GetMeetingWebinarController GetMeetingWebinarController
+#define T_GetMeetingClosedCaptionController GetMeetingClosedCaptionController
 #endif
 DEFINE_FUNC_AND_MEMBER(T_GetMeetingConfiguration, IMeetingConfigurationWrap)
 DEFINE_FUNC_AND_MEMBER(T_GetUIController, IMeetingUIControllerWrap)
@@ -120,14 +132,19 @@ DEFINE_FUNC_AND_MEMBER(T_GetH323Helper, IMeetingH323HelperWrap)
 DEFINE_FUNC_AND_MEMBER(T_GetMeetingPhoneHelper, IMeetingPhoneHelperWrap)
 DEFINE_FUNC_AND_MEMBER(T_GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsControllerWrap)
 DEFINE_FUNC_AND_MEMBER(T_GetMeetingParticipantsController, IMeetingParticipantsControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingLiveStreamController, IMeetingLiveStreamControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingWebinarController, IMeetingWebinarControllerWrap)
+DEFINE_FUNC_AND_MEMBER(T_GetMeetingClosedCaptionController, IClosedCaptionControllerWrap)
 
 //need wrap it in next release.todo
+/*
 virtual IMeetingLiveStreamController* GetMeetingLiveStreamController()
 {
 	if (m_obj)
 		return m_obj->GetMeetingLiveStreamController();
 	return NULL;
 }
+
 virtual IMeetingWebinarController* GetMeetingWebinarController()
 {
 	if (m_obj)
@@ -140,6 +157,8 @@ virtual IClosedCaptionController* GetMeetingClosedCaptionController()
 		return m_obj->GetMeetingClosedCaptionController();
 	return NULL;
 }
+*/
+
 //need wrap it in next release.todo
 
 //virtual void onMeetingStatusChanged(MeetingStatus status, int iResult = 0) = 0;

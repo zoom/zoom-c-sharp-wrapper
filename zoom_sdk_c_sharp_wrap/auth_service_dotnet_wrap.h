@@ -83,7 +83,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onAuthenticationReturn(onAuthenticationReturn^ cb);
 		void Add_CB_onLoginRet(onLoginRet^ cb);
 		void Add_CB_onLogout(onLogout^ cb);
+		void Add_CB_onZoomIdentityExpired(onZoomIdentityExpired^ cb);
+		void Remove_CB_onAuthenticationReturn(onAuthenticationReturn^ cb);
+		void Remove_CB_onLoginRet(onLoginRet^ cb);
+		void Remove_CB_onLogout(onLogout^ cb);
+		void Remove_CB_onZoomIdentityExpired(onZoomIdentityExpired^ cb);
 	};
+
 	private ref class CAuthServiceDotNetWrap sealed: public IAuthServiceDotNetWrap
 	{
 		// TODO: Add your methods for this class here.
@@ -100,13 +106,25 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError LogOut();
 		virtual IAccountInfo^ GetAccountInfo();
 		virtual LOGINSTATUS GetLoginStatus();
+
 		virtual void Add_CB_onAuthenticationReturn(onAuthenticationReturn^ cb)
 		{
 			event_onAuthenticationReturn += cb;
 		}
+
+		virtual void Remove_CB_onAuthenticationReturn(onAuthenticationReturn^ cb)
+		{
+			event_onAuthenticationReturn -= cb;
+		}
+
 		virtual void Add_CB_onLoginRet(onLoginRet^ cb)
 		{
 			event_onLoginRet += cb;
+		}
+
+		virtual void Remove_CB_onLoginRet(onLoginRet^ cb)
+		{
+			event_onLoginRet -= cb;
 		}
 
 		virtual void Add_CB_onLogout(onLogout^ cb)
@@ -114,17 +132,29 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onLogout += cb;
 		}
 
+		virtual void Remove_CB_onLogout(onLogout^ cb)
+		{
+			event_onLogout -= cb;
+		}
+
 		virtual void Add_CB_onZoomIdentityExpired(onZoomIdentityExpired^ cb)
 		{
 			event_onZoomIdentityExpired += cb;
 		}
+
+		virtual void Remove_CB_onZoomIdentityExpired(onZoomIdentityExpired^ cb)
+		{
+			event_onZoomIdentityExpired -= cb;
+		}
 		//
+
 		void ProcAuthenticationReturn(AuthResult ret);
 		void ProcLoginRet(LOGINSTATUS ret, IAccountInfo^ pAccountInfo);
 		void ProcLogout();
 		void ProcZoomIdentityExpired();
 
 		void BindEvent();
+
 	private:
 		CAuthServiceDotNetWrap();
 		virtual ~CAuthServiceDotNetWrap();

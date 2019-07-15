@@ -20,8 +20,8 @@ typedef ZOOM_SDK_NAMESPACE::SDKError(*fnCreateEmbeddedBrowser)(ZOOM_SDK_NAMESPAC
 typedef ZOOM_SDK_NAMESPACE::SDKError(*fnDestroyEmbeddedBrowser)(ZOOM_SDK_NAMESPACE::IEmbeddedBrowser* pEmbeddedBrowser);
 typedef ZOOM_SDK_NAMESPACE::SDKError(*fnRetrieveUIHooker)(ZOOM_SDK_NAMESPACE::IUIHooker** ppUIHooker);
 typedef ZOOM_SDK_NAMESPACE::SDKError(*fnRetrieveCustomizedResourceHelper)(ZOOM_SDK_NAMESPACE::ICustomizedResourceHelper** ppCustomizedResourceHelper);
-
-
+typedef ZOOM_SDK_NAMESPACE::SDKError(*fnCreateCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr** ppCustomizedUIMgr);
+typedef ZOOM_SDK_NAMESPACE::SDKError(*fnDestroyCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr* pCustomizedUIMgr);
 
 class CSDKImpl
 {
@@ -51,7 +51,8 @@ public:
 	virtual ZOOM_SDK_NAMESPACE::SDKError(DestroyEmbeddedBrowser)(ZOOM_SDK_NAMESPACE::IEmbeddedBrowser* pEmbeddedBrowser);
 	virtual ZOOM_SDK_NAMESPACE::SDKError(RetrieveUIHooker)(ZOOM_SDK_NAMESPACE::IUIHooker** ppUIHooker);
 	virtual ZOOM_SDK_NAMESPACE::SDKError(RetrieveCustomizedResourceHelper)(ZOOM_SDK_NAMESPACE::ICustomizedResourceHelper** ppCustomizedResourceHelper);
-
+	virtual ZOOM_SDK_NAMESPACE::SDKError(CreateCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr** ppCustomizedUIMgr);
+	virtual ZOOM_SDK_NAMESPACE::SDKError(DestroyCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr* pCustomizedUIMgr);
 
 private:
 	CSDKImpl();
@@ -78,4 +79,6 @@ private:
 	fnDestroyEmbeddedBrowser m_fnDestroyEmbeddedBrowser;
 	fnRetrieveUIHooker m_fnRetrieveUIHooker;
 	fnRetrieveCustomizedResourceHelper m_fnRetrieveCustomizedResouceHelper;
+	fnCreateCustomizedUIMgr m_fnCreateCustomizedUIMgr;
+	fnDestroyCustomizedUIMgr m_fnDestroyCustomizedUIMgr;
 };

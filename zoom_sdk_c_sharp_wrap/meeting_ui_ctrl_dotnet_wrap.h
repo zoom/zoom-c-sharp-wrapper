@@ -50,10 +50,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool bInSplitScreenMode;
 	};
 
-	public delegate void onInviteBtnClicked();
+	public delegate void onInviteBtnClicked(bool& handled);
 	public delegate void onStartShareBtnClicked();
 	public delegate void onEndMeetingBtnClicked();
 	public delegate void onParticipantListBtnClicked();
+	public delegate void onZoomInviteDialogFailed();
 
 	public interface class IMeetingUIControllerDotNetWrap
 	{
@@ -86,6 +87,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onStartShareBtnClicked(onStartShareBtnClicked^ cb);
 		void Add_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked^ cb);
 		void Add_CB_onParticipantListBtnClicked(onParticipantListBtnClicked^ cb);
+		void Add_CB_onZoomInviteDialogFailed(onZoomInviteDialogFailed^ cb);
+		void Remove_CB_onInviteBtnClicked(onInviteBtnClicked^ cb);
+		void Remove_CB_onStartShareBtnClicked(onStartShareBtnClicked^ cb);
+		void Remove_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked^ cb);
+		void Remove_CB_onParticipantListBtnClicked(onParticipantListBtnClicked^ cb);
+		void Remove_CB_onZoomInviteDialogFailed(onZoomInviteDialogFailed^ cb);
 	};
 
 	private ref class CMeetingUIControllerDotNetWrap sealed : public IMeetingUIControllerDotNetWrap
@@ -126,9 +133,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onInviteBtnClicked += cb;
 		}
 
+		virtual void Remove_CB_onInviteBtnClicked(onInviteBtnClicked^ cb)
+		{
+			event_onInviteBtnClicked -= cb;
+		}
+
 		virtual void Add_CB_onStartShareBtnClicked(onStartShareBtnClicked^ cb)
 		{
 			event_onStartShareBtnClicked += cb;
+		}
+
+		virtual void Remove_CB_onStartShareBtnClicked(onStartShareBtnClicked^ cb)
+		{
+			event_onStartShareBtnClicked -= cb;
 		}
 
 		virtual void Add_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked^ cb)
@@ -136,16 +153,37 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onEndMeetingBtnClicked += cb;
 		}
 
+		virtual void Remove_CB_onEndMeetingBtnClicked(onEndMeetingBtnClicked^ cb)
+		{
+			event_onEndMeetingBtnClicked -= cb;
+		}
+
 		virtual void Add_CB_onParticipantListBtnClicked(onParticipantListBtnClicked^ cb)
 		{
 			event_onParticipantListBtnClicked += cb;
 		}
 
+		virtual void Remove_CB_onParticipantListBtnClicked(onParticipantListBtnClicked^ cb)
+		{
+			event_onParticipantListBtnClicked -= cb;
+		}
+
+		virtual void Add_CB_onZoomInviteDialogFailed(onZoomInviteDialogFailed^ cb)
+		{
+			event_onZoomInviteDialogFailed += cb;
+		}
+
+		virtual void Remove_CB_onZoomInviteDialogFailed(onZoomInviteDialogFailed^ cb)
+		{
+			event_onZoomInviteDialogFailed -= cb;
+		}
+
 		void BindEvent();
-		void ProcInviteBtnClicked();
+		void ProcInviteBtnClicked(bool& handled);
 		void ProcStartShareBtnClicked();
 		void ProcEndMeetingBtnClicked();
 		void ProcParticipantListBtnClicked();
+		void ProcZoomInviteDialogFailed();
 
 	private:
 		CMeetingUIControllerDotNetWrap() {};
@@ -154,6 +192,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		event onStartShareBtnClicked^ event_onStartShareBtnClicked;
 		event onEndMeetingBtnClicked^ event_onEndMeetingBtnClicked;
 		event onParticipantListBtnClicked^ event_onParticipantListBtnClicked;
+		event onZoomInviteDialogFailed^ event_onZoomInviteDialogFailed;
 		static CMeetingUIControllerDotNetWrap^ m_Instance = gcnew CMeetingUIControllerDotNetWrap;
 	};
 }

@@ -9,7 +9,7 @@ CSDKWrap& CSDKWrap::GetInst()
 
 SDKError CSDKWrap::InitSDK(const wchar_t* sdkpath, InitParam& initParam)
 {
-	SDKError sdkerr(SDKERR_INVALID_PARAMETER);
+	SDKError sdkerr(SDKERR_MODULE_LOAD_FAILED);
 	do 
 	{
 		std::wstring path = sdkpath ? sdkpath : L"";
@@ -17,8 +17,7 @@ SDKError CSDKWrap::InitSDK(const wchar_t* sdkpath, InitParam& initParam)
 		{
 			break;
 		}
-
-		ICustomizedResourceHelperWrap::GetInst().ApplyAll();
+		CSDKExtWrap::GetInst().GetCustomizedResourceHelperWrap().ApplyAll();
 		sdkerr = CSDKImpl::GetInst().InitSDK(initParam);
 	} while (false);
 
@@ -114,4 +113,20 @@ ICustomizedResourceHelperWrap& CSDKExtWrap::GetCustomizedResourceHelperWrap()
 	return ICustomizedResourceHelperWrap::GetInst();
 }
 
+/////////////////////////////////////////////////////////////////////
+CSDKCustomizedUIWrap::CSDKCustomizedUIWrap()
+{
+
+}
+
+CSDKCustomizedUIWrap& CSDKCustomizedUIWrap::GetInst()
+{
+	static CSDKCustomizedUIWrap inst;
+	return inst;
+}
+
+ICustomizedUIMgrWrap& CSDKCustomizedUIWrap::GetCustomizedUIMgrWrap()
+{
+	return ICustomizedUIMgrWrap::GetInst();
+}
 END_ZOOM_SDK_NAMESPACE

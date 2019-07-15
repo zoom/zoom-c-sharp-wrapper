@@ -70,6 +70,8 @@ DEFINE_FUNC_1(EnableShareComputerSound, SDKError, bool, bEnable)
 DEFINE_FUNC_1(EnableOptimizeForFullScreenVideoClip, SDKError, bool, bEnable)
 //virtual SDKError SetMultiShareSettingOptions(MultiShareOption shareOption) = 0;
 DEFINE_FUNC_1(SetMultiShareSettingOptions, SDKError, MultiShareOption, shareOption)
+//virtual SDKError GetMultiShareSettingOptions(MultiShareOption& shareOption) = 0;
+DEFINE_FUNC_1(GetMultiShareSettingOptions, SDKError, MultiShareOption&, shareOption)
 //virtual SDKError DisableViewerAnnotate(bool bDisable) = 0;
 DEFINE_FUNC_1(DisableViewerAnnotate, SDKError, bool, bDisable)
 

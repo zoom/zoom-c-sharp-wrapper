@@ -1,5 +1,7 @@
 #pragma once
 #include "../common_include.h"
+#include "../customized_ui_components_wrap/customized_annotation_wrap.h"
+
 BEGIN_ZOOM_SDK_NAMESPACE
 class IMeetingServiceWrap;
 IAnnotationController* InitIAnnotationControllerFunc(IMeetingAnnotationSupportEvent* pEvent, IMeetingServiceWrap* pOwner);

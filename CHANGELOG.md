@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 2019-07-15
+
+**Added**
+
+* Wrapped all native Windows SDK interfaces into C++ wrapper except the following testing related interfaces:
+  * `ITestAudioDeviceHelper`
+  * `ITestAudioDeviceHelperEvent`
+  * `ITestVideoDeviceHelper`
+  * `ITestVideoDeviceHelperEvent`
+* Wrapped the following custom UI related interfaces into C# wrapper
+  * `CCustomizedUIMgrDotNetWrap`
+  * `CCustomizedVideoContainerDotNetWrap`
+  * `CCustomizedShareRenderDotNetWrap`
+* Added some new interfaces into the C# wrapper
+  * `CCustomizedResourceHelperDotNetWrap`
+  * `CMeetingLiveStreamControllerDotNetWrap`
+  * `CPreMeetingServiceDotNetWrap`
+  * `CScheduleMeetingItemDotNetWrap`
+  * `CVideoSettingContextDotNetWrap`
+
+**Changed & Fixed**
+
+* Modify the implementation of the following interfaces in C# wrapper
+
 ## 2019-03-25
 
 * No interface changes for C# wrapper, please refer to [https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md](https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md) for changes in Windows SDK.

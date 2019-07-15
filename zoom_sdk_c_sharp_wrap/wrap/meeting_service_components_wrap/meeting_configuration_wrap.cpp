@@ -40,6 +40,7 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableApproveRemoteControlDlg, void, boo
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableDeclineRemoteControlResponseDlg, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableLeaveMeetingOptionForHost, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableInviteButtonOnMeetingUI, void, bool, bEnable)
+IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableVideoButtonOnMeetingUI, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableInputMeetingPasswordDlg, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableEnterAndExitFullScreenButtonOnMeetingUI, void, bool, bEnable)
 IMPL_FUNC_NORET_1(IMeetingConfiguration,EnableLButtonDBClick4SwitchFullScreenMode, void, bool, bEnable)
@@ -89,8 +90,15 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration, ForceDisableMultiShare, void, bool, bDi
 IMPL_FUNC_NORET_1(IMeetingConfiguration, SetAlwaysShowMeetingIDOnTitle, void, bool, bAlwaysShow)
 //virtual void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, RedirectClickCustomLiveStreamMenuEvent, void, bool, bRedirect)
+
 //virtual void RedirectClickCCBTNEvent(bool bRedirect) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, RedirectClickCCBTNEvent, void, bool, bRedirect)
+//virtual SDKError SetUICustomizedString(SDKCustomizedStringType customizedType, const wchar_t* customizedString) = 0;
+IMPL_FUNC_2(IMeetingConfiguration, SetUICustomizedString, SDKError, SDKCustomizedStringType, customizedType, const wchar_t*, customizedString, SDKERR_UNINITIALIZE)
+//virtual SDKError DisableTopMostAttr4SettingDialog(bool bDisable) = 0;
+IMPL_FUNC_1(IMeetingConfiguration, DisableTopMostAttr4SettingDialog, SDKError, bool, bDisable, SDKERR_UNINITIALIZE)
+//virtual SDKError EnableGrabShareWithoutReminder(bool bEnable) = 0;
+IMPL_FUNC_1(IMeetingConfiguration, EnableGrabShareWithoutReminder, SDKError, bool, bEnable, SDKERR_UNINITIALIZE)
 //virtual void EnableShowShareSwitchMultiToSingleConfirmDlg(bool bEnable) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableShowShareSwitchMultiToSingleConfirmDlg, void, bool, bEnable)
 //virtual void DisableFreeMeetingRemainTimeNotify(bool bDisable) = 0;
@@ -105,6 +113,13 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration, HideUpgradeFreeMeetingButton, void, boo
 IMPL_FUNC_NORET_2(IMeetingConfiguration, SetShowInviteDlgTabPage, void, SDKInviteDlgTabPage, tabPage, bool, bShow)
 //virtual void SetShowH323SubTabPage(SDKH323TabPage tabPage, bool bShow) = 0;
 IMPL_FUNC_NORET_2(IMeetingConfiguration, SetShowH323SubTabPage, void, SDKH323TabPage, tabPage, bool, bShow)
+//virtual void RedirectMeetingWarningMsg(RedirectWarningMsgOption redirectOption) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, RedirectMeetingWarningMsg, void, RedirectWarningMsgOption, redirectOption)
+//virtual void HideUpgradeWarningMsgForFreeUserWhenSchedule(bool bHide) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, HideUpgradeWarningMsgForFreeUserWhenSchedule, void, bool, bHide)
+//virtual void EnableLocalRecordingConvertProgressBarDialog(bool bShow) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableLocalRecordingConvertProgressBarDialog, void, bool, bShow)
+
 //virtual void EnableInputMeetingScreenNameDlg(bool bEnable) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableInputMeetingScreenNameDlg, void, bool, bEnable)
 //virtual void RedirectWebinarNeedRegister(bool bRedirect) = 0;
@@ -117,10 +132,7 @@ IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableForceAutoStartMyVideoWhenJoinMeet
 IMPL_FUNC_NORET_1(IMeetingConfiguration, EnableForceAutoStopMyVideoWhenJoinMeeting, void, bool, bEnable)
 //virtual void DisableAutoShowSelectJoinAudioDlgWhenJoinMeeting(bool bDisable) = 0;
 IMPL_FUNC_NORET_1(IMeetingConfiguration, DisableAutoShowSelectJoinAudioDlgWhenJoinMeeting, void, bool, bDisable)
-//virtual SDKError SetUICustomizedString(SDKCustomizedStringType customizedType, const wchar_t* customizedString) = 0;
-IMPL_FUNC_2(IMeetingConfiguration, SetUICustomizedString, SDKError, SDKCustomizedStringType, customizedType, const wchar_t*, customizedString, SDKERR_UNINITIALIZE)
-//virtual SDKError DisableTopMostAttr4SettingDialog(bool bDisable) = 0;
-IMPL_FUNC_1(IMeetingConfiguration, DisableTopMostAttr4SettingDialog, SDKError, bool, bDisable, SDKERR_UNINITIALIZE)
-//virtual SDKError EnableGrabShareWithoutReminder(bool bEnable) = 0;
-IMPL_FUNC_1(IMeetingConfiguration, EnableGrabShareWithoutReminder, SDKError, bool, bEnable, SDKERR_UNINITIALIZE)
+//virtual void SetMaxDurationForOnlyHostInMeeting(int nDuration) = 0;
+IMPL_FUNC_NORET_1(IMeetingConfiguration, SetMaxDurationForOnlyHostInMeeting, void, int, nDuration)
+
 END_ZOOM_SDK_NAMESPACE

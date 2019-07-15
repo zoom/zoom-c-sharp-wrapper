@@ -10,6 +10,8 @@ INIT_UNINIT_WITHEVENT(INetworkConnectionHelper)
 virtual SDKError RegisterNetworkConnectionHandler(INetworkConnectionHandler* pNetworkHandler)
 {
 	external_cb = pNetworkHandler;
+	if (NULL == m_obj)
+		InitINetworkConnectionHelperFunc(this);
 	return SDKERR_SUCCESS;
 }
 

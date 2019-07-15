@@ -30,6 +30,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError RevokeRemoteControl();
 		SDKError GetCurrentRemoteController(unsigned int^% userId);
 		void Add_CB_onRemoteControlStatus(onRemoteControlStatus^ cb);
+		void Remove_CB_onRemoteControlStatus(onRemoteControlStatus^ cb);
 	};
 
 	private ref class CMeetingRemoteControllerDotNetWrap sealed : public IMeetingRemoteControllerDotNetWrap
@@ -48,10 +49,17 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError DeclineRemoteControlRequest(unsigned int userId);
 		virtual SDKError RevokeRemoteControl();
 		virtual SDKError GetCurrentRemoteController(unsigned int^% userId);
+
 		virtual void Add_CB_onRemoteControlStatus(onRemoteControlStatus^ cb)
 		{
 			event_onRemoteControlStatus += cb;
 		}
+
+		virtual void Remove_CB_onRemoteControlStatus(onRemoteControlStatus^ cb)
+		{
+			event_onRemoteControlStatus -= cb;
+		}
+
 	private:
 		event onRemoteControlStatus^ event_onRemoteControlStatus;
 		static CMeetingRemoteControllerDotNetWrap^ m_Instance = gcnew CMeetingRemoteControllerDotNetWrap;

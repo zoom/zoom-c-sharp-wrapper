@@ -13,6 +13,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetPreMeetingServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetCalenderServiceWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Init();
+		ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Init();
 	}
 
@@ -24,6 +25,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetCalenderServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Uninit();
+		ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().Uninit();
 	}
 
 	SDKError CZoomSDKeDotNetWrap::Initialize(InitParam initInfo)
@@ -43,6 +45,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		PlatformString2CharHelper langname = PlatformString2CharHelper(initInfo.config_opts.customized_language.language_name);
 		param_.obConfigOpts.customizedLang.langName = langname.c_str();
 		param_.obConfigOpts.customizedLang.langType = (ZOOM_SDK_NAMESPACE::CustomizedLanguageType)initInfo.config_opts.customized_language.langType;
+		param_.obConfigOpts.optionalFeatures = initInfo.config_opts.optionalFeatures;
 
 		SDKError err = (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().InitSDK(dll_path, param_);
 
@@ -65,6 +68,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return CAuthServiceDotNetWrap::Instance;
  	}
 
+	IPreMeetingServiceDotNetWrap^ CZoomSDKeDotNetWrap::GetPreMeetingServiceWrap()
+	{
+		if (CPreMeetingServiceDotNetWrap::Instance)
+			CPreMeetingServiceDotNetWrap::Instance->BindEvent();
+
+		return CPreMeetingServiceDotNetWrap::Instance;
+	}
+
 	IMeetingServiceDotNetWrap^ CZoomSDKeDotNetWrap::GetMeetingServiceWrap()
 	{
 		if (CMeetingServiceDotNetWrap::Instance)
@@ -80,10 +91,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		return CSettingServiceDotNetWrap::Instance;
 	}
+
+	ICustomizedUIMgrDotNetWrap^ CZoomSDKeDotNetWrap::GetCustomizedUIMgrWrap()
+	{
+		if (CCustomizedUIMgrDotNetWrap::Instance)
+		{
+			CCustomizedUIMgrDotNetWrap::Instance->BindEvent();
+		}
+
+		return CCustomizedUIMgrDotNetWrap::Instance;
+	}
 	
 	ICustomizedResourceHelperDotNetWrap^ CZoomSDKeDotNetWrap::RetrieveCustomizedResourceHelperWrap()
 	{
 		return CCustomizedResourceHelperDotNetWrap::Instance;
 	}
-	
 }

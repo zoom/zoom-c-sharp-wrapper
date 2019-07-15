@@ -45,6 +45,8 @@ DEFINE_FUNC_1(EnableDeclineRemoteControlResponseDlg, void, bool, bEnable)
 DEFINE_FUNC_1(EnableLeaveMeetingOptionForHost, void, bool, bEnable)
 //virtual void EnableInviteButtonOnMeetingUI(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableInviteButtonOnMeetingUI, void, bool, bEnable)
+//virtual void EnableVideoButtonOnMeetingUI(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableVideoButtonOnMeetingUI, void, bool, bEnable)
 //virtual void EnableInputMeetingPasswordDlg(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableInputMeetingPasswordDlg, void, bool, bEnable)
 //virtual void EnableEnterAndExitFullScreenButtonOnMeetingUI(bool bEnable) = 0;
@@ -102,8 +104,15 @@ DEFINE_FUNC_1(ForceDisableMultiShare, void, bool, bDisable)
 DEFINE_FUNC_1(SetAlwaysShowMeetingIDOnTitle, void, bool, bAlwaysShow)
 //virtual void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect) = 0;
 DEFINE_FUNC_1(RedirectClickCustomLiveStreamMenuEvent, void, bool, bRedirect)
+
 //virtual void RedirectClickCCBTNEvent(bool bRedirect) = 0;
 DEFINE_FUNC_1(RedirectClickCCBTNEvent, void, bool, bRedirect)
+//virtual SDKError SetUICustomizedString(SDKCustomizedStringType customizedType, const wchar_t* customizedString) = 0;
+DEFINE_FUNC_2(SetUICustomizedString, SDKError, SDKCustomizedStringType, customizedType, const wchar_t*, customizedString)
+//virtual SDKError DisableTopMostAttr4SettingDialog(bool bDisable) = 0;
+DEFINE_FUNC_1(DisableTopMostAttr4SettingDialog, SDKError, bool, bDisable)
+//virtual SDKError EnableGrabShareWithoutReminder(bool bEnable) = 0;
+DEFINE_FUNC_1(EnableGrabShareWithoutReminder, SDKError, bool, bEnable)
 //virtual void EnableShowShareSwitchMultiToSingleConfirmDlg(bool bEnable) = 0;
 DEFINE_FUNC_1(EnableShowShareSwitchMultiToSingleConfirmDlg, void, bool, bEnable)
 //virtual void DisableFreeMeetingRemainTimeNotify(bool bDisable) = 0;
@@ -131,12 +140,14 @@ DEFINE_FUNC_1(EnableForceAutoStartMyVideoWhenJoinMeeting, void, bool, bEnable)
 DEFINE_FUNC_1(EnableForceAutoStopMyVideoWhenJoinMeeting, void, bool, bEnable)
 //virtual void DisableAutoShowSelectJoinAudioDlgWhenJoinMeeting(bool bDisable) = 0;
 DEFINE_FUNC_1(DisableAutoShowSelectJoinAudioDlgWhenJoinMeeting, void, bool, bDisable)
-//virtual SDKError SetUICustomizedString(SDKCustomizedStringType customizedType, const wchar_t* customizedString) = 0;
-DEFINE_FUNC_2(SetUICustomizedString, SDKError, SDKCustomizedStringType, customizedType, const wchar_t*, customizedString)
-//virtual SDKError DisableTopMostAttr4SettingDialog(bool bDisable) = 0;
-DEFINE_FUNC_1(DisableTopMostAttr4SettingDialog, SDKError, bool, bDisable)
-//virtual SDKError EnableGrabShareWithoutReminder(bool bEnable) = 0;
-DEFINE_FUNC_1(EnableGrabShareWithoutReminder, SDKError, bool, bEnable)
+//virtual void RedirectMeetingWarningMsg(RedirectWarningMsgOption redirectOption) = 0;
+DEFINE_FUNC_1(RedirectMeetingWarningMsg, void, RedirectWarningMsgOption, redirectOption)
+//virtual void HideUpgradeWarningMsgForFreeUserWhenSchedule(bool bHide) = 0;
+DEFINE_FUNC_1(HideUpgradeWarningMsgForFreeUserWhenSchedule, void, bool, bHide)
+//virtual void EnableLocalRecordingConvertProgressBarDialog(bool bShow) = 0;
+DEFINE_FUNC_1(EnableLocalRecordingConvertProgressBarDialog, void, bool, bShow)
+//virtual void SetMaxDurationForOnlyHostInMeeting(int nDuration) = 0;
+DEFINE_FUNC_1(SetMaxDurationForOnlyHostInMeeting, void, int, nDuration)
 
 //virtual void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler* pHandler) = 0;
 CallBack_FUNC_1(onInputMeetingPasswordAndScreenNameNotification, IMeetingPasswordAndScreenNameHandler*, pHandler)
@@ -160,7 +171,6 @@ CallBack_FUNC_0(onFreeMeetingUpgradeToGiftFreeTrialStart)
 CallBack_FUNC_0(onFreeMeetingUpgradeToGiftFreeTrialStop)
 //virtual void onFreeMeetingUpgradeToProMeeting() = 0;
 CallBack_FUNC_0(onFreeMeetingUpgradeToProMeeting)
-
 END_CLASS_DEFINE(IMeetingConfiguration)
 
 END_ZOOM_SDK_NAMESPACE

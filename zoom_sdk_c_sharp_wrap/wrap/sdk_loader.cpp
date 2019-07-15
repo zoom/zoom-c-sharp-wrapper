@@ -42,6 +42,8 @@ void CSDKImpl::Reset()
 	m_fnDestroyEmbeddedBrowser = NULL;
 	m_fnRetrieveUIHooker = NULL;
 	m_fnRetrieveCustomizedResouceHelper = NULL;
+	m_fnCreateCustomizedUIMgr = NULL;
+	m_fnDestroyCustomizedUIMgr = NULL;
 	m_hSdk = NULL;
 }
 
@@ -91,14 +93,14 @@ bool CSDKImpl::ConfigSDKModule(std::wstring& path)
 		wchar_t dir[_MAX_DIR];
 		wchar_t fname[_MAX_FNAME];
 		wchar_t ext[_MAX_EXT];
-		_wsplitpath(strTmp.c_str(), drive, dir, fname, ext);
+		_wsplitpath_s(strTmp.c_str(), drive, _MAX_DRIVE, dir, _MAX_DIR, fname, _MAX_FNAME, ext, _MAX_EXT);
 
 		wchar_t szPath[MAX_PATH] = { 0 };
-		_wmakepath(szPath, drive, dir, NULL, NULL);
+		_wmakepath_s(szPath, _MAX_PATH, drive, dir, NULL, NULL);
 		if (pfnSetDllDirectory)
 			pfnSetDllDirectory(szPath);
 		
-		wcscat(szPath, L"sdk.dll");
+		wcscat_s(szPath, MAX_PATH, L"sdk.dll");
 		m_hSdk = LoadLibraryW(szPath);
 		if (NULL == m_hSdk)
 		{
@@ -127,6 +129,9 @@ bool CSDKImpl::ConfigSDKModule(std::wstring& path)
 		m_fnDestroyEmbeddedBrowser = (fnDestroyEmbeddedBrowser)GetProcAddress(m_hSdk, "DestroyEmbeddedBrowser");
 		m_fnRetrieveUIHooker = (fnRetrieveUIHooker)GetProcAddress(m_hSdk, "RetrieveUIHooker");
 		m_fnRetrieveCustomizedResouceHelper = (fnRetrieveCustomizedResourceHelper)GetProcAddress(m_hSdk, "RetrieveCustomizedResourceHelper");
+		
+		m_fnCreateCustomizedUIMgr = (fnCreateCustomizedUIMgr)GetProcAddress(m_hSdk, "CreateCustomizedUIMgr");
+		m_fnDestroyCustomizedUIMgr = (fnDestroyCustomizedUIMgr)GetProcAddress(m_hSdk, "DestroyCustomizedUIMgr");
 
 		if (NULL == m_fnInitSDK
 			|| NULL == m_fnCleanUPSDK
@@ -146,7 +151,9 @@ bool CSDKImpl::ConfigSDKModule(std::wstring& path)
 			|| NULL == m_fnCreateEmbeddedBrowser
 			|| NULL == m_fnDestroyEmbeddedBrowser
 			|| NULL == m_fnRetrieveUIHooker
-			|| NULL == m_fnRetrieveCustomizedResouceHelper)
+			|| NULL == m_fnRetrieveCustomizedResouceHelper
+			|| NULL == m_fnCreateCustomizedUIMgr
+			|| NULL == m_fnDestroyCustomizedUIMgr)
 		{
 			break;
 		}
@@ -331,7 +338,7 @@ const wchar_t*(CSDKImpl::GetVersion)()
 
 ZOOM_SDK_NAMESPACE::SDKError CSDKImpl::CleanUPSDK()
 {
-	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS);
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE);
 	if (m_fnCleanUPSDK)
 	{
 		ret = m_fnCleanUPSDK();
@@ -341,7 +348,7 @@ ZOOM_SDK_NAMESPACE::SDKError CSDKImpl::CleanUPSDK()
 
 ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::CreateEmbeddedBrowser)(ZOOM_SDK_NAMESPACE::IEmbeddedBrowser** ppEmbeddedBrowser, HWND hwnd)
 {
-	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS);
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE);
 	if (m_fnCreateEmbeddedBrowser)
 	{
 		ret = m_fnCreateEmbeddedBrowser(ppEmbeddedBrowser, hwnd);
@@ -351,7 +358,7 @@ ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::CreateEmbeddedBrowser)(ZOOM_SDK_NAMESPACE
 
 ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::DestroyEmbeddedBrowser)(ZOOM_SDK_NAMESPACE::IEmbeddedBrowser* pEmbeddedBrowser)
 {
-	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS);
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE);
 	if (m_fnDestroyEmbeddedBrowser)
 	{
 		ret = m_fnDestroyEmbeddedBrowser(pEmbeddedBrowser);
@@ -361,7 +368,7 @@ ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::DestroyEmbeddedBrowser)(ZOOM_SDK_NAMESPAC
 
 ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::RetrieveUIHooker)(ZOOM_SDK_NAMESPACE::IUIHooker** ppUIHooker)
 {
-	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS);
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE);
 	if (m_fnRetrieveUIHooker)
 	{
 		ret = m_fnRetrieveUIHooker(ppUIHooker);
@@ -371,13 +378,35 @@ ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::RetrieveUIHooker)(ZOOM_SDK_NAMESPACE::IUI
 
 ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::RetrieveCustomizedResourceHelper)(ZOOM_SDK_NAMESPACE::ICustomizedResourceHelper** ppCustomizedResourceHelper)
 {
-	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS);
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE);
 	if (m_fnRetrieveCustomizedResouceHelper)
 	{
 		ret = m_fnRetrieveCustomizedResouceHelper(ppCustomizedResourceHelper);
 	}
 	return ret;
 }
+
+ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::CreateCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr** ppCustomizedUIMgr)
+{
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE);
+	if (m_fnCreateCustomizedUIMgr)
+	{
+		ret = m_fnCreateCustomizedUIMgr(ppCustomizedUIMgr);
+	}
+	return ret;
+}
+
+ZOOM_SDK_NAMESPACE::SDKError(CSDKImpl::DestroyCustomizedUIMgr)(ZOOM_SDK_NAMESPACE::ICustomizedUIMgr* pCustomizedUIMgr)
+{
+	ZOOM_SDK_NAMESPACE::SDKError ret(ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE);
+	if (m_fnDestroyCustomizedUIMgr)
+	{
+		ret = m_fnDestroyCustomizedUIMgr(pCustomizedUIMgr);
+	}
+	return ret;
+}
+
+
 
 #if (!defined CSHARP_WRAP && !defined _LIB)
 BOOL APIENTRY DllMain(HMODULE hModule,

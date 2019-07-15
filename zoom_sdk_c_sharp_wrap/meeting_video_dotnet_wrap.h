@@ -19,8 +19,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError PinVideo(bool bPin, bool bFirstView, unsigned int userid);
 		SDKError SpotlightVideo(bool bSpotlight, unsigned int userid);
 		SDKError HideOrShowNoVideoUserOnVideoWall(bool bHide);
+
 		void Add_CB_onUserVideoStatusChange(onUserVideoStatusChange^ cb);
 		void Add_CB_onSpotlightVideoChangeNotification(onSpotlightVideoChangeNotification^ cb);
+		void Remove_CB_onUserVideoStatusChange(onUserVideoStatusChange^ cb);
+		void Remove_CB_onSpotlightVideoChangeNotification(onSpotlightVideoChangeNotification^ cb);
 	};
 
 	private ref class CMeetingVideoControllerDotNetWrap sealed : public IMeetingVideoControllerDotNetWrap
@@ -38,9 +41,15 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError PinVideo(bool bPin, bool bFirstView, unsigned int userid);
 		virtual SDKError SpotlightVideo(bool bSpotlight, unsigned int userid);
 		virtual SDKError HideOrShowNoVideoUserOnVideoWall(bool bHide);
+
 		virtual void Add_CB_onUserVideoStatusChange(onUserVideoStatusChange^ cb)
 		{
 			event_onUserVideoStatusChange += cb;
+		}
+
+		virtual void Remove_CB_onUserVideoStatusChange(onUserVideoStatusChange^ cb)
+		{
+			event_onUserVideoStatusChange -= cb;
 		}
 
 		virtual void Add_CB_onSpotlightVideoChangeNotification(onSpotlightVideoChangeNotification^ cb)
@@ -48,8 +57,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onSpotlightVideoChangeNotification += cb;
 		}
 
+		virtual void Remove_CB_onSpotlightVideoChangeNotification(onSpotlightVideoChangeNotification^ cb)
+		{
+			event_onSpotlightVideoChangeNotification -= cb;
+		}
+
 		void ProcUserVideoStatusChange(unsigned int userId, VideoStatus status);
 		void ProcSpotlightVideoChangeNotification(bool bSpotlight, unsigned int userid);
+
 	private:
 		event onUserVideoStatusChange^ event_onUserVideoStatusChange;
 		event onSpotlightVideoChangeNotification^ event_onSpotlightVideoChangeNotification;

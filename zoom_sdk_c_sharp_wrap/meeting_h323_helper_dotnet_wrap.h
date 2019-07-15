@@ -26,6 +26,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		H323DeviceType_Unknown,
 		H323DeviceType_H323,
 		H323DeviceType_SIP,
+		H323DeviceType_BOTH,
 	};
 
 	public value class H323Device
@@ -38,20 +39,23 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	};
 
 	public delegate void onCalloutStatusNotify(H323CalloutStatus status);
-	public delegate void onParingH323Result(H323ParingResult result);
+	public delegate void onParingH323Result(H323ParingResult result, unsigned __int64 meetingId);
 
 	public interface class IMeetingH323HelperDotNetWrap
 	{
 	public:
 		array<String^ >^ GetH323Address();
 		String^ GetH323Password();
-		SDKError SendMeetingParingCode(unsigned __int64 meetingNum, String^ paringCode);
+		SDKError CanPairingMeeting(unsigned __int64 meetingId);
+		SDKError SendMeetingParingCode(unsigned __int64 meetingId, String^ paringCode);
 		array<H323Device^ >^ GetCalloutH323DviceList();
 		SDKError CallOutH323(H323Device deviceInfo);
 		SDKError CancelCallOutH323();
 
 		void Add_CB_onCalloutStatusNotify(onCalloutStatusNotify^ cb);
 		void Add_CB_onParingH323Result(onParingH323Result^ cb);
+		void Remove_CB_onCalloutStatusNotify(onCalloutStatusNotify^ cb);
+		void Remove_CB_onParingH323Result(onParingH323Result^ cb);
 	};
 
 	private ref class CMeetingH323HelperDotNetWrap sealed : public IMeetingH323HelperDotNetWrap
@@ -64,23 +68,36 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		void BindEvent();
 		void procCalloutStatusNotify(H323CalloutStatus status);
-		void procParingH323Result(H323ParingResult result);
+		void procParingH323Result(H323ParingResult result, unsigned __int64 meetingId);
 
 		virtual array<String^ >^ GetH323Address();
 		virtual String^ GetH323Password();
-		virtual SDKError SendMeetingParingCode(unsigned __int64 meetingNum, String^ paringCode);
+		virtual SDKError CanPairingMeeting(unsigned __int64 meetingId);
+		virtual SDKError SendMeetingParingCode(unsigned __int64 meetingId, String^ paringCode);
 		virtual array<H323Device^ >^ GetCalloutH323DviceList();
 		virtual SDKError CallOutH323(H323Device deviceInfo);
 		virtual SDKError CancelCallOutH323();
+
 		virtual void Add_CB_onCalloutStatusNotify(onCalloutStatusNotify^ cb)
 		{
 			event_onCalloutStatusNotify += cb;
+		}
+
+		virtual void Remove_CB_onCalloutStatusNotify(onCalloutStatusNotify^ cb)
+		{
+			event_onCalloutStatusNotify -= cb;
 		}
 
 		virtual void Add_CB_onParingH323Result(onParingH323Result^ cb)
 		{
 			event_onParingH323Result += cb;
 		}
+
+		virtual void Remove_CB_onParingH323Result(onParingH323Result^ cb)
+		{
+			event_onParingH323Result -= cb;
+		}
+
 	private:
 		event onCalloutStatusNotify^ event_onCalloutStatusNotify;
 		event onParingH323Result^ event_onParingH323Result;

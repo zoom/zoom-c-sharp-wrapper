@@ -1,5 +1,6 @@
 #pragma once
 #include "../common_include.h"
+#include "../camera_controller_wrap.h"
 BEGIN_ZOOM_SDK_NAMESPACE
 class IMeetingServiceWrap;
 IMeetingVideoController* InitIMeetingVideoControllerFunc(IMeetingVideoCtrlEvent* pEvent, IMeetingServiceWrap* pOwner);
@@ -30,8 +31,18 @@ DEFINE_FUNC_1(AskAttendeeToStartVideo, SDKError, unsigned int, userid)
 DEFINE_FUNC_1(CanStopAttendeeVideo, SDKError, unsigned int, userid)
 //virtual SDKError StopAttendeeVideo(unsigned int userid) = 0;
 DEFINE_FUNC_1(StopAttendeeVideo, SDKError, unsigned int, userid)
+
+#if (defined UserInterfaceClass)
+private:
 //virtual ICameraController* GetMyCameraController() = 0;
-DEFINE_FUNC_0(GetMyCameraController, ICameraController*);
+DEFINE_FUNC_0(GetMyCameraController, ICameraController*)
+public:
+#define T_GetMyCameraController _GetMyCameraController
+#else
+#define T_GetMyCameraController GetMyCameraController
+#endif
+DEFINE_FUNC_AND_MEMBER(T_GetMyCameraController, ICameraControllerWrap)
+
 
 //virtual void onUserVideoStatusChange(unsigned int userId, VideoStatus status) = 0;
 CallBack_FUNC_2(onUserVideoStatusChange, unsigned int, userId, VideoStatus, status)

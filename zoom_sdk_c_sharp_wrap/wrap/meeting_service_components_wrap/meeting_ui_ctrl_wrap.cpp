@@ -56,6 +56,7 @@ IMPL_FUNC_2(IMeetingUIController, GetMeetingUIWnd, SDKError, HWND&, hFirstView, 
 IMPL_FUNC_0(IMeetingUIController, ShowJoinAudioDlg, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError HideJoinAudioDlg() = 0;
 IMPL_FUNC_0(IMeetingUIController, HideJoinAudioDlg, SDKError, SDKERR_UNINITIALIZE)
+//virtual SDKError BackToMeeting() = 0;
 IMPL_FUNC_0(IMeetingUIController, BackToMeeting, SDKError, SDKERR_UNINITIALIZE)
 //virtual SDKError GetWallViewPageInfo(VideoWallPageInfoParam& videoWallPageInfoParam) = 0;
 IMPL_FUNC_1(IMeetingUIController, GetWallViewPageInfo, SDKError, VideoWallPageInfoParam&, videoWallPageInfoParam, SDKERR_UNINITIALIZE)
@@ -71,5 +72,12 @@ IMPL_FUNC_1(IMeetingUIController, SwitchMinimizeUIMode4FristScreenMeetingUIWnd, 
 IMPL_FUNC_1(IMeetingUIController, GetCurrentSplitScreenModeInfo, SDKError, SplitScreenInfo&, info, SDKERR_UNINITIALIZE)
 //virtual SDKError SwitchSplitScreenMode(bool bSplit) = 0;
 IMPL_FUNC_1(IMeetingUIController, SwitchSplitScreenMode, SDKError, bool, bSplit, SDKERR_UNINITIALIZE)
+
+//virtual SDKError SwapToShowShareViewOrVideo(bool bToDisplayShare) = 0;
+IMPL_FUNC_1(IMeetingUIController, SwapToShowShareViewOrVideo, SDKError, bool, bToDisplayShare, SDKERR_UNINITIALIZE)
+//virtual SDKError IsDisplayingShareViewOrVideo(bool& bIsShare) = 0;
+IMPL_FUNC_1(IMeetingUIController, IsDisplayingShareViewOrVideo, SDKError, bool&, bIsShare, SDKERR_UNINITIALIZE)
+//virtual SDKError CanSwapToShowShareViewOrVideo(bool& bCan) = 0;
+IMPL_FUNC_1(IMeetingUIController, CanSwapToShowShareViewOrVideo, SDKError, bool&, bCan, SDKERR_UNINITIALIZE)
 
 END_ZOOM_SDK_NAMESPACE

@@ -30,5 +30,6 @@ DEFINE_FUNC_0(CancelCallOutH323, SDKError)
 CallBack_FUNC_1(onCalloutStatusNotify, H323CalloutStatus, status)
 //virtual void onParingH323Result(H323ParingResult result, UINT64 meetingNumber) = 0;
 CallBack_FUNC_2(onParingH323Result, H323ParingResult, result, UINT64, meetingNumber)
+
 END_CLASS_DEFINE(IMeetingH323Helper)
 END_ZOOM_SDK_NAMESPACE

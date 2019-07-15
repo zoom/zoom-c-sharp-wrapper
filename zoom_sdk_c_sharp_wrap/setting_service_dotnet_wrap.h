@@ -1,6 +1,8 @@
 #pragma once
 using namespace System;
 #include "zoom_sdk_dotnet_wrap_def.h"
+#include "video_setting_context_dotnet_wrap.h"
+#include "zoom_sdk_dotnet_wrap_util.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
 	public enum class SettingTabPage : int
 	{
@@ -62,7 +64,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual ~CGeneralSettingContextDotNetWrap() {}
 		static CGeneralSettingContextDotNetWrap^ m_Instance = gcnew CGeneralSettingContextDotNetWrap;
 	};
-
+	/*
 	public interface class ICameraInfoDotNetWrap
 	{
 	public:
@@ -70,6 +72,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		String^ GetDeviceName();
 		bool IsSelectedDevice();
 	};
+	
+	public delegate void onComputerCamDeviceChanged(array<ICameraInfoDotNetWrap^>^ newCameras);
 
 	public interface class IVideoSettingContextDotNetWrap
 	{
@@ -86,6 +90,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsAlwaysShowNameOnVideoEnabled();
 		SDKError EnableAutoTurnOffVideoWhenJoinMeeting(bool bEnable);
 		bool IsAutoTurnOffVideoWhenJoinMeetingEnabled();
+		SDKError EnableAlwaysUse16v9(bool bEnable);
+		bool IsAlwaysUse16v9();
+		SDKError EnableSpotlightSelf(bool bEnable);
+		bool IsSpotlightSelfEnabled();
+		SDKError EnableHardwareEncode(bool bEnable);
+		bool IsHardwareEncodeEnabled();
+		SDKError Enable49VideoesInGallaryView(bool bEnable);
+		bool Is49VideoesInGallaryViewEnabled();
+		SDKError EnableHideNoVideoUsersOnWallView(bool bEnable);
+		bool IsHideNoVideoUsersOnWallViewEnabled();
+
+		void Add_CB_onComputerCamDeviceChanged(onComputerCamDeviceChanged^ cb);
+		void Remove_CB_onComputerCamDeviceChanged(onComputerCamDeviceChanged^ cb);
 	};
 
 	private ref class CVideoSettingContextDotNetWrap sealed : public IVideoSettingContextDotNetWrap
@@ -95,6 +112,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		{
 			CVideoSettingContextDotNetWrap^ get() { return m_Instance; }
 		}
+
+		void BindEvent();
+		void procComputerCamDeviceChanged(array<ICameraInfoDotNetWrap^ >^ newCameras);
 
 		virtual array<ICameraInfoDotNetWrap^ >^ GetCameraList();
 		virtual SDKError SelectCamera(String^ deviceId);
@@ -108,12 +128,38 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsAlwaysShowNameOnVideoEnabled();
 		virtual SDKError EnableAutoTurnOffVideoWhenJoinMeeting(bool bEnable);
 		virtual bool IsAutoTurnOffVideoWhenJoinMeetingEnabled();
+		virtual SDKError EnableAlwaysUse16v9(bool bEnable);
+		virtual bool IsAlwaysUse16v9();
+		virtual SDKError EnableSpotlightSelf(bool bEnable);
+		virtual bool IsSpotlightSelfEnabled();
+		virtual SDKError EnableHardwareEncode(bool bEnable);
+		virtual bool IsHardwareEncodeEnabled();
+		virtual SDKError Enable49VideoesInGallaryView(bool bEnable);
+		virtual bool Is49VideoesInGallaryViewEnabled();
+		virtual SDKError EnableHideNoVideoUsersOnWallView(bool bEnable);
+		virtual bool IsHideNoVideoUsersOnWallViewEnabled();
+		// ITestVideoDeviceHelper* GetTestVideoDeviceHelper();
+
+		virtual void Add_CB_onComputerCamDeviceChanged(onComputerCamDeviceChanged^ cb)
+		{
+			event_onComputerCamDeviceChanged += cb;
+		}
+
+		virtual void Remove_CB_onComputerCamDeviceChanged(onComputerCamDeviceChanged^ cb)
+		{
+			event_onComputerCamDeviceChanged -= cb;
+		}
+
+		static array<ICameraInfoDotNetWrap^>^ ConvertCameraList(ZOOM_SDK_NAMESPACE::IList<ZOOM_SDK_NAMESPACE::ICameraInfo*>* pList);
+
 	private:
 		CVideoSettingContextDotNetWrap() {}
 		virtual ~CVideoSettingContextDotNetWrap() {}
+
+		event onComputerCamDeviceChanged^ event_onComputerCamDeviceChanged;
 		static CVideoSettingContextDotNetWrap^ m_Instance = gcnew CVideoSettingContextDotNetWrap;
 	};
-
+	*/
 
 	public interface class IMicInfoDotNetWrap
 	{
@@ -131,6 +177,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsSelectedDevice();
 	};
 
+	public delegate void onComputerMicDeviceChanged(array<IMicInfoDotNetWrap^>^ newMics);
+	public delegate void onComputerSpeakerDeviceChanged(array<ISpeakerInfoDotNetWrap^>^ newSpeakers);
+
 	public interface class IAudioSettingContextDotNetWrap
 	{
 	public:
@@ -146,6 +195,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsStereoAudioEnable();
 		SDKError EnableMicOriginalInput(bool bEnable);
 		bool IsMicOriginalInputEnable();
+		SDKError EnableHoldSpaceKeyToSpeak(bool bEnable);
+		bool IsHoldSpaceKeyToSpeakEnabled();
+		SDKError EnableAlwaysMuteMicWhenJoinVoip(bool bEnable);
+		bool IsAlwaysMuteMicWhenJoinVoipEnabled();
+//		ITestAudioDeviceHelper* GetTestAudioDeviceHelper();
+		SDKError SetMicVol(float& value);
+		SDKError GetMicVol(float& value);
+		SDKError SetSpeakerVol(float& value);
+		SDKError GetSpeakerVol(float& value);
+		void Add_CB_onComputerMicDeviceChanged(onComputerMicDeviceChanged^ cb);
+		void Remove_CB_onComputerMicDeviceChanged(onComputerMicDeviceChanged^ cb);
+		void Add_CB_onComputerSpeakerDeviceChanged(onComputerSpeakerDeviceChanged^ cb);
+		void Remove_CB_onComputerSpeakerDeviceChanged(onComputerSpeakerDeviceChanged^ cb);
 	};
 
 	private ref class CAudioSettingContextDotNetWrap sealed : public IAudioSettingContextDotNetWrap
@@ -155,6 +217,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		{
 			CAudioSettingContextDotNetWrap^ get() { return m_Instance; }
 		}
+
+		void BindEvent();
+		void procComputerMicDeviceChanged(array<IMicInfoDotNetWrap^ >^ newMics);
+		void procComputerSpeakerDeviceChanged(array<ISpeakerInfoDotNetWrap^ >^ newSpeakers);
 
 		virtual array<IMicInfoDotNetWrap^ >^ GetMicList();
 		virtual SDKError SelectMic(String^ deviceId, String^ deviceName);
@@ -168,8 +234,40 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsStereoAudioEnable();
 		virtual SDKError EnableMicOriginalInput(bool bEnable);
 		virtual bool IsMicOriginalInputEnable();
+		virtual SDKError EnableHoldSpaceKeyToSpeak(bool bEnable);
+		virtual bool IsHoldSpaceKeyToSpeakEnabled();
+		virtual SDKError EnableAlwaysMuteMicWhenJoinVoip(bool bEnable);
+		virtual bool IsAlwaysMuteMicWhenJoinVoipEnabled();
+//		virtual ITestAudioDeviceHelper* GetTestAudioDeviceHelper();
+		virtual SDKError SetMicVol(float& value);
+		virtual SDKError GetMicVol(float& value);
+		virtual SDKError SetSpeakerVol(float& value);
+		virtual SDKError GetSpeakerVol(float& value);
 
+		virtual void Add_CB_onComputerMicDeviceChanged(onComputerMicDeviceChanged^ cb)
+		{
+			event_onComputerMicDeviceChanged += cb;
+		}
+
+		virtual void Remove_CB_onComputerMicDeviceChanged(onComputerMicDeviceChanged^ cb)
+		{
+			event_onComputerMicDeviceChanged -= cb;
+		}
+
+		virtual void Add_CB_onComputerSpeakerDeviceChanged(onComputerSpeakerDeviceChanged^ cb)
+		{
+			event_onComputerSpeakerDeviceChanged += cb;
+		}
+
+		virtual void Remove_CB_onComputerSpeakerDeviceChanged(onComputerSpeakerDeviceChanged^ cb)
+		{
+			event_onComputerSpeakerDeviceChanged -= cb;
+		}
+		static array<IMicInfoDotNetWrap^>^ ConvertMicList(ZOOM_SDK_NAMESPACE::IList<ZOOM_SDK_NAMESPACE::IMicInfo*>* pList);
+		static array<ISpeakerInfoDotNetWrap^>^ ConvertSpeakerList(ZOOM_SDK_NAMESPACE::IList<ZOOM_SDK_NAMESPACE::ISpeakerInfo*>* pList);
 	private:
+		event onComputerMicDeviceChanged^ event_onComputerMicDeviceChanged;
+		event onComputerSpeakerDeviceChanged^ event_onComputerSpeakerDeviceChanged;
 		CAudioSettingContextDotNetWrap() {}
 		virtual ~CAudioSettingContextDotNetWrap() {}
 		static CAudioSettingContextDotNetWrap^ m_Instance = gcnew CAudioSettingContextDotNetWrap;
@@ -289,9 +387,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError HideSettingDlg();
 		IGeneralSettingContextDotNetWrap^ GetGeneralSettings();
 		IAudioSettingContextDotNetWrap^ GetAudioSettings();
-		IVideoSettingContextDotNetWrap^ GetVideoSettings();
 		IRecordingSettingContextDotNetWrap^ GetRecordingSettings();
 		IStatisticSettingContextDotNetWrap^ GetStatisticSettings();
+		IVideoSettingContextDotNetWrap^ GetVideoSettings();
 	};
 
 	private ref class CSettingServiceDotNetWrap sealed : public ISettingServiceDotNetWrap
@@ -308,9 +406,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError HideSettingDlg();
 		virtual IGeneralSettingContextDotNetWrap^ GetGeneralSettings();
 		virtual IAudioSettingContextDotNetWrap^ GetAudioSettings();
-		virtual IVideoSettingContextDotNetWrap^ GetVideoSettings();
 		virtual IRecordingSettingContextDotNetWrap^ GetRecordingSettings();
 		virtual IStatisticSettingContextDotNetWrap^ GetStatisticSettings();
+		virtual IVideoSettingContextDotNetWrap^ GetVideoSettings();
+
 	private:
 		CSettingServiceDotNetWrap() {}
 		virtual ~CSettingServiceDotNetWrap() {}

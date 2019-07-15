@@ -16,6 +16,7 @@ using namespace System::Windows;
 #include "meeting_phone_helper_donet_wrap.h"
 #include "meeting_breakout_rooms_dotnet_wrap.h"
 #include "meeting_participants_ctrl_donet_wrap.h"
+#include "meeting_live_stream_dotnet_wrap.h"
 
 namespace ZOOM_SDK_DOTNET_WRAP {
 	public enum class MeetingStatus : int
@@ -290,10 +291,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		IMeetingPhoneHelperDotNetWrap^ GetMeetingPhoneHelper();
 		IMeetingBreakoutRoomsControllerDotNetWrap^ GetMeetingBreakoutRoomsController();
 		IMeetingParticipantsControllerDotNetWrap^ GetMeetingParticipantsController();
+		IMeetingLiveStreamControllerDotNetWrap^ GetMeetingLiveStreamController();
 
 		void Add_CB_onMeetingStatusChanged(onMeetingStatusChanged^ cb);
 		void Add_CB_onMeetingStatisticsWarningNotification(onMeetingStatisticsWarningNotification^ cb);
 		void Add_CB_onMeetingSecureKeyNotification(onMeetingSecureKeyNotification^ cb);
+		void Remove_CB_onMeetingStatusChanged(onMeetingStatusChanged^ cb);
+		void Remove_CB_onMeetingStatisticsWarningNotification(onMeetingStatisticsWarningNotification^ cb);
+		void Remove_CB_onMeetingSecureKeyNotification(onMeetingSecureKeyNotification^ cb);
 	};
 	private ref class CMeetingServiceDotNetWrap sealed : public IMeetingServiceDotNetWrap
 	{
@@ -336,10 +341,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual IMeetingPhoneHelperDotNetWrap^ GetMeetingPhoneHelper();
 		virtual IMeetingBreakoutRoomsControllerDotNetWrap^ GetMeetingBreakoutRoomsController();
 		virtual IMeetingParticipantsControllerDotNetWrap^ GetMeetingParticipantsController();
+		virtual IMeetingLiveStreamControllerDotNetWrap^ GetMeetingLiveStreamController();
 
 		virtual void Add_CB_onMeetingStatusChanged(onMeetingStatusChanged^ cb)
 		{
 			event_onMeetingStatusChanged += cb;
+		}
+
+		virtual void Remove_CB_onMeetingStatusChanged(onMeetingStatusChanged^ cb)
+		{
+			event_onMeetingStatusChanged -= cb;
 		}
 
 		virtual void Add_CB_onMeetingStatisticsWarningNotification(onMeetingStatisticsWarningNotification^ cb)
@@ -347,9 +358,19 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onMeetingStatisticsWarningNotification += cb;
 		}
 
+		virtual void Remove_CB_onMeetingStatisticsWarningNotification(onMeetingStatisticsWarningNotification^ cb)
+		{
+			event_onMeetingStatisticsWarningNotification -= cb;
+		}
+
 		virtual void Add_CB_onMeetingSecureKeyNotification(onMeetingSecureKeyNotification^ cb)
 		{
 			event_onMeetingSecureKeyNotification += cb;
+		}
+
+		virtual void Remove_CB_onMeetingSecureKeyNotification(onMeetingSecureKeyNotification^ cb)
+		{
+			event_onMeetingSecureKeyNotification -= cb;
 		}
 
 	private:

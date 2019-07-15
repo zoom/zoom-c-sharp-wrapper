@@ -19,10 +19,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				CMeetingH323HelperDotNetWrap::Instance->procCalloutStatusNotify((H323CalloutStatus)status);
 		}
 
-		void onParingH323Result(ZOOM_SDK_NAMESPACE::H323ParingResult result)
+		void onParingH323Result(ZOOM_SDK_NAMESPACE::H323ParingResult result, ::UINT64 meetingId)
 		{
 			if (CMeetingH323HelperDotNetWrap::Instance)
-				CMeetingH323HelperDotNetWrap::Instance->procParingH323Result((H323ParingResult)result);
+				CMeetingH323HelperDotNetWrap::Instance->procParingH323Result((H323ParingResult)result, meetingId);
 		}
 
 	private:
@@ -39,16 +39,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		meetingH323.m_cbonParingH323Result =
 			std::bind(&MeetingH323HelperEventHanlder::onParingH323Result,
-				&MeetingH323HelperEventHanlder::GetInst(), std::placeholders::_1);
+				&MeetingH323HelperEventHanlder::GetInst(), std::placeholders::_1, std::placeholders::_2);
 	}
 
 	void CMeetingH323HelperDotNetWrap::procCalloutStatusNotify(H323CalloutStatus status)
 	{
 		event_onCalloutStatusNotify(status);
 	}
-	void CMeetingH323HelperDotNetWrap::procParingH323Result(H323ParingResult result)
+	void CMeetingH323HelperDotNetWrap::procParingH323Result(H323ParingResult result, unsigned __int64 meetingId)
 	{
-		event_onParingH323Result(result);
+		event_onParingH323Result(result, meetingId);
 	}
 
 	array<String^ >^ CMeetingH323HelperDotNetWrap::GetH323Address()
@@ -65,11 +65,18 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingServiceWrap().GetH323Helper().GetH323Password());
 	}
 
-	SDKError CMeetingH323HelperDotNetWrap::SendMeetingParingCode(unsigned __int64 meetingNum, String^ paringCode)
+	SDKError CMeetingH323HelperDotNetWrap::CanPairingMeeting(unsigned __int64 meetingId)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().
 			GetMeetingServiceWrap().GetH323Helper().
-			SendMeetingParingCode(meetingNum, const_cast<wchar_t*>(PlatformString2WChar(paringCode)));
+			CanPairingMeeting(meetingId);
+	}
+
+	SDKError CMeetingH323HelperDotNetWrap::SendMeetingParingCode(unsigned __int64 meetingId, String^ paringCode)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().
+			GetMeetingServiceWrap().GetH323Helper().
+			SendMeetingParingCode(meetingId, const_cast<wchar_t*>(PlatformString2WChar(paringCode)));
 	}
 
 	SDKError CMeetingH323HelperDotNetWrap::CallOutH323(H323Device deviceInfo)

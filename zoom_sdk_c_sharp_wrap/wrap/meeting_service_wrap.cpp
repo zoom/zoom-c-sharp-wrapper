@@ -49,7 +49,9 @@ IMPL_FUNC_AND_MEMBER(IMeetingService, T_GetH323Helper, IMeetingH323HelperWrap);
 IMPL_FUNC_AND_MEMBER(IMeetingService, T_GetMeetingPhoneHelper, IMeetingPhoneHelperWrap);
 IMPL_FUNC_AND_MEMBER(IMeetingService, T_GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsControllerWrap);
 IMPL_FUNC_AND_MEMBER(IMeetingService, T_GetMeetingParticipantsController, IMeetingParticipantsControllerWrap);
-
+IMPL_FUNC_AND_MEMBER(IMeetingService, T_GetMeetingLiveStreamController, IMeetingLiveStreamControllerWrap);
+IMPL_FUNC_AND_MEMBER(IMeetingService, T_GetMeetingWebinarController, IMeetingWebinarControllerWrap);
+IMPL_FUNC_AND_MEMBER(IMeetingService, T_GetMeetingClosedCaptionController, IClosedCaptionControllerWrap);
 #if (defined UserInterfaceClass)
 IMPL_FUNC_0(IMeetingService, GetMeetingConfiguration, IMeetingConfiguration*, NULL)
 IMPL_FUNC_0(IMeetingService, GetUIController, IMeetingUIController*, NULL)
@@ -65,5 +67,9 @@ IMPL_FUNC_0(IMeetingService, GetH323Helper, IMeetingH323Helper*, NULL)
 IMPL_FUNC_0(IMeetingService, GetMeetingPhoneHelper, IMeetingPhoneHelper*, NULL)
 IMPL_FUNC_0(IMeetingService, GetMeetingBreakoutRoomsController, IMeetingBreakoutRoomsController*, NULL)
 IMPL_FUNC_0(IMeetingService, GetMeetingParticipantsController, IMeetingParticipantsController*, NULL)
+IMPL_FUNC_0(IMeetingService, GetMeetingLiveStreamController, IMeetingLiveStreamController*, NULL)
+IMPL_FUNC_0(IMeetingService, GetMeetingWebinarController, IMeetingWebinarController*, NULL)
+IMPL_FUNC_0(IMeetingService, GetMeetingClosedCaptionController, IClosedCaptionController*, NULL)
+
 #endif
 END_ZOOM_SDK_NAMESPACE

@@ -80,5 +80,7 @@ IMPL_FUNC_1(IMeetingShareController, EnableShareComputerSound, SDKError, bool, b
 IMPL_FUNC_1(IMeetingShareController, EnableOptimizeForFullScreenVideoClip, SDKError, bool, bEnable, SDKERR_UNINITIALIZE)
 //virtual SDKError SetMultiShareSettingOptions(MultiShareOption shareOption) = 0;
 IMPL_FUNC_1(IMeetingShareController, SetMultiShareSettingOptions, SDKError, MultiShareOption, shareOption, SDKERR_UNINITIALIZE)
+//virtual SDKError GetMultiShareSettingOptions(MultiShareOption& shareOption) = 0;
+IMPL_FUNC_1(IMeetingShareController, GetMultiShareSettingOptions, SDKError, MultiShareOption&, shareOption, SDKERR_UNINITIALIZE)
 
 END_ZOOM_SDK_NAMESPACE

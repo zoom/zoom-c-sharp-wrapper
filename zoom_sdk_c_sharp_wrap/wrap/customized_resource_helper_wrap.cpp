@@ -67,3 +67,4 @@ void ICustomizedResourceHelperWrap::ApplyAll()
 	}
 }
 END_ZOOM_SDK_NAMESPACE
+

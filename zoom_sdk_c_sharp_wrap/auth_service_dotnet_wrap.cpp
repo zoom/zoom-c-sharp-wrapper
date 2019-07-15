@@ -61,6 +61,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		{
 			if (ZOOM_SDK_NAMESPACE::AUTHRET_SUCCESS == ret)
 			{
+				ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Init();
+				ZOOM_SDK_NAMESPACE::ISettingServiceWrap& settingWrap = ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap();
+				ZOOM_SDK_NAMESPACE::IVideoSettingContextWrap& videosettingwrap = settingWrap.GetVideoSettings();
+				videosettingwrap.Init(&settingWrap);
+				
 				ZOOM_SDK_NAMESPACE::IMeetingServiceWrap& meetingWrap = ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap();
 				meetingWrap.Init();
 
