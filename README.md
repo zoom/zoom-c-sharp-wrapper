@@ -55,15 +55,7 @@ Please follow the below steps to get started:
 
 1.The wrap `Dll` locate at `zoom_sdk_csharp_wrap_github\bin\zoom_sdk_dotnet_wrap.dll`.
 
-2.Download the Windows SDK
-
-[https://github.com/zoom/zoom-sdk-windows](https://github.com/zoom/zoom-sdk-windows)
-
-3.Copy files
-
-Copy `zoom-sdk-windows\bin` to `zoom_sdk_csharp_wrap_github\bin`
-
-4. run demo project,
+2.Run the demo project,
 
 a>`zoom_sdk_csharp_wrap_github\zoom_sdk_demo\zoom_sdk_demo.csproj`
 
