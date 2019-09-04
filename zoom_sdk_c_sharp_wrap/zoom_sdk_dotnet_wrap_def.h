@@ -34,7 +34,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		LANGUAGE_Spanish,
 		LANGUAGE_German,
 		LANGUAGE_French,
-		LANGUAGE_Italian,
 		LANGUAGE_Portuguese,
 		LANGUAGE_Russian,
 	};
