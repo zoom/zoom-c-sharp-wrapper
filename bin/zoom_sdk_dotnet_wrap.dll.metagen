@@ -208,9 +208,8 @@ Struct ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID: AutoLayout, AnsiClass, Class, Publi
     ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_Spanish = 5 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_German = 6 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_French = 7 : Public, Static, Literal, HasDefault
-    ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_Italian = 8 : Public, Static, Literal, HasDefault
-    ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_Portuguese = 9 : Public, Static, Literal, HasDefault
-    ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_Russian = 10 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_Portuguese = 8 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID LANGUAGE_Russian = 9 : Public, Static, Literal, HasDefault
 Struct ZOOM_SDK_DOTNET_WRAP.CustomizedLanguageType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum
   Fields:
