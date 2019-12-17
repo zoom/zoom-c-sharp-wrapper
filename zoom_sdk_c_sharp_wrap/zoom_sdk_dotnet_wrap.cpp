@@ -40,6 +40,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		param_.uiWindowIconSmallID = initInfo.window_small_icon_id;
 		param_.uiWindowIconBigID = initInfo.window_big_icon_id;
 		param_.emLanguageID = (ZOOM_SDK_NAMESPACE::SDK_LANGUAGE_ID)initInfo.language_id;
+		param_.enableLogByDefault = initInfo.enable_log;
 		PlatformString2CharHelper langinfo = PlatformString2CharHelper(initInfo.config_opts.customized_language.language_name);
 		param_.obConfigOpts.customizedLang.langInfo = langinfo.c_str();
 		PlatformString2CharHelper langname = PlatformString2CharHelper(initInfo.config_opts.customized_language.language_name);

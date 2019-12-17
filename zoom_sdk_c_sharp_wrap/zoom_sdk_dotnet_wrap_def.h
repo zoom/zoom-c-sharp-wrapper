@@ -77,6 +77,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		unsigned int window_big_icon_id;///< windows small icon file path
 		SDK_LANGUAGE_ID language_id;///< sdk language ID
 		ConfigurableOptions config_opts;
+		bool enable_log;
 	};
 
 	public value class HWNDDotNet sealed
