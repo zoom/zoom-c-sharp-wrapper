@@ -723,6 +723,7 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingConfigurationDotNetWrap: AutoLayout, Ansi
     EnableLengthLimitationOfMeetingNumber(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableShareIOSDevice(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     RedirectClickCustomLiveStreamMenuEvent(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    EnableInputMeetingScreenNameDlg(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Remove_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract

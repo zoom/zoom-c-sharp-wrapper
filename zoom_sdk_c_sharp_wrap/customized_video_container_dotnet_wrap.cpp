@@ -14,6 +14,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 		m_dotNetWrapImpl = gcnew ICustomizedVideoContainerDotNetImpl(pWrap);
 		m_pEvents = new CustomizedVideoContainerEventHandler(this);
+		if (m_dotNetWrapImpl)
+		{
+			BindEvent();
+		}
 	}
 
 	CCustomizedVideoContainerDotNetWrap::~CCustomizedVideoContainerDotNetWrap()

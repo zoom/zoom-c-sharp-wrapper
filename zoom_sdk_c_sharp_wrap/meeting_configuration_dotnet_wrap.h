@@ -73,6 +73,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void EnableLengthLimitationOfMeetingNumber(bool bEnable);
 		void EnableShareIOSDevice(bool bEnable);
 		void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect);
+		void EnableInputMeetingScreenNameDlg(bool bEnable);
 
 		void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb);
 		void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
@@ -125,6 +126,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual void EnableLengthLimitationOfMeetingNumber(bool bEnable);
 		virtual void EnableShareIOSDevice(bool bEnable);
 		virtual void RedirectClickCustomLiveStreamMenuEvent(bool bRedirect);
+		virtual void EnableInputMeetingScreenNameDlg(bool bEnable);
 
 		virtual void Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb)
 		{

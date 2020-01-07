@@ -281,6 +281,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingConfiguration().RedirectClickCustomLiveStreamMenuEvent(bRedirect);
 	}
 
+	void CMeetingConfigurationDotNetWrap::EnableInputMeetingScreenNameDlg(bool bEnable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().EnableInputMeetingPasswordDlg(bEnable);
+	}
 	void CMeetingConfigurationDotNetWrap::BindEvent()
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().m_cbonInputMeetingPasswordAndScreenNameNotification =
