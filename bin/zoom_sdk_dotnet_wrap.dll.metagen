@@ -41,7 +41,6 @@ Struct ZOOM_SDK_DOTNET_WRAP.InitParam: AutoLayout, AnsiClass, Class, Public, Seq
     UInt32 window_big_icon_id : Public
     ZOOM_SDK_DOTNET_WRAP.SDK_LANGUAGE_ID language_id : Public
     ZOOM_SDK_DOTNET_WRAP.ConfigurableOptions config_opts : Public
-    Boolean enable_log : Public
 Struct ZOOM_SDK_DOTNET_WRAP.HWNDDotNet: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
   Fields:
@@ -723,7 +722,6 @@ Interface ZOOM_SDK_DOTNET_WRAP.IMeetingConfigurationDotNetWrap: AutoLayout, Ansi
     EnableLengthLimitationOfMeetingNumber(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableShareIOSDevice(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     RedirectClickCustomLiveStreamMenuEvent(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    EnableInputMeetingScreenNameDlg(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Remove_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
