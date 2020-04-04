@@ -57,4 +57,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
 			GetAnnotationController().Redo((ZOOM_SDK_NAMESPACE::SDKViewType)viewtype);
 	}
+	
+	ICustomizedAnnotationControllerDotNetWrap^ CAnnotationControllerDotNetWrap::GetCustomizedAnnotationController(ICustomizedShareRenderDotNetWrap^ pShareRender)
+	{
+		if (CCustomizedAnnotationControllerDotNetWrap::Instance)
+		{
+			CCustomizedAnnotationControllerDotNetWrap::Instance->BindEvent(pShareRender);
+		}
+		return CCustomizedAnnotationControllerDotNetWrap::Instance;
+	}
+	
 }

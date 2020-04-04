@@ -144,4 +144,30 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		HWNDDotNet hSelfWnd;
 		HWNDDotNet hParent;
 	};
+
+	public enum class AnnotationToolType : int
+	{
+		ANNOTOOL_NONE_DRAWING,///<switch to mouse 
+
+		ANNOTOOL_PEN,
+		ANNOTOOL_HIGHLIGHTER,
+		ANNOTOOL_AUTO_LINE,
+		ANNOTOOL_AUTO_RECTANGLE,
+		ANNOTOOL_AUTO_ELLIPSE,
+		ANNOTOOL_AUTO_ARROW,
+		ANNOTOOL_AUTO_RECTANGLE_FILL,
+		ANNOTOOL_AUTO_ELLIPSE_FILL,
+
+		ANNOTOOL_SPOTLIGHT,
+		ANNOTOOL_ARROW,
+
+		ANNOTOOL_ERASER,///<earser
+	};
+
+	public enum class AnnotationClearType : int
+	{
+		ANNOCLEAR_ALL,
+		ANNOCLEAR_SELF,
+		ANNOCLEAR_OTHER,
+	};
 }

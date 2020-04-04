@@ -37,6 +37,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsSplitScreenModeEnabled();
 		SDKError EnableAutoFullScreenVideoWhenViewShare(bool bEnable);
 		bool IsAutoFullScreenVideoWhenViewShareEnabled();
+		SDKError EnableGreenBorderWhenShare(bool bEnable);
+		bool IsGreenBorderEnabledWhenShare();
 	};
 
 	private ref class CGeneralSettingContextDotNetWrap sealed : public IGeneralSettingContextDotNetWrap
@@ -59,6 +61,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsSplitScreenModeEnabled();
 		virtual SDKError EnableAutoFullScreenVideoWhenViewShare(bool bEnable);
 		virtual bool IsAutoFullScreenVideoWhenViewShareEnabled();
+		virtual SDKError EnableGreenBorderWhenShare(bool bEnable);
+		virtual bool IsGreenBorderEnabledWhenShare();
 	private:
 		CGeneralSettingContextDotNetWrap() {}
 		virtual ~CGeneralSettingContextDotNetWrap() {}

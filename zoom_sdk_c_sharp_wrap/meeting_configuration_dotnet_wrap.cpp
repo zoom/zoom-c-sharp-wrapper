@@ -286,6 +286,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
 			GetMeetingConfiguration().EnableInputMeetingPasswordDlg(bEnable);
 	}
+
+	void CMeetingConfigurationDotNetWrap::DisableShowJoinMeetingWnd(bool bDisable)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingConfiguration().DisableShowJoinMeetingWnd(bDisable);
+	}
+
 	void CMeetingConfigurationDotNetWrap::BindEvent()
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().m_cbonInputMeetingPasswordAndScreenNameNotification =

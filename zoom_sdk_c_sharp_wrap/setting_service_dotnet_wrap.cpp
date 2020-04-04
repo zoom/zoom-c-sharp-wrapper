@@ -176,6 +176,26 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
 			GetGeneralSettings()->IsAutoFullScreenVideoWhenViewShareEnabled();
 	}
+
+	SDKError CGeneralSettingContextDotNetWrap::EnableGreenBorderWhenShare(bool bEnable)
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings())
+			return SDKError::SDKERR_UNINITIALIZE;
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings()->EnableGreenBorderWhenShare(bEnable);
+	}
+
+	bool CGeneralSettingContextDotNetWrap::IsGreenBorderEnabledWhenShare()
+	{
+		if (NULL == ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings())
+			return false;
+
+		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().
+			GetGeneralSettings()->IsGreenBorderEnabledWhenShare();
+	}
 	/*
 	//CVideoSettingContextDotNetWrap
 	private ref class CCameraInfoDotNetWrap sealed : public ICameraInfoDotNetWrap

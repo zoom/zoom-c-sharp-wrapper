@@ -195,6 +195,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		String^				vanityID;///< Meeting's vanityID
 		HWNDDotNet			hDirectShareAppWnd;///< share application directly
 		String^				participantId;///< for meeting participant report list, need web backend enable.
+		bool				isVideoOff;///< true means turn video off
+		bool				isAudioOff;///< true means turn video off
 		bool				isDirectShareDesktop;///< share desktop directly
 	};
 

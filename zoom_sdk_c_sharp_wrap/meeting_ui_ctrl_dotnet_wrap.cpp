@@ -236,7 +236,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	SDKError CMeetingUIControllerDotNetWrap::ShowSharingFrameWindows(bool bShow)
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
-			GetUIController().ShowPreOrNextPageVideo(bShow);
+			GetUIController().ShowSharingFrameWindows(bShow);
 	}
 
 	bool	 CMeetingUIControllerDotNetWrap::IsMinimizeModeOfFristScreenMeetingUIWnd(SDKMinimizeUIMode^% mode)

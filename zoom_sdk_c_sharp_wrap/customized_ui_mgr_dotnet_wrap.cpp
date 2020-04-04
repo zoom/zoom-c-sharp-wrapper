@@ -127,10 +127,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			return SDKError::SDKERR_INVALID_PARAMETER;
 		}
 
-		ZOOM_SDK_NAMESPACE::ICustomizedVideoContainerWrap* pItem = ((CCustomizedVideoContainerDotNetWrap^)pContainer)->Inner()->GetSDKObj();
-		if (pItem)
+		ZOOM_SDK_NAMESPACE::ICustomizedVideoContainerWrap* pVideoContainer = ((CCustomizedVideoContainerDotNetWrap^)pContainer)->Inner()->GetSDKObj();
+		if (pVideoContainer)
 		{
-			return (SDKError)ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().DestroyVideoContainer(pItem->GetSDKObj());
+			return (SDKError)ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().DestroyVideoContainer(pVideoContainer->GetSDKObj());
 		}
 
 		return SDKError::SDKERR_UNKNOWN;
@@ -177,10 +177,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			return SDKError::SDKERR_INVALID_PARAMETER;
 		}
 
-		ZOOM_SDK_NAMESPACE::ICustomizedShareRenderWrap* pItem = ((CCustomizedShareRenderDotNetWrap^)pRender)->Inner()->GetSDKObj();
-		if (pItem)
+		ZOOM_SDK_NAMESPACE::ICustomizedShareRenderWrap* pShareRender = ((CCustomizedShareRenderDotNetWrap^)pRender)->Inner()->GetSDKObj();
+		if (pShareRender)
 		{
-			return (SDKError)ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().DestroyShareRender(pItem->GetSDKObj());
+			return (SDKError)ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().DestroyShareRender(pShareRender->GetSDKObj());
 		}
 
 		return SDKError::SDKERR_UNKNOWN;

@@ -2,34 +2,9 @@
 using namespace System;
 using namespace System::Windows;
 #include "zoom_sdk_dotnet_wrap_def.h"
+#include "customized_annotation_dotnet_wrap.h"
+#include "customized_share_render_dotnet_wrap.h"
 namespace ZOOM_SDK_DOTNET_WRAP {
-
-	public enum class AnnotationToolType : int
-	{
-		ANNOTOOL_NONE_DRAWING,///<switch to mouse 
-
-		ANNOTOOL_PEN,
-		ANNOTOOL_HIGHLIGHTER,
-		ANNOTOOL_AUTO_LINE,
-		ANNOTOOL_AUTO_RECTANGLE,
-		ANNOTOOL_AUTO_ELLIPSE,
-		ANNOTOOL_AUTO_ARROW,
-		ANNOTOOL_AUTO_RECTANGLE_FILL,
-		ANNOTOOL_AUTO_ELLIPSE_FILL,
-
-		ANNOTOOL_SPOTLIGHT,
-		ANNOTOOL_ARROW,
-
-		ANNOTOOL_ERASER,///<earser
-	};
-
-	public enum class AnnotationClearType : int
-	{
-		ANNOCLEAR_ALL,
-		ANNOCLEAR_SELF,
-		ANNOCLEAR_OTHER,
-	};
-
 
 	public interface class IAnnotationControllerDotNetWrap
 	{
@@ -43,6 +18,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError SetLineWidth(SDKViewType viewtype, long lineWidth);
 		SDKError Undo(SDKViewType viewtype);
 		SDKError Redo(SDKViewType viewtype);
+		ICustomizedAnnotationControllerDotNetWrap^ GetCustomizedAnnotationController(ICustomizedShareRenderDotNetWrap^ pShareRender);
 	};
 
 	private ref class CAnnotationControllerDotNetWrap sealed : public IAnnotationControllerDotNetWrap
@@ -65,6 +41,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError SetLineWidth(SDKViewType viewtype, long lineWidth);
 		virtual SDKError Undo(SDKViewType viewtype);
 		virtual SDKError Redo(SDKViewType viewtype);
+		virtual ICustomizedAnnotationControllerDotNetWrap^ GetCustomizedAnnotationController(ICustomizedShareRenderDotNetWrap^ pShareRender);
 	private:
 		CAnnotationControllerDotNetWrap() {};
 		virtual ~CAnnotationControllerDotNetWrap() {};
