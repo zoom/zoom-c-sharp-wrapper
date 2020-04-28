@@ -123,7 +123,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 	public:
 		String^ GetUserName();
-		String^ GetEmail();
 		bool IsHost();
 		unsigned int GetUserID();
 		bool IsVideoOn();

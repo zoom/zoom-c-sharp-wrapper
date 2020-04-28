@@ -247,13 +247,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			return nullptr;
 		}
 
-		virtual String^ GetEmail()
-		{
-			if (m_pInfo)
-				return WChar2PlatformString(m_pInfo->GetEmail());
-			return nullptr;
-		}
-
 		virtual bool IsHost()
 		{
 			if (m_pInfo)
