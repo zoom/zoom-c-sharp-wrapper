@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2020-04-27
+## 2020-04-28
 
 * Please refer to [https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md](https://github.com/zoom/zoom-sdk-windows/blob/master/CHANGELOG.md) for changes in Windows SDK.
 
