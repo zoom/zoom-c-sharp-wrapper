@@ -6,13 +6,31 @@
 <img src="https://s3.amazonaws.com/user-content.stoplight.io/8987/1541013063688" width="400px" max-height="400px" style="margin:auto;"/>
 </div>
 
+## Table of Contents
+- [:rotating_light: Announcement :rotating_light:](#rotating_light-announcement-rotating_light)   
+- [Latest SDK Notifications](#latest-sdk-notifications)   
+- [Full Documentation && Community Support](#full-documentation-community-support)   
+- [Disclaimer](#disclaimer)   
+- [Getting Started](#getting-started)   
+  - [Prerequisites](#prerequisites)   
+  - [Installing](#installing)   
+- [Documentation](#documentation)   
+- [Versioning](#versioning)   
+- [Change log](#change-log)   
+- [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)   
+- [Support](#support)   
+- [License](#license)   
+- [Contributiors](#contributiors)   
+- [Acknowledgments](#acknowledgments)   
+
 ## :rotating_light: Announcement :rotating_light:
-The Client SDK hereby introduced the **AES 256-bit GCM encryption** as addressed in our [90-Day Security Plan](https://blog.zoom.us/wordpress/2020/04/22/zoom-hits-milestone-on-90-day-security-plan-releases-zoom-5-0/) to **our SDK version 4.6.21666.0428**. Please note that: This AES 256-bit GCM encryption is **backward INCOMPATIBLE, which means the older version of SDK will NOT be able to join a meeting with GCM encryption enabled,** and as mentioned in the [90-Day Security Plan](https://blog.zoom.us/wordpress/2020/04/22/zoom-hits-milestone-on-90-day-security-plan-releases-zoom-5-0/), **the system-wide account enablement of AES 256-bit GCM encryption will take place on May 30, 2020**. Please plan to upgrade your SDK accordingly, and we will soon take away the older version of SDK that are not compatible with GCM encryption. Thank you!
+To align with Zoom’s [recent announcement](https://blog.zoom.us/wordpress/2020/04/22/zoom-hits-milestone-on-90-day-security-plan-releases-zoom-5-0/) pertaining to our security initiative, Zoom Client SDKs have added **AES 256-bit GCM encryption** support, which provides more protection for meeting data and greater resistance to tampering. **The system-wide account enablement of AES 256-bit GCM encryption will take place on May 30, 2020.** You are **strongly recommended** to start the required upgrade to this latest version 4.6.21666.0428 at your earliest convenience. Please note that any Client SDK versions below 4.6.21666.0428 will **no longer be operational** from May 30.
 
 > If you would like to test the latest SDK with AES 256-bit GCM encryption meeting before 05/30, you may:
-1. Download the latest version of Zoom client: https://zoom.us/download
-2. Visit https://zoom.us/testgcm and launch a GCM enabled meeting with your Zoom client, you will see a Green Shield icon that indicates the GCM encryption is enabled
-3. Use SDK to join this meeting
+> 1. Download the latest version of Zoom client: https://zoom.us/download
+> 2. Visit https://zoom.us/testgcm and launch a GCM enabled meeting with your Zoom client, you will see a Green Shield icon that indicates the GCM encryption is enabled
+> 3. Use SDK to join this meeting
+
 
 ## Latest SDK Notifications
 1. Our brand new [Zoom Developer Community Forum](https://devforum.zoom.us/) is now online!!! Check it out! We are here to help! :D
