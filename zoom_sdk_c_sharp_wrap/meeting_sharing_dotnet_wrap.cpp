@@ -90,6 +90,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingShareController().StartAirPlayShare();
 	}
 
+	SDKError CMeetingShareControllerDotNetWrap::StartSharePureComputerAudio()
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingShareController().StartSharePureComputerAudio();
+	}
+
 	SDKError CMeetingShareControllerDotNetWrap::ShowSharingAppSelectWnd()
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
