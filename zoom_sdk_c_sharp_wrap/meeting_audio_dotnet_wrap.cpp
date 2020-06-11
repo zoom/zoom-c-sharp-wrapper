@@ -16,7 +16,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual unsigned int GetUserId()
 		{
 			if (m_pStatus)
-				m_pStatus->GetUserId();
+				return m_pStatus->GetUserId();
+
 			return 0;
 		}
 
