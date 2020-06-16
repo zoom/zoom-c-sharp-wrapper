@@ -33,6 +33,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 	IAudioSettingContextDotNetWrap^ CSettingServiceDotNetWrap::GetAudioSettings()
 	{
+		if (CAudioSettingContextDotNetWrap::Instance)
+		{
+			CAudioSettingContextDotNetWrap::Instance->BindEvent();
+		}
+
 		return CAudioSettingContextDotNetWrap::Instance;
 	}
 
