@@ -143,6 +143,14 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().SDKAuth(param_);
 	}
 
+	SDKError CAuthServiceDotNetWrap::SDKAuth(AuthContext authParam)
+	{
+		ZOOM_SDK_NAMESPACE::AuthContext param_;
+		param_.jwt_token = PlatformString2WChar(authParam.jwt_token);
+
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().SDKAuth(param_);
+	}
+
 	AuthResult CAuthServiceDotNetWrap::GetAuthResult()
 	{
 		return (AuthResult)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAuthServiceWrap().GetAuthResult();

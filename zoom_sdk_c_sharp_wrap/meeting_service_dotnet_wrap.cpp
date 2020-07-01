@@ -273,24 +273,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		joinParam_c.userType = (ZOOM_SDK_NAMESPACE::SDKUserType)(joinParam.userType);
 		switch (joinParam.userType)
 		{
-		case SDKUserType::SDK_UT_APIUSER:
-		{
-			if (nullptr == joinParam.apiuserJoin)
-				return SDKError::SDKERR_INVALID_PARAMETER;
-
-			joinParam_c.param.apiuserJoin.meetingNumber = joinParam.apiuserJoin->meetingNumber;
-			joinParam_c.param.apiuserJoin.vanityID = PlatformString2WChar(joinParam.apiuserJoin->vanityID);
-			joinParam_c.param.apiuserJoin.userName = PlatformString2WChar(joinParam.apiuserJoin->userName);
-			joinParam_c.param.apiuserJoin.psw = PlatformString2WChar(joinParam.apiuserJoin->psw);
-			joinParam_c.param.apiuserJoin.hDirectShareAppWnd = (HWND)joinParam.apiuserJoin->hDirectShareAppWnd.value;
-			joinParam_c.param.apiuserJoin.toke4enfrocelogin = PlatformString2WChar(joinParam.apiuserJoin->toke4enfrocelogin);
-			joinParam_c.param.apiuserJoin.participantId = PlatformString2WChar(joinParam.apiuserJoin->participantId);
-			joinParam_c.param.apiuserJoin.webinarToken = PlatformString2WChar(joinParam.apiuserJoin->webinarToken);
-			joinParam_c.param.apiuserJoin.isDirectShareDesktop = joinParam.apiuserJoin->isDirectShareDesktop;
-			joinParam_c.param.apiuserJoin.isVideoOff = joinParam.apiuserJoin->isVideoOff;
-			joinParam_c.param.apiuserJoin.isAudioOff = joinParam.apiuserJoin->isAudioOff;
-		}
-		break;
 		case SDKUserType::SDK_UT_NORMALUSER:
 		{
 			if (nullptr == joinParam.normaluserJoin)
@@ -317,7 +299,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			joinParam_c.param.withoutloginuserJoin.userName = PlatformString2WChar(joinParam.withoutloginJoin->userName);
 			joinParam_c.param.withoutloginuserJoin.psw = PlatformString2WChar(joinParam.withoutloginJoin->psw);
 			joinParam_c.param.withoutloginuserJoin.hDirectShareAppWnd = (HWND)joinParam.withoutloginJoin->hDirectShareAppWnd.value;
-			joinParam_c.param.withoutloginuserJoin.toke4enfrocelogin = PlatformString2WChar(joinParam.withoutloginJoin->toke4enfrocelogin);
+			joinParam_c.param.withoutloginuserJoin.userZAK = PlatformString2WChar(joinParam.withoutloginJoin->userZAK);
 			joinParam_c.param.withoutloginuserJoin.participantId = PlatformString2WChar(joinParam.withoutloginJoin->participantId);
 			joinParam_c.param.withoutloginuserJoin.webinarToken = PlatformString2WChar(joinParam.withoutloginJoin->webinarToken);
 			joinParam_c.param.withoutloginuserJoin.isDirectShareDesktop = joinParam.withoutloginJoin->isDirectShareDesktop;
@@ -338,21 +320,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		startParam_c.userType = (ZOOM_SDK_NAMESPACE::SDKUserType)startParam.userType;
 		switch (startParam.userType)
 		{
-		case SDKUserType::SDK_UT_APIUSER:
-		{
-			if (nullptr == startParam.apiuserStart)
-				return SDKError::SDKERR_INVALID_PARAMETER;
-
-			startParam_c.param.apiuserStart.userID = PlatformString2WChar(startParam.apiuserStart->userID);
-			startParam_c.param.apiuserStart.userToken = PlatformString2WChar(startParam.apiuserStart->userToken);
-			startParam_c.param.apiuserStart.userName = PlatformString2WChar(startParam.apiuserStart->userName);
-			startParam_c.param.apiuserStart.meetingNumber = startParam.apiuserStart->meetingNumber;
-			startParam_c.param.apiuserStart.vanityID = PlatformString2WChar(startParam.apiuserStart->vanityID);
-			startParam_c.param.apiuserStart.hDirectShareAppWnd = (HWND)startParam.apiuserStart->hDirectShareAppWnd.value;
-			startParam_c.param.apiuserStart.participantId = PlatformString2WChar(startParam.apiuserStart->participantId);
-			startParam_c.param.apiuserStart.isDirectShareDesktop = startParam.apiuserStart->isDirectShareDesktop;
-		}
-		break;
 		case SDKUserType::SDK_UT_NORMALUSER:
 		{
 			if (nullptr == startParam.normaluserStart)
@@ -373,7 +340,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 				return SDKError::SDKERR_INVALID_PARAMETER;
 
 			startParam_c.param.withoutloginStart.userID = PlatformString2WChar(startParam.withoutloginStart->userID);
-			startParam_c.param.withoutloginStart.userToken = PlatformString2WChar(startParam.withoutloginStart->userToken);
 			startParam_c.param.withoutloginStart.userZAK = PlatformString2WChar(startParam.withoutloginStart->userZAK);
 			startParam_c.param.withoutloginStart.zoomuserType = (ZOOM_SDK_NAMESPACE::ZoomUserType)startParam.withoutloginStart->zoomuserType;
 			startParam_c.param.withoutloginStart.userName = PlatformString2WChar(startParam.withoutloginStart->userName);

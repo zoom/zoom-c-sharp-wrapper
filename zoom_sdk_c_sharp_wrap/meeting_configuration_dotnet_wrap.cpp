@@ -129,16 +129,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().DisableWaitingForHostDialog(bDisable);
 	}
 
-	void CMeetingConfigurationDotNetWrap::HideMeetingInfoFromMeetingUITitle(bool bHide)
-	{
-		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().HideMeetingInfoFromMeetingUITitle(bHide);
-	}
-
-	void CMeetingConfigurationDotNetWrap::SetMeetingIDForMeetingUITitle(unsigned __int64 meetingNumber)
-	{
-		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().SetMeetingIDForMeetingUITitle(meetingNumber);
-	}
-
 	void CMeetingConfigurationDotNetWrap::DisablePopupMeetingWrongPSWDlg(bool bDisable)
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().DisablePopupMeetingWrongPSWDlg(bDisable);

@@ -84,6 +84,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingShareController().StartMonitorShare(PlatformString2WChar(monitorID));
 	}
 
+	SDKError CMeetingShareControllerDotNetWrap::StartSharePureComputerAudio()
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingShareController().StartSharePureComputerAudio();
+	}
 	SDKError CMeetingShareControllerDotNetWrap::StartAirPlayShare()
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().

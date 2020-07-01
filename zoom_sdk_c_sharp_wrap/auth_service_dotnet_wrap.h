@@ -43,6 +43,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		String^ appSecret;///< APP Secret string
 	};
 
+	public value class AuthContext sealed
+	{
+	public:
+		String^ jwt_token;
+	};
 	public value class LoginParam4Email sealed
 	{
 	public:
@@ -74,6 +79,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 	public:
 		SDKError SDKAuth(AuthParam authParam);
+		SDKError SDKAuth(AuthContext authParam);
 		AuthResult GetAuthResult();
 		String^ GetSDKIdentity();
 		SDKError Login(LoginParam param);
@@ -100,6 +106,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		}
 
 		virtual SDKError SDKAuth(AuthParam authParam);
+		virtual SDKError SDKAuth(AuthContext authParam);
 		virtual AuthResult GetAuthResult();
 		virtual String^ GetSDKIdentity();
 		virtual SDKError Login(LoginParam param);

@@ -86,25 +86,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 	public enum class SDKUserType : int
 	{
-		SDK_UT_APIUSER = 99,///< API User type
 		SDK_UT_NORMALUSER = 100,///< Normal user type
 		SDK_UT_WITHOUT_LOGIN = 101, ////< start meeting with out login
-	};
-
-	public value class JoinParam4APIUser sealed
-	{
-	public:
-		unsigned __int64	meetingNumber;///< Meeting's number
-		String^				vanityID;///< Meeting's vanityID
-		String^				userName;///< User Name in meeting
-		String^				psw;///< Meeting's password
-		HWNDDotNet			hDirectShareAppWnd;///< share application directly
-		String^				toke4enfrocelogin;///< enforce login when join meeting
-		String^				participantId;///< for meeting participant report list, need web backend enable.
-		String^				webinarToken;///< webinar token.
-		bool				isDirectShareDesktop;///< share desktop directly
-		bool				isVideoOff;
-		bool				isAudioOff;
 	};
 
 	public value class JoinParam4WithoutLogin sealed
@@ -115,7 +98,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		String^				userName;///< User Name in meeting
 		String^				psw;///< Meeting's password
 		HWNDDotNet			hDirectShareAppWnd;///< share application directly
-		String^				toke4enfrocelogin;///< enforce login when join meeting
+		String^				userZAK;///< ZOOM access token.
 		String^				participantId;///< for meeting participant report list, need web backend enable.
 		String^				webinarToken;///< webinar token.
 		bool				isDirectShareDesktop;///< share desktop directly
@@ -142,22 +125,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 	public:
 		SDKUserType userType;///< User type
-		JoinParam4APIUser^ apiuserJoin;
 		JoinParam4NormalUser^ normaluserJoin;
 		JoinParam4WithoutLogin^ withoutloginJoin;
-	};
-
-	public value class StartParam4APIUser sealed
-	{
-	public:
-		String^				userID;///< User Id
-		String^				userToken;///< User token
-		String^				userName;///< User name
-		unsigned __int64	meetingNumber;///< Meeting's number
-		String^				vanityID;///< Meeting's vanityID
-		HWNDDotNet			hDirectShareAppWnd;///< share application directly
-		String^				participantId;///< for meeting participant report list, need web backend enable.
-		bool				isDirectShareDesktop;///< share desktop directly
 	};
 
 	public value class StartParam4NormalUser sealed
@@ -187,7 +156,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 	public:
 		String^				userID;///< User Id
-		String^				userToken;///< User token
 		String^				userZAK;///< zoom access token
 		String^				userName;///< User name
 		ZoomUserType		zoomuserType;
@@ -204,7 +172,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 	public:
 		SDKUserType userType;///< User type
-		StartParam4APIUser^ apiuserStart;
 		StartParam4NormalUser^ normaluserStart;
 		StartParam4WithoutLogin^ withoutloginStart;
 	};

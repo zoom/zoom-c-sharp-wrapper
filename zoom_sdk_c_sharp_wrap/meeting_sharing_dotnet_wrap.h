@@ -50,6 +50,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	public:
 		SDKError StartAppShare(HWNDDotNet hwndSharedApp);
 		SDKError StartMonitorShare(String^ monitorID);
+		SDKError StartSharePureComputerAudio();
 		SDKError StartAirPlayShare();
 		SDKError ShowSharingAppSelectWnd();
 		SDKError StopShare();
@@ -91,6 +92,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 		virtual SDKError StartAppShare(HWNDDotNet hwndSharedApp);
 		virtual SDKError StartMonitorShare(String^ monitorID);
+		virtual SDKError StartSharePureComputerAudio();
 		virtual SDKError StartAirPlayShare();
 		virtual SDKError ShowSharingAppSelectWnd();
 		virtual SDKError StopShare();

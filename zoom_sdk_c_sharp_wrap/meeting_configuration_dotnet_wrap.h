@@ -44,8 +44,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void SetDirectShareMonitorID(String^ monitorID);
 		void SetMeetingUIPos(WndPosition pos);
 		void DisableWaitingForHostDialog(bool bDisable);
-		void HideMeetingInfoFromMeetingUITitle(bool bHide);
-		void SetMeetingIDForMeetingUITitle(unsigned __int64 meetingNumber);
 		void DisablePopupMeetingWrongPSWDlg(bool bDisable);
 		void EnableAutoEndOtherMeetingWhenStartMeeting(bool bEnable);
 		void EnableAutoAdjustSpeakerVolumeWhenJoinAudio(bool bEnable);
@@ -98,8 +96,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual void SetDirectShareMonitorID(String^ monitorID);
 		virtual void SetMeetingUIPos(WndPosition pos);
 		virtual void DisableWaitingForHostDialog(bool bDisable);
-		virtual void HideMeetingInfoFromMeetingUITitle(bool bHide);
-		virtual void SetMeetingIDForMeetingUITitle(unsigned __int64 meetingNumber);
 		virtual void DisablePopupMeetingWrongPSWDlg(bool bDisable);
 		virtual void EnableAutoEndOtherMeetingWhenStartMeeting(bool bEnable);
 		virtual void EnableAutoAdjustSpeakerVolumeWhenJoinAudio(bool bEnable);
