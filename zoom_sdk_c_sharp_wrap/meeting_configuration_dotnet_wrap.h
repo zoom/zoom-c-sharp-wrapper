@@ -19,6 +19,33 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool InputMeetingPasswordAndScreenName(String^ meetingPassword, String^ screenName);
 		void Cancel();
 	};
+
+	public enum class WebinarNeedRegisterType : int
+	{
+		WebinarReg_NONE, ///Initialization
+		WebinarReg_By_Register_Url, ///Register webinar account by URL
+		WebinarReg_By_Email_and_DisplayName,///Register webinar account by email and the screen name.
+	};
+
+	public interface class IWebinarNeedRegisterHandler
+	{
+	public:
+		WebinarNeedRegisterType GetWebinarNeedRegisterType();
+	};
+
+	public interface class IWebinarNeedRegisterHandlerByUrl : public IWebinarNeedRegisterHandler
+	{
+	public:
+		String^ GetWebinarRegisterUrl();
+		void Release();
+	};
+
+	public interface class IWebinarNeedRegisterHandlerByEmail : public IWebinarNeedRegisterHandler
+	{
+	public:
+		SDKError InputWebinarRegisterEmailAndScreenName(String^ email, String^ username);
+		void Cancel();
+	};
 	/*
 	//this one may be defined in another file. If so, remove this defination
 	//just leave it here to make sure we have the class defined
@@ -31,8 +58,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		HWNDDotNet hParent;
 	};
 	*/
+	public delegate void onWebinarNeedRegisterNotification(IWebinarNeedRegisterHandler^ pHandler);
 	public delegate void onInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler^ pHandler);
 	public delegate void onAirPlayInstructionWndNotification(bool bShow, String^ airhostName);
+	public delegate void onWebinarNeedRegisterHandler(IWebinarNeedRegisterHandler^ pHandler);
 
 	public interface class IMeetingConfigurationDotNetWrap
 	{
@@ -59,6 +88,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void PrePopulateWebinarRegistrationInfo(String^ email, String^ username);
 		void RedirectClickShareBTNEvent(bool bRedirect);
 		void RedirectClickEndMeetingBTNEvent(bool bRedirect);
+		void RedirectWebinarNeedRegister(bool bRedirect);
 		void EnableToolTipsShow(bool bEnable);
 		void EnableAirplayInstructionWindow(bool bEnable);
 		void EnableClaimHostFeature(bool bEnable);
@@ -78,6 +108,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
 		void Remove_CB_onInputMeetingPasswordAndScreenNameNotification(onInputMeetingPasswordAndScreenNameNotification^ cb);
 		void Remove_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb);
+		void Add_CB_onWebinarNeedRegisterNotification(onWebinarNeedRegisterNotification^ cb);
+		void Remove_CB_onWebinarNeedRegisterNotification(onWebinarNeedRegisterNotification^ cb);
 	};
 
 	private ref class CMeetingConfigurationDotNetWrap sealed : public IMeetingConfigurationDotNetWrap
@@ -110,6 +142,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual void SetFloatVideoWndVisibility(bool bShow);
 		virtual void PrePopulateWebinarRegistrationInfo(String^ email, String^ username);
 		virtual void RedirectClickShareBTNEvent(bool bRedirect);
+		virtual void RedirectWebinarNeedRegister(bool bRedirect);
 		virtual void RedirectClickEndMeetingBTNEvent(bool bRedirect);
 		virtual void EnableToolTipsShow(bool bEnable);
 		virtual void EnableAirplayInstructionWindow(bool bEnable);
@@ -136,6 +169,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			event_onInputMeetingPasswordAndScreenNameNotification -= cb;
 		}
 
+		virtual void Add_CB_onWebinarNeedRegisterNotification(onWebinarNeedRegisterNotification^ cb)
+		{
+			event_onWebinarNeedRegisterNotification += cb;
+		}
+
+		virtual void Remove_CB_onWebinarNeedRegisterNotification(onWebinarNeedRegisterNotification^ cb)
+		{
+			event_onWebinarNeedRegisterNotification -= cb;
+		}
+
 		virtual void Add_CB_onAirPlayInstructionWndNotification(onAirPlayInstructionWndNotification^ cb)
 		{
 			event_onAirPlayInstructionWndNotification += cb;
@@ -149,11 +192,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void BindEvent();
 		void ProcInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler^ pHandler);
 		void ProcAirPlayInstructionWndNotification(bool bShow, String^ airhostName);
+		void ProcWebinarNeedRegisterNotification(IWebinarNeedRegisterHandler^ pHandler);
 
 	private:
 		CMeetingConfigurationDotNetWrap() {};
 		virtual ~CMeetingConfigurationDotNetWrap() {};
 		event onInputMeetingPasswordAndScreenNameNotification^ event_onInputMeetingPasswordAndScreenNameNotification;
+		event onWebinarNeedRegisterNotification^ event_onWebinarNeedRegisterNotification;
 		event onAirPlayInstructionWndNotification^ event_onAirPlayInstructionWndNotification;
 		static CMeetingConfigurationDotNetWrap^ m_Instance = gcnew CMeetingConfigurationDotNetWrap;
 	};
