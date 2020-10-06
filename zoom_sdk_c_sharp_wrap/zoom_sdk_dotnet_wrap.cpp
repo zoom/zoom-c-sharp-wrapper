@@ -107,4 +107,9 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 		return CCustomizedResourceHelperDotNetWrap::Instance;
 	}
+
+	IAudioRawDataChannelDotNetWrap^ CZoomSDKeDotNetWrap::GetAudioRawDataChannelWrap()
+	{
+		return CAudioRawDataChannelDotNetWrap::Instance;
+	}
 }

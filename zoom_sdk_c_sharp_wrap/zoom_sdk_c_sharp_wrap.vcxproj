@@ -23,35 +23,35 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>zoom_sdk_c_sharp_wrap</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>zoom_sdk_dotnet_wrap</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -89,8 +89,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;_DEBUG;CSHARP_WRAP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -111,7 +111,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;CSHARP_WRAP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>Full</Optimization>
     </ClCompile>
     <Link>
@@ -144,6 +144,50 @@
     <ClInclude Include="customized_video_container_dotnet_wrap.h" />
     <ClInclude Include="customized_video_render_element_dotnet_wrap.h" />
     <ClInclude Include="customized_annotation_dotnet_wrap.h" />
+    <ClInclude Include="h\auth_service_interface.h" />
+    <ClInclude Include="h\calender_service_interface.h" />
+    <ClInclude Include="h\customized_resource_helper_interface.h" />
+    <ClInclude Include="h\customized_ui\customized_annotation.h" />
+    <ClInclude Include="h\customized_ui\customized_local_recording.h" />
+    <ClInclude Include="h\customized_ui\customized_share_render.h" />
+    <ClInclude Include="h\customized_ui\customized_ui_mgr.h" />
+    <ClInclude Include="h\customized_ui\customized_video_container.h" />
+    <ClInclude Include="h\customized_ui\zoom_customized_ui.h" />
+    <ClInclude Include="h\direct_share_helper_interface.h" />
+    <ClInclude Include="h\embedded_browser_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_annotation_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_audio_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_breakout_rooms_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_breakout_rooms_interface_v2.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_chat_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_closedcaption_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_configuration_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_h323_helper_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_live_stream_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_participants_ctrl_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_phone_helper_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_qa_ctrl_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_recording_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_remote_ctrl_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_sharing_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_ui_ctrl_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_video_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_waiting_room_interface.h" />
+    <ClInclude Include="h\meeting_service_components\meeting_webinar_interface.h" />
+    <ClInclude Include="h\meeting_service_interface.h" />
+    <ClInclude Include="h\network_connection_handler_interface.h" />
+    <ClInclude Include="h\outlook_plugin_integration_helper_interface.h" />
+    <ClInclude Include="h\premeeting_service_interface.h" />
+    <ClInclude Include="h\setting_service_interface.h" />
+    <ClInclude Include="h\ui_hook_interface.h" />
+    <ClInclude Include="h\zoom_sdk.h" />
+    <ClInclude Include="h\zoom_sdk_def.h" />
+    <ClInclude Include="h\zoom_sdk_ext.h" />
+    <ClInclude Include="h\zoom_sdk_platform.h" />
+    <ClInclude Include="h\zoom_sdk_raw_data_def.h" />
+    <ClInclude Include="h\zoom_sdk_raw_data_helper_interface.h" />
+    <ClInclude Include="h\zoom_sdk_sms_helper_interface.h" />
+    <ClInclude Include="h\zoom_sdk_util_define.h" />
     <ClInclude Include="meeting_annotation_dotnet_wrap.h" />
     <ClInclude Include="meeting_audio_dotnet_wrap.h" />
     <ClInclude Include="meeting_breakout_rooms_dotnet_wrap.h" />
@@ -162,6 +206,7 @@
     <ClInclude Include="meeting_waiting_room_dotnet_wrap.h" />
     <ClInclude Include="premeeting_service_dotnet_wrap.h" />
     <ClInclude Include="premeeting_service_dotnet_wrap_def.h" />
+    <ClInclude Include="rawdata_audio_channel_dotnet_wrap.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="schedule_meeting_item_dotnet_wrap.h" />
     <ClInclude Include="setting_service_dotnet_wrap.h" />
@@ -181,6 +226,8 @@
     <ClInclude Include="wrap\directshare_helper_wrap.h" />
     <ClInclude Include="wrap\embedded_browser_wrap.h" />
     <ClInclude Include="wrap\macro_define.h" />
+    <ClInclude Include="wrap\macro_define_class.h" />
+    <ClInclude Include="wrap\macro_define_class_userinterface.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_annotation_wrap.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_audio_wrap.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_breakout_rooms_wrap.h" />
@@ -203,6 +250,9 @@
     <ClInclude Include="wrap\network_connection_handler_wrap.h" />
     <ClInclude Include="wrap\outlook_plugin_integration_helper_wrap.h" />
     <ClInclude Include="wrap\premeeting_service_wrap.h" />
+    <ClInclude Include="wrap\rawdata_audio_channel_wrap.h" />
+    <ClInclude Include="wrap\rawdata_share_channel_wrap.h" />
+    <ClInclude Include="wrap\rawdata_video_channel_wrap.h" />
     <ClInclude Include="wrap\recording_setting_context_wrap.h" />
     <ClInclude Include="wrap\schedule_meeting_item_wrap.h" />
     <ClInclude Include="wrap\sdk_loader.h" />
@@ -240,6 +290,7 @@
     <ClCompile Include="meeting_video_dotnet_wrap.cpp" />
     <ClCompile Include="meeting_waiting_room_dotnet_wrap.cpp" />
     <ClCompile Include="premeeting_service_dotnet_wrap.cpp" />
+    <ClCompile Include="rawdata_audio_channel_dotnet_wrap.cpp" />
     <ClCompile Include="schedule_meeting_item_dotnet_wrap.cpp" />
     <ClCompile Include="setting_service_dotnet_wrap.cpp" />
     <ClCompile Include="Stdafx.cpp">
@@ -353,7 +404,7 @@
     <ClCompile Include="wrap\meeting_service_components_wrap\meeting_webinar_ctrl_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
-	<ClCompile Include="wrap\meeting_service_components_wrap\meeting_realname_auth_helper_wrap.cpp">
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_realname_auth_helper_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="wrap\meeting_service_wrap.cpp">
@@ -368,6 +419,9 @@
     <ClCompile Include="wrap\premeeting_service_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="wrap\rawdata_audio_channel_wrap.cpp" />
+    <ClCompile Include="wrap\rawdata_share_channel_wrap.cpp" />
+    <ClCompile Include="wrap\rawdata_video_channel_wrap.cpp" />
     <ClCompile Include="wrap\recording_setting_context_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>

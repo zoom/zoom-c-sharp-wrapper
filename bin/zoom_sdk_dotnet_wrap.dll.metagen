@@ -1954,6 +1954,29 @@ Struct ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType: AutoLayout, AnsiClass, Class, Pu
     ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType ScheduleRecordType_None = 0 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType SCHEDULERecordType_Cloud = 1 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType SCHEDULERecordType_Local = 2 : Public, Static, Literal, HasDefault
+Class ZOOM_SDK_DOTNET_WRAP.DotNetAudioRawData: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(AudioRawData*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    CanAddRef(): PrivateScope, Public, HideBySig
+    AddRef(): PrivateScope, Public, HideBySig
+    Release(): PrivateScope, Public, HideBySig
+    GetBuffer(): PrivateScope, Public, HideBySig
+    GetBufferLen(): PrivateScope, Public, HideBySig
+    GetSampleRate(): PrivateScope, Public, HideBySig
+Interface ZOOM_SDK_DOTNET_WRAP.IAudioRawDataReceiverDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
+  Methods:
+    onMixedAudioRawDataReceived(DotNetAudioRawData): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    onOneWayAudioRawDataReceived(DotNetAudioRawData, UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface ZOOM_SDK_DOTNET_WRAP.IAudioRawDataChannelDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
+  Methods:
+    Start(RawDataMemoryMode, IAudioRawDataReceiverDotNetWrap): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Stop(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Struct ZOOM_SDK_DOTNET_WRAP.RawDataMemoryMode: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    ZOOM_SDK_DOTNET_WRAP.RawDataMemoryMode RawDataMemoryMode_Stack = 0 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.RawDataMemoryMode RawDataMemoryMode_Heap = 1 : Public, Static, Literal, HasDefault
 Interface ZOOM_SDK_DOTNET_WRAP.ICameraInfoDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
     GetDeviceId(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -2156,3 +2179,4 @@ Class ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap: AutoLayout, AnsiClass, Class, Pu
     GetSettingServiceWrap(): PrivateScope, Public, HideBySig
     GetCustomizedUIMgrWrap(): PrivateScope, Public, HideBySig
     RetrieveCustomizedResourceHelperWrap(): PrivateScope, Public, HideBySig
+    GetAudioRawDataChannelWrap(): PrivateScope, Public, HideBySig

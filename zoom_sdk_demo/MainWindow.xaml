@@ -8,8 +8,10 @@
         Title="MainWindow" Height="377.568" Width="571.746"
         Closing="Wnd_Closing">
     <Grid>
-        <Label x:Name="App_Token" Content="App Token" HorizontalAlignment="Left" Margin="79,133,0,0" VerticalAlignment="Top" Width="78"/>
-        <TextBox x:Name="textBox_apptoken" Height="25" Margin="181,133,84,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <Label x:Name="App_Key" Content="App Key" HorizontalAlignment="Left" Margin="79,133,0,0" VerticalAlignment="Top" Width="78"/>
+        <TextBox x:Name="textBox_key" Height="25" Margin="181,133,84,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <Label x:Name="App_Secret" Content="App Secret" HorizontalAlignment="Left" Margin="79,167,0,0" VerticalAlignment="Top" Width="78"/>
+        <TextBox x:Name="textBox_secret" Height="25" Margin="181,177,84.5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
         <Button x:Name="button_auth" Content="Auth" HorizontalAlignment="Left" Height="36" Margin="218,220,0,0" VerticalAlignment="Top" Width="148" Click="button_auth_Click"/>
 
     </Grid>
