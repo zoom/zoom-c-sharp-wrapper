@@ -9,10 +9,10 @@ To Do:
 Write instructions on starting/joining as authenticated user to private room
 
 ## Investigations: 
--[x] Join meetings as an anonymous user
--[x] Get audio data + user id/username associated with audio data
--[x] Get active speaker switch event 
--[] Join meetings as authenticated user to private room
--[] Multiple instances per machine
--[] Base CPU and scaling of CPU per additional speaker/user
+- [x] Join meetings as an anonymous user
+- [x] Get audio data + user id/username associated with audio data
+- [x] Get active speaker switch event 
+- [ ] Join meetings as authenticated user to private room
+- [ ] Multiple instances per machine
+- [ ] Base CPU and scaling of CPU per additional speaker/user
 
