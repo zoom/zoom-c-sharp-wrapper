@@ -98,7 +98,7 @@ namespace zoom_sdk_demo
             start_withoutlogin_param.meetingNumber = UInt64.Parse(textBox_meetingnumber_api.Text);
             start_withoutlogin_param.userID = textBox_userid_api.Text;
             start_withoutlogin_param.userZAK = textBox_AccessToken.Text;
-            start_withoutlogin_param.userName = "test SDK";
+            start_withoutlogin_param.userName = textBox_username_api.Text;
             start_withoutlogin_param.zoomuserType = ZOOM_SDK_DOTNET_WRAP.ZoomUserType.ZoomUserType_APIUSER;
             param.withoutloginStart = start_withoutlogin_param;
 
@@ -118,7 +118,7 @@ namespace zoom_sdk_demo
             ZOOM_SDK_DOTNET_WRAP.JoinParam param = new ZOOM_SDK_DOTNET_WRAP.JoinParam();
             param.userType = ZOOM_SDK_DOTNET_WRAP.SDKUserType.SDK_UT_WITHOUT_LOGIN;
             ZOOM_SDK_DOTNET_WRAP.JoinParam4WithoutLogin join_api_param = new ZOOM_SDK_DOTNET_WRAP.JoinParam4WithoutLogin();
-            join_api_param.meetingNumber = 4186893292;
+            join_api_param.meetingNumber = UInt64.Parse(textBox_meetingnumber_api.Text);
             join_api_param.userName = textBox_username_api.Text;
             param.withoutloginJoin = join_api_param;
 
