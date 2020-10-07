@@ -1,7 +1,7 @@
 ﻿using System;
 using ZOOM_SDK_DOTNET_WRAP;
 
-namespace zoomapp
+namespace zoomapp_wf
 {
     public class RevAudioReceiver : IAudioRawDataReceiverDotNetWrap
     {

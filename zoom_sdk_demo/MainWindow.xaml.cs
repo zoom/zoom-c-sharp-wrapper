@@ -26,6 +26,24 @@ namespace zoom_sdk_demo
         public MainWindow()
         {
             InitializeComponent();
+            ZOOM_SDK_DOTNET_WRAP.InitParam param = new ZOOM_SDK_DOTNET_WRAP.InitParam();
+            param.web_domain = "https://zoom.us";
+            param.enable_log = true;
+            ZOOM_SDK_DOTNET_WRAP.SDKError err = ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.Initialize(param);
+            if (ZOOM_SDK_DOTNET_WRAP.SDKError.SDKERR_SUCCESS == err)
+            {
+                ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetAuthServiceWrap().Add_CB_onAuthenticationReturn(onAuthenticationReturn);
+                ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetAuthServiceWrap().Add_CB_onLoginRet(onLoginRet);
+                ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetAuthServiceWrap().Add_CB_onLogout(onLogout);
+                ZOOM_SDK_DOTNET_WRAP.AuthParam authParam = new ZOOM_SDK_DOTNET_WRAP.AuthParam();
+                authParam.appKey = textBox_key.Text;
+                authParam.appSecret = textBox_secret.Text;
+                var res = ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetAuthServiceWrap().SDKAuth(authParam);
+            }
+            else//error handle.todo
+            {
+
+            }
         }
 
         //callback
