@@ -7,6 +7,7 @@ namespace zoomapp_wf
 {
     public partial class Form1 : Form
     {
+        private RevAudioReceiver _receiver;
         public Form1()
         {
             InitializeComponent();
@@ -69,6 +70,8 @@ namespace zoomapp_wf
                     case ZOOM_SDK_DOTNET_WRAP.MeetingStatus.MEETING_STATUS_FAILED:
                         {
                             Console.WriteLine("Closing application");
+                            CZoomSDKeDotNetWrap.Instance.GetAudioRawDataChannelWrap().Stop();
+                            
                             Application.Exit();
                         }
                         break;
@@ -80,7 +83,7 @@ namespace zoomapp_wf
             JoinParam param = new JoinParam {
                 userType = SDKUserType.SDK_UT_WITHOUT_LOGIN
             };
-            JoinParam4WithoutLogin join_api_param = new ZOOM_SDK_DOTNET_WRAP.JoinParam4WithoutLogin {
+            JoinParam4WithoutLogin join_api_param = new JoinParam4WithoutLogin {
                 meetingNumber = ulong.Parse(meetingId),
                 userName = "Rev.ai SDK Demo"
             };
@@ -95,21 +98,21 @@ namespace zoomapp_wf
 
             if (SDKError.SDKERR_SUCCESS == err)
             {
-                Hide();
+                _receiver = new RevAudioReceiver();
                 var res = CZoomSDKeDotNetWrap.Instance.GetAudioRawDataChannelWrap().Start(RawDataMemoryMode.RawDataMemoryMode_Stack, new RevAudioReceiver());
                 Console.WriteLine($"Raw data channel start with {res}");
-                CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().GetMeetingAudioController()
-                    .Add_CB_onUserActiveAudioChange((list) =>
-                    {
-                        if (list == null || list.Length == 0)
-                        {
-                            return;
-                        }
-                        var users = list.Select(userId => CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().GetMeetingParticipantsController().GetUserByUserID(userId));
+                //CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().GetMeetingAudioController()
+                //    .Add_CB_onUserActiveAudioChange((list) =>
+                //    {
+                //        if (list == null || list.Length == 0)
+                //        {
+                //            return;
+                //        }
+                //        var users = list.Select(userId => CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().GetMeetingParticipantsController().GetUserByUserID(userId));
 
-                        var usernames = users.Select(u => u.GetUserNameW());
-                        Console.WriteLine($"Active speakers: {string.Join(" ", usernames)}");
-                    });
+                //        var usernames = users.Select(u => u.GetUserNameW());
+                //        Console.WriteLine($"Active speakers: {string.Join(" ", usernames)}");
+                //    });
             }
             else//error handle
             { }
