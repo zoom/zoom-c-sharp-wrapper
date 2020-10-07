@@ -25,7 +25,7 @@ namespace zoom_sdk_demo
         start_join_meeting start_meeting_wnd = new start_join_meeting();
         public MainWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         //callback

@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.ComponentModel; // CancelEventArgs
+using System.Linq;
+using System.Windows;
 using ZOOM_SDK_DOTNET_WRAP;
 
 namespace zoom_sdk_demo
@@ -122,7 +112,13 @@ namespace zoom_sdk_demo
             join_api_param.userName = textBox_username_api.Text;
             param.withoutloginJoin = join_api_param;
 
+            // Settings to disable video and audio on join and minimize screen
+            ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetSettingServiceWrap()
+                .GetVideoSettings().EnableAutoTurnOffVideoWhenJoinMeeting(true);
+            ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetSettingServiceWrap()
+                .GetAudioSettings().EnableAutoJoinAudio(true);
             ZOOM_SDK_DOTNET_WRAP.SDKError err = ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().Join(param);
+
             if (ZOOM_SDK_DOTNET_WRAP.SDKError.SDKERR_SUCCESS == err)
             {
                 Hide();

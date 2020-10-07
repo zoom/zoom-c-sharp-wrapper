@@ -1,9 +1,9 @@
 ﻿using System;
 using ZOOM_SDK_DOTNET_WRAP;
 
-namespace zoom_sdk_demo
+namespace zoomapp
 {
-    public class TestReceiver : IAudioRawDataReceiverDotNetWrap
+    public class RevAudioReceiver : IAudioRawDataReceiverDotNetWrap
     {
         public void onMixedAudioRawDataReceived(DotNetAudioRawData data_)
         {
