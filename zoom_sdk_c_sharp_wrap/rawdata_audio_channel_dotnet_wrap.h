@@ -26,7 +26,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		}
 		array<Byte>^ GetBuffer() {
 			char* buf = _data->GetBuffer();
-			int len = strlen(buf);
+			unsigned int len = _data->GetBufferLen();
 
 			array<Byte>^ byteArray = gcnew array< Byte >(len + 2);
 			// convert native pointer to System::IntPtr with C-Style cast

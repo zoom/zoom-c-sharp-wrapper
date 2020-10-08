@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zoom_sdk_demo", "..\zoom_sd
 		{7B5A8DA1-8C98-40FD-B243-DC7A17011D33} = {7B5A8DA1-8C98-40FD-B243-DC7A17011D33}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zoomapp-wf", "..\zoomapp-wf\zoomapp-wf.csproj", "{87E0731D-DAAC-47F6-8600-EC835584E4BC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -36,14 +34,6 @@ Global
 		{6FF20719-D6FB-4833-8BB7-1CA27462C537}.Release|x64.Build.0 = Release|Any CPU
 		{6FF20719-D6FB-4833-8BB7-1CA27462C537}.Release|x86.ActiveCfg = Release|Any CPU
 		{6FF20719-D6FB-4833-8BB7-1CA27462C537}.Release|x86.Build.0 = Release|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Debug|x64.Build.0 = Debug|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Debug|x86.Build.0 = Debug|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Release|x64.ActiveCfg = Release|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Release|x64.Build.0 = Release|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Release|x86.ActiveCfg = Release|Any CPU
-		{87E0731D-DAAC-47F6-8600-EC835584E4BC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

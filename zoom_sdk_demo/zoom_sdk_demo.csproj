@@ -77,7 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TestReceiver.cs" />
+    <Compile Include="RevAudioReceiver.cs" />
     <Compile Include="start_join_meeting.xaml.cs">
       <DependentUpon>start_join_meeting.xaml</DependentUpon>
     </Compile>
