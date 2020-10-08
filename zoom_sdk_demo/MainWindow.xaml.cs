@@ -91,6 +91,7 @@ namespace zoom_sdk_demo
                     {
                         if (_receiver != null)
                             _receiver.Finish();
+                        System.Windows.Application.Current.Shutdown();
                     }
                     break;
                 default://todo
