@@ -27,7 +27,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError Undo();
 		SDKError Redo();
 		SDKError CanSaveSnapshot();
-		SDKError SaveSnapshot(const wchar_t* path);
+		SDKError SaveSnapshot(const wchar_t* path, SDKAnnoSaveType nType);
 	};
 
 	// Translate custom annotation object
@@ -167,11 +167,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			return SDKError::SDKERR_UNINITIALIZE;
 		}
 
-		virtual SDKError SaveSnapshot(const wchar_t* path)
+		virtual SDKError SaveSnapshot(const wchar_t* path, SDKAnnoSaveType nType)
 		{
 			if (m_pSDKObj)
 			{
-				return (SDKError)m_pSDKObj->SaveSnapshot(path);
+				ZOOM_SDK_NAMESPACE::SDKAnnoSaveType sdk_type = (ZOOM_SDK_NAMESPACE::SDKAnnoSaveType)nType;
+				return (SDKError)m_pSDKObj->SaveSnapshot(path, sdk_type);
 			}
 
 			return SDKError::SDKERR_UNINITIALIZE;
@@ -196,7 +197,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		SDKError Undo();
 		SDKError Redo();
 		SDKError CanSaveSnapshot();
-		SDKError SaveSnapshot(const wchar_t* path);
+		SDKError SaveSnapshot(const wchar_t* path, SDKAnnoSaveType nType);
 
 		void Add_CB_onAnnotationObjToolChange(onAnnotationObjToolChange^ cb);
 		void Remove_CB_onAnnotationObjToolChange(onAnnotationObjToolChange^ cb);
@@ -227,7 +228,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual SDKError Undo();
 		virtual SDKError Redo();
 		virtual SDKError CanSaveSnapshot();
-		virtual SDKError SaveSnapshot(const wchar_t* path);
+		virtual SDKError SaveSnapshot(const wchar_t* path, SDKAnnoSaveType nType);
 
 		virtual void Add_CB_onAnnotationObjToolChange(onAnnotationObjToolChange^ cb)
 		{
