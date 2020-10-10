@@ -13,6 +13,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		Nullable<DateTime> GetTimeStamp();
 	};
 
+	public enum class SDKChatPriviledge : int
+	{
+		SDK_CHAT_PRIVILEDGE_ALL = 1,                    	/// allow attendee to chat with everyone [meeting & webinar]
+		SDK_CHAT_PRIVILEDGE_ALL_PANELIST = 2,		          /// allow attendee to chat with all panelists only, but cannot to "all panelists and attendees" [webinar]
+		SDK_CHAT_PRIVILEDGE_HOST = 3,	                    /// allow attendee to chat with host only [meeting]
+		SDK_CHAT_PRIVILEDGE_DISABLE_ATTENDEE_CHAT = 4,    /// allow attendee to chat with no one [meeting & webinar]
+		SDK_CHAT_PRIVILEDGE_HOST_PUBLIC = 5,              /// allow attendee to chat with host and public [meeting]
+		SDK_CHAT_PRIVILEDGE_END
+	};
+
 	public value class NormalMeetingChatStatus
 	{
 	public:
@@ -56,6 +66,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	{
 	public:
 		SDKError SendChatTo(unsigned int receiver, String^ content);
+		SDKError SetParticipantsChatPriviledge(SDKChatPriviledge priviledge);
 		void Add_CB_onChatMsgNotifcation(onChatMsgNotifcation^ cb);
 		void Add_CB_onChatStatusChangedNotification(onChatStatusChangedNotification^ cb);
 		void Remove_CB_onChatMsgNotifcation(onChatMsgNotifcation^ cb);
@@ -75,6 +86,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		void procChatStatusChangedNotification(ChatStatus^ status);
 
 		virtual SDKError SendChatTo(unsigned int receiver, String^ content);
+
+		virtual SDKError SetParticipantsChatPriviledge(SDKChatPriviledge priviledge);
 
 		virtual void Add_CB_onChatMsgNotifcation(onChatMsgNotifcation^ cb)
 		{

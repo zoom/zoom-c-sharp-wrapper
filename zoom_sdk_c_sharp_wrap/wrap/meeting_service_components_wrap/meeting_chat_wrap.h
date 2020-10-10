@@ -16,6 +16,8 @@ virtual SDKError SetEvent(IMeetingChatCtrlEvent* pEvent)
 DEFINE_FUNC_2(SendChatTo, SDKError, unsigned int, receiver, wchar_t*, content)
 //virtual SDKError SendChat4WebinarMeeting(SendChatItem4Webinar& chatIteam) = 0;
 DEFINE_FUNC_1(SendChat4WebinarMeeting, SDKError, SendChatItem4Webinar&, chatIteam)
+//virtual SDKError SetParticipantsChatPriviledge(SDKChatPriviledge priviledge) = 0;
+DEFINE_FUNC_1(SetParticipantsChatPriviledge, SDKError, SDKChatPriviledge, priviledge)
 //virtual const ChatStatus* GetChatStatus() = 0;
 DEFINE_FUNC_0(GetChatStatus, const ChatStatus*)
 
