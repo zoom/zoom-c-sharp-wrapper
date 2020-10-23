@@ -147,9 +147,7 @@ For any issues regarding our SDK, please visit our new Community Support Forum a
 
 ## License
 
-Use of this software is subject to important terms and conditions as set forth in the License file
-
-Please refer to [LICENSE.md](https://github.com/zoom/zoom-c-sharp-wrapper/blob/master/LICENSE) file for details
+Please refer to [LICENSE.pdf](LICENSE.pdf) file for details
 
 ## Contributiors
 
