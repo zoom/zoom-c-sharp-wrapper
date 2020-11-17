@@ -143,6 +143,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			GetMeetingChatController().SendChatTo(receiver, const_cast<wchar_t*>(PlatformString2WChar(content)));
 	}
 
+	SDKError CMeetingChatControllerDotNetWrap::SetParticipantsChatPriviledge(SDKChatPriviledge priviledge)
+	{
+		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().
+			GetMeetingChatController().SetParticipantsChatPriviledge((ZOOM_SDK_NAMESPACE::SDKChatPriviledge)priviledge);
+	}
+
 	void CMeetingChatControllerDotNetWrap::procChatMsgNotifcation(IChatMsgInfoDotNetWrap^ chatMsg)
 	{
 		event_onChatMsgNotifcation(chatMsg);
