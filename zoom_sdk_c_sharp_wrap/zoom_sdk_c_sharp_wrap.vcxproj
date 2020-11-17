@@ -194,6 +194,7 @@
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_closedcaption_ctrl_wrap.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_configuration_wrap.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_h323_helper_wrap.h" />
+    <ClInclude Include="wrap\meeting_service_components_wrap\meeting_interpretation_ctrl_wrap.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_live_stream_wrap.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_participants_ctrl_wrap.h" />
     <ClInclude Include="wrap\meeting_service_components_wrap\meeting_phone_helper_wrap.h" />
@@ -324,6 +325,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="wrap\meeting_service_components_wrap\meeting_h323_helper_wrap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrap\meeting_service_components_wrap\meeting_interpretation_ctrl_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="wrap\meeting_service_components_wrap\meeting_live_stream_wrap.cpp">
