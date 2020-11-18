@@ -54,7 +54,8 @@ enum SDKError
 	SDKERR_MEETING_VIEWTYPE_PARAMETER_IS_WRONG, ///<Incorrect ViewType parameters.
 	SDKERR_MEETING_ANNOTATION_IS_OFF, ///<Annotation is disabled.
 	SDKERR_SETTING_OS_DONT_SUPPORT, ///<Current OS doesn't support the setting.
-	SDKERR_EMAIL_LOGIN_IS_DISABLED, //Email login is disable
+	SDKERR_EMAIL_LOGIN_IS_DISABLED, ///<Email login is disable
+	SDKERR_HARDWARE_NOT_MEET_FOR_VB, ///<Computer doesn't meet the minimum requirements to use virtual background feature.
 };
 
 /*! \enum SDK_LANGUAGE_ID
@@ -74,6 +75,8 @@ enum SDK_LANGUAGE_ID
 	LANGUAGE_Portuguese,///<In Portuguese.
 	LANGUAGE_Russian,///<In Russian.
 	LANGUAGE_Korean,///<In Korean.
+	LANGUAGE_Vietnamese,///<In Vietnamese.
+	LANGUAGE_Italian,///<In Italian.
 };
 
 /*! \struct tagWndPosition
@@ -153,6 +156,65 @@ enum SDK_APP_Locale
 	SDK_APP_Locale_CN,
 };
 
+enum ZoomSDKRawDataMemoryMode 
+{
+	ZoomSDKRawDataMemoryModeStack,
+	ZoomSDKRawDataMemoryModeHeap
+};
+
+enum ZoomSDKVideoRenderMode
+{
+	ZoomSDKVideoRenderMode_None = 0,
+	ZoomSDKVideoRenderMode_Auto,
+	ZoomSDKVideoRenderMode_D3D11EnableFLIP,
+	ZoomSDKVideoRenderMode_D3D11,
+	ZoomSDKVideoRenderMode_D3D9,
+	ZoomSDKVideoRenderMode_GDI,
+};
+
+enum ZoomSDKRenderPostProcessing
+{
+	ZoomSDKRenderPostProcessing_None = 0,
+	ZoomSDKRenderPostProcessing_Auto,
+	ZoomSDKRenderPostProcessing_Enable,
+	ZoomSDKRenderPostProcessing_Disable,
+};
+
+enum ZoomSDKVideoCaptureMethod
+{
+	ZoomSDKVideoCaptureMethod_None = 0,
+	ZoomSDKVideoCaptureMethod_Auto,
+	ZoomSDKVideoCaptureMethod_DirectSHow,
+	ZoomSDKVideoCaptureMethod_MediaFoundation,
+};
+
+typedef struct tagZoomSDKRenderOptions
+{
+	ZoomSDKVideoRenderMode    videoRenderMode;
+	ZoomSDKRenderPostProcessing renderPostProcessing;
+	ZoomSDKVideoCaptureMethod videoCaptureMethod;
+	tagZoomSDKRenderOptions()
+	{
+		videoRenderMode = ZoomSDKVideoRenderMode_None;
+		renderPostProcessing = ZoomSDKRenderPostProcessing_Auto;
+		videoCaptureMethod = ZoomSDKVideoCaptureMethod_Auto;
+	}
+}ZoomSDKRenderOptions;
+
+typedef struct tagRawDataOptions
+{
+	bool enableRawdataIntermediateMode; ///<false -- YUV420data, true -- intermediate data
+	ZoomSDKRawDataMemoryMode  videoRawdataMemoryMode;
+	ZoomSDKRawDataMemoryMode  shareRawdataMemoryMode;
+	ZoomSDKRawDataMemoryMode  audioRawdataMemoryMode;
+	tagRawDataOptions()
+	{
+		enableRawdataIntermediateMode = false;
+		videoRawdataMemoryMode = ZoomSDKRawDataMemoryModeStack;
+		shareRawdataMemoryMode = ZoomSDKRawDataMemoryModeStack;
+		audioRawdataMemoryMode = ZoomSDKRawDataMemoryModeStack;
+	}
+}RawDataOptions;
 
 /*! \struct tagInitParam
     \brief Initialize the SDK Parameter.
@@ -173,6 +235,8 @@ typedef struct tagInitParam
 	ConfigurableOptions obConfigOpts;///<The configuration options of the SDK.
 	SDK_APP_Locale locale;
 	bool permonitor_awareness_mode;
+	ZoomSDKRenderOptions renderOpts;
+	RawDataOptions rawdataOpts;
 	tagInitParam()
 	{
 		strWebDomain = NULL;

@@ -144,6 +144,16 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		HWNDDotNet hParent;
 	};
 
+	public enum class SDKAnnoSaveType : int
+	{
+		ANNO_SAVE_NONE,
+		ANNO_SAVE_PNG,
+		ANNO_SAVE_PDF,
+		ANNO_SAVE_PNG_MEMORY,
+		ANNO_SAVE_PDF_MEMORY,
+		ANNO_SAVE_BITMAP_MEMORY,
+	};
+
 	public enum class AnnotationToolType : int
 	{
 		ANNOTOOL_NONE_DRAWING,///<switch to mouse 
@@ -168,5 +178,12 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ANNOCLEAR_ALL,
 		ANNOCLEAR_SELF,
 		ANNOCLEAR_OTHER,
+	};
+
+	public enum class VideoHardwareEncodeType : int
+	{
+		VIDEO_HARDWARE_ENCODE_RECEIVING,
+		VIDEO_HARDWARE_ENCODE_SENDING,
+		VIDEO_HARDWARE_ENCODE_PROCESSING,
 	};
 }

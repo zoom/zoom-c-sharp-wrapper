@@ -24,9 +24,10 @@
 
 
 ## Latest SDK News
-1. 1. Starting from Client SDK 5.0, if you are using tokens to start a meeting, you will only need to retrieve ZAK from Zoom API. The user token has been deprecated. 
-2. To follow with Zoom client's recent changes, Zoom SDK has temporary remove the "Unmute All" interface in Client SDK 5.0.
-3. To align with Zoom’s [recent announcement](https://blog.zoom.us/wordpress/2020/04/22/zoom-hits-milestone-on-90-day-security-plan-releases-zoom-5-0/) pertaining to our security initiative, Zoom Client SDKs have added **AES 256-bit GCM encryption** support, which provides more protection for meeting data and greater resistance to tampering. **The system-wide account enablement of AES 256-bit GCM encryption will take place on June 01, 2020.** You are **strongly recommended** to start the required upgrade to this latest version 4.6.21666.0428 at your earliest convenience. Please note that any Client SDK versions below 4.6.21666.0428 will **no longer be operational** from June 01.
+1.  Starting from 5.2.41727.0928, the Windows SDK requires building with Visual Studio 2019.
+2. Starting from Client SDK 5.0, if you are using tokens to start a meeting, you will only need to retrieve ZAK from Zoom API. The user token has been deprecated. 
+3. To follow with Zoom client's recent changes, Zoom SDK has temporary remove the "Unmute All" interface in Client SDK 5.0.
+4. To align with Zoom’s [recent announcement](https://blog.zoom.us/wordpress/2020/04/22/zoom-hits-milestone-on-90-day-security-plan-releases-zoom-5-0/) pertaining to our security initiative, Zoom Client SDKs have added **AES 256-bit GCM encryption** support, which provides more protection for meeting data and greater resistance to tampering. **The system-wide account enablement of AES 256-bit GCM encryption will take place on June 01, 2020.** You are **strongly recommended** to start the required upgrade to this latest version 4.6.21666.0428 at your earliest convenience. Please note that any Client SDK versions below 4.6.21666.0428 will **no longer be operational** from June 01.
 
 ## Full Documentation && Community Support
 You can find the full Zoom Windows SDK C# wrapper documentation and the community support forum here:
@@ -58,6 +59,7 @@ Before you try out our SDK, you would need the following to get started:
 * **A device with Windows OS**:
   * OS: Windows XP or later. Currently Windows 10 UWP is not supported.
   * CPU: Zoom C# wrapper currently only supports x86
+  * Visual Studio 2019
 
 
 ### Installing
@@ -84,6 +86,44 @@ c>change vs project's solution platform to "x86"
 
 d>build and run.
 
+### Initializing SDK with JWT token
+When initializing the SDK, you will need to compose a JWT token using your SDK key & secret.
+
+* How to compose JWT token for SDK initialization
+
+You may generate your JWT token using the online tool https://jwt.io/. **It is highly recommended to generate your JWT token in your backend server.**
+
+JWT is generated with three core parts: Header, Payload, and Signature. When combined, these parts are separated by a period to form a token: aaaaa.bbbbb.cccc.
+
+Please follow this template to compose your payload for SDK initialization:
+
+** Header
+```
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+** Payload
+```
+{
+         "appKey": "string",     // Your SDK key
+         "iat": long,   // access token issue timestamp (unit: second)
+         "exp": long,  // access token expire timestamp, MAX: iat + 2 days (unit: second)
+         "tokenExp": long // token expire timestamp, MIN:iat + 30 minutes (unit: second)
+}
+```
+**The minimum value of `tokenExp` should be at least 30 minutes, otherwise, SDK will reject the authentication request.**
+** Signature
+```
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  "Your SDK secret here"
+)
+```
+You do not need to secret base64 encoded your signature. Once the JWT token is generated, please do not reveal it or publish it. **It is highly recommended to handle your SDK key and secret and generate JWT in a backend server to be consumed by your application. Do not generate JWT in a production application.**
+
 
 ## Documentation
 
@@ -107,9 +147,7 @@ For any issues regarding our SDK, please visit our new Community Support Forum a
 
 ## License
 
-Use of this software is subject to important terms and conditions as set forth in the License file
-
-Please refer to [LICENSE.md](https://github.com/zoom/zoom-c-sharp-wrapper/blob/master/LICENSE) file for details
+Please refer to [LICENSE.pdf](LICENSE.pdf) file for details
 
 ## Contributiors
 

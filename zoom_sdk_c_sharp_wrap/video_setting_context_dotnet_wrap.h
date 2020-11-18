@@ -34,8 +34,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		bool IsAlwaysUse16v9();
 		SDKError EnableSpotlightSelf(bool bEnable);
 		bool IsSpotlightSelfEnabled();
-		SDKError EnableHardwareEncode(bool bEnable);
-		bool IsHardwareEncodeEnabled();
+		SDKError EnableHardwareEncode(bool bEnable, VideoHardwareEncodeType encodeType);
+		bool IsHardwareEncodeEnabled(VideoHardwareEncodeType encodeType);
 		SDKError Enable49VideoesInGallaryView(bool bEnable);
 		bool Is49VideoesInGallaryViewEnabled();
 		SDKError EnableHideNoVideoUsersOnWallView(bool bEnable);
@@ -73,8 +73,8 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		virtual bool IsAlwaysUse16v9();
 		virtual SDKError EnableSpotlightSelf(bool bEnable);
 		virtual bool IsSpotlightSelfEnabled();
-		virtual SDKError EnableHardwareEncode(bool bEnable);
-		virtual bool IsHardwareEncodeEnabled();
+		virtual SDKError EnableHardwareEncode(bool bEnable, VideoHardwareEncodeType encodeType);
+		virtual bool IsHardwareEncodeEnabled(VideoHardwareEncodeType encodeType);
 		virtual SDKError Enable49VideoesInGallaryView(bool bEnable);
 		virtual bool Is49VideoesInGallaryViewEnabled();
 		virtual SDKError EnableHideNoVideoUsersOnWallView(bool bEnable);

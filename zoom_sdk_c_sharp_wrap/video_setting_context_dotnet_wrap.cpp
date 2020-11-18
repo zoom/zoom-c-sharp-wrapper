@@ -176,16 +176,18 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			.IsSpotlightSelfEnabled();
 	}
 
-	SDKError CVideoSettingContextDotNetWrap::EnableHardwareEncode(bool bEnable)
+	SDKError CVideoSettingContextDotNetWrap::EnableHardwareEncode(bool bEnable, VideoHardwareEncodeType encodeType)
 	{
+		ZOOM_SDK_NAMESPACE::VIDEO_HARDWARE_ENCODE_TYPE sdk_type = (ZOOM_SDK_NAMESPACE::VIDEO_HARDWARE_ENCODE_TYPE)encodeType;
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
-			.EnableHardwareEncode(bEnable);
+			.EnableHardwareEncode(bEnable, sdk_type);
 	}
 
-	bool CVideoSettingContextDotNetWrap::IsHardwareEncodeEnabled()
+	bool CVideoSettingContextDotNetWrap::IsHardwareEncodeEnabled(VideoHardwareEncodeType encodeType)
 	{
+		ZOOM_SDK_NAMESPACE::VIDEO_HARDWARE_ENCODE_TYPE sdk_type = (ZOOM_SDK_NAMESPACE::VIDEO_HARDWARE_ENCODE_TYPE)encodeType;
 		return ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().GetVideoSettings()
-			.IsHardwareEncodeEnabled();
+			.IsHardwareEncodeEnabled(sdk_type);
 	}
 
 	SDKError CVideoSettingContextDotNetWrap::Enable49VideoesInGallaryView(bool bEnable)

@@ -146,11 +146,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		return SDKError::SDKERR_UNINITIALIZE;
 	}
 
-	SDKError CCustomizedAnnotationObjDotNetWrap::SaveSnapshot(const wchar_t* path)
+	SDKError CCustomizedAnnotationObjDotNetWrap::SaveSnapshot(const wchar_t* path, SDKAnnoSaveType nType)
 	{
 		if (m_dotNetWrapImpl)
 		{
-			return m_dotNetWrapImpl->SaveSnapshot(path);
+			return m_dotNetWrapImpl->SaveSnapshot(path, nType);
 		}
 
 		return SDKError::SDKERR_UNINITIALIZE;

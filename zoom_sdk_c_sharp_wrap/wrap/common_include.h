@@ -36,13 +36,19 @@
 #include "../h/meeting_service_components/meeting_waiting_room_interface.h"
 #include "../h/meeting_service_components/meeting_webinar_interface.h"
 #include "../h/meeting_service_components/meeting_closedcaption_interface.h"
+#include "../h/meeting_service_components/meeting_interpretation_interface.h"
 #include "../h/zoom_sdk_ext.h"
 #include "../h/zoom_sdk_util_define.h"
 #include "../h/network_connection_handler_interface.h"
 #include "../h/embedded_browser_interface.h"
 #include "../h/ui_hook_interface.h"
 #include "../h/zoom_sdk_platform.h"
-#include "../h/zoom_sdk_raw_data_helper_interface.h"
+
+#include "../h/rawdata/zoom_rawdata_api.h"
+#include "../h/rawdata/rawdata_video_source_helper_interface.h"
+#include "../h/rawdata/rawdata_renderer_interface.h"
+#include "../h/rawdata/rawdata_audio_helper_interface.h"
+#include "../h/zoom_sdk_raw_data_def.h"
 #include "../h/zoom_sdk_sms_helper_interface.h"
 #elif (defined CSHARP_WRAP) || (defined INTEL_UNITE)
 #include "../h/zoom_sdk.h"
@@ -77,13 +83,19 @@
 #include "../h/meeting_service_components/meeting_waiting_room_interface.h"
 #include "../h/meeting_service_components/meeting_webinar_interface.h"
 #include "../h/meeting_service_components/meeting_closedcaption_interface.h"
+#include "../h/meeting_service_components/meeting_interpretation_interface.h"
 #include "../h/zoom_sdk_ext.h"
 #include "../h/zoom_sdk_util_define.h"
 #include "../h/network_connection_handler_interface.h"
 #include "../h/embedded_browser_interface.h"
 #include "../h/ui_hook_interface.h"
 #include "../h/zoom_sdk_platform.h"
-#include "../h/zoom_sdk_raw_data_helper_interface.h"
+
+#include "../h/rawdata/zoom_rawdata_api.h"
+#include "../h/rawdata/rawdata_video_source_helper_interface.h"
+#include "../h/rawdata/rawdata_renderer_interface.h"
+#include "../h/rawdata/rawdata_audio_helper_interface.h"
+#include "../h/zoom_sdk_raw_data_def.h"
 #include "../h/zoom_sdk_sms_helper_interface.h"
 #else
 #include "../../zoom_sdk/include/zoom_sdk.h"
@@ -118,13 +130,19 @@
 #include "../../zoom_sdk/include/meeting_service_components/meeting_waiting_room_interface.h"
 #include "../../zoom_sdk/include/meeting_service_components/meeting_webinar_interface.h"
 #include "../../zoom_sdk/include/meeting_service_components/meeting_closedcaption_interface.h"
+#include "../../zoom_sdk/include/meeting_service_components/meeting_interpretation_interface.h"
 #include "../../zoom_sdk/include/zoom_sdk_ext.h"
 #include "../../zoom_sdk/include/zoom_sdk_util_define.h"
 #include "../../zoom_sdk/include/network_connection_handler_interface.h"
 #include "../../zoom_sdk/include/embedded_browser_interface.h"
 #include "../../zoom_sdk/include/ui_hook_interface.h"
 #include "../../../../zoom_sdk/zoom_sdk_rawdata_helper/zoom_sdk_platform.h"
-#include "../../../../zoom_sdk/zoom_sdk_rawdata_helper/zoom_sdk_raw_data_helper_interface.h"
+
+#include "../../zoom_sdk/include/rawdata/zoom_rawdata_api.h"
+#include "../../zoom_sdk/include/rawdata/rawdata_video_source_helper_interface.h"
+#include "../../zoom_sdk/include/rawdata/rawdata_renderer_interface.h"
+#include "../../zoom_sdk/include/rawdata/rawdata_audio_helper_interface.h"
+#include "../../zoom_sdk/include/zoom_sdk_raw_data_def.h"
 #include "../h/zoom_sdk_sms_helper_interface.h"
 #endif
 #include <string>
@@ -171,32 +189,6 @@ _inline std::string ws2s(const std::wstring& s)
 	std::string r(len, '\0');
 	WideCharToMultiByte(CP_UTF8, 0, s.c_str(), slength, &r[0], len, 0, 0);
 	return r;
-}
-
-_inline ZOOM_SDK_NAMESPACE::SDKError error_Internal_map(ZOOM_RAWDATA_NAMESPACE::SDKRawDataError rawdata_err)
-{
-	ZOOM_SDK_NAMESPACE::SDKError ret_err = ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS;
-	switch (rawdata_err)
-	{
-	case ZOOM_RAWDATA_NAMESPACE::SDKRawDataError_SUCCESS:
-		ret_err = ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS;
-		break;
-	case ZOOM_RAWDATA_NAMESPACE::SDKRawDataError_UNINITIALIZED:
-		ret_err = ZOOM_SDK_NAMESPACE::SDKERR_UNINITIALIZE;
-		break;
-	case ZOOM_RAWDATA_NAMESPACE::SDKRawDataError_MALLOC_FAILED:
-		ret_err = ZOOM_SDK_NAMESPACE::SDKERR_MEMORY_FAILED;
-		break;
-	case ZOOM_RAWDATA_NAMESPACE::SDKRawDataError_WRONGUSAGE:
-		ret_err = ZOOM_SDK_NAMESPACE::SDKERR_WRONG_USEAGE;
-		break;
-	case ZOOM_RAWDATA_NAMESPACE::SDKRawDataError_INVALID_PARAM:
-		ret_err = ZOOM_SDK_NAMESPACE::SDKERR_INVALID_PARAMETER;
-		break;
-	default:
-		break;
-	}
-	return ret_err;
 }
 
 #include "sdk_loader.h"
