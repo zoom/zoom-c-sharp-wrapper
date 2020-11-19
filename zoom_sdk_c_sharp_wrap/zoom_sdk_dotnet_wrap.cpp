@@ -15,6 +15,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().Init();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Init();
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAudioRawdataHelperWrap().Init();
 	}
 
 	void UninitAllService()
@@ -26,6 +27,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetNetworkConnectionHelperWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetSettingServiceWrap().Uninit();
 		ZOOM_SDK_NAMESPACE::CSDKCustomizedUIWrap::GetInst().GetCustomizedUIMgrWrap().Uninit();
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAudioRawdataHelperWrap().Uninit();
 	}
 
 	SDKError CZoomSDKeDotNetWrap::Initialize(InitParam initInfo)

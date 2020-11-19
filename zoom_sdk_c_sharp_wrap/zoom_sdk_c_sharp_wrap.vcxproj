@@ -111,7 +111,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;CSHARP_WRAP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>Full</Optimization>
     </ClCompile>
     <Link>
@@ -168,6 +168,7 @@
     <ClInclude Include="meeting_waiting_room_dotnet_wrap.h" />
     <ClInclude Include="premeeting_service_dotnet_wrap.h" />
     <ClInclude Include="premeeting_service_dotnet_wrap_def.h" />
+    <ClInclude Include="rawdata_audio_helper_dotnet_wrap.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="schedule_meeting_item_dotnet_wrap.h" />
     <ClInclude Include="setting_service_dotnet_wrap.h" />
@@ -210,6 +211,10 @@
     <ClInclude Include="wrap\network_connection_handler_wrap.h" />
     <ClInclude Include="wrap\outlook_plugin_integration_helper_wrap.h" />
     <ClInclude Include="wrap\premeeting_service_wrap.h" />
+    <ClInclude Include="wrap\rawdata_audio_helper_wrap.h" />
+    <ClInclude Include="wrap\rawdata_renderer_callback_wrap.h" />
+    <ClInclude Include="wrap\rawdata_render_wrap.h" />
+    <ClInclude Include="wrap\rawdata_video_helper_wrap.h" />
     <ClInclude Include="wrap\recording_setting_context_wrap.h" />
     <ClInclude Include="wrap\schedule_meeting_item_wrap.h" />
     <ClInclude Include="wrap\sdk_loader.h" />
@@ -247,6 +252,7 @@
     <ClCompile Include="meeting_video_dotnet_wrap.cpp" />
     <ClCompile Include="meeting_waiting_room_dotnet_wrap.cpp" />
     <ClCompile Include="premeeting_service_dotnet_wrap.cpp" />
+    <ClCompile Include="rawdata_audio_helper_dotnet_wrap.cpp" />
     <ClCompile Include="schedule_meeting_item_dotnet_wrap.cpp" />
     <ClCompile Include="setting_service_dotnet_wrap.cpp" />
     <ClCompile Include="Stdafx.cpp">
@@ -378,6 +384,9 @@
     <ClCompile Include="wrap\premeeting_service_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="wrap\rawdata_audio_helper_wrap.cpp" />
+    <ClCompile Include="wrap\rawdata_render_wrap.cpp" />
+    <ClCompile Include="wrap\rawdata_video_helper_wrap.cpp" />
     <ClCompile Include="wrap\recording_setting_context_wrap.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>

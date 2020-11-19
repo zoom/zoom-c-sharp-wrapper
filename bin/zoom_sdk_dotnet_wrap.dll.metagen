@@ -251,6 +251,16 @@ Struct ZOOM_SDK_DOTNET_WRAP.UserRole: AutoLayout, AnsiClass, Class, Public, Seal
     ZOOM_SDK_DOTNET_WRAP.UserRole USERROLE_PANELIST = 3 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.UserRole USERROLE_BREAKOUTROOM_MODERATOR = 4 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.UserRole USERROLE_ATTENDEE = 5 : Public, Static, Literal, HasDefault
+Struct ZOOM_SDK_DOTNET_WRAP.SDKAnnoSaveType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    ZOOM_SDK_DOTNET_WRAP.SDKAnnoSaveType ANNO_SAVE_NONE = 0 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKAnnoSaveType ANNO_SAVE_PNG = 1 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKAnnoSaveType ANNO_SAVE_PDF = 2 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKAnnoSaveType ANNO_SAVE_PNG_MEMORY = 3 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKAnnoSaveType ANNO_SAVE_PDF_MEMORY = 4 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.SDKAnnoSaveType ANNO_SAVE_BITMAP_MEMORY = 5 : Public, Static, Literal, HasDefault
 Struct ZOOM_SDK_DOTNET_WRAP.AnnotationToolType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum
   Fields:
@@ -274,6 +284,13 @@ Struct ZOOM_SDK_DOTNET_WRAP.AnnotationClearType: AutoLayout, AnsiClass, Class, P
     ZOOM_SDK_DOTNET_WRAP.AnnotationClearType ANNOCLEAR_ALL = 0 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.AnnotationClearType ANNOCLEAR_SELF = 1 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.AnnotationClearType ANNOCLEAR_OTHER = 2 : Public, Static, Literal, HasDefault
+Struct ZOOM_SDK_DOTNET_WRAP.VideoHardwareEncodeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    ZOOM_SDK_DOTNET_WRAP.VideoHardwareEncodeType VIDEO_HARDWARE_ENCODE_RECEIVING = 0 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.VideoHardwareEncodeType VIDEO_HARDWARE_ENCODE_SENDING = 1 : Public, Static, Literal, HasDefault
+    ZOOM_SDK_DOTNET_WRAP.VideoHardwareEncodeType VIDEO_HARDWARE_ENCODE_PROCESSING = 2 : Public, Static, Literal, HasDefault
 Struct ZOOM_SDK_DOTNET_WRAP.AuthResult: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum
   Fields:
@@ -341,7 +358,7 @@ Interface ZOOM_SDK_DOTNET_WRAP.ICustomizedAnnotationObjDotNet: AutoLayout, AnsiC
     Undo(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Redo(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     CanSaveSnapshot(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    SaveSnapshot(Char*): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    SaveSnapshot(Char*, SDKAnnoSaveType): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Class ZOOM_SDK_DOTNET_WRAP.onAnnotationObjToolChange: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.MulticastDelegate
     Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
@@ -362,7 +379,7 @@ Interface ZOOM_SDK_DOTNET_WRAP.ICustomizedAnnotationObjDotNetWrap: AutoLayout, A
     Undo(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Redo(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     CanSaveSnapshot(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    SaveSnapshot(Char*): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    SaveSnapshot(Char*, SDKAnnoSaveType): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Add_CB_onAnnotationObjToolChange(onAnnotationObjToolChange): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Remove_CB_onAnnotationObjToolChange(onAnnotationObjToolChange): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Struct ZOOM_SDK_DOTNET_WRAP.CustomizedShareAnnotationStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
@@ -1954,6 +1971,23 @@ Struct ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType: AutoLayout, AnsiClass, Class, Pu
     ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType ScheduleRecordType_None = 0 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType SCHEDULERecordType_Cloud = 1 : Public, Static, Literal, HasDefault
     ZOOM_SDK_DOTNET_WRAP.ScheduleRecordType SCHEDULERecordType_Local = 2 : Public, Static, Literal, HasDefault
+Class ZOOM_SDK_DOTNET_WRAP.DotNetAudioRawData: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(AudioRawData*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    CanAddRef(): PrivateScope, Public, HideBySig
+    AddRef(): PrivateScope, Public, HideBySig
+    Release(): PrivateScope, Public, HideBySig
+    GetBuffer(): PrivateScope, Public, HideBySig
+    GetBufferLen(): PrivateScope, Public, HideBySig
+    GetSampleRate(): PrivateScope, Public, HideBySig
+Interface ZOOM_SDK_DOTNET_WRAP.IZoomSDKAudioRawDataDotNetDelegate: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
+  Methods:
+    onMixedAudioRawDataReceived(DotNetAudioRawData): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    onOneWayAudioRawDataReceived(DotNetAudioRawData, UInt32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface ZOOM_SDK_DOTNET_WRAP.IZoomSDKAudioRawDataDotNetHelper: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
+  Methods:
+    subscribe(IZoomSDKAudioRawDataDotNetDelegate): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    unSubscribe(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Interface ZOOM_SDK_DOTNET_WRAP.ICameraInfoDotNetWrap: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract, BeforeFieldInit
   Methods:
     GetDeviceId(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -1984,8 +2018,8 @@ Interface ZOOM_SDK_DOTNET_WRAP.IVideoSettingContextDotNetWrap: AutoLayout, AnsiC
     IsAlwaysUse16v9(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableSpotlightSelf(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     IsSpotlightSelfEnabled(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    EnableHardwareEncode(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    IsHardwareEncodeEnabled(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    EnableHardwareEncode(Boolean(HasFieldMarshal), VideoHardwareEncodeType): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    IsHardwareEncodeEnabled(VideoHardwareEncodeType): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Enable49VideoesInGallaryView(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     Is49VideoesInGallaryViewEnabled(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     EnableHideNoVideoUsersOnWallView(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
