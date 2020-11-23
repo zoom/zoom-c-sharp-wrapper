@@ -2190,3 +2190,4 @@ Class ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap: AutoLayout, AnsiClass, Class, Pu
     GetSettingServiceWrap(): PrivateScope, Public, HideBySig
     GetCustomizedUIMgrWrap(): PrivateScope, Public, HideBySig
     RetrieveCustomizedResourceHelperWrap(): PrivateScope, Public, HideBySig
+    GetRawAudioHelper(): PrivateScope, Public, HideBySig

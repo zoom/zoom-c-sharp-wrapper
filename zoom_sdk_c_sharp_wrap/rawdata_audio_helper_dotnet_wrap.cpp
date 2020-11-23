@@ -37,6 +37,7 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 
 	SDKError CRawDataAudioDotNetWrap::subscribe(IZoomSDKAudioRawDataDotNetDelegate^ pDelegate)
 	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAudioRawdataHelperWrap().Init();
 		ZOOM_SDK_NAMESPACE::IZoomSDKAudioRawDataDelegate* delegate_c = new ZoomSDKAudioRawDataDelegate(pDelegate);
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAudioRawdataHelperWrap().subscribe(delegate_c);
 	}
@@ -44,5 +45,6 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	SDKError CRawDataAudioDotNetWrap::unSubscribe()
 	{
 		return (SDKError)ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAudioRawdataHelperWrap().unSubscribe();
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetAudioRawdataHelperWrap().Uninit();
 	}
 }

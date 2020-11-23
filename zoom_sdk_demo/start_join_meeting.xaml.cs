@@ -89,28 +89,6 @@ namespace zoom_sdk_demo
             ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().
                 GetMeetingParticipantsController().Add_CB_onUserNameChanged(onUserNameChanged);
         }
-        private void button_start_api_Click(object sender, RoutedEventArgs e)
-        {
-            RegisterCallBack();
-            ZOOM_SDK_DOTNET_WRAP.StartParam param = new ZOOM_SDK_DOTNET_WRAP.StartParam();
-            param.userType = ZOOM_SDK_DOTNET_WRAP.SDKUserType.SDK_UT_WITHOUT_LOGIN;
-            ZOOM_SDK_DOTNET_WRAP.StartParam4WithoutLogin start_withoutlogin_param = new ZOOM_SDK_DOTNET_WRAP.StartParam4WithoutLogin();
-            start_withoutlogin_param.meetingNumber = UInt64.Parse(textBox_meetingnumber_api.Text);
-            start_withoutlogin_param.userID = textBox_userid_api.Text;
-            start_withoutlogin_param.userZAK = textBox_AccessToken.Text;
-            start_withoutlogin_param.userName = textBox_username_api.Text;
-            start_withoutlogin_param.zoomuserType = ZOOM_SDK_DOTNET_WRAP.ZoomUserType.ZoomUserType_APIUSER;
-            param.withoutloginStart = start_withoutlogin_param;
-
-            ZOOM_SDK_DOTNET_WRAP.SDKError err = ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().Start(param);
-            if (ZOOM_SDK_DOTNET_WRAP.SDKError.SDKERR_SUCCESS == err)
-            {
-                Hide();
-            }
-            else//error handle
-            { }
-
-        }
 
         private void button_join_api_Click(object sender, RoutedEventArgs e)
         {
@@ -126,9 +104,12 @@ namespace zoom_sdk_demo
             if (ZOOM_SDK_DOTNET_WRAP.SDKError.SDKERR_SUCCESS == err)
             {
                 Hide();
+                var audioDelegate = new AudioDelegate();
+                CZoomSDKeDotNetWrap.Instance.GetRawAudioHelper().subscribe(audioDelegate);
             }
             else//error handle
-            { }
+            {
+            }
         }
 
         void Wnd_Closing(object sender, CancelEventArgs e)
