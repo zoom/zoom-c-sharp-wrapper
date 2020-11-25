@@ -23,7 +23,6 @@ namespace zoom_sdk_demo
                 ZOOM_SDK_DOTNET_WRAP.SDKError err = ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.Initialize(param);
                 if (ZOOM_SDK_DOTNET_WRAP.SDKError.SDKERR_SUCCESS == err)
                 {
-
                 }
                 else//error handle.todo
                 {

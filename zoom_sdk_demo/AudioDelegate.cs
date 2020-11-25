@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Channels;
 using System.Threading.Tasks;
+using System.IO;
 using ZOOM_SDK_DOTNET_WRAP;
 
 namespace zoom_sdk_demo
@@ -10,7 +11,7 @@ namespace zoom_sdk_demo
     {
         public AudioDelegate()
         {
-            Stream = Channel.CreateUnbounded<(uint, DotNetAudioRawData)>();
+            Stream = Channel.CreateUnbounded<(uint, byte[])>();
             _streamers = new Dictionary<uint, RevAiStreamer>();
         }
 
@@ -18,6 +19,16 @@ namespace zoom_sdk_demo
             DotNetAudioRawData data_
             )
         {
+            //if (!_streamers.ContainsKey(1))
+            //{
+            //    var streamer = new RevAiStreamer(
+            //        "name"
+            //    );
+            //    streamer.StartAsync().Wait();
+            //    _streamers.Add(1, streamer);
+            //}
+
+            //_streamers[1].ByteChannel.Writer.TryWrite(data_.GetBuffer());
         }
 
         public void onOneWayAudioRawDataReceived(
@@ -25,30 +36,20 @@ namespace zoom_sdk_demo
             uint node_id
             )
         {
-            Stream.Writer.TryWrite((node_id, data_));
-        }
-
-        public async Task StartStreamingAsync()
-        {
-            while(!Stream.Reader.Completion.IsCompleted)
+            if (!_streamers.ContainsKey(node_id))
             {
-                var (id, data) = await Stream.Reader.ReadAsync();
-
-                if (!_streamers.ContainsKey(id))
-                {
-                    var streamer = new RevAiStreamer(
-                        CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().GetMeetingParticipantsController()
-                            .GetUserByUserID(id).GetUserNameW()
-                    );
-                    await streamer.StartAsync();
-                    _streamers.Add(id, streamer);
-                }
-
-                await _streamers[id].SendDataAsync(data.GetBuffer());
+                var streamer = new RevAiStreamer(
+                    CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().GetMeetingParticipantsController()
+                        .GetUserByUserID(node_id).GetUserNameW()
+                );
+                streamer.StartAsync().Wait();
+                _streamers.Add(node_id, streamer);
             }
+
+            _streamers[node_id].ByteChannel.Writer.TryWrite(data_.GetBuffer());
         }
 
-        public Channel<(uint, DotNetAudioRawData)> Stream { get; set; }
+        public Channel<(uint, byte[])> Stream { get; set; }
 
         private readonly Dictionary<uint, RevAiStreamer> _streamers;
     }

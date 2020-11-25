@@ -1,8 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
+using System.Threading;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace zoom_sdk_demo
@@ -15,6 +19,9 @@ namespace zoom_sdk_demo
         {
             _speaker = speaker;
             _socket = new ClientWebSocket();
+            ByteChannel = Channel.CreateBounded<byte[]>(new BoundedChannelOptions(20) {
+                FullMode = BoundedChannelFullMode.Wait
+            });
         }
 
         private readonly string _speaker;
@@ -27,11 +34,36 @@ namespace zoom_sdk_demo
             try
             {
                 var id = await ConnectHandshakeAsync().ConfigureAwait(false);
-                _ = StartReceiveLoopAsync().ConfigureAwait(false);
+                Console.WriteLine("Connected to rev.ai");
+                new Thread(() => _ = StartReceiveLoopAsync().ConfigureAwait(false))
+                    .Start();
+                new Thread(() => _ = StartSendLoopAsync().ConfigureAwait(false))
+                    .Start();
             }
             catch(Exception ex)
             {
                 Console.Error.WriteLine($"Failed to connect to rev.ai - {ex.Message}");
+            }
+        }
+
+        private async Task StartSendLoopAsync()
+        {
+            var arrays = new List<byte[]>();
+            var count = 0;
+            while(_socket.State == WebSocketState.Open)
+            {
+                var bytes = await ByteChannel.Reader.ReadAsync();
+                arrays.Add(bytes);
+                count += 1;
+
+                if (count > 10)
+                {
+                    var final = arrays.SelectMany(x => x).ToArray();
+
+                    await _socket.SendAsync(new ArraySegment<byte>(final), WebSocketMessageType.Binary, true, default).ConfigureAwait(false);
+                    count = 0;
+                    arrays.Clear();
+                }
             }
         }
 
@@ -41,6 +73,7 @@ namespace zoom_sdk_demo
         {
             if (_socket.State == WebSocketState.Open)
             {
+                Console.WriteLine("Sending data");
                 await _socket.SendAsync(new ArraySegment<byte>(data), WebSocketMessageType.Binary, true, default)
                     .ConfigureAwait(false);
             }
@@ -49,6 +82,7 @@ namespace zoom_sdk_demo
         internal async Task StartReceiveLoopAsync()
         {
             while (Extensions.ReadingStates.Contains(_socket.State))
+            {
                 switch (await _socket.ReceiveFullMessageAsync(default).ConfigureAwait(false))
                 {
                     case null:
@@ -60,7 +94,7 @@ namespace zoom_sdk_demo
                         {
                             var textTranscript = $"{_speaker}: {String.Join("", message.Elements.Select(e => e.Value))}";
                             Console.WriteLine(textTranscript);
-                        }                        
+                        }
                         continue;
                     case var close when close.Value.type == WebSocketMessageType.Close:
                         Console.WriteLine("Close received");
@@ -69,7 +103,8 @@ namespace zoom_sdk_demo
                         Console.WriteLine("Unexpected data received");
                         break;
                 }
-            return;
+                return;
+            }
         }
 
         private async Task<string> ConnectHandshakeAsync()
@@ -98,6 +133,8 @@ namespace zoom_sdk_demo
         {
             return JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(data.Array));
         }
+
+        public Channel<byte[]> ByteChannel { get; set; }
 
         private const string Url = "wss://api.rev.ai/speechtotext/v1/stream";
         private const string AccessToken = "02kQoXp3YkWGIg5lkvV3EtdNB3vOsOYSfq0MUnlQioSLD54awVYU_1Lt9viYHnX5yhhXXZuHAzkmIeNqJI0pi2dGVQWSA";
