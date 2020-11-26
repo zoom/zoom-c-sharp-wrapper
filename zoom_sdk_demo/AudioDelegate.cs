@@ -9,10 +9,13 @@ namespace zoom_sdk_demo
 {
     public class AudioDelegate : IZoomSDKAudioRawDataDotNetDelegate
     {
-        public AudioDelegate()
+        public AudioDelegate(
+            string captionUrl
+            )
         {
             Stream = Channel.CreateUnbounded<(uint, byte[])>();
             _streamers = new Dictionary<uint, RevAiStreamer>();
+            _captioner = new ZoomCaptioner(captionUrl);
         }
 
         public void onMixedAudioRawDataReceived(
@@ -40,7 +43,8 @@ namespace zoom_sdk_demo
             {
                 var streamer = new RevAiStreamer(
                     CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().GetMeetingParticipantsController()
-                        .GetUserByUserID(node_id).GetUserNameW()
+                        .GetUserByUserID(node_id).GetUserNameW(),
+                    _captioner
                 );
                 streamer.StartAsync().Wait();
                 _streamers.Add(node_id, streamer);
@@ -52,5 +56,6 @@ namespace zoom_sdk_demo
         public Channel<(uint, byte[])> Stream { get; set; }
 
         private readonly Dictionary<uint, RevAiStreamer> _streamers;
+        private readonly ZoomCaptioner _captioner;
     }
 }

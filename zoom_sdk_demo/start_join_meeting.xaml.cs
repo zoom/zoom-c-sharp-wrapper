@@ -99,13 +99,14 @@ namespace zoom_sdk_demo
             ZOOM_SDK_DOTNET_WRAP.JoinParam4WithoutLogin join_api_param = new ZOOM_SDK_DOTNET_WRAP.JoinParam4WithoutLogin();
             join_api_param.meetingNumber = UInt64.Parse("94091188136");
             join_api_param.userName = "Rev.ai Transcriber";
+            var captionUrl = textBox_captionUrl.Text;
             param.withoutloginJoin = join_api_param;
 
             ZOOM_SDK_DOTNET_WRAP.SDKError err = ZOOM_SDK_DOTNET_WRAP.CZoomSDKeDotNetWrap.Instance.GetMeetingServiceWrap().Join(param);
             if (ZOOM_SDK_DOTNET_WRAP.SDKError.SDKERR_SUCCESS == err)
             {
                 Hide();
-                var audioDelegate = new AudioDelegate();
+                var audioDelegate = new AudioDelegate(captionUrl);
                 CZoomSDKeDotNetWrap.Instance.GetRawAudioHelper().subscribe(audioDelegate);
             }
             else//error handle

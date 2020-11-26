@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
@@ -14,10 +12,12 @@ namespace zoom_sdk_demo
     public class RevAiStreamer
     {
         public RevAiStreamer(
-            string speaker
+            string speaker,
+            ZoomCaptioner captioner
             )
         {
             _speaker = speaker;
+            _captioner = captioner;
             _socket = new ClientWebSocket();
             ByteChannel = Channel.CreateBounded<byte[]>(new BoundedChannelOptions(20) {
                 FullMode = BoundedChannelFullMode.Wait
@@ -35,10 +35,8 @@ namespace zoom_sdk_demo
             {
                 var id = await ConnectHandshakeAsync().ConfigureAwait(false);
                 Console.WriteLine("Connected to rev.ai");
-                new Thread(() => _ = StartReceiveLoopAsync().ConfigureAwait(false))
-                    .Start();
-                new Thread(() => _ = StartSendLoopAsync().ConfigureAwait(false))
-                    .Start();
+                _ = StartReceiveLoopAsync().ConfigureAwait(false);
+                _ = StartSendLoopAsync().ConfigureAwait(false);
             }
             catch(Exception ex)
             {
@@ -93,7 +91,7 @@ namespace zoom_sdk_demo
                         if (message.Type == "final")
                         {
                             var textTranscript = $"{_speaker}: {String.Join("", message.Elements.Select(e => e.Value))}";
-                            Console.WriteLine(textTranscript);
+                            await _captioner.SendCaptionAsync(textTranscript).ConfigureAwait(false);
                         }
                         continue;
                     case var close when close.Value.type == WebSocketMessageType.Close:
@@ -135,6 +133,8 @@ namespace zoom_sdk_demo
         }
 
         public Channel<byte[]> ByteChannel { get; set; }
+
+        private readonly ZoomCaptioner _captioner;
 
         private const string Url = "wss://api.rev.ai/speechtotext/v1/stream";
         private const string AccessToken = "02kQoXp3YkWGIg5lkvV3EtdNB3vOsOYSfq0MUnlQioSLD54awVYU_1Lt9viYHnX5yhhXXZuHAzkmIeNqJI0pi2dGVQWSA";

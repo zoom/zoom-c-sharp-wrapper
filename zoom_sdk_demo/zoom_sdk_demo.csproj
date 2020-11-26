@@ -86,6 +86,7 @@
       <DependentUpon>start_join_meeting.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimeSpanConverter.cs" />
+    <Compile Include="ZoomCaptioner.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
