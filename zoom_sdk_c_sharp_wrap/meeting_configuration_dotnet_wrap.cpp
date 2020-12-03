@@ -5,6 +5,106 @@
 namespace ZOOM_SDK_DOTNET_WRAP {
 	//translate event
 
+	private ref class CIWebinarNeedRegisterHandler : public IWebinarNeedRegisterHandler
+	{
+	public:
+		CIWebinarNeedRegisterHandler(ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandler* pHandler)
+		{
+			m_pHandler = pHandler;
+		}
+
+		~CIWebinarNeedRegisterHandler()
+		{
+
+		}
+
+		virtual WebinarNeedRegisterType GetWebinarNeedRegisterType()
+		{
+			if (m_pHandler)
+				return (WebinarNeedRegisterType)m_pHandler->GetWebinarNeedRegisterType();
+
+			return WebinarNeedRegisterType::WebinarReg_NONE;
+		}
+
+	private:
+		ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandler* m_pHandler;
+	};
+
+	private ref class CIWebinarNeedRegisterHandlerByEmail sealed : public CIWebinarNeedRegisterHandler, IWebinarNeedRegisterHandlerByEmail
+	{
+	public:
+		CIWebinarNeedRegisterHandlerByEmail(ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandlerByEmail* pHandler) : CIWebinarNeedRegisterHandler(pHandler)
+		{
+			m_pHandler = pHandler;
+		}
+
+		~CIWebinarNeedRegisterHandlerByEmail()
+		{
+
+		}
+
+		virtual SDKError InputWebinarRegisterEmailAndScreenName(String^ email, String^ username)
+		{
+			if (m_pHandler)
+				return (SDKError)m_pHandler->InputWebinarRegisterEmailAndScreenName(PlatformString2WChar(email), PlatformString2WChar(username));
+
+			return SDKError::SDKERR_UNINITIALIZE;
+		}
+
+		virtual void Cancel()
+		{
+			if (m_pHandler)
+				m_pHandler->Cancel();
+		}
+
+	private:
+		ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandlerByEmail* m_pHandler;
+	};
+
+	private ref class CIWebinarNeedRegisterHandlerByUrl sealed : public CIWebinarNeedRegisterHandler, IWebinarNeedRegisterHandlerByUrl
+	{
+	public:
+		CIWebinarNeedRegisterHandlerByUrl(ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandlerByUrl* pHandler) : CIWebinarNeedRegisterHandler(pHandler)
+		{
+			m_pHandler = pHandler;
+		}
+
+		~CIWebinarNeedRegisterHandlerByUrl()
+		{
+
+		}
+
+		virtual String^ GetWebinarRegisterUrl()
+		{
+			if (m_pHandler)
+				return WChar2PlatformString(m_pHandler->GetWebinarRegisterUrl());
+			return nullptr;
+		}
+		virtual void Release()
+		{
+			if (m_pHandler)
+				m_pHandler->Release();
+		}
+
+	private:
+		ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandlerByUrl* m_pHandler;
+	};
+
+	IWebinarNeedRegisterHandler^ TranslateWebinarNeedRegisterHandler(ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandler* pHandler)
+	{
+		if (pHandler)
+		{
+			WebinarNeedRegisterType registerType = (WebinarNeedRegisterType)pHandler->GetWebinarNeedRegisterType();
+
+			if(registerType == WebinarNeedRegisterType::WebinarReg_By_Email_and_DisplayName)
+				return gcnew CIWebinarNeedRegisterHandlerByEmail(dynamic_cast<ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandlerByEmail*>(pHandler));
+			else if(registerType == WebinarNeedRegisterType::WebinarReg_By_Register_Url)
+				return gcnew CIWebinarNeedRegisterHandlerByUrl(dynamic_cast<ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandlerByUrl*>(pHandler));
+		}
+
+		return nullptr;
+	}
+
 	private ref class CMeetingPasswordAndScreenNameHandler sealed : public IMeetingPasswordAndScreenNameHandler
 	{
 	public:
@@ -77,6 +177,13 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 			if (CMeetingConfigurationDotNetWrap::Instance)
 				CMeetingConfigurationDotNetWrap::Instance->ProcAirPlayInstructionWndNotification(
 					bShow, WChar2PlatformString(airhostName));
+		}
+
+		void onWebinarNeedRegisterNotification(ZOOM_SDK_NAMESPACE::IWebinarNeedRegisterHandler* pHandler)
+		{
+			if (CMeetingConfigurationDotNetWrap::Instance)
+				CMeetingConfigurationDotNetWrap::Instance->ProcWebinarNeedRegisterNotification(
+					TranslateWebinarNeedRegisterHandler(pHandler));
 		}
 	private:
 		MeetingConfigurationEventHanlder() {}
@@ -203,6 +310,11 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().RedirectClickEndMeetingBTNEvent(bRedirect);
 	}
 
+	void CMeetingConfigurationDotNetWrap::RedirectWebinarNeedRegister(bool bRedirect)
+	{
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().RedirectWebinarNeedRegister(bRedirect);
+	}
+
 	void CMeetingConfigurationDotNetWrap::EnableToolTipsShow(bool bEnable)
 	{
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().EnableToolTipsShow(bEnable);
@@ -292,6 +404,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().m_cbonAirPlayInstructionWndNotification =
 			std::bind(&MeetingConfigurationEventHanlder::onAirPlayInstructionWndNotification,
 				&MeetingConfigurationEventHanlder::GetInst(), std::placeholders::_1, std::placeholders::_2);
+
+		ZOOM_SDK_NAMESPACE::CSDKWrap::GetInst().GetMeetingServiceWrap().GetMeetingConfiguration().m_cbonWebinarNeedRegisterNotification =
+			std::bind(&MeetingConfigurationEventHanlder::onWebinarNeedRegisterNotification,
+				&MeetingConfigurationEventHanlder::GetInst(), std::placeholders::_1);
 	}
 
 	void CMeetingConfigurationDotNetWrap::ProcInputMeetingPasswordAndScreenNameNotification(IMeetingPasswordAndScreenNameHandler^ pHandler)
@@ -302,5 +418,10 @@ namespace ZOOM_SDK_DOTNET_WRAP {
 	void CMeetingConfigurationDotNetWrap::ProcAirPlayInstructionWndNotification(bool bShow, String^ airhostName)
 	{
 		event_onAirPlayInstructionWndNotification(bShow, airhostName);
+	}
+
+	void CMeetingConfigurationDotNetWrap::ProcWebinarNeedRegisterNotification(IWebinarNeedRegisterHandler^ pHandler)
+	{
+		event_onWebinarNeedRegisterNotification(pHandler);
 	}
 }
